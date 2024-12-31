@@ -211,7 +211,7 @@
     <section id="hero">
         <div class="hero-content">
             <h1 class="animate-hero-title" data-en="Mohamed ElNabarawi" data-ar="محمد النبراوي">Mohamed ElNabarawi</h1>
-            <p class="animate-hero-subtitle" data-en="Chief Accountant | Financial Expert | Author" data-ar="محاسب رئيسي | خبير مالي | مؤلف">Chief Accountant | Financial Expert | Author</p>
+            <p class="animate-hero-subtitle" data-en="Chief Accountant | Financial Expert | Author" data-ar="رئيس حسابات | خبير مالي | مؤلف">Chief Accountant | Financial Expert | Author</p>
             <a href="#about" class="btn animate-hero-button" data-en="Discover More" data-ar="اعرف المزيد">Discover More</a>
         </div>
     </section>
@@ -224,7 +224,7 @@
                     <img src="images/profile.jpg" alt="Mohamed ElNabarawi" class="profile-img">
                     <div class="about-text">
                         <p data-en="💼 As an experienced Chief Accountant with a proven track record in the accounting industry, I am a master of financial management! I possess a wide range of financial skills, including accounting, internal controls, financial statements, financial accounting, ERP systems, Microsoft Word, and Microsoft Excel." 
-                           data-ar="💼 كمحاسب رئيسي ذو خبرة مثبتة في مجال المحاسبة، أنا متمكن من إدارة المالية! أمتلك مجموعة واسعة من المهارات المالية، بما في ذلك المحاسبة، والضوابط الداخلية، والبيانات المالية، والمحاسبة المالية، وأنظمة ERP، ومايكروسوفت وورد، وإكسل.">
+                           data-ar="💼 كرئيس حسابات ذو خبرة مثبتة في مجال المحاسبة، أنا متمكن من إدارة المالية! أمتلك مجموعة واسعة من المهارات المالية، بما في ذلك المحاسبة، والضوابط الداخلية، والبيانات المالية، والمحاسبة المالية، وأنظمة ERP، ومايكروسوفت وورد، وإكسل.">
                             💼 As an experienced Chief Accountant with a proven track record in the accounting industry, I am a master of financial management! I possess a wide range of financial skills, including accounting, internal controls, financial statements, financial accounting, ERP systems, Microsoft Word, and Microsoft Excel.
                         </p>
                         <p data-en="🏆 Throughout my career, I have demonstrated my ability to manage complex financial projects, streamline accounting processes, and improve financial reporting. I am proficient in using ERP systems and other accounting software, enabling me to quickly adapt to new technology and implement solutions that improve financial performance." 
@@ -388,30 +388,19 @@
     <script>
         // JavaScript to trigger animations
         document.addEventListener('DOMContentLoaded', () => {
-            const heroTitle = document.querySelector('.animate-hero-title');
-            const heroSubtitle = document.querySelector('.animate-hero-subtitle');
-            const heroButton = document.querySelector('.animate-hero-button');
-
-            // Add animation classes
-            heroTitle.classList.add('animate-fade-in-up');
-            heroSubtitle.classList.add('animate-fade-in-up');
-            heroButton.classList.add('animate-fade-in-up');
-
-            // Animate sections on scroll
-            const sections = document.querySelectorAll('.section');
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-
+            const sections = document.querySelectorAll('.section-animate');
+            
             const sectionObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('section-animate');
+                        entry.target.classList.add('section-in-view');
+                    } else {
+                        entry.target.classList.remove('section-in-view');
                     }
                 });
-            }, observerOptions);
+            }, {
+                threshold: 0.1
+            });
 
             sections.forEach(section => {
                 sectionObserver.observe(section);
@@ -461,10 +450,28 @@
         }
 
         // Add event listener to CV and index page email buttons
-        document.querySelectorAll('.email-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                openContactModal();
+        document.addEventListener('DOMContentLoaded', () => {
+            const emailButtons = document.querySelectorAll('.email-btn, [href="#contact"]');
+            emailButtons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openContactModal();
+                });
+            });
+
+            // Close modal when clicking outside
+            const modal = document.getElementById('contactModal');
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeContactModal();
+                }
+            });
+
+            // Close modal on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('show')) {
+                    closeContactModal();
+                }
             });
         });
 

@@ -354,6 +354,95 @@
                 position: static;
             }
         }
+
+        /* Contact Modal Styles */
+        .contact-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-modal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .contact-modal-content {
+            background: white;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            transform: scale(0.7);
+            transition: all 0.3s ease;
+        }
+
+        .contact-modal.show .contact-modal-content {
+            transform: scale(1);
+        }
+
+        .contact-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #888;
+            transition: color 0.3s ease;
+        }
+
+        .contact-modal-close:hover {
+            color: #333;
+        }
+
+        .contact-modal-content h2 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .contact-modal-content .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .contact-modal-content .contact-method {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f4f6f7;
+            padding: 15px;
+            border-radius: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .contact-modal-content .contact-method:hover {
+            background: #e9ecef;
+        }
+
+        .contact-modal-content .contact-method i {
+            margin-right: 15px;
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        body.ar .contact-modal-content .contact-method i {
+            margin-right: 0;
+            margin-left: 15px;
+        }
     </style>
 </head>
 <body>
@@ -384,7 +473,7 @@
             <div class="sidebar-content">
                 <img src="images/profile.jpg" alt="Mohamed ElNabarawi" class="profile-img">
                 <h1 data-en="MOHAMED ELNABARAWI" data-ar="محمد النبراوي">MOHAMED ELNABARAWI</h1>
-                <h2 data-en="Chief Accountant | Python Developer" data-ar="محاسب رئيسي | مطور بايثون">Chief Accountant | Python Developer</h2>
+                <h2 data-en="Chief Accountant | Python Developer" data-ar="رئيس حسابات | مطور بايثون">Chief Accountant | Python Developer</h2>
                 
                 <div class="contact-info">
                     <p><i class="fas fa-map-marker-alt"></i> Riyadh, Saudi Arabia</p>
@@ -402,7 +491,7 @@
                 <h2 class="section-title" data-en="Professional Summary" data-ar="ملخص مهني">Professional Summary</h2>
                 <p data-en="💼 As an experienced Chief Accountant with a proven track record in the accounting industry, I am a master of financial management! 
                 I possess a wide range of financial skills, including accounting, internal controls, financial statements, 
-                financial accounting, ERP systems, Microsoft Word, and Microsoft Excel." data-ar="💼 كمحاسب رئيسي ذو خبرة تثبت سجله في مجال المحاسبة، أنا أستاذ في الإدارة المالية! 
+                financial accounting, ERP systems, Microsoft Word, and Microsoft Excel." data-ar="💼 كرئيس حسابات ذو خبرة تثبت سجله في مجال المحاسبة، أنا أستاذ في الإدارة المالية! 
                 أمتلك مجموعة واسعة من المهارات المالية، بما في ذلك المحاسبة، والرقابة الداخلية، والقوائم المالية، 
                 والمحاسبة المالية، ونظم إدارة المشاريع، ومايكروسوفت وورد، ومايكروسوفت إكسل.">💼 As an experienced Chief Accountant with a proven track record in the accounting industry, I am a master of financial management! 
                 I possess a wide range of financial skills, including accounting, internal controls, financial statements, 
@@ -430,8 +519,8 @@
             <section class="section">
                 <h2 class="section-title" data-en="Professional Experience" data-ar="الخبرة المهنية">Professional Experience</h2>
                 <div class="job-details">
-                    <h3 class="job-title" data-en="Chief Accountant" data-ar="محاسب رئيسي">Chief Accountant</h3>
-                    <p class="company" data-en="Aghna Real Estate co, Saudi Arabia" data-ar="شركة أغناء العقارية، المملكة العربية السعودية">Aghna Real Estate co, Saudi Arabia</p>
+                    <h3 class="job-title" data-en="Chief Accountant" data-ar="رئيس حسابات">Chief Accountant</h3>
+                    <p class="company" data-en="Aghna Real Estate co, Saudi Arabia" data-ar="شركة أغنى العقارية، المملكة العربية السعودية">Aghna Real Estate co, Saudi Arabia</p>
                     <p class="duration" data-en="October 2021 - Present" data-ar="أكتوبر 2021 - الحالي">October 2021 - Present</p>
                     <ul>
                         <li data-en="Supervise and coordinate accounting staff activities" data-ar="إشراف وتنسيق أنشطة موظفي المحاسبة">Supervise and coordinate accounting staff activities</li>
@@ -442,8 +531,8 @@
                 </div>
 
                 <div class="job-details">
-                    <h3 class="job-title" data-en="Chief Accountant" data-ar="محاسب رئيسي">Chief Accountant</h3>
-                    <p class="company" data-en="First Andareen Trading and Contracting, Saudi Arabia" data-ar="شركة الأولى للأنشطة التجارية والتعاقدات، المملكة العربية السعودية">First Andareen Trading and Contracting, Saudi Arabia</p>
+                    <h3 class="job-title" data-en="Chief Accountant" data-ar="رئيس حسابات">Chief Accountant</h3>
+                    <p class="company" data-en="First Andareen Trading and Contracting, Saudi Arabia" data-ar="شركة أندرين الأولى للتجارة والمقاولات، المملكة العربية السعودية">First Andareen Trading and Contracting, Saudi Arabia</p>
                     <p class="duration" data-en="04/2016 - October 2021" data-ar="04/2016 - أكتوبر 2021">04/2016 - October 2021</p>
                     <ul>
                         <li data-en="Led comprehensive financial management and reporting" data-ar="إدارة شاملة للمالية والتقارير">Led comprehensive financial management and reporting</li>
@@ -551,6 +640,32 @@
         </div>
     </div>
 
+    <!-- Contact Modal -->
+    <div class="contact-modal" id="contactModal">
+        <div class="contact-modal-content">
+            <span class="contact-modal-close" onclick="closeContactModal()">&times;</span>
+            <h2 data-en="Contact Mohamed" data-ar="تواصل مع محمد">Contact Mohamed</h2>
+            <div class="contact-info">
+                <a href="mailto:mohammednabarawy@gmail.com" class="contact-method">
+                    <i class="fas fa-envelope"></i>
+                    <span data-en="Email: mohammednabarawy@gmail.com" data-ar="البريد الإلكتروني: mohammednabarawy@gmail.com">Email: mohammednabarawy@gmail.com</span>
+                </a>
+                <a href="https://linkedin.com/in/mohammednabarawy" target="_blank" class="contact-method">
+                    <i class="fab fa-linkedin"></i>
+                    <span data-en="LinkedIn Profile" data-ar="صفحة LinkedIn">LinkedIn Profile</span>
+                </a>
+                <a href="https://github.com/mohammednabarawy" target="_blank" class="contact-method">
+                    <i class="fab fa-github"></i>
+                    <span data-en="GitHub Profile" data-ar="صفحة GitHub">GitHub Profile</span>
+                </a>
+                <div class="contact-method">
+                    <i class="fas fa-phone"></i>
+                    <span data-en="Phone: +966 55 123 4567" data-ar="الهاتف: +966 55 123 4567">Phone: +966 55 123 4567</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         function toggleLanguage() {
             const body = document.body;
@@ -581,6 +696,43 @@
                 audio.play();
             } catch(e) {}
         }
+
+        // Contact Modal Functions
+        function openContactModal() {
+            const modal = document.getElementById('contactModal');
+            modal.classList.add('show');
+        }
+
+        function closeContactModal() {
+            const modal = document.getElementById('contactModal');
+            modal.classList.remove('show');
+        }
+
+        // Add event listeners after DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            const emailButtons = document.querySelectorAll('.email-btn, [href="#contact"]');
+            emailButtons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openContactModal();
+                });
+            });
+
+            // Close modal when clicking outside
+            const modal = document.getElementById('contactModal');
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeContactModal();
+                }
+            });
+
+            // Close modal on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('show')) {
+                    closeContactModal();
+                }
+            });
+        });
 
         // Initialize with English as default
         document.body.classList.add('en');
