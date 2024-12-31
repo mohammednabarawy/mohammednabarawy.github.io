@@ -8,43 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Inline animations to ensure they load */
-        @keyframes slideDown {
-            0% {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Language-specific fonts and styles */
-        body.ar {
-            font-family: 'Amiri', serif;
-            direction: rtl;
-        }
-        
-        body.ar .section-title,
-        body.ar h1, 
-        body.ar h2, 
-        body.ar h3 {
-            font-family: 'Amiri', serif;
-        }
-    </style>
 </head>
 <body>
     <div class="language-toggle">
@@ -72,26 +35,26 @@
 
     <section id="hero">
         <div class="hero-content">
-            <h1 class="animate-hero-title" data-en="Mohamed ElNabarawi" data-ar="محمد النبراوي">Mohamed ElNabarawi</h1>
-            <p class="animate-hero-subtitle" data-en="Chief Accountant | Financial Expert | Author" data-ar="محاسب رئيسي | خبير مالي | مؤلف">Chief Accountant | Financial Expert | Author</p>
-            <a href="#about" class="btn animate-hero-button" data-en="Discover More" data-ar="اكتشف المزيد">Discover More</a>
+            <h1 data-en="Mohamed ElNabarawi" data-ar="محمد النبراوي">Mohamed ElNabarawi</h1>
+            <p data-en="Chief Accountant | Financial Expert | Author" data-ar="محاسب رئيسي | خبير مالي | مؤلف">Chief Accountant | Financial Expert | Author</p>
+            <a href="#about" class="btn" data-en="Discover More" data-ar="اكتشف المزيد">Discover More</a>
         </div>
     </section>
 
     <main>
-        <section id="about" class="section section-animate">
+        <section id="about" class="section">
             <div class="container">
                 <h2 data-en="About Me" data-ar="معلومات عني">About Me</h2>
                 <div class="about-content">
                     <img src="images/profile.jpg" alt="Mohamed ElNabarawi" class="profile-img">
                     <div class="about-text">
-                        <p data-en="💼 As an experienced Chief Accountant with a proven track record in the accounting industry, I am a master of financial management! I possess a wide range of financial skills, including accounting, internal controls, financial statements, financial accounting, ERP systems, Microsoft Word, and Microsoft Excel." 
-                           data-ar="💼 كمحاسب رئيسي ذو خبرة مثبتة في صناعة المحاسبة، أنا متمكن من إدارة المالية! أمتلك مجموعة واسعة من المهارات المالية، بما في ذلك المحاسبة، والضوابط الداخلية، والبيانات المالية، والمحاسبة المالية، وأنظمة ERP، ومايكروسوفت وورد، ومايكروسوفت إكسل.">
-                            💼 As an experienced Chief Accountant with a proven track record in the accounting industry, I am a master of financial management! I possess a wide range of financial skills, including accounting, internal controls, financial statements, financial accounting, ERP systems, Microsoft Word, and Microsoft Excel.
+                        <p data-en="As an experienced Chief Accountant with a proven track record in the accounting industry, I am a master of financial management! I possess a wide range of financial skills, including accounting, internal controls, financial statements, financial accounting, ERP systems, Microsoft Word, and Microsoft Excel." 
+                           data-ar="كمحاسب رئيسي ذو خبرة مثبتة في صناعة المحاسبة، أنا متمكن من إدارة المالية! أمتلك مجموعة واسعة من المهارات المالية، بما في ذلك المحاسبة، والضوابط الداخلية، والبيانات المالية، والمحاسبة المالية، وأنظمة ERP، ومايكروسوفت وورد، ومايكروسوفت إكسل.">
+                            As an experienced Chief Accountant with a proven track record in the accounting industry, I am a master of financial management! I possess a wide range of financial skills, including accounting, internal controls, financial statements, financial accounting, ERP systems, Microsoft Word, and Microsoft Excel.
                         </p>
-                        <p data-en="🏆 Throughout my career, I have demonstrated my ability to manage complex financial projects, streamline accounting processes, and improve financial reporting. I am proficient in using ERP systems and other accounting software, enabling me to quickly adapt to new technology and implement solutions that improve financial performance." 
-                           data-ar="🏆 على مدار مسيرتي المهنية، أظهرت قدرتي على إدارة مشاريع مالية معقدة، وتحسين عمليات المحاسبة، وتحسين التقارير المالية. أنا ماهر في استخدام أنظمة ERP وبرامج المحاسبة الأخرى، مما يتيح لي التكيف بسرعة مع التكنولوجيا الجديدة وتنفيذ حلول تحسن الأداء المالي.">
-                            🏆 Throughout my career, I have demonstrated my ability to manage complex financial projects, streamline accounting processes, and improve financial reporting. I am proficient in using ERP systems and other accounting software, enabling me to quickly adapt to new technology and implement solutions that improve financial performance.
+                        <p data-en="Throughout my career, I have demonstrated my ability to manage complex financial projects, streamline accounting processes, and improve financial reporting. I am proficient in using ERP systems and other accounting software, enabling me to quickly adapt to new technology and implement solutions that improve financial performance." 
+                           data-ar="على مدار مسيرتي المهنية، أظهرت قدرتي على إدارة مشاريع مالية معقدة، وتحسين عمليات المحاسبة، وتحسين التقارير المالية. أنا ماهر في استخدام أنظمة ERP وبرامج المحاسبة الأخرى، مما يتيح لي التكيف بسرعة مع التكنولوجيا الجديدة وتنفيذ حلول تحسن الأداء المالي.">
+                            Throughout my career, I have demonstrated my ability to manage complex financial projects, streamline accounting processes, and improve financial reporting. I am proficient in using ERP systems and other accounting software, enabling me to quickly adapt to new technology and implement solutions that improve financial performance.
                         </p>
                         <div class="social-links">
                             <a href="https://github.com/mohammednabarawy" target="_blank"><i class="fab fa-github"></i></a>
@@ -104,7 +67,7 @@
             </div>
         </section>
 
-        <section id="skills" class="section section-animate">
+        <section id="skills" class="section">
             <div class="container">
                 <h2 data-en="Skills" data-ar="المهارات">Skills</h2>
                 <div class="skills-grid">
@@ -132,7 +95,7 @@
             </div>
         </section>
 
-        <section id="projects" class="section section-animate">
+        <section id="projects" class="section">
             <div class="container">
                 <h2 data-en="My Projects" data-ar="مشاريعي">My Projects</h2>
                 <div class="projects-grid">
@@ -167,7 +130,7 @@
             </div>
         </section>
 
-        <section id="publications" class="section section-animate">
+        <section id="publications" class="section">
             <div class="container">
                 <h2 data-en="Published Works" data-ar="الأعمال المنشورة">Published Works</h2>
                 <div class="projects-grid">
@@ -199,7 +162,7 @@
             </div>
         </section>
 
-        <section id="contact" class="section section-animate">
+        <section id="contact" class="section">
             <div class="container">
                 <h2 data-en="Contact Me" data-ar="اتصل بي">Contact Me</h2>
                 <form id="contact-form">
