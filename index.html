@@ -3,9 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohammed Nabarawy - Software Engineer</title>
+    <title>Mohamed ElNabarawy - Chief Accountant & Author</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        /* Inline animations to ensure they load */
+        @keyframes slideDown {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -26,14 +50,14 @@
 
     <section id="hero">
         <div class="hero-content">
-            <h1>Mohamed ElNabarawy</h1>
-            <p>Chief Accountant | Financial Expert | Author</p>
-            <a href="#about" class="btn">Discover More</a>
+            <h1 class="animate-hero-title">Mohamed ElNabarawy</h1>
+            <p class="animate-hero-subtitle">Chief Accountant | Financial Expert | Author</p>
+            <a href="#about" class="btn animate-hero-button">Discover More</a>
         </div>
     </section>
 
     <main>
-        <section id="about" class="section">
+        <section id="about" class="section section-animate">
             <div class="container">
                 <h2>About Me</h2>
                 <div class="about-content">
@@ -57,7 +81,7 @@
             </div>
         </section>
 
-        <section id="skills" class="section">
+        <section id="skills" class="section section-animate">
             <div class="container">
                 <h2>Skills</h2>
                 <div class="skills-grid">
@@ -85,7 +109,7 @@
             </div>
         </section>
 
-        <section id="projects" class="section">
+        <section id="projects" class="section section-animate">
             <div class="container">
                 <h2>My Projects</h2>
                 <div class="projects-grid">
@@ -111,7 +135,7 @@
             </div>
         </section>
 
-        <section id="publications" class="section">
+        <section id="publications" class="section section-animate">
             <div class="container">
                 <h2>Published Works</h2>
                 <div class="projects-grid">
@@ -137,7 +161,7 @@
             </div>
         </section>
 
-        <section id="contact" class="section">
+        <section id="contact" class="section section-animate">
             <div class="container">
                 <h2>Contact Me</h2>
                 <form id="contact-form">
@@ -156,6 +180,38 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // JavaScript to trigger animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroTitle = document.querySelector('.animate-hero-title');
+            const heroSubtitle = document.querySelector('.animate-hero-subtitle');
+            const heroButton = document.querySelector('.animate-hero-button');
+
+            // Add animation classes
+            heroTitle.classList.add('animate-fade-in-up');
+            heroSubtitle.classList.add('animate-fade-in-up');
+            heroButton.classList.add('animate-fade-in-up');
+
+            // Animate sections on scroll
+            const sections = document.querySelectorAll('.section');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('section-animate');
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+        });
+    </script>
 </body>
 </html>
