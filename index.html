@@ -45,32 +45,60 @@
             text-align: right;
         }
 
+        /* Enhanced Language Toggle Styles */
         .language-toggle {
             position: fixed;
             top: 20px;
             right: 20px;
             z-index: 1000;
-            background-color: rgba(255,255,255,0.2);
-            padding: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
+            border: 3px solid rgba(255,255,255,0.2);
         }
 
-        .language-toggle i {
-            font-size: 24px;
+        .language-toggle .lang-icon {
+            font-size: 30px;
             color: white;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .language-toggle .lang-icon::before {
+            content: 'EN';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            color: white;
+            opacity: 0.7;
         }
 
         .language-toggle:hover {
-            transform: scale(1.1);
-            background-color: rgba(255,255,255,0.3);
+            transform: rotate(360deg) scale(1.1);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        body.ar .language-toggle .lang-icon::before {
+            content: 'AR';
         }
     </style>
 </head>
 <body>
     <div class="language-toggle" onclick="toggleLanguage()">
-        <i class="fas fa-language"></i>
+        <div class="lang-icon">
+            <i class="fas fa-globe-americas"></i>
+        </div>
     </div>
 
     <header>
@@ -291,6 +319,17 @@
             // Update page direction
             document.documentElement.lang = newLang;
             document.documentElement.dir = newLang === 'ar' ? 'rtl' : 'ltr';
+
+            // Vibration feedback (for supported devices)
+            if ('vibrate' in navigator) {
+                navigator.vibrate(50);
+            }
+
+            // Sound effect (optional)
+            try {
+                const audio = new Audio('data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA');
+                audio.play();
+            } catch(e) {}
         }
 
         // Initialize with English as default
