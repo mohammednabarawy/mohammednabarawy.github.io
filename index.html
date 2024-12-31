@@ -183,6 +183,201 @@
             margin-right: 0;
             margin-left: 15px;
         }
+
+        /* Updated Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+
+        nav ul {
+            display: flex;
+            list-style-type: none;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Updated Hero Section Styles */
+        #hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+            z-index: 1;
+        }
+
+        .hero-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .hero-shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s infinite alternate;
+        }
+
+        .hero-shape:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            top: 10%;
+            left: 10%;
+            animation-delay: -1s;
+        }
+
+        .hero-shape:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            bottom: 20%;
+            right: 15%;
+            animation-delay: -3s;
+        }
+
+        .hero-shape:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            top: 70%;
+            left: 50%;
+            animation-delay: -2s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(50px);
+            }
+        }
+
+        .btn.animate-hero-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: white;
+            color: #764ba2;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn.animate-hero-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            background: #f0f0f0;
+        }
     </style>
 </head>
 <body>
@@ -193,15 +388,17 @@
     </div>
 
     <header>
-        <div class="container">
+        <div class="header-container">
+            <a href="#" class="logo">
+                <img src="images/profile.jpg" alt="Mohamed ElNabarawi">
+                Mohamed ElNabarawi
+            </a>
             <nav>
                 <ul>
-                    <li><a href="#hero" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                    <li><a href="#home" data-en="Home" data-ar="الرئيسية">Home</a></li>
                     <li><a href="#about" data-en="About" data-ar="من أنا">About</a></li>
+                    <li><a href="#experience" data-en="Experience" data-ar="الخبرة">Experience</a></li>
                     <li><a href="#skills" data-en="Skills" data-ar="المهارات">Skills</a></li>
-                    <li><a href="#projects" data-en="Projects" data-ar="المشاريع">Projects</a></li>
-                    <li><a href="#publications" data-en="Publications" data-ar="المنشورات">Publications</a></li>
-                    <li><a href="#contact" data-en="Contact" data-ar="تواصل معي">Contact</a></li>
                     <li><a href="cv.html" data-en="CV" data-ar="السيرة الذاتية">CV</a></li>
                 </ul>
             </nav>
@@ -209,6 +406,12 @@
     </header>
 
     <section id="hero">
+        <div class="hero-background"></div>
+        <div class="hero-shapes">
+            <div class="hero-shape"></div>
+            <div class="hero-shape"></div>
+            <div class="hero-shape"></div>
+        </div>
         <div class="hero-content">
             <h1 class="animate-hero-title" data-en="Mohamed ElNabarawi" data-ar="محمد النبراوي">Mohamed ElNabarawi</h1>
             <p class="animate-hero-subtitle" data-en="Chief Accountant | Financial Expert | Author" data-ar="رئيس حسابات | خبير مالي | مؤلف">Chief Accountant | Financial Expert | Author</p>
@@ -233,7 +436,7 @@
                         </p>
                         <div class="social-links">
                             <a href="https://github.com/mohammednabarawy" target="_blank"><i class="fab fa-github"></i></a>
-                            <a href="https://linkedin.com/in/mohammednabarawy" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://linkedin.com/in/mnabarawi/" target="_blank"><i class="fab fa-linkedin"></i></a>
                             <a href="https://twitter.com/mohammednabarawy" target="_blank"><i class="fab fa-twitter"></i></a>
                             <a href="cv.html" target="_blank"><i class="fas fa-file-alt"></i></a>
                         </div>
@@ -369,7 +572,7 @@
                     <i class="fas fa-envelope"></i>
                     <span data-en="Email: mohammednabarawy@gmail.com" data-ar="البريد الإلكتروني: mohammednabarawy@gmail.com">Email: mohammednabarawy@gmail.com</span>
                 </a>
-                <a href="https://linkedin.com/in/mohammednabarawy" target="_blank" class="contact-method">
+                <a href="https://linkedin.com/in/mnabarawi/" target="_blank" class="contact-method">
                     <i class="fab fa-linkedin"></i>
                     <span data-en="LinkedIn Profile" data-ar="صفحة LinkedIn">LinkedIn Profile</span>
                 </a>
@@ -477,6 +680,41 @@
 
         // Initialize with English as default
         document.body.classList.add('en');
+    </script>
+    <script>
+        // JavaScript to trigger animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroTitle = document.querySelector('.animate-hero-title');
+            const heroSubtitle = document.querySelector('.animate-hero-subtitle');
+            const heroButton = document.querySelector('.animate-hero-button');
+
+            // Add animation classes
+            heroTitle.classList.add('animate-fade-in-up');
+            heroSubtitle.classList.add('animate-fade-in-up');
+            heroButton.classList.add('animate-fade-in-up');
+
+            // Header scroll effect
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Rest of the existing script...
+        });
     </script>
 </body>
 </html>
