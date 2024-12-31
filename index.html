@@ -8,13 +8,69 @@
     <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Inline animations to ensure they load */
+        @keyframes slideDown {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Language-specific styles */
+        body.ar {
+            font-family: 'Amiri', serif;
+            direction: rtl;
+        }
+        
+        body.ar .section-title,
+        body.ar h1, 
+        body.ar h2, 
+        body.ar p {
+            text-align: right;
+        }
+
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: rgba(255,255,255,0.2);
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .language-toggle i {
+            font-size: 24px;
+            color: white;
+        }
+
+        .language-toggle:hover {
+            transform: scale(1.1);
+            background-color: rgba(255,255,255,0.3);
+        }
+    </style>
 </head>
 <body>
-    <div class="language-toggle">
-        <button id="lang-toggle" aria-label="Toggle Language">
-            <span class="en-icon"><i class="fas fa-globe"></i> EN</span>
-            <span class="ar-icon"><i class="fas fa-globe"></i> AR</span>
-        </button>
+    <div class="language-toggle" onclick="toggleLanguage()">
+        <i class="fas fa-language"></i>
     </div>
 
     <header>
@@ -22,11 +78,11 @@
             <nav>
                 <ul>
                     <li><a href="#hero" data-en="Home" data-ar="الرئيسية">Home</a></li>
-                    <li><a href="#about" data-en="About" data-ar="معلومات عني">About</a></li>
+                    <li><a href="#about" data-en="About" data-ar="من أنا">About</a></li>
                     <li><a href="#skills" data-en="Skills" data-ar="المهارات">Skills</a></li>
                     <li><a href="#projects" data-en="Projects" data-ar="المشاريع">Projects</a></li>
                     <li><a href="#publications" data-en="Publications" data-ar="المنشورات">Publications</a></li>
-                    <li><a href="#contact" data-en="Contact" data-ar="اتصل بي">Contact</a></li>
+                    <li><a href="#contact" data-en="Contact" data-ar="تواصل معي">Contact</a></li>
                     <li><a href="cv.html" data-en="CV" data-ar="السيرة الذاتية">CV</a></li>
                 </ul>
             </nav>
@@ -35,26 +91,26 @@
 
     <section id="hero">
         <div class="hero-content">
-            <h1 data-en="Mohamed ElNabarawi" data-ar="محمد النبراوي">Mohamed ElNabarawi</h1>
-            <p data-en="Chief Accountant | Financial Expert | Author" data-ar="محاسب رئيسي | خبير مالي | مؤلف">Chief Accountant | Financial Expert | Author</p>
-            <a href="#about" class="btn" data-en="Discover More" data-ar="اكتشف المزيد">Discover More</a>
+            <h1 class="animate-hero-title" data-en="Mohamed ElNabarawi" data-ar="محمد النبراوي">Mohamed ElNabarawi</h1>
+            <p class="animate-hero-subtitle" data-en="Chief Accountant | Financial Expert | Author" data-ar="محاسب رئيسي | خبير مالي | مؤلف">Chief Accountant | Financial Expert | Author</p>
+            <a href="#about" class="btn animate-hero-button" data-en="Discover More" data-ar="اعرف المزيد">Discover More</a>
         </div>
     </section>
 
     <main>
-        <section id="about" class="section">
+        <section id="about" class="section section-animate">
             <div class="container">
-                <h2 data-en="About Me" data-ar="معلومات عني">About Me</h2>
+                <h2 data-en="About Me" data-ar="من أنا">About Me</h2>
                 <div class="about-content">
                     <img src="images/profile.jpg" alt="Mohamed ElNabarawi" class="profile-img">
                     <div class="about-text">
-                        <p data-en="As an experienced Chief Accountant with a proven track record in the accounting industry, I am a master of financial management! I possess a wide range of financial skills, including accounting, internal controls, financial statements, financial accounting, ERP systems, Microsoft Word, and Microsoft Excel." 
-                           data-ar="كمحاسب رئيسي ذو خبرة مثبتة في صناعة المحاسبة، أنا متمكن من إدارة المالية! أمتلك مجموعة واسعة من المهارات المالية، بما في ذلك المحاسبة، والضوابط الداخلية، والبيانات المالية، والمحاسبة المالية، وأنظمة ERP، ومايكروسوفت وورد، ومايكروسوفت إكسل.">
-                            As an experienced Chief Accountant with a proven track record in the accounting industry, I am a master of financial management! I possess a wide range of financial skills, including accounting, internal controls, financial statements, financial accounting, ERP systems, Microsoft Word, and Microsoft Excel.
+                        <p data-en="💼 As an experienced Chief Accountant with a proven track record in the accounting industry, I am a master of financial management! I possess a wide range of financial skills, including accounting, internal controls, financial statements, financial accounting, ERP systems, Microsoft Word, and Microsoft Excel." 
+                           data-ar="💼 كمحاسب رئيسي ذو خبرة مثبتة في مجال المحاسبة، أنا متمكن من إدارة المالية! أمتلك مجموعة واسعة من المهارات المالية، بما في ذلك المحاسبة، والضوابط الداخلية، والبيانات المالية، والمحاسبة المالية، وأنظمة ERP، ومايكروسوفت وورد، وإكسل.">
+                            💼 As an experienced Chief Accountant with a proven track record in the accounting industry, I am a master of financial management! I possess a wide range of financial skills, including accounting, internal controls, financial statements, financial accounting, ERP systems, Microsoft Word, and Microsoft Excel.
                         </p>
-                        <p data-en="Throughout my career, I have demonstrated my ability to manage complex financial projects, streamline accounting processes, and improve financial reporting. I am proficient in using ERP systems and other accounting software, enabling me to quickly adapt to new technology and implement solutions that improve financial performance." 
-                           data-ar="على مدار مسيرتي المهنية، أظهرت قدرتي على إدارة مشاريع مالية معقدة، وتحسين عمليات المحاسبة، وتحسين التقارير المالية. أنا ماهر في استخدام أنظمة ERP وبرامج المحاسبة الأخرى، مما يتيح لي التكيف بسرعة مع التكنولوجيا الجديدة وتنفيذ حلول تحسن الأداء المالي.">
-                            Throughout my career, I have demonstrated my ability to manage complex financial projects, streamline accounting processes, and improve financial reporting. I am proficient in using ERP systems and other accounting software, enabling me to quickly adapt to new technology and implement solutions that improve financial performance.
+                        <p data-en="🏆 Throughout my career, I have demonstrated my ability to manage complex financial projects, streamline accounting processes, and improve financial reporting. I am proficient in using ERP systems and other accounting software, enabling me to quickly adapt to new technology and implement solutions that improve financial performance." 
+                           data-ar="🏆 على مدار مسيرتي المهنية، أظهرت قدرتي على إدارة مشاريع مالية معقدة، وتحسين عمليات المحاسبة، وتحسين التقارير المالية. أنا ماهر في استخدام أنظمة ERP وبرامج المحاسبة الأخرى، مما يتيح لي التكيف بسرعة مع التكنولوجيا الجديدة وتنفيذ حلول تحسن الأداء المالي.">
+                            🏆 Throughout my career, I have demonstrated my ability to manage complex financial projects, streamline accounting processes, and improve financial reporting. I am proficient in using ERP systems and other accounting software, enabling me to quickly adapt to new technology and implement solutions that improve financial performance.
                         </p>
                         <div class="social-links">
                             <a href="https://github.com/mohammednabarawy" target="_blank"><i class="fab fa-github"></i></a>
@@ -67,7 +123,7 @@
             </div>
         </section>
 
-        <section id="skills" class="section">
+        <section id="skills" class="section section-animate">
             <div class="container">
                 <h2 data-en="Skills" data-ar="المهارات">Skills</h2>
                 <div class="skills-grid">
@@ -78,24 +134,24 @@
                     </div>
                     <div class="skill-card">
                         <i class="fas fa-laptop-code"></i>
-                        <h3 data-en="Web Technologies" data-ar="تقنيات الويب">Web Technologies</h3>
+                        <h3 data-en="Web Technologies" data-ar="تكنولوجيا الويب">Web Technologies</h3>
                         <p data-en="HTML5, CSS3, React, Node.js" data-ar="إتش تي إم إل 5، سي إس إس 3، رياكت، نود.جي إس">HTML5, CSS3, React, Node.js</p>
                     </div>
                     <div class="skill-card">
                         <i class="fas fa-database"></i>
                         <h3 data-en="Databases" data-ar="قواعد البيانات">Databases</h3>
-                        <p data-en="MySQL, MongoDB, SQLite" data-ar="ماي إس كيو إل، مونغو دي بي، إس كيو لايت">MySQL, MongoDB, SQLite</p>
+                        <p data-en="MySQL, MongoDB, SQLite" data-ar="ماي إس كيو إل، مانجو دي بي، إس كيو لايت">MySQL, MongoDB, SQLite</p>
                     </div>
                     <div class="skill-card">
                         <i class="fas fa-tools"></i>
                         <h3 data-en="Tools & Platforms" data-ar="الأدوات والمنصات">Tools & Platforms</h3>
-                        <p data-en="Git, Docker, AWS, Jupyter" data-ar="جيت، دوكر، أمازون ويب سيرفيس، جوبيتر">Git, Docker, AWS, Jupyter</p>
+                        <p data-en="Git, Docker, AWS, Jupyter" data-ar="جيت، دوكر، أمازون ويب سيرفس، جوبيتر">Git, Docker, AWS, Jupyter</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="projects" class="section">
+        <section id="projects" class="section section-animate">
             <div class="container">
                 <h2 data-en="My Projects" data-ar="مشاريعي">My Projects</h2>
                 <div class="projects-grid">
@@ -103,7 +159,7 @@
                         <h3 data-en="Machine Learning Classifier" data-ar="تصنيف التعلم الآلي">Machine Learning Classifier</h3>
                         <img src="images/ml-project.jpg" alt="Machine Learning Project">
                         <p data-en="Developed a machine learning model for image classification using deep learning techniques." 
-                           data-ar="تم تطوير نموذج تعلم الآلة لتصنيف الصور باستخدام تقنيات التعلم العميق.">
+                           data-ar="تم تطوير نموذج التعلم الآلي لتصنيف الصور باستخدام تقنيات التعلم العميق.">
                             Developed a machine learning model for image classification using deep learning techniques.
                         </p>
                         <a href="#" class="btn">View Project</a>
@@ -130,7 +186,7 @@
             </div>
         </section>
 
-        <section id="publications" class="section">
+        <section id="publications" class="section section-animate">
             <div class="container">
                 <h2 data-en="Published Works" data-ar="الأعمال المنشورة">Published Works</h2>
                 <div class="projects-grid">
@@ -162,9 +218,9 @@
             </div>
         </section>
 
-        <section id="contact" class="section">
+        <section id="contact" class="section section-animate">
             <div class="container">
-                <h2 data-en="Contact Me" data-ar="اتصل بي">Contact Me</h2>
+                <h2 data-en="Contact Me" data-ar="تواصل معي">Contact Me</h2>
                 <form id="contact-form">
                     <input type="text" placeholder="Your Name" required>
                     <input type="email" placeholder="Your Email" required>
@@ -178,47 +234,67 @@
     <footer>
         <div class="container">
             <p data-en="&copy; 2024 Mohamed ElNabarawi. All Rights Reserved." 
-               data-ar="&copy; 2024 محمد النبراوي. جميع الحقوق محفوظة.">&copy; 2024 Mohamed ElNabarawi. All Rights Reserved.</p>
+               data-ar="&copy; 2024 محمد النبراوي. جميع الحقوق محفوظة.">
+               &copy; 2024 Mohamed ElNabarawi. All Rights Reserved.
+            </p>
         </div>
     </footer>
 
     <script>
+        // JavaScript to trigger animations
         document.addEventListener('DOMContentLoaded', () => {
-            const langToggle = document.getElementById('lang-toggle');
+            const heroTitle = document.querySelector('.animate-hero-title');
+            const heroSubtitle = document.querySelector('.animate-hero-subtitle');
+            const heroButton = document.querySelector('.animate-hero-button');
+
+            // Add animation classes
+            heroTitle.classList.add('animate-fade-in-up');
+            heroSubtitle.classList.add('animate-fade-in-up');
+            heroButton.classList.add('animate-fade-in-up');
+
+            // Animate sections on scroll
+            const sections = document.querySelectorAll('.section');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('section-animate');
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+        });
+
+        // Language Toggle Functionality
+        function toggleLanguage() {
             const body = document.body;
+            const currentLang = body.classList.contains('ar') ? 'ar' : 'en';
+            const newLang = currentLang === 'en' ? 'ar' : 'en';
 
-            // Load saved language preference
-            const savedLang = localStorage.getItem('site-language') || 'en';
-            body.classList.add(savedLang);
-            updateLanguage(savedLang);
+            // Toggle body class
+            body.classList.toggle('ar');
+            body.classList.toggle('en');
 
-            langToggle.addEventListener('click', () => {
-                const currentLang = body.classList.contains('en') ? 'en' : 'ar';
-                const newLang = currentLang === 'en' ? 'ar' : 'en';
-
-                // Remove previous language class
-                body.classList.remove(currentLang);
-                // Add new language class
-                body.classList.add(newLang);
-
-                // Update content
-                updateLanguage(newLang);
-
-                // Save language preference
-                localStorage.setItem('site-language', newLang);
+            // Update all elements with translation attributes
+            document.querySelectorAll('[data-en][data-ar]').forEach(el => {
+                el.textContent = el.getAttribute(`data-${newLang}`);
             });
 
-            function updateLanguage(lang) {
-                // Update all elements with data-en and data-ar attributes
-                document.querySelectorAll('[data-en][data-ar]').forEach(el => {
-                    el.textContent = el.getAttribute(`data-${lang}`);
-                });
+            // Update page direction
+            document.documentElement.lang = newLang;
+            document.documentElement.dir = newLang === 'ar' ? 'rtl' : 'ltr';
+        }
 
-                // Update page direction and language
-                document.documentElement.lang = lang;
-                document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-            }
-        });
+        // Initialize with English as default
+        document.body.classList.add('en');
     </script>
 </body>
 </html>
