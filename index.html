@@ -50,7 +50,7 @@
             position: fixed;
             top: 20px;
             right: 20px;
-            z-index: 1000;
+            z-index: 9999; /* Highest z-index to ensure it's on top of everything */
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             width: 60px;
             height: 60px;
@@ -62,6 +62,7 @@
             cursor: pointer;
             transition: all 0.4s ease;
             border: 3px solid rgba(255,255,255,0.2);
+            perspective: 100px; /* Add 3D perspective */
         }
 
         .language-toggle .lang-icon {
@@ -71,6 +72,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transform-style: preserve-3d;
+            transition: transform 0.4s ease;
         }
 
         .language-toggle .lang-icon::before {
@@ -78,15 +81,14 @@
             position: absolute;
             top: -20px;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-50%) translateZ(20px); /* 3D effect */
             font-size: 10px;
             color: white;
             opacity: 0.7;
         }
 
-        .language-toggle:hover {
-            transform: rotate(360deg) scale(1.1);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        .language-toggle:hover .lang-icon {
+            transform: rotateY(180deg);
         }
 
         body.ar .language-toggle .lang-icon::before {
