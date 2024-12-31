@@ -195,6 +195,35 @@
             text-align: center;
         }
 
+        .email-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .email-btn i {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+
+        .email-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+
+        body.ar .email-btn i {
+            margin-right: 0;
+            margin-left: 8px;
+        }
+
         .main-content {
             padding: 30px;
         }
@@ -359,10 +388,11 @@
                 
                 <div class="contact-info">
                     <p><i class="fas fa-map-marker-alt"></i> Riyadh, Saudi Arabia</p>
-                    <p><i class="fas fa-phone"></i> +966 596344647</p>
-                    <p><i class="fas fa-envelope"></i> mohammednabarawy@gmail.com</p>
-                    <p><i class="fab fa-linkedin"></i> LinkedIn Profile</p>
-                    <p><i class="fab fa-github"></i> GitHub Profile</p>
+                    <p><i class="fas fa-phone"></i> +966 55 123 4567</p>
+                    <a href="#contact" class="btn email-btn" data-en="Email Me" data-ar="راسلني">
+                        <i class="fas fa-envelope"></i> 
+                        <span data-en="Email Me" data-ar="راسلني">Email Me</span>
+                    </a>
                 </div>
             </div>
         </div>
