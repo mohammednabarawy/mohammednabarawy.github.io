@@ -142,17 +142,24 @@
         }
 
         .certifications li {
-            margin-bottom: 10px;
-            position: relative;
-            padding-left: 20px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        .certifications li::before {
-            content: '•';
-            color: var(--secondary-color);
-            position: absolute;
-            left: 0;
-            font-weight: bold;
+        .certifications li strong {
+            color: var(--primary-color);
+            font-size: 1.1em;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .certifications li p {
+            color: #666;
+            margin: 0;
+            font-size: 0.9em;
         }
 
         @media print {
@@ -260,13 +267,44 @@
             </section>
 
             <section class="section certifications">
-                <h2 class="section-title">Certifications</h2>
+                <h2 class="section-title">Licenses & Certifications</h2>
                 <ul>
-                    <li>Full Stack Developer - Udacity (November 2018)</li>
-                    <li>Data Analysis - Udacity (February 2020)</li>
-                    <li>Certified Finance Manager (CFM) - GAQM (January 2021)</li>
-                    <li>International Computer Driving License - Mansoura University (2010)</li>
-                    <li>PEACH TREE Accounting Certification - Mansoura University (2010)</li>
+                    <li>
+                        <strong>Certified Finance Manager (CFM)</strong>
+                        <p>Global Association for Quality Management (GAQM)</p>
+                        <p>Issued Jan 2021</p>
+                    </li>
+                    <li>
+                        <strong>Budgeting in Real Life</strong>
+                        <p>LinkedIn Learning</p>
+                        <p>Issued Dec 2020</p>
+                    </li>
+                    <li>
+                        <strong>Data Analysis</strong>
+                        <p>Udacity</p>
+                        <p>Issued Feb 2020</p>
+                    </li>
+                    <li>
+                        <strong>Full Stack Developer</strong>
+                        <p>Udacity</p>
+                        <p>Issued Sep 2018</p>
+                    </li>
+                    <li>
+                        <strong>International Computer Driving License</strong>
+                        <p>ICDL Arabia</p>
+                        <p>Issued Apr 2010</p>
+                        <p>Credential ID: egy000414273</p>
+                    </li>
+                    <li>
+                        <strong>Accountant Preparation</strong>
+                        <p>Mansoura University</p>
+                        <p>Issued Mar 2010</p>
+                    </li>
+                    <li>
+                        <strong>PEACH TREE Accounting</strong>
+                        <p>Mansoura University</p>
+                        <p>Issued Mar 2010</p>
+                    </li>
                 </ul>
             </section>
 
