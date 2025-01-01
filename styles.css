@@ -251,13 +251,22 @@ footer {
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
-    .about-content {
-        flex-direction: column;
-        text-align: center;
+    body {
+        font-size: 14px;
     }
 
-    .social-links {
-        justify-content: center;
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    header {
+        padding: 10px 0;
+    }
+
+    header .container {
+        flex-direction: column;
+        text-align: center;
     }
 
     nav ul {
@@ -268,6 +277,106 @@ footer {
     nav ul li {
         margin: 10px 0;
     }
+
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-img {
+        max-width: 250px;
+        margin-bottom: 20px;
+    }
+
+    .projects-grid,
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #hero {
+        height: auto;
+        padding: 100px 20px;
+    }
+
+    .section {
+        padding: 30px 15px;
+    }
+}
+
+/* CV Specific Responsive Design */
+.cv-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.sidebar {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.main-content {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+@media screen and (min-width: 992px) {
+    .cv-container {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        gap: 30px;
+    }
+
+    .sidebar {
+        flex: 0 0 25%;
+        max-width: 25%;
+        position: sticky;
+        top: 20px;
+        align-self: start;
+    }
+
+    .main-content {
+        flex: 0 0 75%;
+        max-width: 75%;
+    }
+}
+
+/* Mobile Friendly Typography */
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 12px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .section-title {
+        font-size: 1.3em;
+    }
+}
+
+/* Ensure images are responsive */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Improve touch targets for mobile */
+a, button {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+/* Prevent horizontal scrolling */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 /* Modern Animations and Fancy Design */
