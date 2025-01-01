@@ -559,6 +559,95 @@
         .hamburger-menu.active .bar:nth-child(3) {
             transform: rotate(-45deg) translate(5px, -5px);
         }
+
+        /* Enhanced Mobile Navigation Styles */
+        @media screen and (max-width: 768px) {
+            body.menu-open {
+                overflow: hidden;
+            }
+
+            header nav {
+                display: block;
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%);
+                z-index: 9999;
+                transition: left 0.3s ease-in-out;
+                padding-top: 100px;
+                text-align: center;
+            }
+
+            header nav.mobile-active {
+                left: 0;
+            }
+
+            header nav ul {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            header nav ul li {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+
+            header nav.mobile-active ul li {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            header nav ul li a {
+                font-size: 1.5rem;
+                color: white;
+                display: block;
+                padding: 15px;
+                text-decoration: none;
+            }
+
+            header nav ul li a::after {
+                display: none;
+            }
+
+            .hamburger-menu {
+                display: block;
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 10000;
+                background: rgba(255,255,255,0.2);
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+            }
+
+            .hamburger-menu .bar {
+                width: 25px;
+                height: 3px;
+                background-color: white;
+                margin: 5px 0;
+                transition: all 0.3s ease;
+            }
+
+            .hamburger-menu.active .bar:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .hamburger-menu.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger-menu.active .bar:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+        }
     </style>
 </head>
 <body>
@@ -577,13 +666,12 @@
         <div class="container">
             <nav>
                 <ul>
-                    <li><a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a></li>
-                    <li><a href="#professional-summary" data-en="Summary" data-ar="ملخص">Summary</a></li>
-                    <li><a href="#work-experience" data-en="Experience" data-ar="الخبرة">Experience</a></li>
-                    <li><a href="#education" data-en="Education" data-ar="التعليم">Education</a></li>
-                    <li><a href="#skills" data-en="Skills" data-ar="المهارات">Skills</a></li>
+                    <li><a href="#professional-summary" data-en="Professional Summary" data-ar="ملخص المسيرة المهنية">Professional Summary</a></li>
+                    <li><a href="#technical-skills" data-en="Technical Skills" data-ar="المهارات التقنية">Technical Skills</a></li>
+                    <li><a href="#professional-experience" data-en="Experience" data-ar="الخبرة المهنية">Experience</a></li>
                     <li><a href="#certifications" data-en="Certifications" data-ar="الشهادات">Certifications</a></li>
                     <li><a href="#publications" data-en="Publications" data-ar="المنشورات">Publications</a></li>
+                    <li><a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a></li>
                 </ul>
             </nav>
         </div>
@@ -613,7 +701,7 @@
             </div>
             
             <div class="main-content">
-                <section class="section">
+                <section id="professional-summary" class="section">
                     <h2 class="section-title" data-en="Professional Summary" data-ar="ملخص المسيرة المهنية">Professional Summary</h2>
                     <p data-en="💼 As an experienced Chief Accountant with a proven track record in the accounting industry, I am a master of financial management! 
                     I possess a wide range of financial skills, including accounting, internal controls, financial statements, 
@@ -640,7 +728,7 @@
                     and opportunities to further develop my skills and expertise in the accounting industry.</p>
                 </section>
 
-                <section class="section">
+                <section id="technical-skills" class="section">
                     <h2 class="section-title" data-en="Technical Skills" data-ar="المهارات التقنية">Technical Skills</h2>
                     <ul>
                         <li data-en="ERP Systems (SAP, Oracle)" data-ar="أنظمة تخطيط موارد المؤسسات (SAP، أوراكل)">ERP Systems (SAP, Oracle)</li>
@@ -651,7 +739,7 @@
                     </ul>
                 </section>
 
-                <section class="section">
+                <section id="professional-experience" class="section">
                     <h2 class="section-title" data-en="Professional Experience" data-ar="الخبرة المهنية">Professional Experience</h2>
                     
                     <div class="job-details">
@@ -706,32 +794,7 @@
                     </div>
                 </section>
 
-                <section class="section">
-                    <h2 class="section-title" data-en="Skills" data-ar="المهارات">Skills</h2>
-                    <div class="skills-grid">
-                        <span class="skill-tag" data-en="Financial Analysis" data-ar="التحليل المالي">Financial Analysis</span>
-                        <span class="skill-tag" data-en="Python Programming" data-ar="برمجة بايثون">Python Programming</span>
-                        <span class="skill-tag" data-en="Data Analysis" data-ar="تحليل البيانات">Data Analysis</span>
-                        <span class="skill-tag" data-en="ERP Systems" data-ar="أنظمة ERP">ERP Systems</span>
-                        <span class="skill-tag" data-en="Financial Reporting" data-ar="التقارير المالية">Financial Reporting</span>
-                        <span class="skill-tag" data-en="Accounting Standards" data-ar="معايير المحاسبة">Accounting Standards</span>
-                        <span class="skill-tag" data-en="Microsoft Excel" data-ar="مايكروسوفت إكسل">Microsoft Excel</span>
-                        <span class="skill-tag" data-en="Tax Compliance" data-ar="الامتثال الضريبي">Tax Compliance</span>
-                        <span class="skill-tag" data-en="Budgeting" data-ar="التنبؤ المالي">Budgeting</span>
-                        <span class="skill-tag" data-en="Financial Modeling" data-ar="النمذجة المالية">Financial Modeling</span>
-                    </div>
-                </section>
-
-                <section class="section">
-                    <h2 class="section-title" data-en="Education" data-ar="التعليم">Education</h2>
-                    <div class="job-details">
-                        <h3 data-en="Bachelor of Commerce (B.Com.): Accounting" data-ar="بكالوريوس التجارة (ب.كوم.): المحاسبة">Bachelor of Commerce (B.Com.): Accounting</h3>
-                        <p class="company" data-en="Mansoura University, Egypt" data-ar="جامعة المنصورة، مصر">Mansoura University, Egypt</p>
-                        <p class="duration" data-en="Graduated 2010" data-ar="تخرج 2010">Graduated 2010</p>
-                    </div>
-                </section>
-
-                <section class="section certifications">
+                <section id="certifications" class="section certifications">
                     <h2 class="section-title" data-en="Licenses & Certifications" data-ar="الرخص والشهادات">Licenses & Certifications</h2>
                     <ul>
                         <li>
@@ -773,15 +836,7 @@
                     </ul>
                 </section>
 
-                <section class="section">
-                    <h2 class="section-title" data-en="Languages" data-ar="اللغات">Languages</h2>
-                    <div class="skills-grid">
-                        <span class="skill-tag" data-en="Arabic (Native)" data-ar="العربية (اللغة الأم)">Arabic (Native)</span>
-                        <span class="skill-tag" data-en="English (Advanced)" data-ar="الإنجليزية (متقدم)">English (Advanced)</span>
-                    </div>
-                </section>
-
-                <section class="section publications">
+                <section id="publications" class="section publications">
                     <h2 class="section-title" data-en="Published Works" data-ar="الأعمال المنشورة">Published Works</h2>
                     <div class="publication-list">
                         <div class="publication-item">
@@ -906,17 +961,37 @@
         function toggleMobileMenu() {
             const nav = document.querySelector('header nav');
             const hamburger = document.querySelector('.hamburger-menu');
-            nav.classList.toggle('active');
+            nav.classList.toggle('mobile-active');
             hamburger.classList.toggle('active');
+            
+            // Prevent body scrolling when menu is open
+            document.body.classList.toggle('menu-open');
         }
 
         // Close mobile menu when a nav link is clicked
         document.querySelectorAll('header nav ul li a').forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', (e) => {
                 const nav = document.querySelector('header nav');
                 const hamburger = document.querySelector('.hamburger-menu');
-                nav.classList.remove('active');
+                
+                // If it's a section link, prevent default and scroll smoothly
+                if (link.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+
+                // Close menu
+                nav.classList.remove('mobile-active');
                 hamburger.classList.remove('active');
+                document.body.classList.remove('menu-open');
             });
         });
 
@@ -928,8 +1003,9 @@
             const isClickOnHamburger = hamburger.contains(event.target);
             
             if (!isClickInsideNav && !isClickOnHamburger) {
-                nav.classList.remove('active');
+                nav.classList.remove('mobile-active');
                 hamburger.classList.remove('active');
+                document.body.classList.remove('menu-open');
             }
         });
     </script>
