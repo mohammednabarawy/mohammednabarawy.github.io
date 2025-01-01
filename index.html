@@ -186,69 +186,56 @@
 
         /* Updated Header Styles */
         header {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+            color: white;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
 
-        header.scrolled {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .header-container {
+        header .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
             padding: 15px 20px;
         }
 
-        .logo {
+        header .logo {
             display: flex;
             align-items: center;
             text-decoration: none;
             color: white;
             font-weight: bold;
-            font-size: 1.5rem;
-            transition: transform 0.3s ease;
         }
 
-        .logo:hover {
-            transform: scale(1.05);
-        }
-
-        .logo img {
-            width: 40px;
-            height: 40px;
-            margin-right: 10px;
+        header .logo img {
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
         }
 
-        nav ul {
+        header nav ul {
             display: flex;
-            list-style-type: none;
-            gap: 25px;
-            margin: 0;
-            padding: 0;
+            list-style: none;
+            gap: 20px;
         }
 
-        nav ul li a {
+        header nav ul li a {
             color: white;
             text-decoration: none;
-            font-weight: 500;
-            position: relative;
+            font-weight: 300;
             transition: color 0.3s ease;
+            position: relative;
         }
 
-        nav ul li a::after {
+        header nav ul li a::after {
             content: '';
             position: absolute;
             width: 0;
@@ -259,36 +246,34 @@
             transition: width 0.3s ease;
         }
 
-        nav ul li a:hover {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        nav ul li a:hover::after {
+        header nav ul li a:hover::after {
             width: 100%;
         }
 
         /* Mobile Navigation Styles */
         @media screen and (max-width: 768px) {
-            .hamburger-menu {
-                display: block;
-                position: absolute;
-                left: 20px;
-                top: 50%;
-                transform: translateY(-50%);
-                cursor: pointer;
-                z-index: 10001;
-                background: rgba(255,255,255,0.2);
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
+            header .header-container {
                 display: flex;
                 align-items: center;
-                justify-content: center;
+                justify-content: space-between;
+                position: relative;
+                padding: 10px 20px;
+            }
+
+            .hamburger-menu {
+                display: block;
+                position: static;
+                transform: none;
+                background: none;
+                width: 40px;
+                height: 40px;
+                margin-right: 10px;
+                z-index: 10001;
             }
 
             .hamburger-menu .bar {
-                width: 20px;
-                height: 2px;
+                width: 25px;
+                height: 3px;
                 background-color: white;
                 margin: 5px 0;
                 transition: all 0.3s ease;
@@ -304,6 +289,19 @@
 
             .hamburger-menu.active .bar:nth-child(3) {
                 transform: rotate(-45deg) translate(5px, -5px);
+            }
+
+            header nav {
+                display: none;
+            }
+
+            header .logo {
+                display: flex;
+                align-items: center;
+            }
+
+            header .logo img {
+                margin-right: 10px;
             }
 
             nav {
@@ -630,6 +628,7 @@
             </div>
             <a href="#" class="logo">
                 <img src="images/profile.jpg" alt="Mohamed ElNabarawi">
+                Mohamed ElNabarawi
             </a>
             <nav>
                 <ul>
