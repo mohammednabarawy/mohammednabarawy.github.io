@@ -268,65 +268,89 @@
         }
 
         /* Mobile Navigation Styles */
-        .hamburger-menu {
-            display: none;
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 1001;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            cursor: pointer;
-            transition: all 0.4s ease;
-            border: 3px solid rgba(255,255,255,0.2);
-        }
+        @media screen and (max-width: 768px) {
+            .hamburger-menu {
+                display: block;
+                position: absolute;
+                left: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                cursor: pointer;
+                z-index: 1001;
+                background: rgba(255,255,255,0.2);
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
 
-        .hamburger-menu .bar {
-            width: 20px;
-            height: 2px;
-            background-color: white;
-            margin: 5px 0;
-            transition: all 0.3s ease;
-        }
+            .hamburger-menu .bar {
+                width: 20px;
+                height: 2px;
+                background-color: white;
+                margin: 5px 0;
+                transition: all 0.3s ease;
+            }
 
-        .hamburger-menu.active .bar:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
+            .hamburger-menu.active .bar:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
 
-        .hamburger-menu.active .bar:nth-child(2) {
-            opacity: 0;
-        }
+            .hamburger-menu.active .bar:nth-child(2) {
+                opacity: 0;
+            }
 
-        .hamburger-menu.active .bar:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
+            .hamburger-menu.active .bar:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
 
-        nav.active {
-            display: block;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            z-index: 1000;
-            padding: 100px 20px 20px;
-            text-align: center;
-        }
+            nav {
+                display: block;
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%);
+                z-index: 9999;
+                transition: left 0.3s ease-in-out;
+                padding-top: 100px;
+                text-align: center;
+            }
 
-        nav.active ul {
-            flex-direction: column;
-            gap: 20px;
-        }
+            nav.mobile-active {
+                left: 0;
+            }
 
-        nav.active ul li a {
-            font-size: 1.5rem;
+            nav ul {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            nav ul li {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+
+            nav.mobile-active ul li {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            nav ul li a {
+                font-size: 1.5rem;
+                color: white;
+                display: block;
+                padding: 15px;
+                text-decoration: none;
+            }
+
+            nav ul li a::after {
+                display: none;
+            }
         }
 
         /* Updated Hero Section Styles */
@@ -497,7 +521,7 @@
                 display: block;
                 position: fixed;
                 top: 20px;
-                right: 20px;
+                left: 20px;
                 z-index: 10000;
                 background: rgba(255,255,255,0.2);
                 width: 40px;
