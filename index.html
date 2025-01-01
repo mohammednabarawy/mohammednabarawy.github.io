@@ -561,6 +561,57 @@
                 transform: rotate(-45deg) translate(5px, -5px);
             }
         }
+
+        /* Mobile Header Layout */
+        @media screen and (max-width: 768px) {
+            header .header-container {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                position: relative;
+                padding: 10px 20px;
+            }
+
+            .hamburger-menu {
+                display: block;
+                position: static; /* Change from absolute to static */
+                transform: none;
+                background: none;
+                width: 40px;
+                height: 40px;
+                margin-right: 10px;
+                z-index: 10001;
+            }
+
+            .hamburger-menu .bar {
+                width: 25px;
+                height: 3px;
+                background-color: white;
+                margin: 5px 0;
+                transition: all 0.3s ease;
+            }
+
+            .hamburger-menu.active .bar:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .hamburger-menu.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger-menu.active .bar:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+
+            header .logo {
+                display: flex;
+                align-items: center;
+            }
+
+            header .logo img {
+                margin-right: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -571,15 +622,14 @@
     </div>
 
     <header>
-        <div class="hamburger-menu" onclick="toggleMobileMenu()">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
         <div class="header-container">
+            <div class="hamburger-menu" onclick="toggleMobileMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
             <a href="#" class="logo">
                 <img src="images/profile.jpg" alt="Mohamed ElNabarawi">
-                Mohamed ElNabarawi
             </a>
             <nav>
                 <ul>
