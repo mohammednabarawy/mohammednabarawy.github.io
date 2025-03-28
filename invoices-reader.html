@@ -9,6 +9,135 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* Language-specific styles */
+        body.ar {
+            font-family: 'Amiri', serif;
+            direction: rtl;
+        }
+        
+        body.ar .section-title,
+        body.ar h1, 
+        body.ar h2, 
+        body.ar p {
+            text-align: right;
+        }
+
+        /* Enhanced Language Toggle Styles */
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            border: 3px solid rgba(255,255,255,0.2);
+            perspective: 100px;
+        }
+
+        .language-toggle .lang-icon {
+            font-size: 30px;
+            color: white;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform-style: preserve-3d;
+            transition: transform 0.4s ease;
+        }
+
+        .language-toggle .lang-icon::before {
+            content: 'EN';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%) translateZ(20px);
+            font-size: 10px;
+            color: white;
+            opacity: 0.7;
+        }
+
+        .language-toggle:hover .lang-icon {
+            transform: rotateY(180deg);
+        }
+
+        body.ar .language-toggle .lang-icon::before {
+            content: 'AR';
+        }
+
+        /* Updated Header Styles */
+        header {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        header .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+
+        header nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 300;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        header nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+
+        header nav ul li a:hover::after {
+            width: 100%;
+        }
+
         /* Contact Modal Styles */
         .contact-modal {
             position: fixed;
@@ -47,41 +176,171 @@
             transform: scale(1);
         }
 
-        .contact-modal-content h2 {
-            margin-bottom: 20px;
+        .contact-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #888;
+            transition: color 0.3s ease;
+        }
+
+        .contact-modal-close:hover {
             color: #333;
         }
 
-        .contact-info {
+        .contact-modal-content h2 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .contact-modal-content .contact-info {
             display: flex;
             flex-direction: column;
             gap: 15px;
+            margin-top: 20px;
         }
 
-        .contact-method {
+        .contact-modal-content .contact-method {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 15px;
             background: #f4f6f7;
+            padding: 15px;
             border-radius: 10px;
-            text-decoration: none;
-            color: #333;
             transition: background 0.3s ease;
         }
 
-        .contact-method i {
-            margin-right: 15px;
-            font-size: 24px;
-            color: #667eea;
+        .contact-modal-content .contact-method:hover {
+            background: #e9ecef;
         }
 
-        body.ar .contact-method i {
+        .contact-modal-content .contact-method i {
+            margin-right: 15px;
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        body.ar .contact-modal-content .contact-method i {
             margin-right: 0;
             margin-left: 15px;
         }
 
-        /* Modern Software Product Page Styles */
+        /* Mobile Navigation Styles */
+        @media screen and (max-width: 768px) {
+            header .header-container {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                position: relative;
+                padding: 10px 20px;
+            }
+
+            .hamburger-menu {
+                display: block;
+                position: static;
+                transform: none;
+                background: none;
+                width: 40px;
+                height: 40px;
+                margin-right: 10px;
+                z-index: 10001;
+            }
+
+            .hamburger-menu .bar {
+                width: 25px;
+                height: 3px;
+                background-color: white;
+                margin: 5px 0;
+                transition: all 0.3s ease;
+            }
+
+            .hamburger-menu.active .bar:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .hamburger-menu.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger-menu.active .bar:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+
+            header nav {
+                display: none;
+            }
+
+            header .logo {
+                display: flex;
+                align-items: center;
+            }
+
+            header .logo img {
+                margin-right: 10px;
+            }
+
+            nav {
+                display: block;
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+                z-index: 9999;
+                transition: left 0.3s ease-in-out;
+                padding-top: 100px;
+                text-align: center;
+            }
+
+            nav.mobile-active {
+                left: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 30px;
+                list-style: none;
+                padding: 0;
+            }
+
+            nav ul li {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+
+            nav.mobile-active ul li {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            nav ul li a {
+                font-size: 1.5rem;
+                color: #ffffff;
+                display: block;
+                padding: 15px;
+                text-decoration: none;
+                transition: background-color 0.3s ease, color 0.3s ease;
+            }
+
+            nav ul li a:hover {
+                background-color: rgba(255,255,255,0.1);
+                color: #4ecdc4;
+            }
+
+            nav ul li a::after {
+                display: none;
+            }
+
+            body.menu-open {
+                overflow: hidden;
+            }
+        }
+
+        /* Project content styles */
         body {
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
@@ -387,8 +646,30 @@
         </div>
     </div>
 
-    <!-- Include Common Header -->
-    <div id="header-placeholder"></div>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="hamburger-menu" onclick="toggleMobileMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <a href="index.html" class="logo">
+                <img src="images/profile.jpg" alt="Mohamed ElNabarawi">
+                Mohamed ElNabarawi
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                    <li><a href="index.html#about" data-en="About" data-ar="من أنا">About</a></li>
+                    <li><a href="index.html#skills" data-en="Skills" data-ar="المهارات">Skills</a></li>
+                    <li><a href="index.html#publications" data-en="Publications" data-ar="المنشورات">Publications</a></li>
+                    <li><a href="#" onclick="openContactModal()" data-en="Contact" data-ar="تواصل">Contact</a></li>
+                    <li><a href="cv.html" data-en="CV" data-ar="السيرة الذاتية">CV</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
     <main id="project-content" lang="en">
         <section class="hero-section">
@@ -498,17 +779,91 @@
         </section>
     </main>
 
-    <script src="header.js"></script>
+    <!-- Contact Modal -->
+    <div class="contact-modal" id="contactModal">
+        <div class="contact-modal-content">
+            <span class="contact-modal-close" onclick="closeContactModal()">&times;</span>
+            <h2 data-en="Contact Mohamed" data-ar="تواصل مع محمد">Contact Mohamed</h2>
+            <div class="contact-info">
+                <a href="mailto:mohammednabarawy@gmail.com" class="contact-method">
+                    <i class="fas fa-envelope"></i>
+                    <span data-en="Email: mohammednabarawy@gmail.com" data-ar="البريد الإلكتروني: mohammednabarawy@gmail.com">Email: mohammednabarawy@gmail.com</span>
+                </a>
+                <a href="https://linkedin.com/in/mnabarawi/" target="_blank" class="contact-method">
+                    <i class="fab fa-linkedin"></i>
+                    <span data-en="LinkedIn Profile" data-ar="صفحة LinkedIn">LinkedIn Profile</span>
+                </a>
+                <a href="https://github.com/mohammednabarawy" target="_blank" class="contact-method">
+                    <i class="fab fa-github"></i>
+                    <span data-en="GitHub Profile" data-ar="صفحة GitHub">GitHub Profile</span>
+                </a>
+                <div class="contact-method">
+                    <i class="fas fa-phone"></i>
+                    <span data-en="Phone: +966 55 123 4567" data-ar="الهاتف: +966 55 123 4567">Phone: +966 55 123 4567</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Load and initialize the header
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-placeholder').innerHTML = data;
-                initHeader();
+        // Language Toggle Functionality
+        function toggleLanguage() {
+            const body = document.body;
+            const currentLang = body.classList.contains('ar') ? 'ar' : 'en';
+            const newLang = currentLang === 'en' ? 'ar' : 'en';
+
+            // Toggle body class
+            body.classList.toggle('ar');
+            body.classList.toggle('en');
+
+            // Update all elements with translation attributes
+            document.querySelectorAll('[data-en][data-ar]').forEach(el => {
+                el.textContent = el.getAttribute(`data-${newLang}`);
             });
 
-        function initHeader() {
+            // Update page direction
+            document.documentElement.lang = newLang;
+            document.documentElement.dir = newLang === 'ar' ? 'rtl' : 'ltr';
+
+            // Save language preference
+            localStorage.setItem('language', newLang);
+
+            // Vibration feedback (for supported devices)
+            if ('vibrate' in navigator) {
+                navigator.vibrate(50);
+            }
+
+            // Sound effect (optional)
+            try {
+                const audio = new Audio('data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA');
+                audio.play();
+            } catch(e) {}
+        }
+
+        // Contact Modal Functions
+        function openContactModal() {
+            const modal = document.getElementById('contactModal');
+            modal.classList.add('show');
+        }
+
+        function closeContactModal() {
+            const modal = document.getElementById('contactModal');
+            modal.classList.remove('show');
+        }
+
+        // Mobile Menu Functions
+        function toggleMobileMenu() {
+            const nav = document.querySelector('nav');
+            const hamburger = document.querySelector('.hamburger-menu');
+            nav.classList.toggle('mobile-active');
+            hamburger.classList.toggle('active');
+            
+            // Prevent body scrolling when menu is open
+            document.body.classList.toggle('menu-open');
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
             // Initialize with saved language preference
             const savedLanguage = localStorage.getItem('language') || 'en';
             document.body.classList.add(savedLanguage);
@@ -520,19 +875,57 @@
                 el.textContent = el.getAttribute(`data-${savedLanguage}`);
             });
 
-            // Initialize mobile menu
-            const hamburger = document.querySelector('.hamburger-menu');
-            if (hamburger) {
-                hamburger.onclick = toggleMobileMenu;
-            }
-        }
+            // Contact Modal Event Listeners
+            const emailButtons = document.querySelectorAll('.email-btn, [href="#contact"]');
+            emailButtons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openContactModal();
+                });
+            });
 
-        // Initialize when DOM is ready
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initHeader);
-        } else {
-            initHeader();
-        }
+            // Close modal when clicking outside
+            const modal = document.getElementById('contactModal');
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeContactModal();
+                }
+            });
+
+            // Close modal on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('show')) {
+                    closeContactModal();
+                }
+            });
+
+            // Mobile Menu Event Listeners
+            document.querySelectorAll('nav ul li a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const nav = document.querySelector('nav');
+                    const hamburger = document.querySelector('.hamburger-menu');
+                    
+                    // Close menu
+                    nav.classList.remove('mobile-active');
+                    hamburger.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                });
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (event) => {
+                const nav = document.querySelector('nav');
+                const hamburger = document.querySelector('.hamburger-menu');
+                const isClickInsideNav = nav.contains(event.target);
+                const isClickOnHamburger = hamburger.contains(event.target);
+                
+                if (!isClickInsideNav && !isClickOnHamburger) {
+                    nav.classList.remove('mobile-active');
+                    hamburger.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                }
+            });
+        });
     </script>
 </body>
 </html>
