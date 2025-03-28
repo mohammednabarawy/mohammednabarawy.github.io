@@ -1,14 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قارئ الفواتير - محمد النبراوي</title>
+    <title>Invoices Reader - Smart Invoice Data Extraction | Mohamed ElNabarawi</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --text-color: #333;
+            --background-color: #f4f6f7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            padding-top: 80px;
+        }
+
         /* Language-specific styles */
         body.ar {
             font-family: 'Amiri', serif;
@@ -39,7 +60,6 @@
             cursor: pointer;
             transition: all 0.4s ease;
             border: 3px solid rgba(255,255,255,0.2);
-            perspective: 100px;
         }
 
         .language-toggle .lang-icon {
@@ -72,9 +92,9 @@
             content: 'AR';
         }
 
-        /* Updated Header Styles */
+        /* Header Styles */
         header {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%);
             color: white;
             position: fixed;
             top: 0;
@@ -82,6 +102,9 @@
             width: 100%;
             z-index: 1000;
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         header .header-container {
@@ -91,6 +114,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 20px;
+            position: relative;
         }
 
         header .logo {
@@ -99,6 +123,7 @@
             text-decoration: none;
             color: white;
             font-weight: bold;
+            z-index: 1001;
         }
 
         header .logo img {
@@ -109,18 +134,27 @@
             object-fit: cover;
         }
 
+        header nav {
+            display: flex;
+            align-items: center;
+        }
+
         header nav ul {
             display: flex;
             list-style: none;
             gap: 20px;
+            margin: 0;
+            padding: 0;
         }
 
         header nav ul li a {
             color: white;
             text-decoration: none;
-            font-weight: 300;
-            transition: color 0.3s ease;
+            font-weight: 500;
+            transition: all 0.3s ease;
             position: relative;
+            padding: 5px 0;
+            font-size: 1rem;
         }
 
         header nav ul li a::after {
@@ -128,7 +162,7 @@
             position: absolute;
             width: 0;
             height: 2px;
-            bottom: -5px;
+            bottom: -2px;
             left: 0;
             background-color: white;
             transition: width 0.3s ease;
@@ -136,6 +170,74 @@
 
         header nav ul li a:hover::after {
             width: 100%;
+        }
+
+        /* Enhanced Mobile Menu */
+        @media screen and (max-width: 768px) {
+            .hamburger-menu {
+                display: block;
+                width: 40px;
+                height: 40px;
+                position: relative;
+                cursor: pointer;
+                z-index: 1001;
+                margin-right: 10px;
+            }
+
+            .hamburger-menu .bar {
+                width: 25px;
+                height: 3px;
+                background-color: white;
+                margin: 5px auto;
+                transition: all 0.3s ease;
+            }
+
+            .hamburger-menu.active .bar:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .hamburger-menu.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger-menu.active .bar:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+
+            header nav {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background: linear-gradient(135deg, rgba(102, 126, 234, 0.98) 0%, rgba(118, 75, 162, 0.98) 100%);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: left 0.3s ease;
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            }
+
+            header nav.mobile-active {
+                left: 0;
+            }
+
+            header nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+
+            header nav ul li a {
+                font-size: 1.5rem;
+                padding: 10px 20px;
+            }
+
+            body.menu-open {
+                overflow: hidden;
+            }
         }
 
         /* Contact Modal Styles */
@@ -152,6 +254,8 @@
             z-index: 10000;
             opacity: 0;
             transition: opacity 0.3s ease;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
         }
 
         .contact-modal.show {
@@ -190,342 +294,194 @@
             color: #333;
         }
 
-        .contact-modal-content h2 {
-            margin-bottom: 20px;
-            color: var(--primary-color);
+        /* Content Section Styles */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        .contact-modal-content .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .contact-modal-content .contact-method {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f4f6f7;
-            padding: 15px;
-            border-radius: 10px;
-            transition: background 0.3s ease;
-        }
-
-        .contact-modal-content .contact-method:hover {
-            background: #e9ecef;
-        }
-
-        .contact-modal-content .contact-method i {
-            margin-right: 15px;
-            font-size: 24px;
-            color: var(--primary-color);
-        }
-
-        body.ar .contact-modal-content .contact-method i {
-            margin-right: 0;
-            margin-left: 15px;
-        }
-
-        /* Mobile Navigation Styles */
-        @media screen and (max-width: 768px) {
-            header .header-container {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                position: relative;
-                padding: 10px 20px;
-            }
-
-            .hamburger-menu {
-                display: block;
-                position: static;
-                transform: none;
-                background: none;
-                width: 40px;
-                height: 40px;
-                margin-right: 10px;
-                z-index: 10001;
-            }
-
-            .hamburger-menu .bar {
-                width: 25px;
-                height: 3px;
-                background-color: white;
-                margin: 5px 0;
-                transition: all 0.3s ease;
-            }
-
-            .hamburger-menu.active .bar:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
-            }
-
-            .hamburger-menu.active .bar:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger-menu.active .bar:nth-child(3) {
-                transform: rotate(-45deg) translate(5px, -5px);
-            }
-
-            header nav {
-                display: none;
-            }
-
-            header .logo {
-                display: flex;
-                align-items: center;
-            }
-
-            header .logo img {
-                margin-right: 10px;
-            }
-
-            nav {
-                display: block;
-                position: fixed;
-                top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-                z-index: 9999;
-                transition: left 0.3s ease-in-out;
-                padding-top: 100px;
-                text-align: center;
-            }
-
-            nav.mobile-active {
-                left: 0;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 30px;
-                list-style: none;
-                padding: 0;
-            }
-
-            nav ul li {
-                opacity: 0;
-                transform: translateY(20px);
-                transition: opacity 0.3s ease, transform 0.3s ease;
-            }
-
-            nav.mobile-active ul li {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            nav ul li a {
-                font-size: 1.5rem;
-                color: #ffffff;
-                display: block;
-                padding: 15px;
-                text-decoration: none;
-                transition: background-color 0.3s ease, color 0.3s ease;
-            }
-
-            nav ul li a:hover {
-                background-color: rgba(255,255,255,0.1);
-                color: #4ecdc4;
-            }
-
-            nav ul li a::after {
-                display: none;
-            }
-
-            body.menu-open {
-                overflow: hidden;
-            }
-        }
-
-        /* Project content styles */
-        body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            color: #2c3e50;
-            background-color: #f8f9fa;
-            padding-top: 80px;
+        section {
+            padding: 60px 0;
+            background: white;
+            margin-bottom: 30px;
         }
 
         .hero-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 100px 0 60px;
-            color: white;
+            background: linear-gradient(135deg, #f6f9fc 0%, #eef2ff 100%);
+            padding: 80px 0 60px;
+            margin-top: 0;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 60px;
         }
 
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="rgba(255,255,255,0.1)" x="0" y="0" width="100" height="100"/></svg>') repeat;
-            opacity: 0.1;
-        }
-
-        .hero-section h1 {
-            font-size: 3.5rem;
+        .hero-title {
+            font-size: 2.5rem;
+            color: #2c3e50;
             margin-bottom: 20px;
-            font-weight: 700;
+            line-height: 1.2;
         }
 
-        .hero-section .subtitle {
+        .subtitle {
             font-size: 1.5rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+            color: #4a5568;
+            margin-bottom: 30px;
+        }
+
+        .promo-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee0979 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+            box-shadow: 0 5px 15px rgba(238, 9, 121, 0.3);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
 
         .hero-image-container {
-            max-width: 1000px;
+            max-width: 800px;
             margin: 40px auto;
-            position: relative;
-            border-radius: 10px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-            transform: perspective(1000px) rotateX(5deg);
-            transition: all 0.5s ease;
-            background: rgba(255,255,255,0.1);
-            padding: 20px;
-            backdrop-filter: blur(10px);
-        }
-
-        .hero-image-container:hover {
-            transform: perspective(1000px) rotateX(0);
-            box-shadow: 0 40px 70px rgba(0,0,0,0.4);
         }
 
         .hero-image {
             width: 100%;
-            height: auto;
-            border-radius: 8px;
-            display: block;
-        }
-
-        .screenshots-section {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .screenshots-section h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            color: #2c3e50;
-        }
-
-        .screenshots-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            padding: 20px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .screenshot-item {
-            background: white;
             border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
-        .screenshot-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        }
-
-        .screenshot-image {
-            position: relative;
-            padding-top: 62.5%; /* 16:10 Aspect Ratio */
-            background: #f8f9fa;
-            overflow: hidden;
-        }
-
-        .screenshot-image img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .screenshot-item:hover .screenshot-image img {
-            transform: scale(1.05);
-        }
-
-        .screenshot-item .content {
-            padding: 20px;
-            background: white;
-        }
-
-        .screenshot-item h3 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            color: #2c3e50;
-        }
-
-        .screenshot-item p {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 0;
-        }
-
-        .features-section {
-            padding: 100px 0;
-            background: #f8f9fa;
-        }
-
-        .features-grid {
+        .features-grid, .benefits-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+            margin-top: 40px;
         }
 
-        .feature-item {
+        .feature-item, .benefit-item {
             background: white;
-            padding: 40px 30px;
-            border-radius: 20px;
+            padding: 30px;
+            border-radius: 15px;
             text-align: center;
-            transition: all 0.3s ease;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
         }
 
-        .feature-item:hover {
-            transform: translateY(-10px);
+        .feature-item:hover, .benefit-item:hover {
+            transform: translateY(-5px);
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
         }
 
-        .feature-item i {
+        .feature-item i, .benefit-item i {
             font-size: 2.5rem;
             margin-bottom: 20px;
-            color: #667eea;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            background-clip: text;
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        .feature-item h3, .benefit-item h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .feature-item p, .benefit-item p {
+            color: #4a5568;
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .step {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+
+        .tech-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-top: 40px;
+        }
+
+        .tech-content h3 {
+            color: #2c3e50;
+            margin: 30px 0 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .tech-content ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .tech-content ul li {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            color: #4a5568;
+            transition: all 0.3s ease;
+        }
+
+        .tech-content ul li:before {
+            content: '✓';
+            margin-right: 10px;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .tech-content ul li:hover {
+            background: #eef2ff;
+            transform: translateX(5px);
         }
 
         .cta-section {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 100px 0;
+            padding: 80px 0;
             text-align: center;
+            margin: 60px 0;
             position: relative;
             overflow: hidden;
         }
@@ -535,10 +491,17 @@
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="rgba(255,255,255,0.1)" x="0" y="0" width="100" height="100"/></svg>') repeat;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: 300px 300px;
             opacity: 0.1;
+            animation: rotate 60s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .cta-button {
@@ -546,95 +509,76 @@
             background: white;
             color: #764ba2;
             padding: 15px 40px;
-            border-radius: 30px;
-            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
             font-weight: bold;
+            text-decoration: none;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
             margin-top: 30px;
+            position: relative;
+            overflow: hidden;
         }
 
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-            background: #f8f9fa;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
         }
 
-        @media screen and (max-width: 768px) {
-            .hero-section {
-                padding: 60px 0 40px;
-            }
-
-            .hero-section h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-section .subtitle {
-                font-size: 1.2rem;
-            }
-
-            .screenshots-grid {
-                grid-template-columns: 1fr;
-                padding: 10px;
-            }
-
-            .screenshot-image {
-                padding-top: 56.25%; /* 16:9 Aspect Ratio for mobile */
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-                padding: 15px;
-            }
-        }
-
-        /* Video Showcase Section */
-        .video-showcase-section {
-            padding: 80px 0;
-            background: white;
-            text-align: center;
-        }
-
-        .video-showcase-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: #2c3e50;
-        }
-
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            overflow: hidden;
-            max-width: 900px;
-            margin: 0 auto;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .video-container iframe {
+        .cta-button::after {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border-radius: 15px;
+            background: rgba(255,255,255,0.2);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover::after {
+            transform: translateX(0);
         }
 
         @media screen and (max-width: 768px) {
-            .video-container {
-                margin: 0 20px;
-                border-radius: 10px;
-            }
-
-            .video-container iframe {
-                border-radius: 10px;
-            }
-
-            .video-showcase-section h2 {
+            .hero-title {
                 font-size: 2rem;
-                margin-bottom: 30px;
+                padding: 0 20px;
             }
+
+            .subtitle {
+                font-size: 1.2rem;
+                padding: 0 20px;
+            }
+
+            .tech-content {
+                padding: 20px;
+                margin: 20px;
+            }
+
+            .tech-content ul {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                padding: 40px 0;
+            }
+
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* RTL Support */
+        body.ar .tech-content ul li:before {
+            margin-right: 0;
+            margin-left: 10px;
+        }
+
+        body.ar .tech-content ul li:hover {
+            transform: translateX(-5px);
         }
     </style>
 </head>
@@ -674,96 +618,106 @@
     <main id="project-content" lang="en">
         <section class="hero-section">
             <div class="container">
-                <h1 data-en="Invoices Reader" data-ar="قارئ الفواتير">Invoices Reader</h1>
-                <p class="subtitle" data-en="Automate Your Invoice Processing with AI" data-ar="أتمتة معالجة الفواتير بالذكاء الاصطناعي">Automate Your Invoice Processing with AI</p>
+                <h1 class="hero-title" data-en="Invoices Reader - Smart Invoice Data Extraction" data-ar="قارئ الفواتير - استخراج ذكي لبيانات الفواتير">Invoices Reader - Smart Invoice Data Extraction</h1>
+                <p class="subtitle" data-en="Transform Your Invoice Processing with AI-Powered Automation" data-ar="حوّل معالجة فواتيرك مع أتمتة مدعومة بالذكاء الاصطناعي">Transform Your Invoice Processing with AI-Powered Automation</p>
+                <div class="promo-badge" data-en="Limited Time Offer - 50% OFF!" data-ar="عرض لفترة محدودة - خصم 50٪!">Limited Time Offer - 50% OFF!</div>
                 <div class="hero-image-container">
-                    <img src="images/invoices reader screenshots/invoices-reader.png" alt="Invoices Reader App" class="hero-image">
+                    <img src="images/invoices reader screenshots/invoices-reader.png" alt="Invoices Reader App Interface" class="hero-image">
                 </div>
             </div>
         </section>
 
-        <section class="video-showcase-section">
+        <section class="introduction-section">
             <div class="container">
-                <h2 data-en="See It In Action" data-ar="شاهد التطبيق في العمل">See It In Action</h2>
-                <div class="video-container">
-                    <iframe 
-                        src="https://www.youtube.com/embed/lwIg5AGOf50" 
-                        title="Invoices Reader Demo"
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
+                <div class="intro-text">
+                    <h2 data-en="Imagine Processing Invoices with Just One Click!" data-ar="تخيل معالجة الفواتير بنقرة واحدة!">Imagine Processing Invoices with Just One Click!</h2>
+                    <p class="highlight-text" data-en="How much time and effort would you save? How many errors would you avoid?" 
+                       data-ar="كم من الوقت والجهد ستوفر؟ وكم من الأخطاء ستتجنب؟">How much time and effort would you save? How many errors would you avoid?</p>
+                    <p class="intro-description" data-en="Introducing Invoices Reader - an intelligent software that uses artificial intelligence to extract data from both paper and electronic invoices with unmatched precision!" 
+                       data-ar="نقدم لكم قارئ الفواتير - برنامج ذكي يستخدم الذكاء الاصطناعي لاستخراج بيانات الفواتير الورقية والإلكترونية بدقة متناهية!">Introducing Invoices Reader - an intelligent software that uses artificial intelligence to extract data from both paper and electronic invoices with unmatched precision!</p>
                 </div>
             </div>
         </section>
 
         <section class="features-section">
             <div class="container">
-                <h2 data-en="Powerful Features" data-ar="ميزات قوية">Powerful Features</h2>
+                <h2 data-en="Powerful Features" data-ar="مميزات البرنامج">Powerful Features</h2>
                 <div class="features-grid">
                     <div class="feature-item">
-                        <i class="fas fa-bolt"></i>
-                        <h3 data-en="Fast Processing" data-ar="معالجة سريعة">Fast Processing</h3>
-                        <p data-en="Process hundreds of invoices in minutes" data-ar="معالجة مئات الفواتير في دقائق">Process hundreds of invoices in minutes</p>
+                        <i class="fas fa-robot"></i>
+                        <h3 data-en="Automatic Data Extraction" data-ar="استخراج تلقائي للبيانات">Automatic Data Extraction</h3>
+                        <p data-en="Say goodbye to manual data entry! Our AI processes invoices automatically." 
+                           data-ar="وداعًا للإدخال اليدوي! يقوم الذكاء الاصطناعي لدينا بمعالجة الفواتير تلقائياً.">Say goodbye to manual data entry! Our AI processes invoices automatically.</p>
                     </div>
                     <div class="feature-item">
-                        <i class="fas fa-qrcode"></i>
-                        <h3 data-en="Smart QR Detection" data-ar="كشف ذكي لرموز QR">Smart QR Detection</h3>
-                        <p data-en="Automatic QR code detection and processing" data-ar="كشف ومعالجة تلقائية لرموز QR">Automatic QR code detection and processing</p>
+                        <i class="fas fa-check-double"></i>
+                        <h3 data-en="Superior Accuracy" data-ar="دقة فائقة">Superior Accuracy</h3>
+                        <p data-en="Eliminate calculation errors with precise data extraction" 
+                           data-ar="تخلص من الأخطاء الحسابية مع استخراج دقيق للبيانات">Eliminate calculation errors with precise data extraction</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-file-invoice"></i>
+                        <h3 data-en="Universal Invoice Support" data-ar="دعم جميع أنواع الفواتير">Universal Invoice Support</h3>
+                        <p data-en="Process both paper and electronic invoices with ease" 
+                           data-ar="معالجة الفواتير الورقية والإلكترونية بسهولة">Process both paper and electronic invoices with ease</p>
                     </div>
                     <div class="feature-item">
                         <i class="fas fa-file-export"></i>
                         <h3 data-en="Easy Export" data-ar="تصدير سهل">Easy Export</h3>
-                        <p data-en="Export to Excel with one click" data-ar="تصدير إلى Excel بنقرة واحدة">Export to Excel with one click</p>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-shield-alt"></i>
-                        <h3 data-en="Secure Processing" data-ar="معالجة آمنة">Secure Processing</h3>
-                        <p data-en="Your data never leaves your computer" data-ar="بياناتك لا تغادر جهاز الكمبيوتر الخاص بك">Your data never leaves your computer</p>
+                        <p data-en="Export data directly to Excel or any accounting system" 
+                           data-ar="تصدير البيانات مباشرة إلى Excel أو أي نظام محاسبي">Export data directly to Excel or any accounting system</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="screenshots-section">
+        <section class="how-it-works">
             <div class="container">
-                <h2 data-en="App Screenshots & Features" data-ar="لقطات وميزات التطبيق">App Screenshots & Features</h2>
-                <div class="screenshots-grid">
-                    <div class="screenshot-item">
-                        <div class="screenshot-image">
-                            <img src="images/invoices reader screenshots/main window-upload images.png" alt="Upload Interface">
-                        </div>
-                        <div class="content">
-                            <h3 data-en="Easy Upload" data-ar="رفع سهل">Easy Upload</h3>
-                            <p data-en="Drag and drop your invoices or select them from your computer" data-ar="اسحب وأفلت فواتيرك أو اخترها من جهاز الكمبيوتر">Drag and drop your invoices or select them from your computer</p>
-                        </div>
+                <h2 data-en="How It Works" data-ar="كيف يعمل">How It Works</h2>
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3 data-en="Select Invoice Folder" data-ar="اختر مجلد الفواتير">Select Invoice Folder</h3>
+                        <p data-en="Choose a folder containing your invoice images" 
+                           data-ar="اختر المجلد الذي يحتوي على صور الفواتير">Choose a folder containing your invoice images</p>
                     </div>
-                    <div class="screenshot-item">
-                        <div class="screenshot-image">
-                            <img src="images/invoices reader screenshots/extract data.png" alt="Data Extraction">
-                        </div>
-                        <div class="content">
-                            <h3 data-en="Smart Extraction" data-ar="استخراج ذكي">Smart Extraction</h3>
-                            <p data-en="Advanced AI automatically detects and extracts invoice data" data-ar="يكتشف الذكاء الاصطناعي المتقدم بيانات الفاتورة ويستخرجها تلقائيًا">Advanced AI automatically detects and extracts invoice data</p>
-                        </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3 data-en="Start Processing" data-ar="ابدأ المعالجة">Start Processing</h3>
+                        <p data-en="Click 'Start' and let our AI do the work" 
+                           data-ar="انقر على 'ابدأ' ودع الذكاء الاصطناعي يقوم بالعمل">Click 'Start' and let our AI do the work</p>
                     </div>
-                    <div class="screenshot-item">
-                        <div class="screenshot-image">
-                            <img src="images/invoices reader screenshots/export.png" alt="Export Features">
-                        </div>
-                        <div class="content">
-                            <h3 data-en="Flexible Export" data-ar="تصدير مرن">Flexible Export</h3>
-                            <p data-en="Export your data in multiple formats including Excel" data-ar="صدّر بياناتك بتنسيقات متعددة بما في ذلك Excel">Export your data in multiple formats including Excel</p>
-                        </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3 data-en="Export Results" data-ar="تصدير النتائج">Export Results</h3>
+                        <p data-en="Get your data in Excel format instantly" 
+                           data-ar="احصل على بياناتك بتنسيق Excel على الفور">Get your data in Excel format instantly</p>
                     </div>
-                    <div class="screenshot-item">
-                        <div class="screenshot-image">
-                            <img src="images/invoices reader screenshots/gemini-settings.png" alt="Settings Panel">
-                        </div>
-                        <div class="content">
-                            <h3 data-en="Full Control" data-ar="تحكم كامل">Full Control</h3>
-                            <p data-en="Customize every aspect of the application to match your needs" data-ar="خصص كل جانب من جوانب التطبيق ليتناسب مع احتياجاتك">Customize every aspect of the application to match your needs</p>
-                        </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="key-benefits">
+            <div class="container">
+                <h2 data-en="Key Benefits" data-ar="الفوائد الرئيسية">Key Benefits</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <i class="fas fa-clock"></i>
+                        <h3 data-en="Save Time" data-ar="توفير الوقت">Save Time</h3>
+                        <p data-en="Process hundreds of invoices in minutes instead of hours" 
+                           data-ar="معالجة مئات الفواتير في دقائق بدلاً من ساعات">Process hundreds of invoices in minutes instead of hours</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-chart-line"></i>
+                        <h3 data-en="Increase Productivity" data-ar="زيادة الإنتاجية">Increase Productivity</h3>
+                        <p data-en="Focus on analysis instead of data entry" 
+                           data-ar="ركز على التحليل بدلاً من إدخال البيانات">Focus on analysis instead of data entry</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3 data-en="Reduce Errors" data-ar="تقليل الأخطاء">Reduce Errors</h3>
+                        <p data-en="Eliminate human error in data entry" 
+                           data-ar="القضاء على الأخطاء البشرية في إدخال البيانات">Eliminate human error in data entry</p>
                     </div>
                 </div>
             </div>
@@ -771,10 +725,36 @@
 
         <section class="cta-section">
             <div class="container">
-                <h2 data-en="Ready to Transform Your Invoice Processing?" data-ar="هل أنت مستعد لتحويل معالجة الفواتير الخاصة بك؟">Ready to Transform Your Invoice Processing?</h2>
-                <p data-en="Join thousands of businesses that have automated their invoice processing with Invoices Reader." 
-                   data-ar="انضم إلى آلاف الشركات التي قامت بأتمتة معالجة الفواتير باستخدام قارئ الفواتير.">Join thousands of businesses that have automated their invoice processing with Invoices Reader.</p>
-                <a href="mailto:mohammednabarawy@gmail.com" class="cta-button" data-en="Get Started" data-ar="ابدأ الآن">Get Started</a>
+                <h2 data-en="Ready to Transform Your Invoice Processing?" data-ar="هل أنت مستعد لتحويل معالجة الفواتير؟">Ready to Transform Your Invoice Processing?</h2>
+                <p data-en="Save time, reduce errors, and boost productivity - now with a special 50% discount!" 
+                   data-ar="وفر وقتك، قلل الأخطاء، وعزز الإنتاجية - الآن مع خصم خاص 50٪!">Save time, reduce errors, and boost productivity - now with a special 50% discount!</p>
+                <a href="mailto:mohammednabarawy@gmail.com" class="cta-button" data-en="Get Started Now" data-ar="ابدأ الآن">Get Started Now</a>
+            </div>
+        </section>
+
+        <section class="technical-details">
+            <div class="container">
+                <h2 data-en="Technical Details" data-ar="التفاصيل التقنية">Technical Details</h2>
+                <div class="tech-content">
+                    <h3 data-en="Supported Features:" data-ar="الميزات المدعومة:">Supported Features:</h3>
+                    <ul>
+                        <li data-en="QR Code Detection and Processing" data-ar="اكتشاف ومعالجة رموز QR">QR Code Detection and Processing</li>
+                        <li data-en="AI-Powered Information Extraction" data-ar="استخراج المعلومات بالذكاء الاصطناعي">AI-Powered Information Extraction</li>
+                        <li data-en="Batch Processing Capabilities" data-ar="إمكانيات المعالجة المجمعة">Batch Processing Capabilities</li>
+                        <li data-en="Multiple Export Formats" data-ar="تنسيقات تصدير متعددة">Multiple Export Formats</li>
+                        <li data-en="Cross-Platform Compatibility" data-ar="توافق متعدد المنصات">Cross-Platform Compatibility</li>
+                    </ul>
+                    
+                    <h3 data-en="Extracted Data Fields:" data-ar="حقول البيانات المستخرجة:">Extracted Data Fields:</h3>
+                    <ul>
+                        <li data-en="Invoice Number" data-ar="رقم الفاتورة">Invoice Number</li>
+                        <li data-en="Date" data-ar="التاريخ">Date</li>
+                        <li data-en="Vendor Name" data-ar="اسم المورد">Vendor Name</li>
+                        <li data-en="Vendor VAT ID" data-ar="الرقم الضريبي للمورد">Vendor VAT ID</li>
+                        <li data-en="Invoice Total" data-ar="إجمالي الفاتورة">Invoice Total</li>
+                        <li data-en="VAT Amount" data-ar="مبلغ ضريبة القيمة المضافة">VAT Amount</li>
+                    </ul>
+                </div>
             </div>
         </section>
     </main>
