@@ -1,476 +1,537 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>قارئ الفواتير - محمد النبراوي</title>
-    <meta name="description" content="قارئ الفواتير هو تطبيق سطح المكتب متقدم لاستخراج بيانات الفواتير بشكل أوتوماتيكي. استفد من تقنية التعرف على الكوداتQR والاستخراج الفوري للبيانات.">
-    <meta name="keywords" content="قارئ الفواتير, استخراج بيانات الفواتير, تطبيق سطح المكتب, التعرف على الكودات QR">
-    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
     <style>
-        html, body {
-            height: 100%;
-            overflow: hidden;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            display: flex;
-            flex-direction: column;
-        }
-        main {
-            flex: 1;
-            overflow-y: auto;
-            padding-top: 100px;
-        }
-        header {
-            flex-shrink: 0;
-            height: 80px;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        header .logo img {
-            width: 40px;
-            height: 40px;
-        }
-        body.ar .section-title,
-        body.ar h1, 
-        body.ar h2, 
-        body.ar p {
-            text-align: right;
-        }
-
-        .language-toggle {
+        /* Contact Modal Styles */
+        .contact-modal {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 9999;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            cursor: pointer;
-            transition: all 0.4s ease;
-            border: 3px solid rgba(255,255,255,0.2);
-            perspective: 100px;
-        }
-
-        .language-toggle .lang-icon {
-            font-size: 30px;
-            color: white;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transform-style: preserve-3d;
-            transition: transform 0.4s ease;
-        }
-
-        .language-toggle .lang-icon::before {
-            content: 'AR';
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%) translateZ(20px);
-            font-size: 10px;
-            color: white;
-            opacity: 0.7;
-        }
-
-        .language-toggle:hover .lang-icon {
-            transform: rotateY(180deg);
-        }
-
-        body.en .language-toggle .lang-icon::before {
-            content: 'EN';
-        }
-
-        /* Bilingual Content Handling */
-        .en-content, .ar-content {
-            display: none;
-        }
-
-        body.en .en-content,
-        body.ar .ar-content {
-            display: block;
-        }
-
-        /* Project Page Specific Styles */
-        .project-details {
-            padding-top: 100px;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-        }
-
-        .project-content {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 40px;
-        }
-
-        .project-description {
-            flex: 1;
-            min-width: 300px;
-            text-align: left;
-        }
-
-        .project-main-image {
-            max-width: 500px;
+            top: 0;
+            left: 0;
             width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .project-main-image:hover {
-            transform: scale(1.02);
+        .contact-modal.show {
+            display: flex;
+            opacity: 1;
         }
 
-        .benefits-section {
-            background-color: white;
+        .contact-modal-content {
+            background: white;
             border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
             padding: 30px;
-            margin-top: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-
-        .benefits-section h3 {
-            color: #764ba2;
-            margin-bottom: 20px;
-        }
-
-        .benefits-list {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .benefits-list li {
+            text-align: center;
             position: relative;
-            padding-left: 30px;
-            margin-bottom: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            transform: scale(0.7);
+            transition: all 0.3s ease;
+        }
+
+        .contact-modal.show .contact-modal-content {
+            transform: scale(1);
+        }
+
+        .contact-modal-content h2 {
+            margin-bottom: 20px;
             color: #333;
         }
 
-        .benefits-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            background: #f4f6f7;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #333;
+            transition: background 0.3s ease;
+        }
+
+        .contact-method i {
+            margin-right: 15px;
+            font-size: 24px;
             color: #667eea;
-            font-weight: bold;
+        }
+
+        body.ar .contact-method i {
+            margin-right: 0;
+            margin-left: 15px;
+        }
+
+        /* Modern Software Product Page Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #f8f9fa;
+            padding-top: 80px;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 100px 0 60px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 60px;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="rgba(255,255,255,0.1)" x="0" y="0" width="100" height="100"/></svg>') repeat;
+            opacity: 0.1;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-section .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-image-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            transform: perspective(1000px) rotateX(5deg);
+            transition: all 0.5s ease;
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-image-container:hover {
+            transform: perspective(1000px) rotateX(0);
+            box-shadow: 0 40px 70px rgba(0,0,0,0.4);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .screenshots-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .screenshots-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #2c3e50;
+        }
+
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .screenshot-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .screenshot-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .screenshot-image {
+            position: relative;
+            padding-top: 62.5%; /* 16:10 Aspect Ratio */
+            background: #f8f9fa;
+            overflow: hidden;
+        }
+
+        .screenshot-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .screenshot-item:hover .screenshot-image img {
+            transform: scale(1.05);
+        }
+
+        .screenshot-item .content {
+            padding: 20px;
+            background: white;
+        }
+
+        .screenshot-item h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .screenshot-item p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        .features-section {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .feature-item i {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .cta-section {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 40px;
-            border-radius: 15px;
+            padding: 100px 0;
             text-align: center;
-            margin-top: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="rgba(255,255,255,0.1)" x="0" y="0" width="100" height="100"/></svg>') repeat;
+            opacity: 0.1;
         }
 
         .cta-button {
             display: inline-block;
-            background-color: white;
+            background: white;
             color: #764ba2;
-            padding: 15px 30px;
-            border-radius: 5px;
+            padding: 15px 40px;
+            border-radius: 30px;
             text-decoration: none;
             font-weight: bold;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin-top: 30px;
         }
 
         .cta-button:hover {
-            transform: scale(1.05);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            background: #f8f9fa;
         }
 
         @media screen and (max-width: 768px) {
-            .project-content {
-                flex-direction: column;
+            .hero-section {
+                padding: 60px 0 40px;
             }
 
-            .project-main-image {
-                max-width: 100%;
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-section .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .screenshots-grid {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
+
+            .screenshot-image {
+                padding-top: 56.25%; /* 16:9 Aspect Ratio for mobile */
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                padding: 15px;
             }
         }
 
-        /* Language-specific text alignment */
-        body.ar #project-content {
-            text-align: right;
-            direction: rtl;
+        /* Video Showcase Section */
+        .video-showcase-section {
+            padding: 80px 0;
+            background: white;
+            text-align: center;
         }
 
-        body.en #project-content {
-            text-align: left;
-            direction: ltr;
+        .video-showcase-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #2c3e50;
         }
 
-        #project-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .project-main-image {
-            max-width: 500px;
-            width: 100%;
-            height: auto;
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 900px;
+            margin: 0 auto;
             border-radius: 15px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            margin: 20px auto;
-            display: block;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
 
-        .project-content {
-            width: 100%;
-            max-width: 800px;
-        }
-
-        .project-description {
-            width: 100%;
-        }
-
-        /* Ensure RTL list styling for Arabic */
-        body.ar .benefits-list {
-            padding-right: 30px;
-            padding-left: 0;
-        }
-
-        body.en .benefits-list {
-            padding-left: 30px;
-            padding-right: 0;
-        }
-
-        body.ar .benefits-list li {
-            text-align: right;
-            padding-right: 30px;
-            padding-left: 0;
-        }
-
-        body.en .benefits-list li {
-            text-align: left;
-            padding-left: 30px;
-            padding-right: 0;
-        }
-
-        body.ar .benefits-list li::before {
-            right: 0;
-            left: auto;
-        }
-
-        body.en .benefits-list li::before {
+        .video-container iframe {
+            position: absolute;
+            top: 0;
             left: 0;
-            right: auto;
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .video-container {
+                margin: 0 20px;
+                border-radius: 10px;
+            }
+
+            .video-container iframe {
+                border-radius: 10px;
+            }
+
+            .video-showcase-section h2 {
+                font-size: 2rem;
+                margin-bottom: 30px;
+            }
         }
     </style>
-    <script>
-        function toggleLanguage() {
-            const projectContent = document.getElementById('project-content');
-            const body = document.body;
-            
-            if (projectContent.getAttribute('lang') === 'en') {
-                projectContent.innerHTML = `
-                    <h1>قارئ الفواتير: استخراج بيانات الفواتير بشكل أوتوماتيكي</h1>
-                    <img src="images/result.png" alt="قارئ الفواتير" class="project-main-image">
-                    <div class="project-content">
-                        <div class="project-description">
-                            <h2>استفد من تقنية التعرف على الكودات QR واستخراج البيانات الفورية</h2>
-                            <p>هل أنت متعب من إدخال البيانات يدوياً ومعالجة الفواتير بشكل يدوي؟ لا مزيد من ذلك! قارئ الفواتير هو تطبيق سطح المكتب متقدم مصمم لتحسين سير عملك وزيادة إنتاجيتك.</p>
-                            <h3>المزايا الرئيسية</h3>
-                            <ul class="benefits-list">
-                                <li>استخراج البيانات بشكل أوتوماتيكي باستخدام تقنية التعرف على الكودات QR</li>
-                                <li>معالجة الفواتير بشكل سريع وفعال</li>
-                                <li>تصدير البيانات إلى صيغة Excel لسهولة التكامل مع أنظمةك الحالية</li>
-                                <li>استمتع بواجهة مستخدم سهلة الاستخدام</li>
-                                <li>استفد من ميزات الأمان القوية لحماية بياناتك الحساسة</li>
-                            </ul>
-                            <h3>استفد من قارئ الفواتير لتحسين أداء عملك</h3>
-                            <p>لا تدع معالجة الفواتير يدوياً تعيق تقدمك. باستخدام قارئ الفواتير، يمكنك:</p>
-                            <ul class="benefits-list">
-                                <li>تقليل الأخطاء وزيادة الدقة</li>
-                                <li>تحرير الموظفين لمهام أكثر قيمة</li>
-                                <li>تحسين رضا العملاء بفضل معالجة الفواتير السريعة</li>
-                                <li>الحصول على رؤى قيمة من بيانات الفواتير لاتخاذ قرارات العمل</li>
-                            </ul>
-                            <div class="cta-section">
-                                <h3>ابدأ الآن!</h3>
-                                <p>هل أنت مستعد لاستخدام قارئ الفواتير؟ اتصل بنا لمعرفة المزيد وجدولة عرض توضيحي.</p>
-                                <p>البريد الإلكتروني: <a href="mailto:mohammednabarawy@gmail.com">mohammednabarawy@gmail.com</a></p>
-                                <a href="mailto:mohammednabarawy@gmail.com" class="cta-button">اتصل بنا</a>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                projectContent.setAttribute('lang', 'ar');
-                body.classList.remove('en');
-                body.classList.add('ar');
-            } else {
-                projectContent.innerHTML = `
-                    <h1>Invoices Reader: Unlock Efficient Invoice Data Extraction</h1>
-                    <img src="images/result.png" alt="Invoices Reader" class="project-main-image">
-                    <div class="project-content">
-                        <div class="project-description">
-                            <h2>Revolutionize Your Invoice Processing with Our Cutting-Edge Solution</h2>
-                            <p>Are you tired of manual data entry and tedious invoice processing? Look no further! Our Invoices Reader is a game-changing, cross-platform desktop application designed to streamline your workflow and boost productivity.</p>
-                            <h3>Key Benefits</h3>
-                            <ul class="benefits-list">
-                                <li>Automate data extraction with AI-powered QR code decoding and information retrieval</li>
-                                <li>Effortlessly process multiple invoices in batches, saving you time and resources</li>
-                                <li>Export extracted data to Excel format for seamless integration with your existing systems</li>
-                                <li>Enjoy a user-friendly interface that makes navigation a breeze</li>
-                                <li>Take advantage of our robust security features to protect your sensitive data</li>
-                            </ul>
-                            <h3>Unlock the Full Potential of Your Business</h3>
-                            <p>Don't let manual invoice processing hold you back. With Invoices Reader, you can:</p>
-                            <ul class="benefits-list">
-                                <li>Reduce errors and increase accuracy</li>
-                                <li>Free up staff to focus on high-value tasks</li>
-                                <li>Improve customer satisfaction with faster processing times</li>
-                                <li>Gain valuable insights from your invoice data to inform business decisions</li>
-                            </ul>
-                            <div class="cta-section">
-                                <h3>Get Started Today!</h3>
-                                <p>Ready to experience the power of automated invoice data extraction? Contact us to learn more and schedule a demo.</p>
-                                <p>Email: <a href="mailto:mohammednabarawy@gmail.com">mohammednabarawy@gmail.com</a></p>
-                                <a href="mailto:mohammednabarawy@gmail.com" class="cta-button">Contact Us</a>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                projectContent.setAttribute('lang', 'en');
-                body.classList.remove('ar');
-                body.classList.add('en');
-            }
-
-            // Update localStorage
-            localStorage.setItem('language', projectContent.getAttribute('lang'));
-
-            // Update nav links
-            const navLinks = document.querySelectorAll('nav ul li a');
-            navLinks.forEach(link => {
-                const enText = link.getAttribute('data-en');
-                const arText = link.getAttribute('data-ar');
-                
-                if (body.classList.contains('ar')) {
-                    link.textContent = arText;
-                } else {
-                    link.textContent = enText;
-                }
-            });
-        }
-
-        // Initialize Language on Page Load
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedLanguage = localStorage.getItem('language') || 'en';
-            const projectContent = document.getElementById('project-content');
-            const body = document.body;
-
-            if (savedLanguage === 'ar') {
-                toggleLanguage();
-            } else {
-                body.classList.add('en');
-            }
-
-            // Update nav links on initial load
-            const navLinks = document.querySelectorAll('nav ul li a');
-            navLinks.forEach(link => {
-                const enText = link.getAttribute('data-en');
-                const arText = link.getAttribute('data-ar');
-                
-                if (savedLanguage === 'ar') {
-                    link.textContent = arText;
-                } else {
-                    link.textContent = enText;
-                }
-            });
-        });
-    </script>
 </head>
-<body class="en">
+<body>
+    <!-- Language Toggle Button -->
     <div class="language-toggle" onclick="toggleLanguage()">
-        <div class="lang-icon">🌐</div>
-    </div>
-    <header>
-        <div class="header-container">
-            <a href="index.html" class="logo">
-                <img src="images/profile.jpg" alt="Mohamed ElNabarawi">
-                Mohamed ElNabarawi
-            </a>
-            <div class="hamburger-menu" onclick="toggleMobileMenu()">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html#about" data-en="About" data-ar="من أنا">About</a></li>
-                    <li><a href="index.html#skills" data-en="Skills" data-ar="مهاراتي">Skills</a></li>
-                    <li><a href="index.html#publications" data-en="Publications" data-ar="منشوراتي">Publications</a></li>
-                    <li><a href="index.html#contact" data-en="Contact" data-ar="اتصل بي">Contact</a></li>
-                </ul>
-            </nav>
+        <div class="lang-icon">
+            <i class="fas fa-globe-americas"></i>
         </div>
-    </header>
+    </div>
 
-    <main>
-        <section class="project-details">
+    <!-- Include Common Header -->
+    <div id="header-placeholder"></div>
+
+    <main id="project-content" lang="en">
+        <section class="hero-section">
             <div class="container">
-                <div id="project-content" lang="en">
-                    <h1>Invoices Reader: Unlock Efficient Invoice Data Extraction</h1>
-                    <img src="images/result.png" alt="Invoices Reader" class="project-main-image">
-                    <div class="project-content">
-                        <div class="project-description">
-                            <h2>Revolutionize Your Invoice Processing with Our Cutting-Edge Solution</h2>
-                            <p>Are you tired of manual data entry and tedious invoice processing? Look no further! Our Invoices Reader is a game-changing, cross-platform desktop application designed to streamline your workflow and boost productivity.</p>
-                            <h3>Key Benefits</h3>
-                            <ul class="benefits-list">
-                                <li>Automate data extraction with AI-powered QR code decoding and information retrieval</li>
-                                <li>Effortlessly process multiple invoices in batches, saving you time and resources</li>
-                                <li>Export extracted data to Excel format for seamless integration with your existing systems</li>
-                                <li>Enjoy a user-friendly interface that makes navigation a breeze</li>
-                                <li>Take advantage of our robust security features to protect your sensitive data</li>
-                            </ul>
-                            <h3>Unlock the Full Potential of Your Business</h3>
-                            <p>Don't let manual invoice processing hold you back. With Invoices Reader, you can:</p>
-                            <ul class="benefits-list">
-                                <li>Reduce errors and increase accuracy</li>
-                                <li>Free up staff to focus on high-value tasks</li>
-                                <li>Improve customer satisfaction with faster processing times</li>
-                                <li>Gain valuable insights from your invoice data to inform business decisions</li>
-                            </ul>
-                            <div class="cta-section">
-                                <h3>Get Started Today!</h3>
-                                <p>Ready to experience the power of automated invoice data extraction? Contact us to learn more and schedule a demo.</p>
-                                <p>Email: <a href="mailto:mohammednabarawy@gmail.com">mohammednabarawy@gmail.com</a></p>
-                                <a href="mailto:mohammednabarawy@gmail.com" class="cta-button">Contact Us</a>
-                            </div>
+                <h1 data-en="Invoices Reader" data-ar="قارئ الفواتير">Invoices Reader</h1>
+                <p class="subtitle" data-en="Automate Your Invoice Processing with AI" data-ar="أتمتة معالجة الفواتير بالذكاء الاصطناعي">Automate Your Invoice Processing with AI</p>
+                <div class="hero-image-container">
+                    <img src="images/invoices reader screenshots/invoices-reader.png" alt="Invoices Reader App" class="hero-image">
+                </div>
+            </div>
+        </section>
+
+        <section class="video-showcase-section">
+            <div class="container">
+                <h2 data-en="See It In Action" data-ar="شاهد التطبيق في العمل">See It In Action</h2>
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/lwIg5AGOf50" 
+                        title="Invoices Reader Demo"
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <div class="container">
+                <h2 data-en="Powerful Features" data-ar="ميزات قوية">Powerful Features</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-bolt"></i>
+                        <h3 data-en="Fast Processing" data-ar="معالجة سريعة">Fast Processing</h3>
+                        <p data-en="Process hundreds of invoices in minutes" data-ar="معالجة مئات الفواتير في دقائق">Process hundreds of invoices in minutes</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-qrcode"></i>
+                        <h3 data-en="Smart QR Detection" data-ar="كشف ذكي لرموز QR">Smart QR Detection</h3>
+                        <p data-en="Automatic QR code detection and processing" data-ar="كشف ومعالجة تلقائية لرموز QR">Automatic QR code detection and processing</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-file-export"></i>
+                        <h3 data-en="Easy Export" data-ar="تصدير سهل">Easy Export</h3>
+                        <p data-en="Export to Excel with one click" data-ar="تصدير إلى Excel بنقرة واحدة">Export to Excel with one click</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3 data-en="Secure Processing" data-ar="معالجة آمنة">Secure Processing</h3>
+                        <p data-en="Your data never leaves your computer" data-ar="بياناتك لا تغادر جهاز الكمبيوتر الخاص بك">Your data never leaves your computer</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="screenshots-section">
+            <div class="container">
+                <h2 data-en="App Screenshots & Features" data-ar="لقطات وميزات التطبيق">App Screenshots & Features</h2>
+                <div class="screenshots-grid">
+                    <div class="screenshot-item">
+                        <div class="screenshot-image">
+                            <img src="images/invoices reader screenshots/main window-upload images.png" alt="Upload Interface">
+                        </div>
+                        <div class="content">
+                            <h3 data-en="Easy Upload" data-ar="رفع سهل">Easy Upload</h3>
+                            <p data-en="Drag and drop your invoices or select them from your computer" data-ar="اسحب وأفلت فواتيرك أو اخترها من جهاز الكمبيوتر">Drag and drop your invoices or select them from your computer</p>
+                        </div>
+                    </div>
+                    <div class="screenshot-item">
+                        <div class="screenshot-image">
+                            <img src="images/invoices reader screenshots/extract data.png" alt="Data Extraction">
+                        </div>
+                        <div class="content">
+                            <h3 data-en="Smart Extraction" data-ar="استخراج ذكي">Smart Extraction</h3>
+                            <p data-en="Advanced AI automatically detects and extracts invoice data" data-ar="يكتشف الذكاء الاصطناعي المتقدم بيانات الفاتورة ويستخرجها تلقائيًا">Advanced AI automatically detects and extracts invoice data</p>
+                        </div>
+                    </div>
+                    <div class="screenshot-item">
+                        <div class="screenshot-image">
+                            <img src="images/invoices reader screenshots/export.png" alt="Export Features">
+                        </div>
+                        <div class="content">
+                            <h3 data-en="Flexible Export" data-ar="تصدير مرن">Flexible Export</h3>
+                            <p data-en="Export your data in multiple formats including Excel" data-ar="صدّر بياناتك بتنسيقات متعددة بما في ذلك Excel">Export your data in multiple formats including Excel</p>
+                        </div>
+                    </div>
+                    <div class="screenshot-item">
+                        <div class="screenshot-image">
+                            <img src="images/invoices reader screenshots/gemini-settings.png" alt="Settings Panel">
+                        </div>
+                        <div class="content">
+                            <h3 data-en="Full Control" data-ar="تحكم كامل">Full Control</h3>
+                            <p data-en="Customize every aspect of the application to match your needs" data-ar="خصص كل جانب من جوانب التطبيق ليتناسب مع احتياجاتك">Customize every aspect of the application to match your needs</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2 data-en="Ready to Transform Your Invoice Processing?" data-ar="هل أنت مستعد لتحويل معالجة الفواتير الخاصة بك؟">Ready to Transform Your Invoice Processing?</h2>
+                <p data-en="Join thousands of businesses that have automated their invoice processing with Invoices Reader." 
+                   data-ar="انضم إلى آلاف الشركات التي قامت بأتمتة معالجة الفواتير باستخدام قارئ الفواتير.">Join thousands of businesses that have automated their invoice processing with Invoices Reader.</p>
+                <a href="mailto:mohammednabarawy@gmail.com" class="cta-button" data-en="Get Started" data-ar="ابدأ الآن">Get Started</a>
+            </div>
+        </section>
     </main>
 
+    <script src="header.js"></script>
     <script>
-        // Mobile Menu Toggle
-        function toggleMobileMenu() {
-            const mobileMenu = document.querySelector('.hamburger-menu');
-            const nav = document.querySelector('nav');
-            const body = document.body;
-            
-            mobileMenu.classList.toggle('active');
-            nav.classList.toggle('active');
-            body.classList.toggle('menu-open');
+        // Load and initialize the header
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+                initHeader();
+            });
+
+        function initHeader() {
+            // Initialize with saved language preference
+            const savedLanguage = localStorage.getItem('language') || 'en';
+            document.body.classList.add(savedLanguage);
+            document.documentElement.lang = savedLanguage;
+            document.documentElement.dir = savedLanguage === 'ar' ? 'rtl' : 'ltr';
+
+            // Update initial text content based on saved language
+            document.querySelectorAll('[data-en][data-ar]').forEach(el => {
+                el.textContent = el.getAttribute(`data-${savedLanguage}`);
+            });
+
+            // Initialize mobile menu
+            const hamburger = document.querySelector('.hamburger-menu');
+            if (hamburger) {
+                hamburger.onclick = toggleMobileMenu;
+            }
+        }
+
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initHeader);
+        } else {
+            initHeader();
         }
     </script>
 </body>
