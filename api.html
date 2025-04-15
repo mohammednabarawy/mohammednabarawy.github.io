@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API | Invoices Reader</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind configuration
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .code-block {
+            background-color: #f4f4f4;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white fixed top-0 left-0 right-0 z-50 shadow-lg">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="flex items-center space-x-2 rtl:space-x-reverse">
+                    <i class="fas fa-file-invoice text-blue-400 text-2xl"></i>
+                    <span class="text-2xl font-bold">Invoices<span class="font-normal">Reader</span></span>
+                </div>
+            </div>
+            <nav class="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
+                <a href="invoices-reader.html#features" class="hover:text-blue-200 transition" data-en="Features" data-ar="الميزات">Features</a>
+                <a href="documentation.html" class="hover:text-blue-200 transition" data-en="Documentation" data-ar="التوثيق">Documentation</a>
+                <a href="tutorials.html" class="hover:text-blue-200 transition" data-en="Tutorials" data-ar="الدروس التعليمية">Tutorials</a>
+                <a href="api.html" class="hover:text-blue-200 transition text-white" data-en="API" data-ar="واجهة برمجة التطبيقات">API</a>
+                <a href="support.html" class="hover:text-blue-200 transition" data-en="Support" data-ar="الدعم">Support</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-24 container mx-auto px-6">
+        <section class="mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6" data-en="Invoices Reader API" data-ar="واجهة برمجة التطبيقات لقارئ الفواتير">
+                Invoices Reader API
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl" data-en="Integrate invoice processing capabilities into your applications" data-ar="دمج قدرات معالجة الفواتير في تطبيقاتك">
+                Integrate invoice processing capabilities into your applications
+            </p>
+        </section>
+
+        <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- API Overview -->
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+                <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center text-white text-2xl mb-6">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-4" data-en="API Overview" data-ar="نظرة عامة على واجهة برمجة التطبيقات">
+                    API Overview
+                </h3>
+                <p class="text-gray-600 mb-4" data-en="Powerful programmatic access to invoice processing" data-ar="وصول برمجي قوي لمعالجة الفواتير">
+                    Powerful programmatic access to invoice processing
+                </p>
+                <a href="#api-docs" class="text-blue-600 hover:underline" data-en="Read Documentation" data-ar="اقرأ الوثائق">
+                    Read Documentation
+                </a>
+            </div>
+
+            <!-- Authentication -->
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+                <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center text-white text-2xl mb-6">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-4" data-en="Authentication" data-ar="المصادقة">
+                    Authentication
+                </h3>
+                <p class="text-gray-600 mb-4" data-en="Secure API access with API keys" data-ar="وصول آمن للواجهة باستخدام مفاتيح API">
+                    Secure API access with API keys
+                </p>
+                <a href="#authentication" class="text-blue-600 hover:underline" data-en="Learn More" data-ar="معرفة المزيد">
+                    Learn More
+                </a>
+            </div>
+
+            <!-- Code Examples -->
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+                <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center text-white text-2xl mb-6">
+                    <i class="fas fa-terminal"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-4" data-en="Code Examples" data-ar="أمثلة التعليمات البرمجية">
+                    Code Examples
+                </h3>
+                <p class="text-gray-600 mb-4" data-en="Quick start guides for multiple programming languages" data-ar="أدلة البدء السريع للغات برمجة متعددة">
+                    Quick start guides for multiple programming languages
+                </p>
+                <a href="#code-examples" class="text-blue-600 hover:underline" data-en="View Examples" data-ar="عرض الأمثلة">
+                    View Examples
+                </a>
+            </div>
+        </section>
+
+        <!-- Code Example Section -->
+        <section id="code-examples" class="mt-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8" data-en="API Code Examples" data-ar="أمثلة التعليمات البرمجية للواجهة">
+                API Code Examples
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Python Example -->
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4" data-en="Python Example" data-ar="مثال بايثون">
+                        Python Example
+                    </h3>
+                    <pre class="code-block text-sm overflow-x-auto"><code>
+import invoices_reader
+
+# Initialize the client
+client = invoices_reader.Client(api_key='YOUR_API_KEY')
+
+# Process an invoice
+invoice = client.process_invoice('invoice.pdf')
+
+# Extract key details
+total_amount = invoice.total
+vendor_name = invoice.vendor
+                    </code></pre>
+                </div>
+
+                <!-- JavaScript Example -->
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4" data-en="JavaScript Example" data-ar="مثال جافا سكريبت">
+                        JavaScript Example
+                    </h3>
+                    <pre class="code-block text-sm overflow-x-auto"><code>
+const InvoicesReader = require('invoices-reader');
+
+// Initialize the client
+const client = new InvoicesReader('YOUR_API_KEY');
+
+// Process an invoice
+client.processInvoice('invoice.pdf')
+    .then(invoice => {
+        console.log(invoice.total);
+        console.log(invoice.vendor);
+    });
+                    </code></pre>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12 mt-16">
+        <div class="container mx-auto px-6">
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p data-i18n="footer.copyright">© 2025 Invoices Reader. All rights reserved.</p>
+                <div class="flex space-x-6 rtl:space-x-reverse mt-4 md:mt-0">
+                    <a href="privacy-policy.html" class="hover:text-white transition" data-en="Privacy Policy" data-ar="سياسة الخصوصية">Privacy Policy</a>
+                    <a href="terms-of-service.html" class="hover:text-white transition" data-en="Terms of Service" data-ar="شروط الخدمة">Terms of Service</a>
+                    <a href="cookie-policy.html" class="hover:text-white transition" data-en="Cookie Policy" data-ar="سياسة ملفات تعريف الارتباط">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language toggle placeholder (you can implement full logic from invoices-reader.html)
+        function toggleLanguage() {
+            // Placeholder for language toggle functionality
+            alert('Language toggle functionality to be implemented');
+        }
+    </script>
+</body>
+</html>

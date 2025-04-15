@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation | Invoices Reader</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind configuration
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white fixed top-0 left-0 right-0 z-50 shadow-lg">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="flex items-center space-x-2 rtl:space-x-reverse">
+                    <i class="fas fa-file-invoice text-blue-400 text-2xl"></i>
+                    <span class="text-2xl font-bold">Invoices<span class="font-normal">Reader</span></span>
+                </div>
+            </div>
+            <nav class="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
+                <a href="invoices-reader.html#features" class="hover:text-blue-200 transition" data-en="Features" data-ar="الميزات">Features</a>
+                <a href="documentation.html" class="hover:text-blue-200 transition text-white" data-en="Documentation" data-ar="التوثيق">Documentation</a>
+                <a href="tutorials.html" class="hover:text-blue-200 transition" data-en="Tutorials" data-ar="الدروس التعليمية">Tutorials</a>
+                <a href="support.html" class="hover:text-blue-200 transition" data-en="Support" data-ar="الدعم">Support</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-24 container mx-auto px-6">
+        <section class="mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6" data-en="Invoices Reader Documentation" data-ar="توثيق قارئ الفواتير">
+                Invoices Reader Documentation
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl" data-en="Comprehensive guide to help you understand and use Invoices Reader effectively" data-ar="دليل شامل لمساعدتك على فهم واستخدام قارئ الفواتير بفعالية">
+                Comprehensive guide to help you understand and use Invoices Reader effectively
+            </p>
+        </section>
+
+        <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Getting Started -->
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+                <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center text-white text-2xl mb-6">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-4" data-en="Getting Started" data-ar="البدء">
+                    Getting Started
+                </h3>
+                <p class="text-gray-600 mb-4" data-en="Learn the basics of Invoices Reader and how to set it up" data-ar="تعرف على أساسيات قارئ الفواتير وكيفية إعداده">
+                    Learn the basics of Invoices Reader and how to set it up
+                </p>
+                <a href="#" class="text-blue-600 hover:underline" data-en="Read Guide" data-ar="اقرأ الدليل">
+                    Read Guide
+                </a>
+            </div>
+
+            <!-- Installation -->
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+                <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center text-white text-2xl mb-6">
+                    <i class="fas fa-download"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-4" data-en="Installation" data-ar="التثبيت">
+                    Installation
+                </h3>
+                <p class="text-gray-600 mb-4" data-en="Step-by-step instructions for installing Invoices Reader" data-ar="تعليمات خطوة بخطوة لتثبيت قارئ الفواتير">
+                    Step-by-step instructions for installing Invoices Reader
+                </p>
+                <a href="#" class="text-blue-600 hover:underline" data-en="Install Now" data-ar="التثبيت الآن">
+                    Install Now
+                </a>
+            </div>
+
+            <!-- API Reference -->
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+                <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center text-white text-2xl mb-6">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-4" data-en="API Reference" data-ar="مرجع واجهة برمجة التطبيقات">
+                    API Reference
+                </h3>
+                <p class="text-gray-600 mb-4" data-en="Detailed documentation for developers and integrators" data-ar="توثيق مفصل للمطورين والمتكاملين">
+                    Detailed documentation for developers and integrators
+                </p>
+                <a href="api.html" class="text-blue-600 hover:underline" data-en="View API Docs" data-ar="عرض وثائق واجهة برمجة التطبيقات">
+                    View API Docs
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12 mt-16">
+        <div class="container mx-auto px-6">
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p data-i18n="footer.copyright">© 2025 Invoices Reader. All rights reserved.</p>
+                <div class="flex space-x-6 rtl:space-x-reverse mt-4 md:mt-0">
+                    <a href="privacy-policy.html" class="hover:text-white transition" data-en="Privacy Policy" data-ar="سياسة الخصوصية">Privacy Policy</a>
+                    <a href="terms-of-service.html" class="hover:text-white transition" data-en="Terms of Service" data-ar="شروط الخدمة">Terms of Service</a>
+                    <a href="cookie-policy.html" class="hover:text-white transition" data-en="Cookie Policy" data-ar="سياسة ملفات تعريف الارتباط">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language toggle placeholder (you can implement full logic from invoices-reader.html)
+        function toggleLanguage() {
+            // Placeholder for language toggle functionality
+            alert('Language toggle functionality to be implemented');
+        }
+    </script>
+</body>
+</html>
