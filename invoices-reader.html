@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -141,7 +141,7 @@
         <div class="lang-icon" style="font-size: 30px; color: white; display: flex; align-items: center; justify-content: center;">
             <i class="fas fa-globe-americas" style="font-size: 1.5rem;"></i>
         </div>
-        <span class="lang-label" style="position: absolute; top: -5px; color: white; font-size: 12px; font-weight: bold;" data-en="EN" data-ar="AR">EN</span>
+        <span class="lang-label" style="position: absolute; top: -5px; color: white; font-size: 12px; font-weight: bold;" data-en="EN" data-ar="AR">AR</span>
     </div>
 
     <header class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white fixed top-0 left-0 right-0 z-50 shadow-lg">
@@ -554,6 +554,16 @@
                     }
 
                     // Call on page load
+                    document.documentElement.lang = 'ar';
+                    document.documentElement.dir = 'rtl';
+                    document.querySelector('.lang-label').textContent = 'AR';
+                    document.querySelectorAll('[data-en], [data-ar]').forEach(el => {
+                        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                            el.value = el.getAttribute('data-ar');
+                        } else {
+                            el.textContent = el.getAttribute('data-ar');
+                        }
+                    });
                     updatePayPalLanguage();
 
                     // Add to existing language toggle if possible
