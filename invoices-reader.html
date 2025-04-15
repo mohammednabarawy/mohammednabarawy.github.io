@@ -101,6 +101,37 @@
                 min-height: 200px;
             }
         }
+        
+        /* Arabic Text Spacing */
+        .arabic-heading-line {
+            display: block;
+            padding-bottom: 2rem; /* Increased spacing */
+            line-height: 1.5;
+        }
+        .arabic-heading-line:last-child {
+            padding-bottom: 0;
+        }
+        .arabic-heading-spacer {
+            display: block;
+            height: 1.5rem; /* Adjust this value to control spacing */
+        }
+        
+        /* RTL Testimonial Alignment */
+        [dir="rtl"] .testimonial-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-right: 0;
+            margin-left: 0;
+        }
+        [dir="rtl"] .testimonial-card .user-avatars {
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        [dir="rtl"] .testimonial-card .rating {
+            justify-content: center;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
@@ -122,9 +153,10 @@
                 
                 <nav class="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
                     <a href="#features" class="hover:text-blue-200 transition" data-en="Features" data-ar="الميزات">Features</a>
-                    <a href="#modes" class="hover:text-blue-200 transition" data-en="Modes" data-ar="الوضعيات">Modes</a>
+                    <a href="#modes" class="hover:text-blue-200 transition" data-en="Modes" data-ar="طرق المعالجة">Modes</a>
                     <a href="#testimonials" class="hover:text-blue-200 transition" data-en="Testimonials" data-ar="آراء العملاء">Testimonials</a>
                     <a href="#pricing" class="hover:text-blue-200 transition" data-en="Pricing" data-ar="التسعير">Pricing</a>
+                    <a href="privacy-policy.html" class="hover:text-blue-200 transition" data-en="Privacy" data-ar="الخصوصية">Privacy</a>
                 </nav>
                 
                 <div class="flex items-center space-x-4 rtl:space-x-reverse">
@@ -145,7 +177,14 @@
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 mb-12 md:mb-0">
                     <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6" data-i18n="hero.title">
-                        Extract Invoice Data <br> <span class="text-blue-200">Automatically with AI</span>
+                        <span class="english-heading">
+                            Extract Invoice Data <br> 
+                            <span class="text-blue-200">Automatically with AI</span>
+                        </span>
+                        <span lang="ar" class="arabic-heading-container" style="display:none">
+                            <span class="arabic-heading-line">استخراج بيانات الفواتير</span>
+                            <span class="arabic-heading-line text-blue-200">تلقائيًا باستخدام الذكاء الاصطناعي</span>
+                        </span>
                     </h1>
                     <p class="text-xl text-blue-100 mb-8 max-w-lg" data-i18n="hero.subtitle">
                         Save hours of manual data entry. Invoices Reader uses advanced AI to accurately extract invoice details and export to your favorite formats.
@@ -160,15 +199,15 @@
                             <i class="fas fa-play-circle rtl:mr-2 rtl:ml-0 ml-2"></i>
                         </button>
                     </div>
-                    <div class="mt-8 flex items-center text-blue-100 rtl:flex-row-reverse">
-                        <div class="flex -space-x-2 rtl:space-x-reverse">
-                            <img src="https://randomuser.me/api/portraits/women/12.jpg" class="w-10 h-10 rounded-full border-2 border-blue-300" alt="User">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-10 h-10 rounded-full border-2 border-blue-300" alt="User">
+                    <div class="mt-8 flex items-center text-blue-100 rtl:flex-col rtl:items-center rtl:justify-center rtl:text-center">
+                        <div class="flex -space-x-2 rtl:space-x-reverse rtl:justify-center">
+                            <img src="https://randomuser.me/api/portraits/men/11.jpg" class="w-10 h-10 rounded-full border-2 border-blue-300" alt="User">
+                            <img src="https://randomuser.me/api/portraits/men/20.jpg" class="w-10 h-10 rounded-full border-2 border-blue-300" alt="User">
                             <img src="https://randomuser.me/api/portraits/women/45.jpg" class="w-10 h-10 rounded-full border-2 border-blue-300" alt="User">
                         </div>
-                        <div class="rtl:mr-4 ltr:ml-4">
+                        <div class="rtl:mr-0 ltr:ml-4 rtl:text-center">
                             <p class="text-sm font-medium" data-i18n="hero.trusted">Trusted by 5,000+ businesses</p>
-                            <div class="flex items-center rtl:flex-row-reverse">
+                            <div class="flex items-center rtl:justify-center">
                                 <i class="fas fa-star text-yellow-300 rtl:ml-1 ltr:mr-1"></i>
                                 <i class="fas fa-star text-yellow-300 rtl:ml-1 ltr:mr-1"></i>
                                 <i class="fas fa-star text-yellow-300 rtl:ml-1 ltr:mr-1"></i>
@@ -180,7 +219,7 @@
                     </div>
                 </div>
                 <div class="md:w-1/2 flex justify-center">
-                    <img src="https://via.placeholder.com/600x400/1e40af/ffffff?text=Invoices+Reader+App" alt="Invoices Reader App" class="hero-image max-w-md w-full">
+                    <img src="images/invoices reader screenshots/extract data.png" alt="Invoices Reader App" class="hero-image max-w-md w-full">
                 </div>
             </div>
         </div>
@@ -220,7 +259,7 @@
                     </div>
                     <h3 class="text-xl font-bold text-gray-800 mb-3" data-i18n="features.2.title">Multiple Export Formats</h3>
                     <p class="text-gray-600" data-i18n="features.2.description">
-                        Export extracted data to Excel, CSV, JSON, or directly to your accounting software like QuickBooks, Xero, or FreshBooks.
+                        Export extracted data to Excel or directly to your Odoo accounting software.
                     </p>
                 </div>
                 
@@ -231,7 +270,7 @@
                     </div>
                     <h3 class="text-xl font-bold text-gray-800 mb-3" data-i18n="features.3.title">Batch Processing</h3>
                     <p class="text-gray-600" data-i18n="features.3.description">
-                        Process hundreds of invoices at once. Simply drop a folder of PDFs or images and let Invoices Reader do the rest.
+                        Process hundreds of invoices at once. Simply choose a folder of images and let Invoices Reader do the rest.
                     </p>
                 </div>
                 
@@ -242,7 +281,7 @@
                     </div>
                     <h3 class="text-xl font-bold text-gray-800 mb-3" data-i18n="features.4.title">Validation Rules</h3>
                     <p class="text-gray-600" data-i18n="features.4.description">
-                        Set custom validation rules to flag discrepancies in invoice totals, tax calculations, or missing information.
+                        the app uses validation rules to flag discrepancies in invoice totals, tax calculations, or missing information.
                     </p>
                 </div>
                 
@@ -370,7 +409,7 @@
             <div class="mt-12 text-center">
                 <div class="inline-flex items-center bg-blue-50 rounded-full px-6 py-3">
                     <i class="fas fa-info-circle text-blue-600 mr-2"></i>
-                    <span class="text-blue-600 font-medium" data-en="You can switch between modes anytime based on your needs" data-ar="يمكنك التبديل بين الوضعيات في أي وقت بناءً على احتياجاتك">You can switch between modes anytime based on your needs</span>
+                    <span class="text-blue-600 font-medium" data-en="You can switch between modes anytime based on your needs" data-ar="يمكنك التبديل بين طرق المعالجة في أي وقت بناءً على احتياجاتك">You can switch between modes anytime based on your needs</span>
                 </div>
             </div>
         </div>
@@ -466,7 +505,7 @@
     <section id="pricing" class="py-20 bg-white">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-en="Simple Lifetime Pricing" data-ar="تسعير مدى الحياة البسيط">Simple Lifetime Pricing</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-en="Simple Lifetime Pricing" data-ar="رخصة مدي الحياة">Simple Lifetime Pricing</h2>
                 <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-en="Pay once and use forever. No subscriptions, no hidden fees." data-ar="ادفع مرة واحدة واستخدم إلى الأبد. لا اشتراكات، ولا رسوم خفية.">
                     Pay once and use forever. No subscriptions, no hidden fees.
                 </p>
@@ -479,7 +518,7 @@
                         LIMITED TIME OFFER
                     </div>
                     <h3 class="text-2xl font-bold text-gray-800 mb-2" data-en="Lifetime License" data-ar="رخصة مدى الحياة">Lifetime License</h3>
-                    <p class="text-gray-600 mb-4" data-en="One-time payment, use forever with all future updates included" data-ar="دفعة لمرة واحدة، استخدم للأبد مع تضمين جميع التحديثات المستقبلية">
+                    <p class="text-gray-600 mb-4" data-en="One-time payment, use forever with all future updates included" data-ar="دفعة لمرة واحدة، استخدم للأبد مع جميع التحديثات المستقبلية">
                         One-time payment, use forever with all future updates included
                     </p>
                     <div class="flex items-end mb-6">
@@ -520,7 +559,7 @@
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span class="text-gray-700" data-en="All export formats (Excel, CSV, JSON)" data-ar="جميع تنسيقات التصدير (Excel، CSV، JSON)">All export formats (Excel, CSV, JSON)</span>
+                                <span class="text-gray-700" data-en="export to Excel and sync with Odoo" data-ar="التصدير الى اكسل و المزامنة مع أودوو">export to Excel and sync with Odoo</span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
@@ -532,7 +571,7 @@
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span class="text-gray-700" data-en="Priority email support" data-ar="دعم البريد الإلكتروني الأولوية">Priority email support</span>
+                                <span class="text-gray-700" data-en="email and Anydesk support" data-ar="دعم عبر البريد الإلكتروني و أني ديسك">email and Anydesk support</span>
                             </li>
                         </ul>
                     </div>
@@ -547,11 +586,11 @@
                             </div>
                             <div>
                                 <h4 class="font-medium text-gray-800" data-en="What if I'm not satisfied?" data-ar="ماذا لو لم أكن راضيًا؟">What if I'm not satisfied?</h4>
-                                <p class="text-gray-600 mt-1" data-en="We offer a 30-day money-back guarantee with no questions asked." data-ar="نقدم ضمان استرداد الأموال لمدة 30 يومًا بدون أسئلة.">We offer a 30-day money-back guarantee with no questions asked.</p>
+                                <p class="text-gray-600 mt-1" data-en="We offer a 30-day money-back guarantee if we couldn't help you." data-ar="نقدم ضمان استرداد الأموال لمدة 30 يومًا اذا لم نحل لك المشكلة.">We offer a 30-day money-back guarantee if we couldn't help you.</p>
                             </div>
                             <div>
                                 <h4 class="font-medium text-gray-800" data-en="How many devices can I install on?" data-ar="كم جهازًا يمكنني تثبيته؟">How many devices can I install on?</h4>
-                                <p class="text-gray-600 mt-1" data-en="Your license allows installation on up to 3 devices for personal use." data-ar="ترخيصك يسمح بتثبيت على ما يصل إلى 3 أجهزة للاستخدام الشخصي.">Your license allows installation on up to 3 devices for personal use.</p>
+                                <p class="text-gray-600 mt-1" data-en="Your license allows installation on 1 device only." data-ar="ترخيصك يسمح بتثبيت البرنامج على جهاز واحد فقط.">Your license allows installation on 1 device only.</p>
                             </div>
                         </div>
                     </div>
@@ -563,7 +602,7 @@
     <!-- CTA Section -->
     <section class="gradient-bg text-white py-20">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6" data-en="Limited Time Offer: Lifetime Access for 550 SAR" data-ar="عرض لفترة محدودة: وصول مدى الحياة مقابل 550 ريال">Limited Time Offer: Lifetime Access for 550 SAR</h2>
+            <h2 class="text-3xl md:text-4xl font-bold mb-6" data-en="Limited Time Offer: Lifetime Access for 550 SAR only" data-ar="عرض لفترة محدودة: وصول مدى الحياة مقابل 550 ريال فقط">Limited Time Offer: Lifetime Access for 550 SAR only</h2>
             <p class="text-xl text-blue-100 max-w-2xl mx-auto mb-8" data-en="This special pricing won't last forever. Get all features with no recurring fees." data-ar="هذا التسعير الخاص لن يستمر إلى الأبد. احصل على جميع الميزات بدون رسوم متكررة.">
                 This special pricing won't last forever. Get all features with no recurring fees.
             </p>
@@ -646,11 +685,11 @@
             </div>
             
             <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p data-i18n="footer.copyright"> 2023 Invoices Reader. All rights reserved.</p>
+                <p data-i18n="footer.copyright"> 2025 Invoices Reader. All rights reserved.</p>
                 <div class="flex space-x-6 rtl:space-x-reverse mt-4 md:mt-0">
-                    <a href="#" class="hover:text-white transition" data-en="Privacy Policy" data-ar="سياسة الخصوصية">Privacy Policy</a>
-                    <a href="#" class="hover:text-white transition" data-en="Terms of Service" data-ar="شروط الخدمة">Terms of Service</a>
-                    <a href="#" class="hover:text-white transition" data-en="Cookie Policy" data-ar="سياسة ملفات تعريف الارتباط">Cookie Policy</a>
+                    <a href="privacy-policy.html" class="hover:text-white transition" data-en="Privacy Policy" data-ar="سياسة الخصوصية">Privacy Policy</a>
+                    <a href="terms-of-service.html" class="hover:text-white transition" data-en="Terms of Service" data-ar="شروط الخدمة">Terms of Service</a>
+                    <a href="cookie-policy.html" class="hover:text-white transition" data-en="Cookie Policy" data-ar="سياسة ملفات تعريف الارتباط">Cookie Policy</a>
                 </div>
             </div>
         </div>
@@ -694,15 +733,15 @@
                     },
                     "2": {
                         title: "Multiple Export Formats",
-                        description: "Export extracted data to Excel, CSV, JSON, or directly to your accounting software like QuickBooks, Xero, or FreshBooks."
+                        description: "Export extracted data to Excel or directly to your Odoo accounting software."
                     },
                     "3": {
                         title: "Batch Processing",
-                        description: "Process hundreds of invoices at once. Simply drop a folder of PDFs or images and let Invoices Reader do the rest."
+                        description: "Process hundreds of invoices at once. Simply choose a folder of images and let Invoices Reader do the rest."
                     },
                     "4": {
                         title: "Validation Rules",
-                        description: "Set custom validation rules to flag discrepancies in invoice totals, tax calculations, or missing information."
+                        description: "the app uses validation rules to flag discrepancies in invoice totals, tax calculations, or missing information."
                     },
                     "5": {
                         title: "Secure & Private",
@@ -815,7 +854,7 @@
                     companyContact: "Contact",
                     companyPrivacy: "Privacy",
                     companyTerms: "Terms",
-                    copyright: " 2023 Invoices Reader. All rights reserved.",
+                    copyright: " 2025 Invoices Reader. All rights reserved.",
                     privacyPolicy: "Privacy Policy",
                     terms: "Terms of Service",
                     cookies: "Cookie Policy"
@@ -845,15 +884,15 @@
                     },
                     "2": {
                         title: "تنسيقات تصدير متعددة",
-                        description: "قم بتصدير البيانات المستخرجة إلى Excel أو CSV أو JSON أو مباشرة إلى برنامج المحاسبة الخاص بك مثل QuickBooks أو Xero أو FreshBooks."
+                        description: "قم بتصدير البيانات المستخرجة إلى Excel  أو مباشرة إلى برنامج Odoo."
                     },
                     "3": {
                         title: "معالجة الدُفعات",
-                        description: "قم بمعالجة المئات من الفواتير دفعة واحدة. ما عليك سوى إسقاط مجلد من ملفات PDF أو الصور واترك Invoices Reader يقوم بالباقي."
+                        description: "قم بمعالجة المئات من الفواتير دفعة واحدة. ما عليك سوى اختيار مجلد الصور واترك Invoices Reader يقوم بالباقي."
                     },
                     "4": {
                         title: "قواعد التحقق",
-                        description: "قم بتعيين قواعد تحقق مخصصة للإشارة إلى التناقضات في إجمالي الفواتير أو حسابات الضرائب أو المعلومات المفقودة."
+                        description: "يتم استخدام قواعد تحقق مخصصة للإشارة إلى التناقضات في إجمالي الفواتير أو حسابات الضرائب أو المعلومات المفقودة."
                     },
                     "5": {
                         title: "آمن وخاص",
@@ -861,7 +900,7 @@
                     },
                     "6": {
                         title: "التعلم المستمر",
-                        description: "يتحسن الذكاء الاصطناعي لدينا بمرور الوقت. قم بتصحيح أي أخطاء ويتعلم النظام للتعامل مع الفواتير المماثلة بشكل أفضل في المرة القادمة."
+                        description: "يتحسن الذكاء الاصطناعي لدينا بمرور الوقت. قم بتصحيح الأخطاء ويتعلم النظام للتعامل مع الفواتير المماثلة بشكل أفضل في المرة القادمة."
                     }
                 },
                 howItWorks: {
@@ -966,7 +1005,7 @@
                     companyContact: "اتصل بنا",
                     companyPrivacy: "الخصوصية",
                     companyTerms: "الشروط",
-                    copyright: " 2023 Invoices Reader. جميع الحقوق محفوظة.",
+                    copyright: " 2025 Invoices Reader. جميع الحقوق محفوظة.",
                     privacyPolicy: "سياسة الخصوصية",
                     terms: "شروط الخدمة",
                     cookies: "سياسة ملفات تعريف الارتباط"
