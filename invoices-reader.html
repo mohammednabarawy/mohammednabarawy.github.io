@@ -1,910 +1,1057 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoices Reader - Smart Invoice Data Extraction | Mohamed ElNabarawi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <title>Invoices Reader - AI-Powered Invoice Data Extraction for Windows</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --text-color: #333;
-            --background-color: #f4f6f7;
+        .gradient-bg {
+            background: linear-gradient(135deg, #6b73ff 0%, #000dff 100%);
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        .hero-image {
+            box-shadow: 0 25px 50px -12px rgba(0, 13, 255, 0.25);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--background-color);
-            padding-top: 80px;
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
         }
-
-        /* Language-specific styles */
-        body.ar {
-            font-family: 'Amiri', serif;
+        .windows-btn {
+            background: linear-gradient(180deg, #0078d7 0%, #0063b1 100%);
+        }
+        .windows-btn:hover {
+            background: linear-gradient(180deg, #0063b1 0%, #004e8a 100%);
+        }
+        .animated-arrow {
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        [lang="ar"] {
             direction: rtl;
         }
-        
-        body.ar .section-title,
-        body.ar h1, 
-        body.ar h2, 
-        body.ar p {
-            text-align: right;
-        }
-
-        /* Enhanced Language Toggle Styles */
         .language-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 9999;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            cursor: pointer;
-            transition: all 0.4s ease;
-            border: 3px solid rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 4px;
+            display: inline-flex;
         }
-
-        .language-toggle .lang-icon {
-            font-size: 30px;
-            color: white;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transform-style: preserve-3d;
-            transition: transform 0.4s ease;
-        }
-
-        .language-toggle .lang-icon::before {
-            content: 'EN';
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%) translateZ(20px);
-            font-size: 10px;
-            color: white;
-            opacity: 0.7;
-        }
-
-        .language-toggle:hover .lang-icon {
-            transform: rotateY(180deg);
-        }
-
-        body.ar .language-toggle .lang-icon::before {
-            content: 'AR';
-        }
-
-        /* Header Styles */
-        header {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%);
-            color: white;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        header .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            position: relative;
-        }
-
-        header .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            z-index: 1001;
-        }
-
-        header .logo img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 15px;
-            object-fit: cover;
-        }
-
-        header nav {
-            display: flex;
-            align-items: center;
-        }
-
-        header nav ul {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-            margin: 0;
-            padding: 0;
-        }
-
-        header nav ul li a {
-            color: white;
-            text-decoration: none;
+        .language-toggle button {
+            padding: 4px 12px;
+            border-radius: 16px;
             font-weight: 500;
             transition: all 0.3s ease;
-            position: relative;
-            padding: 5px 0;
-            font-size: 1rem;
         }
-
-        header nav ul li a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background-color: white;
-            transition: width 0.3s ease;
+        .language-toggle button.active {
+            background: white;
+            color: #000dff;
         }
-
-        header nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        /* Enhanced Mobile Menu */
-        @media screen and (max-width: 768px) {
-            .hamburger-menu {
-                display: block;
-                width: 40px;
-                height: 40px;
-                position: relative;
-                cursor: pointer;
-                z-index: 1001;
-                margin-right: 10px;
-            }
-
-            .hamburger-menu .bar {
-                width: 25px;
-                height: 3px;
-                background-color: white;
-                margin: 5px auto;
-                transition: all 0.3s ease;
-            }
-
-            .hamburger-menu.active .bar:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
-            }
-
-            .hamburger-menu.active .bar:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger-menu.active .bar:nth-child(3) {
-                transform: rotate(-45deg) translate(7px, -7px);
-            }
-
-            header nav {
-                position: fixed;
-                top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100vh;
-                background: linear-gradient(135deg, rgba(102, 126, 234, 0.98) 0%, rgba(118, 75, 162, 0.98) 100%);
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                transition: left 0.3s ease;
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-            }
-
-            header nav.mobile-active {
-                left: 0;
-            }
-
-            header nav ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 30px;
-            }
-
-            header nav ul li a {
-                font-size: 1.5rem;
-                padding: 10px 20px;
-            }
-
-            body.menu-open {
-                overflow: hidden;
-            }
-        }
-
-        /* Contact Modal Styles */
-        .contact-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
+        .hidden-language {
             display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
         }
-
-        .contact-modal.show {
-            display: flex;
-            opacity: 1;
-        }
-
-        .contact-modal-content {
-            background: white;
-            border-radius: 15px;
-            width: 90%;
-            max-width: 500px;
-            padding: 30px;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-            transform: scale(0.7);
-            transition: all 0.3s ease;
-        }
-
-        .contact-modal.show .contact-modal-content {
-            transform: scale(1);
-        }
-
-        .contact-modal-close {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 24px;
-            cursor: pointer;
-            color: #888;
-            transition: color 0.3s ease;
-        }
-
-        .contact-modal-close:hover {
-            color: #333;
-        }
-
-        /* Content Section Styles */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 60px 0;
-            background: white;
-            margin-bottom: 30px;
-        }
-
-        .hero-section {
-            background: linear-gradient(135deg, #f6f9fc 0%, #eef2ff 100%);
-            padding: 80px 0 60px;
-            margin-top: 0;
-            text-align: center;
-        }
-
-        .hero-title {
-            font-size: 2.5rem;
-            color: #2c3e50;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .subtitle {
-            font-size: 1.5rem;
-            color: #4a5568;
-            margin-bottom: 30px;
-        }
-
-        .promo-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #ff6b6b 0%, #ee0979 100%);
-            color: white;
-            padding: 10px 25px;
-            border-radius: 25px;
-            font-weight: bold;
-            margin-bottom: 30px;
+        .pulse {
             animation: pulse 2s infinite;
-            box-shadow: 0 5px 15px rgba(238, 9, 121, 0.3);
         }
-
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
-
-        .hero-image-container {
-            max-width: 800px;
-            margin: 40px auto;
+        .limited-time-badge {
+            background: linear-gradient(90deg, #ff8a00 0%, #e52e71 100%);
         }
-
-        .hero-image {
-            width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-
-        .features-grid, .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .feature-item, .benefit-item {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        .mode-card {
             transition: all 0.3s ease;
+            border-top: 4px solid;
         }
-
-        .feature-item:hover, .benefit-item:hover {
+        .mode-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
         }
-
-        .feature-item i, .benefit-item i {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .qr-mode {
+            border-top-color: #10B981;
         }
-
-        .feature-item h3, .benefit-item h3 {
-            color: #2c3e50;
-            margin-bottom: 15px;
+        .cloud-mode {
+            border-top-color: #3B82F6;
         }
-
-        .feature-item p, .benefit-item p {
-            color: #4a5568;
+        .local-mode {
+            border-top-color: #8B5CF6;
         }
-
-        .steps-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+        
+        /* Modal Styles */
+        #videoModal {
+            transition: opacity 0.3s ease;
         }
-
-        .step {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
+        #videoModal iframe {
+            min-height: 400px;
         }
-
-        .step:hover {
-            transform: translateY(-5px);
-        }
-
-        .step-number {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin: 0 auto 20px;
-        }
-
-        .tech-content {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            margin-top: 40px;
-        }
-
-        .tech-content h3 {
-            color: #2c3e50;
-            margin: 30px 0 20px;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 10px;
-            display: inline-block;
-        }
-
-        .tech-content ul {
-            list-style: none;
-            padding: 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .tech-content ul li {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            color: #4a5568;
-            transition: all 0.3s ease;
-        }
-
-        .tech-content ul li:before {
-            content: '✓';
-            margin-right: 10px;
-            color: #667eea;
-            font-weight: bold;
-        }
-
-        .tech-content ul li:hover {
-            background: #eef2ff;
-            transform: translateX(5px);
-        }
-
-        .cta-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 80px 0;
-            text-align: center;
-            margin: 60px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.1)"/></svg>');
-            background-size: 300px 300px;
-            opacity: 0.1;
-            animation: rotate 60s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: white;
-            color: #764ba2;
-            padding: 15px 40px;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            margin-top: 30px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-        }
-
-        .cta-button::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255,255,255,0.2);
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
-        }
-
-        .cta-button:hover::after {
-            transform: translateX(0);
-        }
-
-        @media screen and (max-width: 768px) {
-            .hero-title {
-                font-size: 2rem;
-                padding: 0 20px;
+        @media (max-width: 768px) {
+            #videoModal iframe {
+                min-height: 200px;
             }
-
-            .subtitle {
-                font-size: 1.2rem;
-                padding: 0 20px;
-            }
-
-            .tech-content {
-                padding: 20px;
-                margin: 20px;
-            }
-
-            .tech-content ul {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-section {
-                padding: 40px 0;
-            }
-
-            .cta-button {
-                padding: 12px 30px;
-                font-size: 1.1rem;
-            }
-        }
-
-        /* RTL Support */
-        body.ar .tech-content ul li:before {
-            margin-right: 0;
-            margin-left: 10px;
-        }
-
-        body.ar .tech-content ul li:hover {
-            transform: translateX(-5px);
         }
     </style>
 </head>
-<body>
-    <!-- Language Toggle Button -->
-    <div class="language-toggle" onclick="toggleLanguage()">
-        <div class="lang-icon">
-            <i class="fas fa-globe-americas"></i>
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <!-- Header with Language Toggle and Mobile Menu -->
+    <div class="language-toggle" style="position: fixed; top: 20px; right: 20px; z-index: 9999; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2); cursor: pointer; transition: all 0.4s ease; border: 3px solid rgba(255,255,255,0.2);" onclick="toggleLanguage()">
+        <div class="lang-icon" style="font-size: 30px; color: white; display: flex; align-items: center; justify-content: center;">
+            <i class="fas fa-globe-americas" style="font-size: 1.5rem;"></i>
         </div>
+        <span class="lang-label" style="position: absolute; top: -5px; color: white; font-size: 12px; font-weight: bold;" data-en="EN" data-ar="AR">EN</span>
     </div>
 
-    <!-- Header -->
-    <header>
-        <div class="header-container">
-            <div class="hamburger-menu" onclick="toggleMobileMenu()">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
+    <header class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white fixed top-0 left-0 right-0 z-50 shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2 rtl:space-x-reverse">
+                    <i class="fas fa-file-invoice text-2xl"></i>
+                    <span class="text-xl font-bold">Invoices<span class="font-normal">Reader</span></span>
+                </div>
+                
+                <nav class="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
+                    <a href="#features" class="hover:text-blue-200 transition" data-en="Features" data-ar="الميزات">Features</a>
+                    <a href="#modes" class="hover:text-blue-200 transition" data-en="Modes" data-ar="الوضعيات">Modes</a>
+                    <a href="#testimonials" class="hover:text-blue-200 transition" data-en="Testimonials" data-ar="آراء العملاء">Testimonials</a>
+                    <a href="#pricing" class="hover:text-blue-200 transition" data-en="Pricing" data-ar="التسعير">Pricing</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                    <button class="bg-white text-blue-600 px-6 py-2 rounded-full font-medium transition hover:bg-blue-100 hover:shadow-lg" onclick="window.open('https://drive.google.com/file/d/1jMQi3JulbMJ4DEBYIvZjjWlXXK3W9KUZ/view?usp=drive_link','_blank')" data-en="Download Now" data-ar="تحميل الآن">
+                        Download Now
+                    </button>
+                    <button class="md:hidden text-2xl" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
             </div>
-            <a href="index.html" class="logo">
-                <img src="images/profile.jpg" alt="Mohamed ElNabarawi">
-                Mohamed ElNabarawi
-            </a>
-            <nav>
-                <ul>
-                    <li><a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a></li>
-                    <li><a href="index.html#about" data-en="About" data-ar="من أنا">About</a></li>
-                    <li><a href="index.html#skills" data-en="Skills" data-ar="المهارات">Skills</a></li>
-                    <li><a href="index.html#publications" data-en="Publications" data-ar="المنشورات">Publications</a></li>
-                    <li><a href="#" onclick="openContactModal()" data-en="Contact" data-ar="تواصل">Contact</a></li>
-                    <li><a href="cv.html" data-en="CV" data-ar="السيرة الذاتية">CV</a></li>
-                </ul>
-            </nav>
         </div>
     </header>
 
-    <main id="project-content" lang="en">
-        <section class="hero-section">
-            <div class="container">
-                <h1 class="hero-title" data-en="Invoices Reader - Smart Invoice Data Extraction" data-ar="قارئ الفواتير - استخراج ذكي لبيانات الفواتير">Invoices Reader - Smart Invoice Data Extraction</h1>
-                <p class="subtitle" data-en="Transform Your Invoice Processing with AI-Powered Automation" data-ar="حوّل معالجة فواتيرك مع أتمتة مدعومة بالذكاء الاصطناعي">Transform Your Invoice Processing with AI-Powered Automation</p>
-                <div class="promo-badge" data-en="Limited Time Offer - 50% OFF!" data-ar="عرض لفترة محدودة - خصم 50٪!">Limited Time Offer - 50% OFF!</div>
-                <div class="hero-image-container">
-                    <img src="images/invoices reader screenshots/invoices-reader.png" alt="Invoices Reader App Interface" class="hero-image">
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white">
+        <div class="container mx-auto px-6 py-20 md:py-32">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6" data-i18n="hero.title">
+                        Extract Invoice Data <br> <span class="text-blue-200">Automatically with AI</span>
+                    </h1>
+                    <p class="text-xl text-blue-100 mb-8 max-w-lg" data-i18n="hero.subtitle">
+                        Save hours of manual data entry. Invoices Reader uses advanced AI to accurately extract invoice details and export to your favorite formats.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
+                        <button class="windows-btn text-white px-8 py-4 rounded-full font-bold text-lg transition hover:shadow-lg flex items-center justify-center" onclick="window.open('https://drive.google.com/file/d/1jMQi3JulbMJ4DEBYIvZjjWlXXK3W9KUZ/view?usp=drive_link','_blank')">
+                            <i class="fab fa-windows mr-2 text-xl rtl:ml-2 rtl:mr-0"></i> 
+                            <span data-i18n="hero.downloadButton">Download for Windows</span>
+                        </button>
+                        <button class="bg-white text-blue-600 px-8 py-4 rounded-full font-bold text-lg transition hover:bg-gray-100 hover:shadow-lg" onclick="openVideo()">
+                            <span data-i18n="hero.demoButton">Watch Demo</span> 
+                            <i class="fas fa-play-circle rtl:mr-2 rtl:ml-0 ml-2"></i>
+                        </button>
+                    </div>
+                    <div class="mt-8 flex items-center text-blue-100 rtl:flex-row-reverse">
+                        <div class="flex -space-x-2 rtl:space-x-reverse">
+                            <img src="https://randomuser.me/api/portraits/women/12.jpg" class="w-10 h-10 rounded-full border-2 border-blue-300" alt="User">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-10 h-10 rounded-full border-2 border-blue-300" alt="User">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg" class="w-10 h-10 rounded-full border-2 border-blue-300" alt="User">
+                        </div>
+                        <div class="rtl:mr-4 ltr:ml-4">
+                            <p class="text-sm font-medium" data-i18n="hero.trusted">Trusted by 5,000+ businesses</p>
+                            <div class="flex items-center rtl:flex-row-reverse">
+                                <i class="fas fa-star text-yellow-300 rtl:ml-1 ltr:mr-1"></i>
+                                <i class="fas fa-star text-yellow-300 rtl:ml-1 ltr:mr-1"></i>
+                                <i class="fas fa-star text-yellow-300 rtl:ml-1 ltr:mr-1"></i>
+                                <i class="fas fa-star text-yellow-300 rtl:ml-1 ltr:mr-1"></i>
+                                <i class="fas fa-star text-yellow-300 rtl:ml-1 ltr:mr-1"></i>
+                                <span class="rtl:mr-1 ltr:ml-1">4.9/5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="https://via.placeholder.com/600x400/1e40af/ffffff?text=Invoices+Reader+App" alt="Invoices Reader App" class="hero-image max-w-md w-full">
                 </div>
             </div>
-        </section>
+        </div>
+        <div class="text-center pb-8">
+            <a href="#features" class="text-white text-2xl animated-arrow inline-block">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
 
-        <section class="introduction-section">
-            <div class="container">
-                <div class="intro-text">
-                    <h2 data-en="Imagine Processing Invoices with Just One Click!" data-ar="تخيل معالجة الفواتير بنقرة واحدة!">Imagine Processing Invoices with Just One Click!</h2>
-                    <p class="highlight-text" data-en="How much time and effort would you save? How many errors would you avoid?" 
-                       data-ar="كم من الوقت والجهد ستوفر؟ وكم من الأخطاء ستتجنب؟">How much time and effort would you save? How many errors would you avoid?</p>
-                    <p class="intro-description" data-en="Introducing Invoices Reader - an intelligent software that uses artificial intelligence to extract data from both paper and electronic invoices with unmatched precision!" 
-                       data-ar="نقدم لكم قارئ الفواتير - برنامج ذكي يستخدم الذكاء الاصطناعي لاستخراج بيانات الفواتير الورقية والإلكترونية بدقة متناهية!">Introducing Invoices Reader - an intelligent software that uses artificial intelligence to extract data from both paper and electronic invoices with unmatched precision!</p>
-                </div>
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-i18n="features.title">Powerful Features Designed for Efficiency</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-i18n="features.subtitle">
+                    Our AI-powered solution handles all types of invoices with unmatched accuracy
+                </p>
             </div>
-        </section>
-
-        <section class="features-section">
-            <div class="container">
-                <h2 data-en="Powerful Features" data-ar="مميزات البرنامج">Powerful Features</h2>
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <i class="fas fa-robot"></i>
-                        <h3 data-en="Automatic Data Extraction" data-ar="استخراج تلقائي للبيانات">Automatic Data Extraction</h3>
-                        <p data-en="Say goodbye to manual data entry! Our AI processes invoices automatically." 
-                           data-ar="وداعًا للإدخال اليدوي! يقوم الذكاء الاصطناعي لدينا بمعالجة الفواتير تلقائياً.">Say goodbye to manual data entry! Our AI processes invoices automatically.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-lg transition duration-300">
+                    <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center text-white text-2xl mb-6">
+                        <i class="fas fa-brain"></i>
                     </div>
-                    <div class="feature-item">
-                        <i class="fas fa-check-double"></i>
-                        <h3 data-en="Superior Accuracy" data-ar="دقة فائقة">Superior Accuracy</h3>
-                        <p data-en="Eliminate calculation errors with precise data extraction" 
-                           data-ar="تخلص من الأخطاء الحسابية مع استخراج دقيق للبيانات">Eliminate calculation errors with precise data extraction</p>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-file-invoice"></i>
-                        <h3 data-en="Universal Invoice Support" data-ar="دعم جميع أنواع الفواتير">Universal Invoice Support</h3>
-                        <p data-en="Process both paper and electronic invoices with ease" 
-                           data-ar="معالجة الفواتير الورقية والإلكترونية بسهولة">Process both paper and electronic invoices with ease</p>
-                    </div>
-                    <div class="feature-item">
+                    <h3 class="text-xl font-bold text-gray-800 mb-3" data-i18n="features.1.title">Smart AI Extraction</h3>
+                    <p class="text-gray-600" data-i18n="features.1.description">
+                        Our advanced AI understands invoice layouts and extracts key data like vendor info, line items, totals, and dates with 99% accuracy.
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-lg transition duration-300">
+                    <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center text-white text-2xl mb-6">
                         <i class="fas fa-file-export"></i>
-                        <h3 data-en="Easy Export" data-ar="تصدير سهل">Easy Export</h3>
-                        <p data-en="Export data directly to Excel or any accounting system" 
-                           data-ar="تصدير البيانات مباشرة إلى Excel أو أي نظام محاسبي">Export data directly to Excel or any accounting system</p>
                     </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3" data-i18n="features.2.title">Multiple Export Formats</h3>
+                    <p class="text-gray-600" data-i18n="features.2.description">
+                        Export extracted data to Excel, CSV, JSON, or directly to your accounting software like QuickBooks, Xero, or FreshBooks.
+                    </p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-lg transition duration-300">
+                    <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center text-white text-2xl mb-6">
+                        <i class="fas fa-folder-open"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3" data-i18n="features.3.title">Batch Processing</h3>
+                    <p class="text-gray-600" data-i18n="features.3.description">
+                        Process hundreds of invoices at once. Simply drop a folder of PDFs or images and let Invoices Reader do the rest.
+                    </p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-lg transition duration-300">
+                    <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center text-white text-2xl mb-6">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3" data-i18n="features.4.title">Validation Rules</h3>
+                    <p class="text-gray-600" data-i18n="features.4.description">
+                        Set custom validation rules to flag discrepancies in invoice totals, tax calculations, or missing information.
+                    </p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-lg transition duration-300">
+                    <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center text-white text-2xl mb-6">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3" data-i18n="features.5.title">Secure & Private</h3>
+                    <p class="text-gray-600" data-i18n="features.5.description">
+                        Your data never leaves your computer. All processing happens locally with enterprise-grade encryption.
+                    </p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-lg transition duration-300">
+                    <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center text-white text-2xl mb-6">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3" data-i18n="features.6.title">Continuous Learning</h3>
+                    <p class="text-gray-600" data-i18n="features.6.description">
+                        Our AI improves over time. Correct any mistakes and the system learns to handle similar invoices better next time.
+                    </p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="how-it-works">
-            <div class="container">
-                <h2 data-en="How It Works" data-ar="كيف يعمل">How It Works</h2>
-                <div class="steps-container">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <h3 data-en="Select Invoice Folder" data-ar="اختر مجلد الفواتير">Select Invoice Folder</h3>
-                        <p data-en="Choose a folder containing your invoice images" 
-                           data-ar="اختر المجلد الذي يحتوي على صور الفواتير">Choose a folder containing your invoice images</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <h3 data-en="Start Processing" data-ar="ابدأ المعالجة">Start Processing</h3>
-                        <p data-en="Click 'Start' and let our AI do the work" 
-                           data-ar="انقر على 'ابدأ' ودع الذكاء الاصطناعي يقوم بالعمل">Click 'Start' and let our AI do the work</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <h3 data-en="Export Results" data-ar="تصدير النتائج">Export Results</h3>
-                        <p data-en="Get your data in Excel format instantly" 
-                           data-ar="احصل على بياناتك بتنسيق Excel على الفور">Get your data in Excel format instantly</p>
-                    </div>
-                </div>
+    <!-- Processing Modes Section -->
+    <section id="modes" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-en="Three Powerful Processing Modes" data-ar="ثلاث طرق معالجة قوية">Three Powerful Processing Modes</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-en="Choose the best method for your needs - from fastest to most private" data-ar="اختر الطريقة الأنسب لاحتياجاتك - من الأسرع إلى الأكثر خصوصية">
+                    Choose the best method for your needs - from fastest to most private
+                </p>
             </div>
-        </section>
-
-        <section class="key-benefits">
-            <div class="container">
-                <h2 data-en="Key Benefits" data-ar="الفوائد الرئيسية">Key Benefits</h2>
-                <div class="benefits-grid">
-                    <div class="benefit-item">
-                        <i class="fas fa-clock"></i>
-                        <h3 data-en="Save Time" data-ar="توفير الوقت">Save Time</h3>
-                        <p data-en="Process hundreds of invoices in minutes instead of hours" 
-                           data-ar="معالجة مئات الفواتير في دقائق بدلاً من ساعات">Process hundreds of invoices in minutes instead of hours</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- QR Code Mode -->
+                <div class="mode-card qr-mode bg-white p-8 rounded-xl shadow-lg">
+                    <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center text-green-600 text-2xl mb-6">
+                        <i class="fas fa-qrcode"></i>
                     </div>
-                    <div class="benefit-item">
-                        <i class="fas fa-chart-line"></i>
-                        <h3 data-en="Increase Productivity" data-ar="زيادة الإنتاجية">Increase Productivity</h3>
-                        <p data-en="Focus on analysis instead of data entry" 
-                           data-ar="ركز على التحليل بدلاً من إدخال البيانات">Focus on analysis instead of data entry</p>
-                    </div>
-                    <div class="benefit-item">
-                        <i class="fas fa-shield-alt"></i>
-                        <h3 data-en="Reduce Errors" data-ar="تقليل الأخطاء">Reduce Errors</h3>
-                        <p data-en="Eliminate human error in data entry" 
-                           data-ar="القضاء على الأخطاء البشرية في إدخال البيانات">Eliminate human error in data entry</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta-section">
-            <div class="container">
-                <h2 data-en="Ready to Transform Your Invoice Processing?" data-ar="هل أنت مستعد لتحويل معالجة الفواتير؟">Ready to Transform Your Invoice Processing?</h2>
-                <p data-en="Save time, reduce errors, and boost productivity - now with a special 50% discount!" 
-                   data-ar="وفر وقتك، قلل الأخطاء، وعزز الإنتاجية - الآن مع خصم خاص 50٪!">Save time, reduce errors, and boost productivity - now with a special 50% discount!</p>
-                <a href="mailto:mohammednabarawy@gmail.com" class="cta-button" data-en="Get Started Now" data-ar="ابدأ الآن">Get Started Now</a>
-            </div>
-        </section>
-
-        <section class="technical-details">
-            <div class="container">
-                <h2 data-en="Technical Details" data-ar="التفاصيل التقنية">Technical Details</h2>
-                <div class="tech-content">
-                    <h3 data-en="Supported Features:" data-ar="الميزات المدعومة:">Supported Features:</h3>
-                    <ul>
-                        <li data-en="QR Code Detection and Processing" data-ar="اكتشاف ومعالجة رموز QR">QR Code Detection and Processing</li>
-                        <li data-en="AI-Powered Information Extraction" data-ar="استخراج المعلومات بالذكاء الاصطناعي">AI-Powered Information Extraction</li>
-                        <li data-en="Batch Processing Capabilities" data-ar="إمكانيات المعالجة المجمعة">Batch Processing Capabilities</li>
-                        <li data-en="Multiple Export Formats" data-ar="تنسيقات تصدير متعددة">Multiple Export Formats</li>
-                        <li data-en="Cross-Platform Compatibility" data-ar="توافق متعدد المنصات">Cross-Platform Compatibility</li>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3" data-en="ZATCA E-Invoice QR Code" data-ar="رمز الاستجابة السريعة للفاتورة الإلكترونية (زاتكا)">ZATCA E-Invoice QR Code</h3>
+                    <p class="text-gray-600 mb-4" data-en="The fastest and most reliable method. Instantly reads ZATCA-compliant QR codes to extract all invoice details with 100% accuracy." data-ar="أسرع وأكثر طريقة موثوقة. تقرأ رموز الاستجابة السريعة المتوافقة مع زاتكا على الفور لاستخراج جميع تفاصيل الفاتورة بدقة 100٪.">
+                        The fastest and most reliable method. Instantly reads ZATCA-compliant QR codes to extract all invoice details with 100% accuracy.
+                    </p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center" data-en="Instant processing" data-ar="معالجة فورية">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Instant processing
+                        </li>
+                        <li class="flex items-center" data-en="Best for:" data-ar="الأفضل لـ:">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Best for:
+                        </li>
+                        <li class="ml-6" data-en="ZATCA-compliant Saudi e-invoices" data-ar="الفواتير الإلكترونية السعودية المتوافقة مع زاتكا">
+                            • ZATCA-compliant Saudi e-invoices
+                        </li>
+                        <li class="ml-6" data-en="When speed and accuracy are critical" data-ar="عندما تكون السرعة والدقة مهمة">
+                            • When speed and accuracy are critical
+                        </li>
+                        <li class="ml-6" data-en="High-volume processing" data-ar="معالجة الحجم الكبير">
+                            • High-volume processing
+                        </li>
                     </ul>
+                </div>
+                
+                <!-- Cloud AI Mode -->
+                <div class="mode-card cloud-mode bg-white p-8 rounded-xl shadow-lg">
+                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 text-2xl mb-6">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3" data-en="Gemini AI Cloud Processing" data-ar="معالجة سحابية باستخدام الذكاء الاصطناعي جيميني">Gemini AI Cloud Processing</h3>
+                    <p class="text-gray-600 mb-4" data-en="Uses Google's powerful Gemini AI to analyze invoice layouts and extract data. Works with any invoice format but requires internet." data-ar="يستخدم الذكاء الاصطناعي جيميني القوي من جوجل لتحليل تخطيطات الفواتير واستخراج البيانات. يعمل مع أي تنسيق فاتورة ولكن يتطلب اتصال بالإنترنت.">
+                        Uses Google's powerful Gemini AI to analyze invoice layouts and extract data. Works with any invoice format but requires internet.
+                    </p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center" data-en="Requires internet" data-ar="يتطلب اتصال بالإنترنت">
+                            <i class="fas fa-check-circle text-blue-500 mr-2"></i> Requires internet
+                        </li>
+                        <li class="flex items-center" data-en="Best for:" data-ar="الأفضل لـ:">
+                            <i class="fas fa-check-circle text-blue-500 mr-2"></i> Best for:
+                        </li>
+                        <li class="ml-6" data-en="Non-ZATCA invoices" data-ar="الفواتير غير المتوافقة مع زاتكا">
+                            • Non-ZATCA invoices
+                        </li>
+                        <li class="ml-6" data-en="Complex or unusual invoice formats" data-ar="تنسيقات فواتير معقدة أو غير عادية">
+                            • Complex or unusual invoice formats
+                        </li>
+                        <li class="ml-6" data-en="When you need good accuracy without QR codes" data-ar="عندما تحتاج إلى دقة جيدة بدون رموز الاستجابة السريعة">
+                            • When you need good accuracy without QR codes
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Local AI Mode -->
+                <div class="mode-card local-mode bg-white p-8 rounded-xl shadow-lg">
+                    <div class="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 text-2xl mb-6">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3" data-en="Local AI Processing" data-ar="معالجة الذكاء الاصطناعي المحلية">Local AI Processing</h3>
+                    <p class="text-gray-600 mb-4" data-en="Runs Ollama AI models locally on your PC. Protects sensitive data as nothing leaves your computer. Speed depends on your hardware." data-ar="يعمل على نماذج الذكاء الاصطناعي أولاما محليًا على جهاز الكمبيوتر الخاص بك. يحمي البيانات الحساسة حيث لا يغادر أي شيء جهاز الكمبيوتر الخاص بك. يعتمد السرعة على الأجهزة الخاصة بك.">
+                        Runs Ollama AI models locally on your PC. Protects sensitive data as nothing leaves your computer. Speed depends on your hardware.
+                    </p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center" data-en="Maximum privacy" data-ar="أقصى قدر من الخصوصية">
+                            <i class="fas fa-check-circle text-purple-500 mr-2"></i> Maximum privacy
+                        </li>
+                        <li class="flex items-center" data-en="Best for:" data-ar="الأفضل لـ:">
+                            <i class="fas fa-check-circle text-purple-500 mr-2"></i> Best for:
+                        </li>
+                        <li class="ml-6" data-en="Highly confidential invoices" data-ar="الفواتير السرية للغاية">
+                            • Highly confidential invoices
+                        </li>
+                        <li class="ml-6" data-en="When internet isn't available" data-ar="عندما لا يتوفر اتصال بالإنترنت">
+                            • When internet isn't available
+                        </li>
+                        <li class="ml-6" data-en="Users with powerful PCs (GPU recommended)" data-ar="المستخدمون الذين لديهم أجهزة كمبيوتر قوية (يوصى بوحدة معالجة الرسومات)">
+                            • Users with powerful PCs (GPU recommended)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <div class="inline-flex items-center bg-blue-50 rounded-full px-6 py-3">
+                    <i class="fas fa-info-circle text-blue-600 mr-2"></i>
+                    <span class="text-blue-600 font-medium" data-en="You can switch between modes anytime based on your needs" data-ar="يمكنك التبديل بين الوضعيات في أي وقت بناءً على احتياجاتك">You can switch between modes anytime based on your needs</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 gradient-bg text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" data-i18n="testimonials.title">Trusted by Finance Teams Worldwide</h2>
+                <p class="text-xl text-blue-100 max-w-2xl mx-auto" data-i18n="testimonials.subtitle">
+                    Join thousands of professionals who automated their invoice processing
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card p-8 rounded-xl">
+                    <div class="flex items-center mb-6 rtl:flex-row-reverse">
+                        <img src="https://randomuser.me/api/portraits/women/43.jpg" class="w-12 h-12 rounded-full rtl:ml-4 ltr:mr-4" alt="Sarah Johnson">
+                        <div>
+                            <h4 class="font-bold">Sarah Johnson</h4>
+                            <p class="text-blue-200 text-sm">CFO, TechCorp</p>
+                        </div>
+                    </div>
+                    <p class="mb-6" data-i18n="testimonials.1.quote">
+                        "We've reduced our invoice processing time by 90%. What used to take our team 3 days now takes just a few hours. The AI accuracy is impressive."
+                    </p>
+                    <div class="flex rtl:flex-row-reverse">
+                        <i class="fas fa-star text-yellow-300 rtl:ml-1 ltr:mr-1"></i>
+                        <i class="fas fa-star text-yellow-300 rtl:ml-1 ltr:mr-1"></i>
+                        <i class="fas fa-star text-yellow-300 rtl:ml-1 ltr:mr-1"></i>
+                        <i class="fas fa-star text-yellow-300 rtl:ml-1 ltr:mr-1"></i>
+                        <i class="fas fa-star text-yellow-300 rtl:ml-1 ltr:mr-1"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card p-8 rounded-xl">
+                    <div class="flex items-center mb-6 rtl:flex-row-reverse">
+                        <img src="https://randomuser.me/api/portraits/men/65.jpg" class="w-12 h-12 rounded-full rtl:ml-4 ltr:mr-4" alt="Michael Chen">
+                        <div>
+                            <h4 class="font-bold">Michael Chen</h4>
+                            <p class="text-blue-200 text-sm">Accounting Manager, RetailPro</p>
+                        </div>
+                    </div>
+                    <p class="mb-6" data-i18n="testimonials.2.quote">
+                        "The batch processing feature is a game-changer. We process 500+ invoices monthly and Invoices Reader handles them all flawlessly."
+                    </p>
+                    <div class="flex rtl:flex-row-reverse">
+                        <i class="fas fa-star text-yellow-300 rtl:ml-1 ltr:mr-1"></i>
+                        <i class="fas fa-star text-yellow-300 rtl:ml-1 ltr:mr-1"></i>
+                        <i class="fas fa-star text-yellow-300 rtl:ml-1 ltr:mr-1"></i>
+                        <i class="fas fa-star text-yellow-300 rtl:ml-1 ltr:mr-1"></i>
+                        <i class="fas fa-star text-yellow-300 rtl:ml-1 ltr:mr-1"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card p-8 rounded-xl">
+                    <div class="flex items-center mb-6 rtl:flex-row-reverse">
+                        <img src="https://randomuser.me/api/portraits/women/28.jpg" class="w-12 h-12 rounded-full rtl:ml-4 ltr:mr-4" alt="Emma Rodriguez">
+                        <div>
+                            <h4 class="font-bold">Emma Rodriguez</h4>
+                            <p class="text-blue-200 text-sm">Finance Director, HealthPlus</p>
+                        </div>
+                    </div>
+                    <p class="mb-6" data-i18n="testimonials.3.quote">
+                        "The validation rules saved us from several costly errors. The software pays for itself by catching discrepancies we used to miss."
+                    </p>
+                    <div class="flex rtl:flex-row-reverse">
+                        <i class="fas fa-star text-yellow-300 rtl:ml-1 ltr:mr-1"></i>
+                        <i class="fas fa-star text-yellow-300 rtl:ml-1 ltr:mr-1"></i>
+                        <i class="fas fa-star text-yellow-300 rtl:ml-1 ltr:mr-1"></i>
+                        <i class="fas fa-star text-yellow-300 rtl:ml-1 ltr:mr-1"></i>
+                        <i class="fas fa-star text-yellow-300 rtl:ml-1 ltr:mr-1"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <div class="inline-flex items-center">
+                    <img src="https://via.placeholder.com/120x40/ffffff/1e40af?text=Company+1" class="h-8 mx-4 opacity-80 hover:opacity-100 transition" alt="Logo">
+                    <img src="https://via.placeholder.com/120x40/ffffff/1e40af?text=Company+2" class="h-8 mx-4 opacity-80 hover:opacity-100 transition" alt="Logo">
+                    <img src="https://via.placeholder.com/120x40/ffffff/1e40af?text=Company+3" class="h-8 mx-4 opacity-80 hover:opacity-100 transition" alt="Logo">
+                    <img src="https://via.placeholder.com/120x40/ffffff/1e40af?text=Company+4" class="h-8 mx-4 opacity-80 hover:opacity-100 transition" alt="Logo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-en="Simple Lifetime Pricing" data-ar="تسعير مدى الحياة البسيط">Simple Lifetime Pricing</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-en="Pay once and use forever. No subscriptions, no hidden fees." data-ar="ادفع مرة واحدة واستخدم إلى الأبد. لا اشتراكات، ولا رسوم خفية.">
+                    Pay once and use forever. No subscriptions, no hidden fees.
+                </p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <!-- Lifetime Plan -->
+                <div class="border-2 border-blue-600 rounded-xl p-8 shadow-lg relative pulse">
+                    <div class="absolute top-0 right-0 limited-time-badge text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg" data-en="LIMITED TIME OFFER" data-ar="عرض لفترة محدودة">
+                        LIMITED TIME OFFER
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2" data-en="Lifetime License" data-ar="رخصة مدى الحياة">Lifetime License</h3>
+                    <p class="text-gray-600 mb-4" data-en="One-time payment, use forever with all future updates included" data-ar="دفعة لمرة واحدة، استخدم للأبد مع تضمين جميع التحديثات المستقبلية">
+                        One-time payment, use forever with all future updates included
+                    </p>
+                    <div class="flex items-end mb-6">
+                        <span class="text-4xl font-bold text-blue-600" data-en="550 SAR" data-ar="550 ريال">550 SAR</span>
+                        <span class="text-xl line-through text-gray-400 ml-2" data-en="1,100 SAR" data-ar="1,100 ريال">1,100 SAR</span>
+                        <span class="bg-green-100 text-green-800 text-sm font-medium ml-2 px-2 py-0.5 rounded" data-en="50% OFF" data-ar="خصم 50%">50% OFF</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-6" data-en="Special launch price - will increase soon" data-ar="سعر الإطلاق الخاص - سيزداد قريبًا">
+                        Special launch price - will increase soon
+                    </p>
+                    <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition" onclick="window.open('https://drive.google.com/file/d/1jMQi3JulbMJ4DEBYIvZjjWlXXK3W9KUZ/view?usp=drive_link','_blank')" data-en="Get Lifetime Access" data-ar="احصل على وصول مدى الحياة">
+                        Get Lifetime Access
+                    </button>
+                    <p class="text-xs text-gray-500 mt-2 text-center" data-en="30-day money-back guarantee" data-ar="ضمان استرداد الأموال لمدة 30 يومًا">
+                        30-day money-back guarantee
+                    </p>
+                </div>
+                
+                <div class="mt-12 text-center">
+                    <div class="inline-flex items-center bg-blue-50 rounded-full px-6 py-3">
+                        <i class="fas fa-shield-alt text-blue-600 mr-2"></i>
+                        <span class="text-blue-600 font-medium" data-en="30-day money-back guarantee" data-ar="ضمان استرداد الأموال لمدة 30 يومًا">30-day money-back guarantee</span>
+                    </div>
+                </div>
+                
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- What's Included -->
+                    <div class="bg-gray-50 p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4" data-en="What's Included" data-ar="ماذا يشمل">What's Included</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span class="text-gray-700" data-en="All three processing modes (QR, Cloud AI, Local AI)" data-ar="جميع طرق المعالجة الثلاثة (QR، Cloud AI، Local AI)">All three processing modes (QR, Cloud AI, Local AI)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span class="text-gray-700" data-en="Unlimited invoice processing" data-ar="معالجة فواتير غير محدودة">Unlimited invoice processing</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span class="text-gray-700" data-en="All export formats (Excel, CSV, JSON)" data-ar="جميع تنسيقات التصدير (Excel، CSV، JSON)">All export formats (Excel, CSV, JSON)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span class="text-gray-700" data-en="Batch processing" data-ar="معالجة الدُفعات">Batch processing</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span class="text-gray-700" data-en="All future updates" data-ar="جميع التحديثات المستقبلية">All future updates</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span class="text-gray-700" data-en="Priority email support" data-ar="دعم البريد الإلكتروني الأولوية">Priority email support</span>
+                            </li>
+                        </ul>
+                    </div>
                     
-                    <h3 data-en="Extracted Data Fields:" data-ar="حقول البيانات المستخرجة:">Extracted Data Fields:</h3>
-                    <ul>
-                        <li data-en="Invoice Number" data-ar="رقم الفاتورة">Invoice Number</li>
-                        <li data-en="Date" data-ar="التاريخ">Date</li>
-                        <li data-en="Vendor Name" data-ar="اسم المورد">Vendor Name</li>
-                        <li data-en="Vendor VAT ID" data-ar="الرقم الضريبي للمورد">Vendor VAT ID</li>
-                        <li data-en="Invoice Total" data-ar="إجمالي الفاتورة">Invoice Total</li>
-                        <li data-en="VAT Amount" data-ar="مبلغ ضريبة القيمة المضافة">VAT Amount</li>
+                    <!-- FAQ -->
+                    <div class="bg-gray-50 p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4" data-en="Frequently Asked Questions" data-ar="الأسئلة المتداولة">Frequently Asked Questions</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-medium text-gray-800" data-en="Is this really a one-time payment?" data-ar="هل هذه دفعة لمرة واحدة حقًا؟">Is this really a one-time payment?</h4>
+                                <p class="text-gray-600 mt-1" data-en="Yes! Pay once and use forever. No subscriptions, no hidden fees." data-ar="نعم! ادفع مرة واحدة واستخدم إلى الأبد. لا اشتراكات، ولا رسوم خفية.">Yes! Pay once and use forever. No subscriptions, no hidden fees.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800" data-en="What if I'm not satisfied?" data-ar="ماذا لو لم أكن راضيًا؟">What if I'm not satisfied?</h4>
+                                <p class="text-gray-600 mt-1" data-en="We offer a 30-day money-back guarantee with no questions asked." data-ar="نقدم ضمان استرداد الأموال لمدة 30 يومًا بدون أسئلة.">We offer a 30-day money-back guarantee with no questions asked.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800" data-en="How many devices can I install on?" data-ar="كم جهازًا يمكنني تثبيته؟">How many devices can I install on?</h4>
+                                <p class="text-gray-600 mt-1" data-en="Your license allows installation on up to 3 devices for personal use." data-ar="ترخيصك يسمح بتثبيت على ما يصل إلى 3 أجهزة للاستخدام الشخصي.">Your license allows installation on up to 3 devices for personal use.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6" data-en="Limited Time Offer: Lifetime Access for 550 SAR" data-ar="عرض لفترة محدودة: وصول مدى الحياة مقابل 550 ريال">Limited Time Offer: Lifetime Access for 550 SAR</h2>
+            <p class="text-xl text-blue-100 max-w-2xl mx-auto mb-8" data-en="This special pricing won't last forever. Get all features with no recurring fees." data-ar="هذا التسعير الخاص لن يستمر إلى الأبد. احصل على جميع الميزات بدون رسوم متكررة.">
+                This special pricing won't last forever. Get all features with no recurring fees.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
+                <button class="windows-btn text-white px-8 py-4 rounded-full font-bold text-lg transition hover:shadow-lg flex items-center justify-center mx-auto" onclick="window.open('https://drive.google.com/file/d/1jMQi3JulbMJ4DEBYIvZjjWlXXK3W9KUZ/view?usp=drive_link','_blank')">
+                    <i class="fab fa-windows rtl:ml-2 ltr:mr-2 text-xl"></i> 
+                    <span data-en="Get Lifetime License" data-ar="احصل على رخصة مدى الحياة">Get Lifetime License</span>
+                </button>
+                <button class="bg-white text-blue-600 px-8 py-4 rounded-full font-bold text-lg transition hover:bg-gray-100 hover:shadow-lg" onclick="openVideo()">
+                    <span data-en="Watch Demo First" data-ar="شاهد العرض التوضيحي أولاً">Watch Demo First</span> 
+                    <i class="fas fa-play-circle rtl:mr-2 ltr:ml-2"></i>
+                </button>
+            </div>
+            <div class="mt-8">
+                <div class="inline-flex items-center bg-yellow-50 text-yellow-800 px-4 py-2 rounded-full">
+                    <i class="fas fa-clock mr-2"></i>
+                    <span data-en="Offer ends in 3 days" data-ar="ينتهي العرض في 3 أيام">Offer ends in 3 days</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 rtl:space-x-reverse mb-4">
+                        <i class="fas fa-file-invoice text-blue-400 text-2xl"></i>
+                        <span class="text-xl font-bold text-white">Invoices<span class="text-blue-400">Reader</span></span>
+                    </div>
+                    <p class="mb-4" data-i18n="footer.description">
+                        AI-powered invoice data extraction for Windows. Save time and reduce errors in your accounting workflow.
+                    </p>
+                    <div class="flex space-x-4 rtl:space-x-reverse">
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-4" data-i18n="footer.product">Product</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#features" class="hover:text-white transition" data-en="Features" data-ar="الميزات">Features</a></li>
+                        <li><a href="#modes" class="hover:text-white transition" data-en="Processing Modes" data-ar="طرق المعالجة">Processing Modes</a></li>
+                        <li><a href="#pricing" class="hover:text-white transition" data-en="Pricing" data-ar="التسعير">Pricing</a></li>
+                        <li><a href="#" class="hover:text-white transition" data-en="Updates" data-ar="التحديثات">Updates</a></li>
+                        <li><a href="#" class="hover:text-white transition" data-en="Roadmap" data-ar="خارطة الطريق">Roadmap</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-4" data-i18n="footer.resources">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white transition" data-en="Documentation" data-ar="التوثيق">Documentation</a></li>
+                        <li><a href="#" class="hover:text-white transition" data-en="Tutorials" data-ar="الدروس التعليمية">Tutorials</a></li>
+                        <li><a href="#" class="hover:text-white transition" data-en="Blog" data-ar="المدونة">Blog</a></li>
+                        <li><a href="#" class="hover:text-white transition" data-en="Support" data-ar="الدعم">Support</a></li>
+                        <li><a href="#" class="hover:text-white transition" data-en="API" data-ar="واجهة برمجة التطبيقات">API</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-4" data-i18n="footer.company">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white transition" data-en="About Us" data-ar="معلومات عنا">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition" data-en="Careers" data-ar="الوظائف">Careers</a></li>
+                        <li><a href="#" class="hover:text-white transition" data-en="Contact" data-ar="اتصل بنا">Contact</a></li>
+                        <li><a href="#" class="hover:text-white transition" data-en="Privacy" data-ar="الخصوصية">Privacy</a></li>
+                        <li><a href="#" class="hover:text-white transition" data-en="Terms" data-ar="الشروط">Terms</a></li>
                     </ul>
                 </div>
             </div>
-        </section>
-    </main>
-
-    <!-- Contact Modal -->
-    <div class="contact-modal" id="contactModal">
-        <div class="contact-modal-content">
-            <span class="contact-modal-close" onclick="closeContactModal()">&times;</span>
-            <h2 data-en="Contact Mohamed" data-ar="تواصل مع محمد">Contact Mohamed</h2>
-            <div class="contact-info">
-                <a href="mailto:mohammednabarawy@gmail.com" class="contact-method">
-                    <i class="fas fa-envelope"></i>
-                    <span data-en="Email: mohammednabarawy@gmail.com" data-ar="البريد الإلكتروني: mohammednabarawy@gmail.com">Email: mohammednabarawy@gmail.com</span>
-                </a>
-                <a href="https://linkedin.com/in/mnabarawi/" target="_blank" class="contact-method">
-                    <i class="fab fa-linkedin"></i>
-                    <span data-en="LinkedIn Profile" data-ar="صفحة LinkedIn">LinkedIn Profile</span>
-                </a>
-                <a href="https://github.com/mohammednabarawy" target="_blank" class="contact-method">
-                    <i class="fab fa-github"></i>
-                    <span data-en="GitHub Profile" data-ar="صفحة GitHub">GitHub Profile</span>
-                </a>
-                <div class="contact-method">
-                    <i class="fas fa-phone"></i>
-                    <span data-en="Phone: +966 55 123 4567" data-ar="الهاتف: +966 55 123 4567">Phone: +966 55 123 4567</span>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p data-i18n="footer.copyright"> 2023 Invoices Reader. All rights reserved.</p>
+                <div class="flex space-x-6 rtl:space-x-reverse mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition" data-en="Privacy Policy" data-ar="سياسة الخصوصية">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition" data-en="Terms of Service" data-ar="شروط الخدمة">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition" data-en="Cookie Policy" data-ar="سياسة ملفات تعريف الارتباط">Cookie Policy</a>
                 </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="videoModal" class="fixed inset-0 z-[9999] hidden flex items-center justify-center bg-black bg-opacity-90 p-4">
+        <div class="relative w-full max-w-4xl">
+            <button onclick="closeVideo()" class="absolute -top-12 right-0 text-white hover:text-gray-300 text-4xl">
+                &times;
+            </button>
+            <div class="aspect-w-16 aspect-h-9 w-full">
+                <iframe id="youtubeVideo" class="w-full h-[70vh]" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
     </div>
 
     <script>
-        // Language Toggle Functionality
+        // Language translations
+        const translations = {
+            en: {
+                nav: {
+                    features: "Features",
+                    howItWorks: "How It Works",
+                    testimonials: "Testimonials",
+                    pricing: "Pricing",
+                    download: "Download Now"
+                },
+                hero: {
+                    title: "Extract Invoice Data <br> <span class='text-blue-200'>Automatically with AI</span>",
+                    subtitle: "Save hours of manual data entry. Invoices Reader uses advanced AI to accurately extract invoice details and export to your favorite formats.",
+                    downloadButton: "Download for Windows",
+                    demoButton: "Watch Demo",
+                    trusted: "Trusted by 5,000+ businesses"
+                },
+                features: {
+                    title: "Powerful Features Designed for Efficiency",
+                    subtitle: "Our AI-powered solution handles all types of invoices with unmatched accuracy",
+                    "1": {
+                        title: "Smart AI Extraction",
+                        description: "Our advanced AI understands invoice layouts and extracts key data like vendor info, line items, totals, and dates with 99% accuracy."
+                    },
+                    "2": {
+                        title: "Multiple Export Formats",
+                        description: "Export extracted data to Excel, CSV, JSON, or directly to your accounting software like QuickBooks, Xero, or FreshBooks."
+                    },
+                    "3": {
+                        title: "Batch Processing",
+                        description: "Process hundreds of invoices at once. Simply drop a folder of PDFs or images and let Invoices Reader do the rest."
+                    },
+                    "4": {
+                        title: "Validation Rules",
+                        description: "Set custom validation rules to flag discrepancies in invoice totals, tax calculations, or missing information."
+                    },
+                    "5": {
+                        title: "Secure & Private",
+                        description: "Your data never leaves your computer. All processing happens locally with enterprise-grade encryption."
+                    },
+                    "6": {
+                        title: "Continuous Learning",
+                        description: "Our AI improves over time. Correct any mistakes and the system learns to handle similar invoices better next time."
+                    }
+                },
+                howItWorks: {
+                    title: "How Invoices Reader Works",
+                    subtitle: "Three simple steps to transform your invoice processing workflow",
+                    step1: {
+                        title: "Upload Invoices",
+                        description: "Drag and drop PDFs, scanned images, or photos of invoices into the app"
+                    },
+                    step2: {
+                        title: "AI Processes Data",
+                        description: "Our AI extracts all relevant data fields automatically in seconds"
+                    },
+                    step3: {
+                        title: "Export & Use",
+                        description: "Review, edit if needed, and export to your preferred format"
+                    },
+                    demo: {
+                        title: "See It In Action",
+                        description: "Watch how Invoices Reader can process a complex invoice with multiple line items, taxes, and vendor details in under 10 seconds.",
+                        bullet1: "Handles 50+ invoice formats",
+                        bullet2: "Supports 15+ languages",
+                        bullet3: "Works with scanned documents",
+                        button: "Try It Free for 14 Days",
+                        videoLabel: "Demo Video"
+                    }
+                },
+                testimonials: {
+                    title: "Trusted by Finance Teams Worldwide",
+                    subtitle: "Join thousands of professionals who automated their invoice processing",
+                    "1": {
+                        quote: "\"We've reduced our invoice processing time by 90%. What used to take our team 3 days now takes just a few hours. The AI accuracy is impressive.\""
+                    },
+                    "2": {
+                        quote: "\"The batch processing feature is a game-changer. We process 500+ invoices monthly and Invoices Reader handles them all flawlessly.\""
+                    },
+                    "3": {
+                        quote: "\"The validation rules saved us from several costly errors. The software pays for itself by catching discrepancies we used to miss.\""
+                    }
+                },
+                pricing: {
+                    title: "Simple, Transparent Pricing",
+                    subtitle: "Get lifetime access to all features for one low price",
+                    perMonth: "/month",
+                    mostPopular: "MOST POPULAR",
+                    customSolution: "Need a custom solution? We offer volume discounts for large organizations.",
+                    contactSales: "Contact our sales team",
+                    "1": {
+                        name: "Starter",
+                        description: "Perfect for individuals and small businesses",
+                        feature1: "100 invoices/month",
+                        feature2: "Excel & CSV export",
+                        feature3: "Email support",
+                        feature4: "No batch processing",
+                        feature5: "No accounting software integration",
+                        button: "Get Started"
+                    },
+                    "2": {
+                        name: "Professional",
+                        description: "Best for growing businesses",
+                        feature1: "500 invoices/month",
+                        feature2: "All export formats",
+                        feature3: "Priority support",
+                        feature4: "Batch processing",
+                        feature5: "2 accounting software integrations",
+                        button: "Get Professional"
+                    },
+                    "3": {
+                        name: "Enterprise",
+                        description: "For large organizations with high volume",
+                        feature1: "Unlimited invoices",
+                        feature2: "All export formats",
+                        feature3: "24/7 dedicated support",
+                        feature4: "Advanced batch processing",
+                        feature5: "Unlimited integrations",
+                        button: "Contact Sales"
+                    }
+                },
+                cta: {
+                    title: "Ready to Transform Your Invoice Processing?",
+                    subtitle: "Join thousands of businesses saving hours every week with AI-powered invoice extraction",
+                    downloadButton: "Download Free Trial",
+                    demoButton: "Schedule a Demo"
+                },
+                footer: {
+                    description: "AI-powered invoice data extraction for Windows. Save time and reduce errors in your accounting workflow.",
+                    product: "Product",
+                    productFeatures: "Features",
+                    productPricing: "Pricing",
+                    productDownload: "Download",
+                    productUpdates: "Updates",
+                    productRoadmap: "Roadmap",
+                    resources: "Resources",
+                    resourcesDocs: "Documentation",
+                    resourcesTutorials: "Tutorials",
+                    resourcesBlog: "Blog",
+                    resourcesSupport: "Support",
+                    resourcesAPI: "API",
+                    company: "Company",
+                    companyAbout: "About Us",
+                    companyCareers: "Careers",
+                    companyContact: "Contact",
+                    companyPrivacy: "Privacy",
+                    companyTerms: "Terms",
+                    copyright: " 2023 Invoices Reader. All rights reserved.",
+                    privacyPolicy: "Privacy Policy",
+                    terms: "Terms of Service",
+                    cookies: "Cookie Policy"
+                }
+            },
+            ar: {
+                nav: {
+                    features: "الميزات",
+                    howItWorks: "كيف يعمل",
+                    testimonials: "آراء العملاء",
+                    pricing: "التسعير",
+                    download: "تحميل الآن"
+                },
+                hero: {
+                    title: "استخراج بيانات الفواتير <br> <span class='text-blue-200'>تلقائيًا باستخدام الذكاء الاصطناعي</span>",
+                    subtitle: "وفر ساعات من إدخال البيانات يدويًا. يستخدم Invoices Reader الذكاء الاصطناعي المتقدم لاستخراج تفاصيل الفواتير بدقة وتصديرها إلى التنسيقات المفضلة لديك.",
+                    downloadButton: "تحميل لنظام Windows",
+                    demoButton: "مشاهدة العرض التوضيحي",
+                    trusted: "موثوق به من قبل أكثر من 5000 شركة"
+                },
+                features: {
+                    title: "ميزات قوية مصممة للكفاءة",
+                    subtitle: "حلنا المدعوم بالذكاء الاصطناعي يتعامل مع جميع أنواع الفواتير بدقة لا مثيل لها",
+                    "1": {
+                        title: "استخراج ذكي بالذكاء الاصطناعي",
+                        description: "يفهم الذكاء الاصطناعي المتقدم لدينا تخطيطات الفواتير ويستخرج البيانات الرئيسية مثل معلومات البائع وبنود الأسعار والمجموع والتواريخ بدقة 99٪."
+                    },
+                    "2": {
+                        title: "تنسيقات تصدير متعددة",
+                        description: "قم بتصدير البيانات المستخرجة إلى Excel أو CSV أو JSON أو مباشرة إلى برنامج المحاسبة الخاص بك مثل QuickBooks أو Xero أو FreshBooks."
+                    },
+                    "3": {
+                        title: "معالجة الدُفعات",
+                        description: "قم بمعالجة المئات من الفواتير دفعة واحدة. ما عليك سوى إسقاط مجلد من ملفات PDF أو الصور واترك Invoices Reader يقوم بالباقي."
+                    },
+                    "4": {
+                        title: "قواعد التحقق",
+                        description: "قم بتعيين قواعد تحقق مخصصة للإشارة إلى التناقضات في إجمالي الفواتير أو حسابات الضرائب أو المعلومات المفقودة."
+                    },
+                    "5": {
+                        title: "آمن وخاص",
+                        description: "لا تترك بياناتك جهازك أبدًا. تتم جميع عمليات المعالجة محليًا مع تشفير من مستوى المؤسسة."
+                    },
+                    "6": {
+                        title: "التعلم المستمر",
+                        description: "يتحسن الذكاء الاصطناعي لدينا بمرور الوقت. قم بتصحيح أي أخطاء ويتعلم النظام للتعامل مع الفواتير المماثلة بشكل أفضل في المرة القادمة."
+                    }
+                },
+                howItWorks: {
+                    title: "كيف يعمل Invoices Reader",
+                    subtitle: "ثلاث خطوات بسيطة لتحويل سير عمل معالجة الفواتير الخاص بك",
+                    step1: {
+                        title: "تحميل الفواتير",
+                        description: "اسحب وأفلت ملفات PDF أو الصور الممسوحة ضوئيًا أو صور الفواتير في التطبيق"
+                    },
+                    step2: {
+                        title: "معالجة البيانات بالذكاء الاصطناعي",
+                        description: "يستخرج الذكاء الاصطناعي لدينا جميع حقول البيانات ذات الصلة تلقائيًا في ثوانٍ"
+                    },
+                    step3: {
+                        title: "تصدير واستخدام",
+                        description: "راجع وقم بالتعديل إذا لزم الأمر، وقم بالتصدير إلى التنسيق المفضل لديك"
+                    },
+                    demo: {
+                        title: "شاهدها في العمل",
+                        description: "شاهد كيف يمكن لـ Invoices Reader معالجة فاتورة معقدة تحتوي على بنود متعددة وضرائب وتفاصيل البائع في أقل من 10 ثوانٍ.",
+                        bullet1: "يتعامل مع 50+ تنسيق فاتورة",
+                        bullet2: "يدعم 15+ لغة",
+                        bullet3: "يعمل مع المستندات الممسوحة ضوئيًا",
+                        button: "جربه مجانًا لمدة 14 يومًا",
+                        videoLabel: "فيديو توضيحي"
+                    }
+                },
+                testimonials: {
+                    title: "موثوق به من قبل فرق المالية في جميع أنحاء العالم",
+                    subtitle: "انضم إلى الآلاف من المحترفين الذين أتمتوا معالجة الفواتير الخاصة بهم",
+                    "1": {
+                        quote: "\"لقد قللنا وقت معالجة الفواتير بنسبة 90٪. ما كان يستغرق فريقنا 3 أيام أصبح يستغرق بضع ساعات فقط. دقة الذكاء الاصطناعي مذهلة.\""
+                    },
+                    "2": {
+                        quote: "\"ميزة معالجة الدُفعات تغير قواعد اللعبة. نحن نعالج 500+ فاتورة شهريًا ويتعامل معها Invoices Reader بلا عيوب.\""
+                    },
+                    "3": {
+                        quote: "\"أنقذتنا قواعد التحقق من عدة أخطاء مكلفة. يدفع البرنامج تكلفة نفسه من خلال اكتشاف التناقضات التي كنا نفتقدها.\""
+                    }
+                },
+                pricing: {
+                    title: "تسعير بسيط وشفاف",
+                    subtitle: "احصل على وصول مدى الحياة لجميع الميزات بسعر منخفض",
+                    perMonth: "/شهر",
+                    mostPopular: "الأكثر شعبية",
+                    customSolution: "هل تحتاج إلى حل مخصص؟ نقدم خصومات على الكميات للمنظمات الكبيرة.",
+                    contactSales: "اتصل بفريق المبيعات لدينا",
+                    "1": {
+                        name: "المبتدئ",
+                        description: "مثالي للأفراد والشركات الصغيرة",
+                        feature1: "100 فاتورة/شهر",
+                        feature2: "تصدير إلى Excel و CSV",
+                        feature3: "دعم عبر البريد الإلكتروني",
+                        feature4: "لا يوجد معالجة دُفعية",
+                        feature5: "لا يوجد تكامل مع برامج المحاسبة",
+                        button: "ابدأ الآن"
+                    },
+                    "2": {
+                        name: "المحترف",
+                        description: "الأفضل للشركات النامية",
+                        feature1: "500 فاتورة/شهر",
+                        feature2: "جميع تنسيقات التصدير",
+                        feature3: "دعم أولوية",
+                        feature4: "معالجة دُفعية",
+                        feature5: "تكامل مع برنامجي محاسبة",
+                        button: "احصل على الإصدار المحترف"
+                    },
+                    "3": {
+                        name: "المؤسسة",
+                        description: "للمنظمات الكبيرة ذات الحجم الكبير",
+                        feature1: "عدد غير محدود من الفواتير",
+                        feature2: "جميع تنسيقات التصدير",
+                        feature3: "دعم مخصص على مدار الساعة طوال أيام الأسبوع",
+                        feature4: "معالجة دُفعية متقدمة",
+                        feature5: "تكامل غير محدود",
+                        button: "اتصل بالمبيعات"
+                    }
+                },
+                cta: {
+                    title: "هل أنت مستعد لتحويل معالجة الفواتير الخاصة بك؟",
+                    subtitle: "انضم إلى الآلاف من الشركات التي توفر ساعات كل أسبوع باستخراج الفواتير المدعوم بالذكاء الاصطناعي",
+                    downloadButton: "تحميل النسخة التجريبية المجانية",
+                    demoButton: "جدولة عرض توضيحي"
+                },
+                footer: {
+                    description: "استخراج بيانات الفواتير المدعوم بالذكاء الاصطناعي لنظام Windows. وفر الوقت وقلل الأخطاء في سير عمل المحاسبة الخاص بك.",
+                    product: "المنتج",
+                    productFeatures: "الميزات",
+                    productPricing: "التسعير",
+                    productDownload: "تحميل",
+                    productUpdates: "التحديثات",
+                    productRoadmap: "خارطة الطريق",
+                    resources: "الموارد",
+                    resourcesDocs: "التوثيق",
+                    resourcesTutorials: "الدروس التعليمية",
+                    resourcesBlog: "المدونة",
+                    resourcesSupport: "الدعم",
+                    resourcesAPI: "واجهة برمجة التطبيقات",
+                    company: "الشركة",
+                    companyAbout: "معلومات عنا",
+                    companyCareers: "الوظائف",
+                    companyContact: "اتصل بنا",
+                    companyPrivacy: "الخصوصية",
+                    companyTerms: "الشروط",
+                    copyright: " 2023 Invoices Reader. جميع الحقوق محفوظة.",
+                    privacyPolicy: "سياسة الخصوصية",
+                    terms: "شروط الخدمة",
+                    cookies: "سياسة ملفات تعريف الارتباط"
+                }
+            }
+        };
+
+        // Language toggle function
         function toggleLanguage() {
-            const body = document.body;
-            const currentLang = body.classList.contains('ar') ? 'ar' : 'en';
+            const currentLang = document.documentElement.lang;
             const newLang = currentLang === 'en' ? 'ar' : 'en';
-
-            // Toggle body class
-            body.classList.toggle('ar');
-            body.classList.toggle('en');
-
-            // Update all elements with translation attributes
-            document.querySelectorAll('[data-en][data-ar]').forEach(el => {
-                el.textContent = el.getAttribute(`data-${newLang}`);
-            });
-
-            // Update page direction
             document.documentElement.lang = newLang;
             document.documentElement.dir = newLang === 'ar' ? 'rtl' : 'ltr';
-
-            // Save language preference
-            localStorage.setItem('language', newLang);
-
-            // Vibration feedback (for supported devices)
-            if ('vibrate' in navigator) {
-                navigator.vibrate(50);
-            }
-
-            // Sound effect (optional)
-            try {
-                const audio = new Audio('data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA');
-                audio.play();
-            } catch(e) {}
+            
+            // Update EN/AR label
+            document.querySelector('.lang-label').textContent = newLang.toUpperCase();
+            
+            // Update all elements with data-en/data-ar attributes
+            document.querySelectorAll('[data-en], [data-ar]').forEach(el => {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.value = newLang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-ar');
+                } else {
+                    el.textContent = newLang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-ar');
+                }
+            });
+            
+            // Update translations object content
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const keys = element.getAttribute('data-i18n').split('.');
+                let translation = translations[newLang];
+                
+                for (const key of keys) {
+                    translation = translation?.[key];
+                }
+                
+                if (translation !== undefined) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.value = translation;
+                    } else {
+                        element.innerHTML = translation;
+                    }
+                }
+            });
+            
+            // Toggle body class for RTL styling
+            document.body.classList.toggle('ar', newLang === 'ar');
         }
 
-        // Contact Modal Functions
-        function openContactModal() {
-            const modal = document.getElementById('contactModal');
-            modal.classList.add('show');
-        }
-
-        function closeContactModal() {
-            const modal = document.getElementById('contactModal');
-            modal.classList.remove('show');
-        }
-
-        // Mobile Menu Functions
+        // Mobile Menu Toggle
         function toggleMobileMenu() {
             const nav = document.querySelector('nav');
-            const hamburger = document.querySelector('.hamburger-menu');
-            nav.classList.toggle('mobile-active');
-            hamburger.classList.toggle('active');
-            
-            // Prevent body scrolling when menu is open
+            nav.classList.toggle('active');
             document.body.classList.toggle('menu-open');
         }
 
-        // Initialize when DOM is ready
-        document.addEventListener('DOMContentLoaded', () => {
-            // Initialize with saved language preference
-            const savedLanguage = localStorage.getItem('language') || 'en';
-            document.body.classList.add(savedLanguage);
-            document.documentElement.lang = savedLanguage;
-            document.documentElement.dir = savedLanguage === 'ar' ? 'rtl' : 'ltr';
-
-            // Update initial text content based on saved language
-            document.querySelectorAll('[data-en][data-ar]').forEach(el => {
-                el.textContent = el.getAttribute(`data-${savedLanguage}`);
-            });
-
-            // Contact Modal Event Listeners
-            const emailButtons = document.querySelectorAll('.email-btn, [href="#contact"]');
-            emailButtons.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    openContactModal();
-                });
-            });
-
-            // Close modal when clicking outside
-            const modal = document.getElementById('contactModal');
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    closeContactModal();
-                }
-            });
-
-            // Close modal on Escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && modal.classList.contains('show')) {
-                    closeContactModal();
-                }
-            });
-
-            // Mobile Menu Event Listeners
-            document.querySelectorAll('nav ul li a').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    const nav = document.querySelector('nav');
-                    const hamburger = document.querySelector('.hamburger-menu');
-                    
-                    // Close menu
-                    nav.classList.remove('mobile-active');
-                    hamburger.classList.remove('active');
-                    document.body.classList.remove('menu-open');
-                });
-            });
-
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', (event) => {
+        // Close mobile menu when a nav link is clicked
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
                 const nav = document.querySelector('nav');
-                const hamburger = document.querySelector('.hamburger-menu');
-                const isClickInsideNav = nav.contains(event.target);
-                const isClickOnHamburger = hamburger.contains(event.target);
-                
-                if (!isClickInsideNav && !isClickOnHamburger) {
-                    nav.classList.remove('mobile-active');
-                    hamburger.classList.remove('active');
-                    document.body.classList.remove('menu-open');
+                if (nav.classList.contains('active')) {
+                    toggleMobileMenu();
                 }
             });
+        });
+    </script>
+
+    <script>
+        // Video Modal Functions
+        function openVideo() {
+            const modal = document.getElementById('videoModal');
+            modal.classList.remove('hidden');
+            document.getElementById('youtubeVideo').src = "https://www.youtube.com/embed/lwIg5AGOf50?autoplay=1";
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVideo() {
+            const modal = document.getElementById('videoModal');
+            modal.classList.add('hidden');
+            document.getElementById('youtubeVideo').src = "";
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('videoModal').addEventListener('click', function(e) {
+            if (e.target === this) closeVideo();
         });
     </script>
 </body>
