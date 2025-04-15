@@ -6,6 +6,7 @@
     <title>Invoices Reader - AI-Powered Invoice Data Extraction for Windows</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>.pp-7UBUDND2DLDZ6{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
     <style>
         .gradient-bg {
             background: linear-gradient(135deg, #6b73ff 0%, #000dff 100%);
@@ -529,9 +530,44 @@
                     <p class="text-sm text-gray-500 mb-6" data-en="Special launch price - will increase soon" data-ar="سعر الإطلاق الخاص - سيزداد قريبًا">
                         Special launch price - will increase soon
                     </p>
-                    <button class="bg-white text-blue-600 px-10 py-4 rounded-full text-lg font-bold shadow-lg hover:shadow-xl transition transform hover:-translate-y-1" onclick="window.open('https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YOUR_PAYPAL_BUTTON_ID', '_blank')" data-en="Get Lifetime Access" data-ar="الحصول على وصول مدى الحياة">
-                    Get Lifetime Access
-                </button>
+                    <form id="paypal-form" action="https://www.paypal.com/ncp/payment/7UBUDND2DLDZ6" method="post" target="_blank" class="w-full flex flex-col items-center space-y-2">
+                    <input id="paypal-button" class="pp-7UBUDND2DLDZ6" type="submit" value="شراء الآن" data-en="Buy Now" data-ar="شراء الآن" />
+                    <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" class="w-32" />
+                    <section id="paypal-powered-text" class="text-sm text-gray-600" data-en="Powered by" data-ar="مدعوم من">
+                        <span id="powered-text">مدعوم من</span> <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" class="h-4 inline-block align-middle" />
+                    </section>
+                </form>
+                <script>
+                    // Language toggle function
+                    function updatePayPalLanguage() {
+                        const currentLang = document.documentElement.lang;
+                        const paypalButton = document.getElementById('paypal-button');
+                        const poweredText = document.getElementById('powered-text');
+                        const poweredTextContainer = document.getElementById('paypal-powered-text');
+
+                        if (currentLang === 'ar') {
+                            paypalButton.value = paypalButton.getAttribute('data-ar');
+                            poweredText.textContent = poweredTextContainer.getAttribute('data-ar');
+                            document.getElementById('paypal-form').style.direction = 'rtl';
+                        } else {
+                            paypalButton.value = paypalButton.getAttribute('data-en');
+                            poweredText.textContent = poweredTextContainer.getAttribute('data-en');
+                            document.getElementById('paypal-form').style.direction = 'ltr';
+                        }
+                    }
+
+                    // Call on page load
+                    updatePayPalLanguage();
+
+                    // Add to existing language toggle if possible
+                    const existingToggleFunction = window.toggleLanguage;
+                    window.toggleLanguage = function() {
+                        if (existingToggleFunction) {
+                            existingToggleFunction();
+                        }
+                        updatePayPalLanguage();
+                    };
+                </script>
                     <p class="text-xs text-gray-500 mt-2 text-center" data-en="30-day money-back guarantee" data-ar="ضمان استرداد الأموال لمدة 30 يومًا">
                         30-day money-back guarantee
                     </p>
