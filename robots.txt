@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Sitemap: https://mohammednabarawy.github.io/sitemap.xml
+
+# Prevent access to certain files
+Disallow: /images/README.md
