@@ -1,1015 +1,232 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohamed ElNabarawi - Chief Accountant & Author</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Inline animations to ensure they load */
-        @keyframes slideDown {
-            0% {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Language-specific styles */
-        body.ar {
-            font-family: 'Amiri', serif;
-            direction: rtl;
-        }
-        
-        body.ar .section-title,
-        body.ar h1, 
-        body.ar h2, 
-        body.ar p {
-            text-align: right;
-        }
-
-        /* Enhanced Language Toggle Styles */
-        .language-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 9999; /* Highest z-index to ensure it's on top of everything */
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            cursor: pointer;
-            transition: all 0.4s ease;
-            border: 3px solid rgba(255,255,255,0.2);
-            perspective: 100px; /* Add 3D perspective */
-        }
-
-        .language-toggle .lang-icon {
-            font-size: 30px;
-            color: white;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transform-style: preserve-3d;
-            transition: transform 0.4s ease;
-        }
-
-        .language-toggle .lang-icon::before {
-            content: 'EN';
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%) translateZ(20px); /* 3D effect */
-            font-size: 10px;
-            color: white;
-            opacity: 0.7;
-        }
-
-        .language-toggle:hover .lang-icon {
-            transform: rotateY(180deg);
-        }
-
-        body.ar .language-toggle .lang-icon::before {
-            content: 'AR';
-        }
-
-        /* Contact Modal Styles */
-        .contact-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .contact-modal.show {
-            display: flex;
-            opacity: 1;
-        }
-
-        .contact-modal-content {
-            background: white;
-            border-radius: 15px;
-            width: 90%;
-            max-width: 500px;
-            padding: 30px;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-            transform: scale(0.7);
-            transition: all 0.3s ease;
-        }
-
-        .contact-modal.show .contact-modal-content {
-            transform: scale(1);
-        }
-
-        .contact-modal-close {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 24px;
-            cursor: pointer;
-            color: #888;
-            transition: color 0.3s ease;
-        }
-
-        .contact-modal-close:hover {
-            color: #333;
-        }
-
-        .contact-modal-content h2 {
-            margin-bottom: 20px;
-            color: var(--primary-color);
-        }
-
-        .contact-modal-content .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .contact-modal-content .contact-method {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f4f6f7;
-            padding: 15px;
-            border-radius: 10px;
-            transition: background 0.3s ease;
-        }
-
-        .contact-modal-content .contact-method:hover {
-            background: #e9ecef;
-        }
-
-        .contact-modal-content .contact-method i {
-            margin-right: 15px;
-            font-size: 24px;
-            color: var(--primary-color);
-        }
-
-        body.ar .contact-modal-content .contact-method i {
-            margin-right: 0;
-            margin-left: 15px;
-        }
-
-        /* Updated Header Styles */
-        header {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
-            color: white;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        header .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-        }
-
-        header .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-        }
-
-        header .logo img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 15px;
-            object-fit: cover;
-        }
-
-        header nav ul {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-        }
-
-        header nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 300;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        header nav ul li a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: white;
-            transition: width 0.3s ease;
-        }
-
-        header nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        /* Mobile Navigation Styles */
-        @media screen and (max-width: 768px) {
-            header .header-container {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                position: relative;
-                padding: 10px 20px;
-            }
-
-            .hamburger-menu {
-                display: block;
-                position: static;
-                transform: none;
-                background: none;
-                width: 40px;
-                height: 40px;
-                margin-right: 10px;
-                z-index: 10001;
-            }
-
-            .hamburger-menu .bar {
-                width: 25px;
-                height: 3px;
-                background-color: white;
-                margin: 5px 0;
-                transition: all 0.3s ease;
-            }
-
-            .hamburger-menu.active .bar:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
-            }
-
-            .hamburger-menu.active .bar:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger-menu.active .bar:nth-child(3) {
-                transform: rotate(-45deg) translate(5px, -5px);
-            }
-
-            header nav {
-                display: none;
-            }
-
-            header .logo {
-                display: flex;
-                align-items: center;
-            }
-
-            header .logo img {
-                margin-right: 10px;
-            }
-
-            nav {
-                display: block;
-                position: fixed;
-                top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-                z-index: 9999;
-                transition: left 0.3s ease-in-out;
-                padding-top: 100px;
-                text-align: center;
-            }
-
-            nav.mobile-active {
-                left: 0;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 30px;
-                list-style: none;
-                padding: 0;
-            }
-
-            nav ul li {
-                opacity: 0;
-                transform: translateY(20px);
-                transition: opacity 0.3s ease, transform 0.3s ease;
-            }
-
-            nav.mobile-active ul li {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            nav ul li a {
-                font-size: 1.5rem;
-                color: #ffffff;
-                display: block;
-                padding: 15px;
-                text-decoration: none;
-                transition: background-color 0.3s ease, color 0.3s ease;
-            }
-
-            nav ul li a:hover {
-                background-color: rgba(255,255,255,0.1);
-                color: #4ecdc4;
-            }
-
-            nav ul li a::after {
-                display: none;
-            }
-        }
-
-        /* Updated Hero Section Styles */
-        #hero {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            max-width: 800px;
-            padding: 0 20px;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        }
-
-        .hero-content p {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-
-        .hero-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
-            z-index: 1;
-        }
-
-        .hero-shapes {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 2;
-        }
-
-        .hero-shape {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: float 6s infinite alternate;
-        }
-
-        .hero-shape:nth-child(1) {
-            width: 200px;
-            height: 200px;
-            top: 10%;
-            left: 10%;
-            animation-delay: -1s;
-        }
-
-        .hero-shape:nth-child(2) {
-            width: 300px;
-            height: 300px;
-            bottom: 20%;
-            right: 15%;
-            animation-delay: -3s;
-        }
-
-        .hero-shape:nth-child(3) {
-            width: 150px;
-            height: 150px;
-            top: 70%;
-            left: 50%;
-            animation-delay: -2s;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(50px);
-            }
-        }
-
-        .btn.animate-hero-button {
-            display: inline-block;
-            padding: 12px 30px;
-            background: white;
-            color: #764ba2;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn.animate-hero-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-            background: #f0f0f0;
-        }
-
-        /* Enhanced Mobile Navigation Styles */
-        @media screen and (max-width: 768px) {
-            body.menu-open {
-                overflow: hidden;
-            }
-
-            nav {
-                display: block;
-                position: fixed;
-                top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%);
-                z-index: 9999;
-                transition: left 0.3s ease-in-out;
-                padding-top: 100px;
-                text-align: center;
-            }
-
-            nav.mobile-active {
-                left: 0;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 30px;
-            }
-
-            nav ul li {
-                opacity: 0;
-                transform: translateY(20px);
-                transition: opacity 0.3s ease, transform 0.3s ease;
-            }
-
-            nav.mobile-active ul li {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            nav ul li a {
-                font-size: 1.5rem;
-                color: white;
-                display: block;
-                padding: 15px;
-                text-decoration: none;
-            }
-
-            nav ul li a::after {
-                display: none;
-            }
-
-            .hamburger-menu {
-                display: block;
-                position: fixed;
-                top: 20px;
-                left: 20px;
-                z-index: 10000;
-                background: rgba(255,255,255,0.2);
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-            }
-
-            .hamburger-menu .bar {
-                width: 25px;
-                height: 3px;
-                background-color: white;
-                margin: 5px 0;
-                transition: all 0.3s ease;
-            }
-
-            .hamburger-menu.active .bar:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
-            }
-
-            .hamburger-menu.active .bar:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger-menu.active .bar:nth-child(3) {
-                transform: rotate(-45deg) translate(5px, -5px);
-            }
-        }
-
-        /* Mobile Header Layout */
-        @media screen and (max-width: 768px) {
-            header .header-container {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                position: relative;
-                padding: 10px 20px;
-            }
-
-            .hamburger-menu {
-                display: block;
-                position: static; /* Change from absolute to static */
-                transform: none;
-                background: none;
-                width: 40px;
-                height: 40px;
-                margin-right: 10px;
-                z-index: 10001;
-            }
-
-            .hamburger-menu .bar {
-                width: 25px;
-                height: 3px;
-                background-color: white;
-                margin: 5px 0;
-                transition: all 0.3s ease;
-            }
-
-            .hamburger-menu.active .bar:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
-            }
-
-            .hamburger-menu.active .bar:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger-menu.active .bar:nth-child(3) {
-                transform: rotate(-45deg) translate(5px, -5px);
-            }
-
-            header .logo {
-                display: flex;
-                align-items: center;
-            }
-
-            header .logo img {
-                margin-right: 10px;
-            }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a1424">
+  <meta name="description" content="Mohamed Elnabarawi — Riyadh-based finance professional working across accounting software, business application support, website operations, and AI-assisted digital products. Explore selected projects.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mohamed Elnabarawi | Finance × Technology">
+  <meta property="og:description" content="Accounting software, business systems, website operations, and practical digital products.">
+  <meta property="og:url" content="https://mohammednabarawy.github.io/">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/41297184?v=4">
+  <link rel="canonical" href="https://mohammednabarawy.github.io/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>Mohamed Elnabarawi — Finance × Technology | Portfolio</title>
+  <style>
+    :root{--bg:#081221;--surface:#0e1d2e;--surface2:#102337;--ink:#f1f6fc;--muted:#afbdcd;--line:#2b4155;--teal:#65e0cc;--sky:#78bcff;--gold:#efc478;--max:1150px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:85px}
+    body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.75 Inter,Arial,sans-serif}
+    html[lang="ar"] body{font-family:Cairo,Tahoma,sans-serif}
+    body::before{content:"";position:absolute;z-index:-1;pointer-events:none;inset:0 0 auto;height:790px;background:radial-gradient(ellipse at 83% 17%,#1a49604f,transparent 48%),radial-gradient(ellipse at 14% 12%,#13396558,transparent 45%)}
+    a{color:inherit;text-decoration:none}
+    a:focus-visible,button:focus-visible{outline:3px solid var(--teal);outline-offset:4px}
+    button{font:inherit}
+    .skip{position:absolute;inset-inline-start:20px;top:-80px;padding:9px 15px;background:#fff;color:#081221;z-index:30}
+    .skip:focus{top:10px}
+    .wrap{width:min(var(--max),calc(100% - 48px));margin-inline:auto}
+    .topbar{position:sticky;top:0;z-index:20;background:#081221e9;backdrop-filter:blur(16px);border-bottom:1px solid #ffffff16}
+    .bar{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.03em}
+    .mark{display:grid;place-items:center;background:var(--teal);color:#06202b;border-radius:12px;width:40px;height:40px;font-weight:800}
+    .brand small{display:block;color:var(--muted);font:500 11px/1.3 Inter,Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+    .navigation{display:flex;align-items:center;gap:22px;font-size:13px;font-weight:600;color:#c8d4e3}
+    .navigation a:hover,.tiny-link:hover{color:var(--teal)}
+    .lang{border:1px solid #527b87;background:#143243;color:#e0fbf5;padding:8px 14px;border-radius:999px;cursor:pointer;font-weight:800;font-size:12px;white-space:nowrap}
+    .hero{display:grid;grid-template-columns:1.13fr .87fr;gap:48px;align-items:center;padding-block:94px 74px;min-height:615px}
+    .overline{display:inline-flex;align-items:center;gap:10px;color:var(--teal);font-size:12px;font-weight:800;letter-spacing:.17em;text-transform:uppercase}
+    .pulse{width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 5px #65e0cc22}
+    h1,h2,h3,p{margin-top:0}
+    h1{margin-bottom:22px;font-size:clamp(39px,5.1vw,72px);line-height:1.13;letter-spacing:-.06em}
+    html[lang="ar"] h1{letter-spacing:-.035em}
+    h1 em{font-style:normal;color:var(--teal)}
+    .lede{font-size:17px;color:#c4d1df;line-height:1.95;max-width:620px}
+    .actions{display:flex;flex-wrap:wrap;gap:13px;margin-top:30px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 19px;border-radius:12px;font-weight:800;font-size:13px;border:1px solid var(--line);transition:.2s ease}
+    .btn:hover{transform:translateY(-2px);border-color:var(--teal)}
+    .btn.primary{background:var(--teal);color:#04222b;border-color:var(--teal)}
+    .btn.secondary{background:#ffffff08;color:#effbff}
+    .hero-aside{min-height:460px;display:grid;align-items:center}
+    .graphic{position:relative;background:linear-gradient(145deg,#173b4e,#0c1a2e 65%);border:1px solid #3c647b;border-radius:26px;padding:28px;box-shadow:0 24px 100px #0006;overflow:hidden}
+    .graphic:before{content:"";position:absolute;width:220px;height:220px;right:-85px;top:-130px;background:#49d1ce27;border-radius:50%;filter:blur(5px)}
+    .person{display:flex;align-items:center;gap:16px;padding-bottom:23px;border-bottom:1px solid #7aa1b433}
+    .person img{width:64px;height:64px;border-radius:18px;object-fit:cover;border:2px solid #5291a6}
+    .person strong{font-size:17px;display:block}
+    .person span{color:#abc5d6;font-size:12px}
+    .graphic-title{color:#84c9d4;margin:25px 0 16px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:800}
+    .flowline{display:grid;grid-template-columns:1fr 22px 1fr 22px 1fr;align-items:center;gap:5px}
+    .flowbox{text-align:center;min-width:0;padding:18px 4px;background:#24455976;border:1px solid #5d839157;border-radius:14px}
+    .flowbox strong{display:block;font-size:21px;color:#9be7de;margin-bottom:4px}
+    .flowbox span{font-size:11px;color:#d0e5ee}
+    .arr{color:var(--gold);text-align:center;font-size:18px}
+    html[dir="rtl"] .arr{transform:rotate(180deg)}
+    .captionline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:24px;color:#a9c8d5;font-size:12px}
+    .captionline b{color:var(--gold);font-weight:700}
+    section{padding-block:77px}
+    .sectionhead{display:flex;align-items:end;justify-content:space-between;gap:25px;margin-bottom:30px}
+    .eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:800}
+    h2{font-size:clamp(28px,3vw,42px);line-height:1.3;letter-spacing:-.045em;margin:9px 0 0}
+    html[lang="ar"] h2{letter-spacing:0}
+    .intro{color:var(--muted);max-width:460px;font-size:14px;margin:0}
+    .specialties{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .tile{background:linear-gradient(180deg,#102538,#0b1b2c);border:1px solid var(--line);border-radius:18px;padding:25px}
+    .tile .num{color:var(--gold);font-weight:800;font-size:12px;letter-spacing:.12em}
+    .tile h3{font-size:18px;margin:20px 0 8px}
+    .tile p{color:var(--muted);font-size:14px;margin:0}
+    .subtle{border-top:1px solid var(--line)}
+    .filters{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0}
+    .filter{border:1px solid var(--line);background:transparent;color:#bdcbd9;padding:9px 15px;border-radius:999px;cursor:pointer;font-size:12px;font-weight:700}
+    .filter[aria-pressed="true"]{background:#224c53;color:#c4fff2;border-color:#6dc8b9}
+    .project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .project{display:flex;flex-direction:column;min-width:0;background:#0c1c2e;border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:transform .2s,border-color .2s}
+    .project:hover{transform:translateY(-3px);border-color:#6ca2a4}
+    .project[hidden]{display:none}
+    .project-top{min-height:125px;background:linear-gradient(120deg,#1b384c,#102335);padding:24px;display:flex;justify-content:space-between;align-items:start;gap:15px;border-bottom:1px solid #ffffff16}
+    .project-top .project-icon{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;font-size:24px;font-weight:800;color:#def9fa;border:1px solid #ffffff23;background:#ffffff0b}
+    .project-top .domain{color:#8cbdc8;font-size:11px;overflow-wrap:anywhere;text-align:end}
+    .project-body{padding:24px;flex:1;display:flex;flex-direction:column}
+    .project-body h3{font-size:19px;line-height:1.35;margin-bottom:7px}
+    .project-body p{font-size:14px;color:#b4c4d3;margin-bottom:20px;line-height:1.8}
+    .tag{display:inline-block;color:#8bdbcb;text-transform:uppercase;font-size:10px;font-weight:800;letter-spacing:.1em;margin-bottom:12px}
+    .links{display:flex;gap:18px;flex-wrap:wrap;margin-top:auto}
+    .links a{font-size:13px;font-weight:800;color:#ecf8ff;text-decoration:underline;text-decoration-color:#467f87;text-underline-offset:5px}
+    .links a:hover{color:var(--teal)}
+    .proof{display:grid;grid-template-columns:1.12fr .88fr;gap:23px}
+    .proofbox{border:1px solid var(--line);border-radius:21px;padding:29px;background:#0f2436}
+    .proofbox p{color:var(--muted);font-size:14px;line-height:1.9}
+    .proofbox ul{padding-inline-start:20px;color:#d0dfeb;font-size:14px;line-height:2}
+    .proofbox li{padding-inline-start:5px}
+    .proofbox h3{margin-bottom:12px;font-size:19px}
+    .proofbox .note{border-top:1px solid var(--line);margin-top:20px;padding-top:15px;color:#89b5c1;font-size:12px}
+    .footercta{border-radius:24px;padding:38px;background:linear-gradient(120deg,#143d45,#112238);border:1px solid #437f85;display:flex;align-items:center;justify-content:space-between;gap:28px}
+    .footercta h2{margin-bottom:14px}
+    .footercta p{color:#c6dfe3;margin:0;max-width:630px}
+    footer{margin-top:63px;padding:24px 0 35px;border-top:1px solid var(--line);color:#93a7bb;font-size:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px}
+    .tiny-link{color:#bcd8e3}
+    .rtl-only{display:none}
+    @media(max-width:850px){.hero{grid-template-columns:1fr;gap:12px;padding-block:63px}.hero-aside{min-height:auto}.graphic{max-width:540px}.specialties,.proof{grid-template-columns:1fr}.sectionhead{display:block}.intro{margin-top:12px}.navigation{gap:12px}.navigation .nav-hide{display:none}}
+    @media(max-width:600px){.wrap{width:min(var(--max),calc(100% - 30px))}.brand .longname{font-size:13px}.brand small{font-size:9px}h1{font-size:40px}.lede{font-size:15px}.project-grid{grid-template-columns:1fr}.flowbox{padding:12px 2px}.flowbox strong{font-size:16px}.flowbox span{font-size:10px}.graphic{padding:20px}.bar{min-height:65px}.navigation{gap:8px}.navigation a{font-size:12px}.lang{padding:7px 10px}.footercta{display:block;padding:27px}.footercta .actions{margin-top:20px}section{padding-block:53px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.project{transition:none}}
+  </style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Mohamed Elnabarawi","url":"https://mohammednabarawy.github.io/","sameAs":["https://github.com/mohammednabarawy","https://www.linkedin.com/in/mnabarawi"],"jobTitle":"Finance professional and digital projects practitioner","homeLocation":{"@type":"Place","name":"Riyadh, Saudi Arabia"}}</script>
 </head>
 <body>
-    <div class="language-toggle" onclick="toggleLanguage()">
-        <div class="lang-icon">
-            <i class="fas fa-globe-americas"></i>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="bar wrap">
+      <a class="brand" href="#top" aria-label="Home">
+        <span class="mark">ME</span><span><span class="longname">Mohamed Elnabarawi</span><small data-en="Finance × Technology" data-ar="المالية × التقنية">Finance × Technology</small></span>
+      </a>
+      <nav class="navigation" aria-label="Main navigation">
+        <a href="#work" data-en="Projects" data-ar="المشاريع">Projects</a>
+        <a class="nav-hide" href="#experience" data-en="Expertise" data-ar="الخبرات">Expertise</a>
+        <a class="nav-hide" href="#credentials" data-en="Background" data-ar="المؤهلات">Background</a>
+        <a href="#contact" data-en="Contact" data-ar="تواصل">Contact</a>
+        <button id="lang-toggle" class="lang" type="button" aria-label="Switch to Arabic">العربية</button>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <div id="top" class="wrap hero">
+      <div>
+        <div class="overline"><span class="pulse"></span><span data-en="Riyadh, Saudi Arabia · Exploring technology roles" data-ar="الرياض، السعودية · مهتم بفرص العمل التقني">Riyadh, Saudi Arabia · Exploring technology roles</span></div>
+        <h1 data-en="Bridging <em>finance</em> and technology." data-ar="أجمع بين الخبرة <em>المالية</em> والحلول التقنية.">Bridging <em>finance</em> and technology.</h1>
+        <p class="lede" data-en="I am Mohamed Elnabarawi, a finance professional and hands-on digital project builder. I bring real accounting and audit experience to financial software workflows, website operations, business applications, and practical AI-assisted tools." data-ar="أنا محمد النبراوي، متخصص مالي بخبرة عملية في إنشاء وإدارة مشروعات رقمية. أجمع بين خبرتي في المحاسبة والمراجعة وفهم الأنظمة المالية وتشغيل المواقع وتطبيقات الأعمال والأدوات المدعومة بالذكاء الاصطناعي.">I am Mohamed Elnabarawi, a finance professional and hands-on digital project builder. I bring real accounting and audit experience to financial software workflows, website operations, business applications, and practical AI-assisted tools.</p>
+        <div class="actions"><a class="btn primary" href="#work" data-en="Explore selected work ↗" data-ar="استعرض أعمالي ↗">Explore selected work ↗</a><a class="btn secondary" href="https://www.linkedin.com/in/mnabarawi" target="_blank" rel="noopener noreferrer" data-en="LinkedIn profile ↗" data-ar="ملفي على لينكدإن ↗">LinkedIn profile ↗</a></div>
+      </div>
+      <aside class="hero-aside" aria-label="Work overview">
+        <div class="graphic">
+          <div class="person"><img src="https://avatars.githubusercontent.com/u/41297184?v=4" alt="Mohamed Elnabarawi" width="64" height="64"><div><strong>Mohamed Elnabarawi</strong><span data-en="Financial systems • Websites • Digital tools" data-ar="أنظمة مالية • مواقع • أدوات رقمية">Financial systems • Websites • Digital tools</span></div></div>
+          <div class="graphic-title" data-en="How I approach problems" data-ar="كيف أتعامل مع المشكلات">How I approach problems</div>
+          <div class="flowline"><div class="flowbox"><strong>01</strong><span data-en="Understand" data-ar="فهم">Understand</span></div><div class="arr" aria-hidden="true">→</div><div class="flowbox"><strong>02</strong><span data-en="Improve" data-ar="تحسين">Improve</span></div><div class="arr" aria-hidden="true">→</div><div class="flowbox"><strong>03</strong><span data-en="Support" data-ar="دعم">Support</span></div></div>
+          <div class="captionline"><span data-en="Business context + practical technology" data-ar="فهم الأعمال + حلول تقنية عملية">Business context + practical technology</span><b>FINANCE × IT</b></div>
         </div>
+      </aside>
     </div>
 
-    <header>
-        <div class="header-container">
-            <div class="hamburger-menu" onclick="toggleMobileMenu()">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-            <a href="#" class="logo">
-                <img src="images/profile.jpg" alt="Mohamed ElNabarawi">
-                Mohamed ElNabarawi
-            </a>
-            <nav>
-                <ul>
-                    <li><a href="#about" data-en="About" data-ar="من أنا">About</a></li>
-                    <li><a href="#skills" data-en="Skills" data-ar="المهارات">Skills</a></li>
-                    <li><a href="#publications" data-en="Publications" data-ar="المنشورات">Publications</a></li>
-                    <li><a href="#" onclick="openContactModal()" data-en="Contact" data-ar="تواصل">Contact</a></li>
-                    <li><a href="cv.html" data-en="CV" data-ar="السيرة الذاتية">CV</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <section id="experience" class="subtle"><div class="wrap">
+      <div class="sectionhead"><div><div class="eyebrow" data-en="What I bring" data-ar="ما أقدمه">What I bring</div><h2 data-en="A business-first technical mindset" data-ar="فهم للأعمال بعقلية تقنية">A business-first technical mindset</h2></div><p class="intro" data-en="My work sits at the intersection of accounting operations, practical technology and understandable user experiences." data-ar="خبرتي تجمع بين العمليات المحاسبية والتقنية العملية وتجربة المستخدم الواضحة.">My work sits at the intersection of accounting operations, practical technology and understandable user experiences.</p></div>
+      <div class="specialties">
+        <article class="tile"><span class="num">01 / SUPPORT</span><h3 data-en="Financial software workflows" data-ar="أنظمة وبرامج المحاسبة">Financial software workflows</h3><p data-en="Familiarity with accounting processes, invoices, VAT, reconciliations and reporting helps me understand financial application issues from a user's perspective." data-ar="فهم لدورات الفواتير وضريبة القيمة المضافة والتسويات والتقارير، بما يساعد على تحليل مشكلات مستخدمي البرامج المالية.">Familiarity with accounting processes, invoices, VAT, reconciliations and reporting helps me understand financial application issues from a user's perspective.</p></article>
+        <article class="tile"><span class="num">02 / OPERATIONS</span><h3 data-en="Website operations" data-ar="تشغيل المواقع الإلكترونية">Website operations</h3><p data-en="Hands-on website projects covering content, deployments, domains, SEO, migration and day-to-day digital operations." data-ar="تجربة عملية في إدارة المحتوى والنشر والاستضافات والنطاقات وتحسين الظهور ونقل المواقع وتشغيلها.">Hands-on website projects covering content, deployments, domains, SEO, migration and day-to-day digital operations.</p></article>
+        <article class="tile"><span class="num">03 / DELIVERY</span><h3 data-en="AI-assisted product building" data-ar="بناء المنتجات بمساعدة AI">AI-assisted product building</h3><p data-en="Turning business ideas into working prototypes and products through requirements, AI-assisted implementation, testing and iterative improvements." data-ar="تحويل أفكار الأعمال إلى نماذج ومنتجات عبر تحديد المتطلبات والاستعانة بالذكاء الاصطناعي في التنفيذ والاختبار والتحسين.">Turning business ideas into working prototypes and products through requirements, AI-assisted implementation, testing and iterative improvements.</p></article>
+      </div>
+    </div></section>
 
-    <section id="hero">
-        <div class="hero-background"></div>
-        <div class="hero-shapes">
-            <div class="hero-shape"></div>
-            <div class="hero-shape"></div>
-            <div class="hero-shape"></div>
-        </div>
-        <div class="hero-content">
-            <h1 class="animate-hero-title" data-en="Mohamed ElNabarawi" data-ar="محمد النبراوي">Mohamed ElNabarawi</h1>
-            <p class="animate-hero-subtitle" data-en="Chief Accountant | Financial Expert | Author" data-ar="رئيس حسابات | خبير مالي | مؤلف">Chief Accountant | Financial Expert | Author</p>
-            <a href="#about" class="btn animate-hero-button" data-en="Discover More" data-ar="اعرف المزيد">Discover More</a>
-        </div>
+    <section id="work" class="subtle"><div class="wrap">
+      <div class="sectionhead"><div><div class="eyebrow" data-en="Selected work" data-ar="أعمال مختارة">Selected work</div><h2 data-en="Real projects, practical outcomes" data-ar="مشاريع حقيقية وحلول عملية">Real projects, practical outcomes</h2></div><p class="intro" data-en="Some source repositories are private. Public case summaries and live links are provided where appropriate." data-ar="بعض مستودعات الأكواد خاصة؛ أعرض وصفًا للمشروعات وروابط عامة حيثما كان ذلك مناسبًا.">Some source repositories are private. Public case summaries and live links are provided where appropriate.</p></div>
+      <div class="filters" role="group" aria-label="Filter projects">
+        <button type="button" class="filter" data-filter="all" aria-pressed="true" data-en="All projects" data-ar="جميع المشاريع">All projects</button>
+        <button type="button" class="filter" data-filter="finance" aria-pressed="false" data-en="Finance & tools" data-ar="المالية والأدوات">Finance & tools</button>
+        <button type="button" class="filter" data-filter="web" aria-pressed="false" data-en="Web operations" data-ar="إدارة المواقع">Web operations</button>
+        <button type="button" class="filter" data-filter="creative" aria-pressed="false" data-en="Experiments" data-ar="تجارب تقنية">Experiments</button>
+      </div>
+      <div class="project-grid">
+        <article class="project" data-cat="finance"><div class="project-top"><span class="project-icon">IR</span><span class="domain">invoicesreader.com</span></div><div class="project-body"><span class="tag">FINTECH · DOCUMENT WORKFLOWS</span><h3 data-en="Invoices Reader" data-ar="قارئ الفواتير — Invoices Reader">Invoices Reader</h3><p data-en="A financial-document product for extracting invoice information and organizing it into usable spreadsheet data. My work spans product requirements, workflows, testing and ongoing improvements." data-ar="منتج لمعالجة الفواتير واستخراج بياناتها وتنظيمها داخل جداول قابلة للاستخدام. شمل عملي تحديد المتطلبات ومسارات الاستخدام والاختبار والتحسين المستمر.">A financial-document product for extracting invoice information and organizing it into usable spreadsheet data. My work spans product requirements, workflows, testing and ongoing improvements.</p><div class="links"><a href="https://invoicesreader.com/" target="_blank" rel="noopener noreferrer" data-en="Website ↗" data-ar="الموقع ↗">Website ↗</a><a href="https://github.com/mohammednabarawy/invoices-reader-plugins" target="_blank" rel="noopener noreferrer" data-en="Public plugins ↗" data-ar="الإضافات العامة ↗">Public plugins ↗</a></div></div></article>
+        <article class="project" data-cat="web"><div class="project-top"><span class="project-icon">R</span><span class="domain">rakha.net</span></div><div class="project-body"><span class="tag">BUSINESS WEBSITE · BOOKING</span><h3 data-en="Rakha Center" data-ar="مركز رخاء">Rakha Center</h3><p data-en="Corporate website for an office center, including a tenant meeting-room reservation workflow. A practical example of translating day-to-day property operations into a digital service." data-ar="موقع لمركز أعمال يتضمن نظامًا لحجوزات قاعات الاجتماعات للمستأجرين؛ مثال عملي لتحويل احتياج تشغيلي يومي إلى خدمة رقمية.">Corporate website for an office center, including a tenant meeting-room reservation workflow. A practical example of translating day-to-day property operations into a digital service.</p><div class="links"><a href="https://rakha.net/" target="_blank" rel="noopener noreferrer" data-en="Visit website ↗" data-ar="زيارة الموقع ↗">Visit website ↗</a></div></div></article>
+        <article class="project" data-cat="web"><div class="project-top"><span class="project-icon">A</span><span class="domain">aghna.com.sa</span></div><div class="project-body"><span class="tag">CORPORATE WEBSITE</span><h3 data-en="Aghna Real Estate" data-ar="شركة أغنى العقارية">Aghna Real Estate</h3><p data-en="Corporate web presence for a real-estate company. Involvement in website design, development and delivery, connecting business communication with a clear digital presence." data-ar="موقع تعريفي لشركة عقارية؛ شاركت في تصميمه وتطويره وإطلاقه بهدف تقديم حضور رقمي يعكس نشاط الشركة.">Corporate web presence for a real-estate company. Involvement in website design, development and delivery, connecting business communication with a clear digital presence.</p><div class="links"><a href="https://aghna.com.sa/" target="_blank" rel="noopener noreferrer" data-en="Visit website ↗" data-ar="زيارة الموقع ↗">Visit website ↗</a></div></div></article>
+        <article class="project" data-cat="web"><div class="project-top"><span class="project-icon">AT</span><span class="domain">arabtechtrends.com</span></div><div class="project-body"><span class="tag">PUBLISHING · SEO · MIGRATION</span><h3 data-en="Arab Tech Trends" data-ar="عرب تك — Arab Tech Trends">Arab Tech Trends</h3><p data-en="Arabic technology publishing site. The public repository documents an Astro-based rebuild, content migration, redirect mapping, search and SEO operations." data-ar="موقع عربي للمحتوى التقني. يوثق مستودعه العام بناء نسخة باستخدام Astro ونقل المحتوى والروابط المعاد توجيهها والبحث وتحسين الظهور.">Arabic technology publishing site. The public repository documents an Astro-based rebuild, content migration, redirect mapping, search and SEO operations.</p><div class="links"><a href="https://www.arabtechtrends.com/" target="_blank" rel="noopener noreferrer" data-en="Live site ↗" data-ar="الموقع ↗">Live site ↗</a><a href="https://github.com/mohammednabarawy/arabtechtrends-static" target="_blank" rel="noopener noreferrer" data-en="Source ↗" data-ar="الكود العام ↗">Source ↗</a></div></div></article>
+        <article class="project" data-cat="finance"><div class="project-top"><span class="project-icon">X</span><span class="domain">Microsoft Excel add-in</span></div><div class="project-body"><span class="tag">PRODUCTIVITY · AI</span><h3 data-en="Excel AI Add-in" data-ar="إضافة Excel AI">Excel AI Add-in</h3><p data-en="An open-source Excel add-in exploring AI-assisted analysis and formatting directly inside spreadsheet workflows. Repository includes setup instructions and interface examples." data-ar="إضافة عامة المصدر لاستكشاف تحليل البيانات وتنسيقها بالذكاء الاصطناعي داخل Excel، مع تعليمات تشغيل وصور للواجهة.">An open-source Excel add-in exploring AI-assisted analysis and formatting directly inside spreadsheet workflows. Repository includes setup instructions and interface examples.</p><div class="links"><a href="https://github.com/mohammednabarawy/excel-ai-addin" target="_blank" rel="noopener noreferrer" data-en="View repository ↗" data-ar="عرض المستودع ↗">View repository ↗</a></div></div></article>
+        <article class="project" data-cat="finance"><div class="project-top"><span class="project-icon">EA</span><span class="domain">Python · SQLite</span></div><div class="project-body"><span class="tag">AUDIT WORKFLOWS · DESKTOP</span><h3 data-en="eAudit" data-ar="المراجع الإلكتروني — eAudit">eAudit</h3><p data-en="An experimental auditing desktop application covering review tasks, documentation, sampling and analytical review. A portfolio example of applying audit-domain knowledge to software." data-ar="تطبيق مكتبي تجريبي لدعم مهام المراجعة وإدارة المستندات والعينات والمراجعة التحليلية؛ يجمع بين المعرفة المهنية والتقنية.">An experimental auditing desktop application covering review tasks, documentation, sampling and analytical review. A portfolio example of applying audit-domain knowledge to software.</p><div class="links"><a href="https://github.com/mohammednabarawy/eAudit" target="_blank" rel="noopener noreferrer" data-en="View repository ↗" data-ar="عرض المستودع ↗">View repository ↗</a></div></div></article>
+        <article class="project" data-cat="creative"><div class="project-top"><span class="project-icon">RV</span><span class="domain">Riyadh street game</span></div><div class="project-body"><span class="tag">WEB GAME · PRODUCT EXPERIMENT</span><h3 data-en="RUSHVANE | راشفين" data-ar="راشفين | RUSHVANE">RUSHVANE | راشفين</h3><p data-en="A playable browser game inspired by navigating Riyadh streets. A side project exploring interaction design, product iterations and public web deployment." data-ar="لعبة متصفح قابلة للتجربة تدور حول الملاحة في شوارع الرياض، ومشروع جانبي لتجربة التفاعل وتحسين المنتج ونشره على الويب.">A playable browser game inspired by navigating Riyadh streets. A side project exploring interaction design, product iterations and public web deployment.</p><div class="links"><a href="https://riyadh-ring-game.pages.dev/" target="_blank" rel="noopener noreferrer" data-en="Play / view ↗" data-ar="تجربة اللعبة ↗">Play / view ↗</a></div></div></article>
+      </div>
+    </div></section>
+
+    <section id="credentials" class="subtle"><div class="wrap">
+      <div class="sectionhead"><div><div class="eyebrow" data-en="Background" data-ar="الخلفية المهنية">Background</div><h2 data-en="Experience you can apply" data-ar="خبرات قابلة للتطبيق">Experience you can apply</h2></div></div>
+      <div class="proof">
+        <div class="proofbox"><h3 data-en="Business and technical context" data-ar="الخبرة المهنية والتقنية">Business and technical context</h3><p data-en="My career has included auditing and chief accounting responsibilities. Alongside that work I have pursued digital products, operational websites, and business software tools. I am interested in roles such as accounting software support, ERP functional support, business application support, and website administration." data-ar="شملت مسيرتي المراجعة المالية ومسؤوليات رئيس الحسابات، وبالتوازي عملت على منتجات رقمية ومواقع تشغيلية وأدوات أعمال. أهتم بوظائف دعم البرامج المحاسبية وERP والتطبيقات وإدارة المواقع.">My career has included auditing and chief accounting responsibilities. Alongside that work I have pursued digital products, operational websites, and business software tools. I am interested in roles such as accounting software support, ERP functional support, business application support, and website administration.</p><div class="note" data-en="Project delivery uses a mix of my business analysis, hands-on testing and AI-assisted development tools; this portfolio is not a claim of sole authorship of every line of code." data-ar="أستخدم مزيجًا من تحليل الأعمال والاختبار العملي وأدوات التطوير بمساعدة الذكاء الاصطناعي؛ ولا تعني هذه الأعمال أنني كتبت جميع أسطر الكود بمفردي.">Project delivery uses a mix of my business analysis, hands-on testing and AI-assisted development tools; this portfolio is not a claim of sole authorship of every line of code.</div></div>
+        <div class="proofbox"><h3 data-en="Education and learning" data-ar="المؤهلات والتعلم">Education and learning</h3><ul>
+          <li data-en="B.Com. in Accounting — Mansoura University (2010)" data-ar="بكالوريوس تجارة — محاسبة، جامعة المنصورة (2010)">B.Com. in Accounting — Mansoura University (2010)</li>
+          <li data-en="Full Stack Developer Track — Udacity / One Million Arab Coders (2018)" data-ar="مسار مطور Full Stack — Udacity / مبادرة المليون مبرمج عربي (2018)">Full Stack Developer Track — Udacity / One Million Arab Coders (2018)</li>
+          <li data-en="Data Analysis Track — Udacity / One Million Arab Coders (2020)" data-ar="مسار تحليل البيانات — Udacity / مبادرة المليون مبرمج عربي (2020)">Data Analysis Track — Udacity / One Million Arab Coders (2020)</li>
+          <li data-en="ICDL — International Computer Driving Licence (2010)" data-ar="الرخصة الدولية لقيادة الحاسب ICDL (2010)">ICDL — International Computer Driving Licence (2010)</li>
+        </ul><div class="note"><a class="tiny-link" href="https://github.com/mohammednabarawy" target="_blank" rel="noopener noreferrer" data-en="Explore additional public repositories ↗" data-ar="المزيد من المشاريع العامة على GitHub ↗">Explore additional public repositories ↗</a></div></div>
+      </div>
+    </div></section>
+
+    <section id="contact" class="wrap">
+      <div class="footercta"><div><div class="eyebrow" data-en="Get in touch" data-ar="تواصل معي">Get in touch</div><h2 data-en="Looking for someone who understands both sides?" data-ar="تبحث عن شخص يفهم الأعمال والتقنية معًا؟">Looking for someone who understands both sides?</h2><p data-en="Open to discussing accounting software support, business systems, website operations and related opportunities based in Riyadh or remote." data-ar="يسعدني مناقشة فرص دعم البرامج المحاسبية وأنظمة الأعمال وإدارة المواقع، في الرياض أو عن بُعد.">Open to discussing accounting software support, business systems, website operations and related opportunities based in Riyadh or remote.</p></div>
+      <div class="actions"><a class="btn primary" href="mailto:mohammednabarawy@gmail.com" data-en="Email me ↗" data-ar="راسلني ↗">Email me ↗</a><a class="btn secondary" href="https://github.com/mohammednabarawy" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div>
+      <footer><span>© 2026 Mohamed Elnabarawi</span><span><a class="tiny-link" href="https://www.linkedin.com/in/mnabarawi" target="_blank" rel="noopener noreferrer">LinkedIn</a> · <a class="tiny-link" href="https://github.com/mohammednabarawy" target="_blank" rel="noopener noreferrer">GitHub</a> · <a class="tiny-link" href="cv.html#publications" data-en="Earlier writing" data-ar="أعمال كتابية سابقة">Earlier writing</a></span></footer>
     </section>
-
-    <main>
-        <section id="about" class="section section-animate">
-            <div class="container">
-                <h2 data-en="About Me" data-ar="من أنا">About Me</h2>
-                <div class="about-content">
-                    <img src="images/profile.jpg" alt="Mohamed ElNabarawi" class="profile-img">
-                    <div class="about-text">
-                        <p data-en="💼 As an experienced Chief Accountant with a proven track record in the accounting industry, I am a master of financial management! I possess a wide range of financial skills, including accounting, internal controls, financial statements, financial accounting, ERP systems, Microsoft Word, and Microsoft Excel." 
-                           data-ar="💼 كرئيس حسابات ذو خبرة مثبتة في مجال المحاسبة، أنا متمكن من إدارة المالية! أمتلك مجموعة واسعة من المهارات المالية، بما في ذلك المحاسبة، والضوابط الداخلية، والبيانات المالية، والمحاسبة المالية، وأنظمة ERP، ومايكروسوفت وورد، وإكسل.">
-                            💼 As an experienced Chief Accountant with a proven track record in the accounting industry, I am a master of financial management! I possess a wide range of financial skills, including accounting, internal controls, financial statements, financial accounting, ERP systems, Microsoft Word, and Microsoft Excel.
-                        </p>
-                        <p data-en="🏆 Throughout my career, I have demonstrated my ability to manage complex financial projects, streamline accounting processes, and improve financial reporting. I am proficient in using ERP systems and other accounting software, enabling me to quickly adapt to new technology and implement solutions that improve financial performance." 
-                           data-ar="🏆 على مدار مسيرتي المهنية، أظهرت قدرتي على إدارة مشاريع مالية معقدة، وتحسين عمليات المحاسبة، وتحسين التقارير المالية. أنا ماهر في استخدام أنظمة ERP وبرامج المحاسبة الأخرى، مما يتيح لي التكيف بسرعة مع التكنولوجيا الجديدة وتنفيذ حلول تحسن الأداء المالي.">
-                            🏆 Throughout my career, I have demonstrated my ability to manage complex financial projects, streamline accounting processes, and improve financial reporting. I am proficient in using ERP systems and other accounting software, enabling me to quickly adapt to new technology and implement solutions that improve financial performance.
-                        </p>
-                        <div class="social-links">
-                            <a href="https://github.com/mohammednabarawy" target="_blank"><i class="fab fa-github"></i></a>
-                            <a href="https://linkedin.com/in/mnabarawi/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://x.com/nabarawymohamed" target="_blank"><i class="fab fa-twitter"></i></a>
-                            <a href="cv.html" target="_blank"><i class="fas fa-file-alt"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills" class="section section-animate">
-            <div class="container">
-                <h2 data-en="Skills" data-ar="المهارات">Skills</h2>
-                <div class="skills-grid">
-                    <div class="skill-card">
-                        <i class="fas fa-code"></i>
-                        <h3 data-en="Programming Languages" data-ar="لغات البرمجة">Programming Languages</h3>
-                        <p data-en="Python, JavaScript, Java, C++" data-ar="بايثون، جافا سكريبت، جافا، سي++">Python, JavaScript, Java, C++</p>
-                    </div>
-                    <div class="skill-card">
-                        <i class="fas fa-laptop-code"></i>
-                        <h3 data-en="Web Technologies" data-ar="تكنولوجيا الويب">Web Technologies</h3>
-                        <p data-en="HTML5, CSS3, React, Node.js" data-ar="إتش تي إم إل 5، سي إس إس 3، رياكت، نود.جي إس">HTML5, CSS3, React, Node.js</p>
-                    </div>
-                    <div class="skill-card">
-                        <i class="fas fa-database"></i>
-                        <h3 data-en="Databases" data-ar="قواعد البيانات">Databases</h3>
-                        <p data-en="MySQL, MongoDB, SQLite" data-ar="ماي إس كيو إل، مانجو دي بي، إس كيو لايت">MySQL, MongoDB, SQLite</p>
-                    </div>
-                    <div class="skill-card">
-                        <i class="fas fa-tools"></i>
-                        <h3 data-en="Tools & Platforms" data-ar="الأدوات والمنصات">Tools & Platforms</h3>
-                        <p data-en="Git, Docker, AWS, Jupyter" data-ar="جيت، دوكر، أمازون ويب سيرفس، جوبيتر">Git, Docker, AWS, Jupyter</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="section section-animate">
-            <div class="container">
-                <h2 data-en="My Projects" data-ar="مشاريعي">My Projects</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <h3 data-en="Invoices Reader" data-ar="قارئ الفواتير">Invoices Reader</h3>
-                        <img src="images\extract data.png" alt="Invoices Reader Project">
-                        <p data-en="A cross paltform Desktop application for automated invoice data extraction using QR code decoding and AI-powered information retrieval." 
-                           data-ar="تطبيق واجهة رسومية بلغة بايثون لاستخراج بيانات الفواتير تلقائيًا باستخدام فك شفرة QR وجمع المعلومات بالذكاء الاصطناعي.">
-                            A cross paltform Desktop application for automated invoice data extraction using QR code decoding and AI-powered information retrieval.
-                        </p>
-                        <a href="invoices-reader.html" class="btn">View Project</a>
-                    </div>
-                    <div class="project-card">
-                        <h3 data-en="Web Scraping Tool" data-ar="أداة جمع البيانات من الويب">Web Scraping Tool</h3>
-                        <img src="images/web-scraping.jpg" alt="Web Scraping Project">
-                        <p data-en="Created a Python-based web scraping application to extract and analyze online data." 
-                           data-ar="تم إنشاء تطبيق جمع البيانات من الويب باستخدام بايثون لاستخراج وتحليل البيانات عبر الإنترنت.">
-                            Created a Python-based web scraping application to extract and analyze online data.
-                        </p>
-                        <a href="#" class="btn">View Project</a>
-                    </div>
-                    <div class="project-card">
-                        <h3 data-en="Personal Portfolio Website" data-ar="موقع السيرة الذاتية الشخصي">Personal Portfolio Website</h3>
-                        <img src="images/portfolio-website.jpg" alt="Portfolio Website Project">
-                        <p data-en="Designed and developed a responsive personal portfolio website using modern web technologies." 
-                           data-ar="تم تصميم وتطوير موقع السيرة الذاتية الشخصي الاستجابي باستخدام تقنيات الويب الحديثة.">
-                            Designed and developed a responsive personal portfolio website using modern web technologies.
-                        </p>
-                        <a href="#" class="btn">View Project</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="publications" class="section section-animate">
-            <div class="container">
-                <h2 data-en="Published Works" data-ar="الأعمال المنشورة">Published Works</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <h3 data-en="انتهى الظلام" data-ar="انتهى الظلام">انتهى الظلام</h3>
-                        <img src="images/انتهى الظلام.jpg" alt="انتهى الظلام Book Cover">
-                        <p data-en="الحمد لله الذي مكنني من نشر ديواني الأول والذي يحتوي على بعض خواطري سواء كانت نثرا أو شعرا أو مقالات قصيرة باللغة العربية الفصحى والعامية المصرية تعبر عن بعض ما مررت به من نفحات إيمانية أو خواطر فكرية ورومانسية." 
-                           data-ar="الحمد لله الذي مكنني من نشر ديواني الأول والذي يحتوي على بعض خواطري سواء كانت نثرا أو شعرا أو مقالات قصيرة باللغة العربية الفصحى والعامية المصرية تعبر عن بعض ما مررت به من نفحات إيمانية أو خواطر فكرية ورومانسية.">
-                            الحمد لله الذي مكنني من نشر ديواني الأول والذي يحتوي على بعض خواطري سواء كانت نثرا أو شعرا أو مقالات قصيرة باللغة العربية الفصحى والعامية المصرية تعبر عن بعض ما مررت به من نفحات إيمانية أو خواطر فكرية ورومانسية.
-                        </p>
-                        <div class="publication-links">
-                            <a href="https://www.amazon.com/dp/1722055804" target="_blank" class="btn">View on Amazon</a>
-                            <a href="cv.html#publications" class="btn">More Details</a>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <h3 data-en="صيف ممطر" data-ar="صيف ممطر">صيف ممطر</h3>
-                        <img src="images/صيف ممطر.jpg" alt="صيف ممطر Book Cover">
-                        <p data-en="هذا الديوان يشمل أنماط مختلفة من الكتابات الأدبية النثرية والشعرية باللغة العربية الفصحى والعامية المصرية ونجدُ في بعض هذه القصائد الالتزام بالقافيةِ وبالشكل والبناءِ الخارجي للقصيدة العربية ولكنها غير مقيدة بوزن معين." 
-                           data-ar="هذا الديوان يشمل أنماط مختلفة من الكتابات الأدبية النثرية والشعرية باللغة العربية الفصحى والعامية المصرية ونجدُ في بعض هذه القصائد الالتزام بالقافيةِ وبالشكل والبناءِ الخارجي للقصيدة العربية ولكنها غير مقيدة بوزن معين.">
-                            هذا الديوان يشمل أنماط مختلفة من الكتابات الأدبية النثرية والشعرية باللغة العربية الفصحى والعامية المصرية ونجدُ في بعض هذه القصائد الالتزام بالقافيةِ وبالشكل والبناءِ الخارجي للقصيدة العربية ولكنها غير مقيدة بوزن معين.
-                        </p>
-                        <div class="publication-links">
-                            <a href="https://www.amazon.com/dp/1715710428" target="_blank" class="btn">View on Amazon</a>
-                            <a href="cv.html#publications" class="btn">More Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="section section-animate">
-            <div class="container">
-                <h2 data-en="Contact Me" data-ar="تواصل معي">Contact Me</h2>
-                <form id="contact-form">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <textarea placeholder="Your Message" required></textarea>
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p data-en="&copy; 2024 Mohamed ElNabarawi. All Rights Reserved." 
-               data-ar="&copy; 2024 محمد النبراوي. جميع الحقوق محفوظة.">
-               &copy; 2024 Mohamed ElNabarawi. All Rights Reserved.
-            </p>
-        </div>
-    </footer>
-
-    <!-- Contact Modal -->
-    <div class="contact-modal" id="contactModal">
-        <div class="contact-modal-content">
-            <span class="contact-modal-close" onclick="closeContactModal()">&times;</span>
-            <h2 data-en="Contact Mohamed" data-ar="تواصل مع محمد">Contact Mohamed</h2>
-            <div class="contact-info">
-                <a href="mailto:mohammednabarawy@gmail.com" class="contact-method">
-                    <i class="fas fa-envelope"></i>
-                    <span data-en="Email: mohammednabarawy@gmail.com" data-ar="البريد الإلكتروني: mohammednabarawy@gmail.com">Email: mohammednabarawy@gmail.com</span>
-                </a>
-                <a href="https://linkedin.com/in/mnabarawi/" target="_blank" class="contact-method">
-                    <i class="fab fa-linkedin"></i>
-                    <span data-en="LinkedIn Profile" data-ar="صفحة LinkedIn">LinkedIn Profile</span>
-                </a>
-                <a href="https://github.com/mohammednabarawy" target="_blank" class="contact-method">
-                    <i class="fab fa-github"></i>
-                    <span data-en="GitHub Profile" data-ar="صفحة GitHub">GitHub Profile</span>
-                </a>
-                <div class="contact-method">
-                    <i class="fas fa-phone"></i>
-                    <span data-en="Phone: +966 55 123 4567" data-ar="الهاتف: +966 55 123 4567">Phone: +966 55 123 4567</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // JavaScript to trigger animations
-        document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('.section-animate');
-            
-            const sectionObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('section-in-view');
-                    } else {
-                        entry.target.classList.remove('section-in-view');
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-
-            sections.forEach(section => {
-                sectionObserver.observe(section);
-            });
+  </main>
+  <script>
+    (function () {
+      var toggle = document.getElementById('lang-toggle');
+      var nav = document.querySelector('nav');
+      function setLanguage(lang) {
+        var ar = lang === 'ar';
+        document.documentElement.lang = lang;
+        document.documentElement.dir = ar ? 'rtl' : 'ltr';
+        document.title = ar ? 'محمد النبراوي | خبرات مالية وحلول تقنية' : 'Mohamed Elnabarawi — Finance × Technology | Portfolio';
+        document.querySelectorAll('[data-en][data-ar]').forEach(function (element) {
+          var value = element.getAttribute(ar ? 'data-ar' : 'data-en');
+          if (element.tagName === 'H1') element.innerHTML = value;
+          else element.textContent = value;
         });
-
-        // Language Toggle Functionality
-        function toggleLanguage() {
-            const body = document.body;
-            const currentLang = body.classList.contains('ar') ? 'ar' : 'en';
-            const newLang = currentLang === 'en' ? 'ar' : 'en';
-
-            // Toggle body class
-            body.classList.toggle('ar');
-            body.classList.toggle('en');
-
-            // Update all elements with translation attributes
-            document.querySelectorAll('[data-en][data-ar]').forEach(el => {
-                el.textContent = el.getAttribute(`data-${newLang}`);
-            });
-
-            // Update page direction
-            document.documentElement.lang = newLang;
-            document.documentElement.dir = newLang === 'ar' ? 'rtl' : 'ltr';
-
-            // Vibration feedback (for supported devices)
-            if ('vibrate' in navigator) {
-                navigator.vibrate(50);
-            }
-
-            // Sound effect (optional)
-            try {
-                const audio = new Audio('data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA');
-                audio.play();
-            } catch(e) {}
-        }
-
-        // Contact Modal Functions
-        function openContactModal() {
-            const modal = document.getElementById('contactModal');
-            modal.classList.add('show');
-        }
-
-        function closeContactModal() {
-            const modal = document.getElementById('contactModal');
-            modal.classList.remove('show');
-        }
-
-        // Add event listener to CV and index page email buttons
-        document.addEventListener('DOMContentLoaded', () => {
-            const emailButtons = document.querySelectorAll('.email-btn, [href="#contact"]');
-            emailButtons.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    openContactModal();
-                });
-            });
-
-            // Close modal when clicking outside
-            const modal = document.getElementById('contactModal');
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    closeContactModal();
-                }
-            });
-
-            // Close modal on Escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && modal.classList.contains('show')) {
-                    closeContactModal();
-                }
-            });
+        toggle.textContent = ar ? 'English' : 'العربية';
+        toggle.setAttribute('aria-label', ar ? 'Switch to English' : 'التبديل إلى العربية');
+        nav.setAttribute('aria-label', ar ? 'القائمة الرئيسية' : 'Main navigation');
+        try { localStorage.setItem('portfolio_lang',lang); } catch (e) {}
+      }
+      toggle.addEventListener('click',function () {setLanguage(document.documentElement.lang === 'en' ? 'ar' : 'en');});
+      var stored = '';
+      try {stored = localStorage.getItem('portfolio_lang') || '';} catch (e) {}
+      setLanguage(stored === 'ar' ? 'ar' : 'en');
+      document.querySelectorAll('.filter').forEach(function (button) {
+        button.addEventListener('click', function () {
+          var chosen=button.getAttribute('data-filter');
+          document.querySelectorAll('.filter').forEach(function (b) {b.setAttribute('aria-pressed', String(b===button));});
+          document.querySelectorAll('.project').forEach(function (card) {
+            card.hidden = chosen !== 'all' && card.getAttribute('data-cat') !== chosen;
+          });
         });
-
-        // Initialize with English as default
-        document.body.classList.add('en');
-    </script>
-    <script>
-        // JavaScript to trigger animations
-        document.addEventListener('DOMContentLoaded', () => {
-            const heroTitle = document.querySelector('.animate-hero-title');
-            const heroSubtitle = document.querySelector('.animate-hero-subtitle');
-            const heroButton = document.querySelector('.animate-hero-button');
-
-            // Add animation classes
-            heroTitle.classList.add('animate-fade-in-up');
-            heroSubtitle.classList.add('animate-fade-in-up');
-            heroButton.classList.add('animate-fade-in-up');
-
-            // Header scroll effect
-            const header = document.querySelector('header');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            });
-
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = anchor.getAttribute('href').substring(1);
-                    const targetElement = document.getElementById(targetId);
-                    
-                    if (targetElement) {
-                        targetElement.scrollIntoView({ 
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-
-            // Rest of the existing script...
-        });
-    </script>
-    <script>
-        function toggleMobileMenu() {
-            const nav = document.querySelector('nav');
-            const hamburger = document.querySelector('.hamburger-menu');
-            nav.classList.toggle('mobile-active');
-            hamburger.classList.toggle('active');
-            
-            // Prevent body scrolling when menu is open
-            document.body.classList.toggle('menu-open');
-        }
-
-        // Close mobile menu when a nav link is clicked
-        document.querySelectorAll('nav ul li a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                const nav = document.querySelector('nav');
-                const hamburger = document.querySelector('.hamburger-menu');
-                
-                // If it's a section link, prevent default and scroll smoothly
-                if (link.getAttribute('href').startsWith('#')) {
-                    e.preventDefault();
-                    const targetId = link.getAttribute('href').substring(1);
-                    const targetElement = document.getElementById(targetId);
-                    
-                    if (targetElement) {
-                        targetElement.scrollIntoView({ 
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                }
-
-                // Close menu
-                nav.classList.remove('mobile-active');
-                hamburger.classList.remove('active');
-                document.body.classList.remove('menu-open');
-            });
-        });
-
-        // Optional: Close mobile menu when clicking outside
-        document.addEventListener('click', (event) => {
-            const nav = document.querySelector('nav');
-            const hamburger = document.querySelector('.hamburger-menu');
-            const isClickInsideNav = nav.contains(event.target);
-            const isClickOnHamburger = hamburger.contains(event.target);
-            
-            if (!isClickInsideNav && !isClickOnHamburger) {
-                nav.classList.remove('mobile-active');
-                hamburger.classList.remove('active');
-                document.body.classList.remove('menu-open');
-            }
-        });
-    </script>
+      });
+    }());
+  </script>
 </body>
 </html>
