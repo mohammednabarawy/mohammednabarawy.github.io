@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohamed Elnabarawi — Professional Biography & CV</title>
-    <meta name="description" content="Mohamed Elnabarawi — Financial Consultant, Tech Entrepreneur & Author. Full professional biography, career milestones, digital products, certifications, published books, and official channels.">
+    <title>محمد النبراوي | السيرة الذاتية والمسيرة المهنية</title>
+    <meta name="description" content="محمد النبراوي (Mohamed Elnabarawi) — مستشار مالي ورائد مشاريع تقنية ومؤلف. السيرة الذاتية الكاملة، الخبرات المالية، المنتجات الرقمية، الشهادات المهنية، والمؤلفات المنشورة.">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -115,8 +115,8 @@
             gap: 12px;
             text-decoration: none;
             color: white;
-            font-weight: 700;
-            font-size: 1.05rem;
+            font-weight: 800;
+            font-size: clamp(1.25rem, 2.2vw, 1.55rem);
         }
 
         header .logo img {
@@ -638,7 +638,7 @@
         }
     </style>
 </head>
-<body class="en">
+<body class="ar">
     <div class="language-toggle" onclick="toggleLanguage()" title="Switch Language / تغيير اللغة">
         <div class="lang-icon">
             <i class="fas fa-globe"></i>
@@ -654,16 +654,16 @@
             </div>
             <a href="index.html" class="logo">
                 <img src="assets/mohamed-portrait.jpg" alt="Mohamed Elnabarawi">
-                <span data-en="Mohamed Elnabarawi" data-ar="محمد النبراوي">Mohamed Elnabarawi</span>
+                <span data-en="Mohamed Elnabarawi" data-ar="محمد النبراوي">محمد النبراوي</span>
             </a>
             <nav>
                 <ul>
-                    <li><a href="index.html" data-en="← Portfolio Home" data-ar="← الصفحة الرئيسية">← Portfolio Home</a></li>
-                    <li><a href="#professional-summary" data-en="Summary" data-ar="نبذة عني">Summary</a></li>
-                    <li><a href="#digital-projects" data-en="Projects" data-ar="المشاريع">Projects</a></li>
-                    <li><a href="#professional-experience" data-en="Experience" data-ar="الخبرات">Experience</a></li>
-                    <li><a href="#certifications" data-en="Certifications" data-ar="الشهادات">Certifications</a></li>
-                    <li><a href="#publications" data-en="Books" data-ar="المؤلفات">Books</a></li>
+                    <li><a href="index.html" data-en="← Portfolio Home" data-ar="← الصفحة الرئيسية">← الصفحة الرئيسية</a></li>
+                    <li><a href="#professional-summary" data-en="Summary" data-ar="نبذة عني">نبذة عني</a></li>
+                    <li><a href="#digital-projects" data-en="Projects" data-ar="المشاريع">المشاريع</a></li>
+                    <li><a href="#professional-experience" data-en="Experience" data-ar="الخبرات">الخبرات</a></li>
+                    <li><a href="#certifications" data-en="Certifications" data-ar="الشهادات">الشهادات</a></li>
+                    <li><a href="#publications" data-en="Books" data-ar="المؤلفات">المؤلفات</a></li>
                 </ul>
             </nav>
         </div>
@@ -673,9 +673,9 @@
         <div class="sidebar">
             <div class="sidebar-content">
                 <img src="assets/mohamed-portrait.jpg" alt="Mohamed Elnabarawi" class="profile-img">
-                <h1 data-en="MOHAMED ELNABARAWI" data-ar="محمد النبراوي">MOHAMED ELNABARAWI</h1>
-                <h2 data-en="Financial Consultant & Tech Entrepreneur" data-ar="مستشار مالي ورائد مشاريع تقنية">Financial Consultant & Tech Entrepreneur</h2>
-                <p class="tagline" data-en="Helping businesses grow with smart digital tools" data-ar="مساعدة الشركات على النمو بالأدوات الرقمية الذكية">Helping businesses grow with smart digital tools</p>
+                <h1 data-en="MOHAMED ELNABARAWI" data-ar="محمد النبراوي">محمد النبراوي</h1>
+                <h2 data-en="Financial Consultant & Tech Entrepreneur" data-ar="مستشار مالي ورائد مشاريع تقنية">مستشار مالي ورائد مشاريع تقنية</h2>
+                <p class="tagline" data-en="Helping businesses grow with smart digital tools" data-ar="مساعدة الشركات على النمو بالأدوات الرقمية الذكية">مساعدة الشركات على النمو بالأدوات الرقمية الذكية</p>
                 
                 <div class="contact-info">
                     <p><i class="fas fa-map-marker-alt"></i> 
@@ -959,7 +959,7 @@
             document.querySelectorAll('[data-en][data-ar]').forEach(el => {
                 el.textContent = el.getAttribute(`data-${lang}`);
             });
-            try { localStorage.setItem('portfolio_lang', lang); } catch(e) {}
+            try { localStorage.setItem('nabarawi_lang_v2', lang); } catch(e) {}
         }
 
         function toggleLanguage() {
@@ -984,9 +984,9 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            var stored = 'en';
-            try { stored = localStorage.getItem('portfolio_lang') || 'en'; } catch(e) {}
-            applyLanguage(stored === 'ar' ? 'ar' : 'en');
+            var stored = 'ar';
+            try { stored = localStorage.getItem('nabarawi_lang_v2') || 'ar'; } catch(e) {}
+            applyLanguage(stored === 'en' ? 'en' : 'ar');
 
             document.querySelectorAll('.email-btn, [href="#contact"]').forEach(btn => {
                 btn.addEventListener('click', function(e) {
