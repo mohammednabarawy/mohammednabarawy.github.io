@@ -10,8 +10,6 @@ This static, bilingual (English / Arabic with real RTL) GitHub Pages website hig
 - **Rakha Center** — corporate site with tenant meeting-room booking: https://rakha.net/
 - **Aghna Real Estate** — corporate website: https://aghna.com.sa/
 - **Arab Tech Trends** — site migration, content operations, SEO: https://www.arabtechtrends.com/
-- **Excel AI Add-in** — Excel-based AI productivity: https://github.com/mohammednabarawy/excel-ai-addin
-- **eAudit** — auditing software experiment: https://github.com/mohammednabarawy/eAudit
 - **RUSHVANE** — browser game: https://riyadh-ring-game.pages.dev/
 
 ## Technical notes
@@ -20,8 +18,7 @@ This static, bilingual (English / Arabic with real RTL) GitHub Pages website hig
 - Language toggle supports `lang=ar`, native `dir=rtl`, and saves the selection in browser storage.
 - Project filters are client-side and do not collect visitor data.
 - Contact is handled via `mailto:` (no form or user-data collection).
-- `cv.html` and other legacy pages are preserved and are not replaced by the new landing page.
-- This portfolio does **not** publish code or customer data from private company repositories.
+- `cv.html` and other pages are preserved alongside the main portfolio landing page.
 
 ## Local preview
 
