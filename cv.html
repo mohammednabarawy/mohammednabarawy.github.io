@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohamed ElNabarawi - Professional CV</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Mohamed Elnabarawi — Professional Biography & CV</title>
+    <meta name="description" content="Mohamed Elnabarawi — Financial Consultant, Tech Entrepreneur & Author. Full professional biography, career milestones, digital products, certifications, published books, and official channels.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --text-color: #333;
-            --background-color: #f4f6f7;
+            --primary-color: #0e1d2e;
+            --secondary-color: #2b8a9e;
+            --accent-teal: #65e0cc;
+            --text-color: #243447;
+            --background-color: #f0f4f8;
         }
 
         * {
@@ -23,81 +25,78 @@
 
         body {
             font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
+            line-height: 1.7;
             color: var(--text-color);
             background-color: var(--background-color);
         }
 
+        body.ar {
+            font-family: 'Cairo', Tahoma, sans-serif;
+            direction: rtl;
+            text-align: right;
+        }
+
         .language-toggle {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            bottom: 24px;
+            right: 24px;
             z-index: 9999;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0e1d2e 0%, #1b4d63 100%);
             width: 60px;
             height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.28);
             cursor: pointer;
-            transition: all 0.4s ease;
-            border: 3px solid rgba(255,255,255,0.2);
-            perspective: 100px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent-teal);
+        }
+
+        body.ar .language-toggle {
+            right: auto;
+            left: 24px;
         }
 
         .language-toggle .lang-icon {
-            font-size: 30px;
+            font-size: 26px;
             color: white;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            transform-style: preserve-3d;
-            transition: transform 0.4s ease;
         }
 
         .language-toggle .lang-icon::before {
-            content: 'EN';
+            content: 'AR';
             position: absolute;
-            top: -20px;
+            top: -18px;
             left: 50%;
-            transform: translateX(-50%) translateZ(20px);
+            transform: translateX(-50%);
             font-size: 10px;
-            color: white;
-            opacity: 0.7;
-        }
-
-        .language-toggle:hover .lang-icon {
-            transform: rotateY(180deg);
+            font-weight: 800;
+            color: var(--accent-teal);
         }
 
         body.ar .language-toggle .lang-icon::before {
-            content: 'AR';
+            content: 'EN';
         }
 
-        body.ar {
-            font-family: 'Amiri', serif;
-            direction: rtl;
-        }
-        
-        body.ar .section-title,
-        body.ar h1, 
-        body.ar h2, 
-        body.ar p {
-            text-align: right;
+        .language-toggle:hover {
+            transform: translateY(-3px) scale(1.04);
         }
 
         header {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+            background: linear-gradient(135deg, #081221 0%, #143549 100%);
             color: white;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            border-bottom: 1px solid rgba(101, 224, 204, 0.2);
         }
 
         header .header-container {
@@ -106,486 +105,510 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 20px;
+            padding: 12px 20px;
+            gap: 16px;
         }
 
         header .logo {
             display: flex;
             align-items: center;
+            gap: 12px;
             text-decoration: none;
             color: white;
-            font-weight: bold;
+            font-weight: 700;
+            font-size: 1.05rem;
         }
 
         header .logo img {
-            width: 50px;
-            height: 50px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
-            margin-right: 15px;
             object-fit: cover;
+            object-position: center 20%;
+            border: 2px solid var(--accent-teal);
         }
 
         header nav ul {
             display: flex;
             list-style: none;
-            gap: 20px;
+            gap: 18px;
+            align-items: center;
         }
 
         header nav ul li a {
-            color: white;
+            color: #e2eef8;
             text-decoration: none;
-            font-weight: 300;
-            transition: color 0.3s ease;
-            position: relative;
+            font-weight: 500;
+            font-size: 0.92rem;
+            transition: color 0.2s ease;
         }
 
-        header nav ul li a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: white;
-            transition: width 0.3s ease;
+        header nav ul li a:hover {
+            color: var(--accent-teal);
         }
 
-        header nav ul li a:hover::after {
-            width: 100%;
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
         }
 
         .cv-container {
-            max-width: 1100px;
-            margin: 100px auto 50px;
+            max-width: 1150px;
+            margin: 95px auto 50px;
             background-color: white;
-            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 15px 45px rgba(8, 18, 33, 0.12);
             display: grid;
-            grid-template-columns: 1fr 3fr;
-            min-height: calc(100vh - 200px);
+            grid-template-columns: 330px 1fr;
+            min-height: calc(100vh - 150px);
         }
 
         .sidebar {
-            background-color: var(--primary-color);
+            background: linear-gradient(180deg, #081221 0%, #10253a 100%);
             color: white;
-            padding: 40px 30px;
+            padding: 38px 26px;
             text-align: center;
         }
 
         .sidebar-content {
             position: sticky;
-            top: 100px;
+            top: 95px;
         }
 
         .profile-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
+            width: 180px;
+            height: 180px;
+            border-radius: 26px;
             object-fit: cover;
-            border: 5px solid var(--secondary-color);
-            margin-bottom: 20px;
+            object-position: center 20%;
+            border: 3px solid var(--accent-teal);
+            margin-bottom: 16px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.35);
         }
 
         .sidebar h1 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+            font-size: 1.55rem;
+            margin-bottom: 6px;
             color: white;
         }
 
         .sidebar h2 {
-            font-size: 1.2rem;
-            color: var(--secondary-color);
-            margin-bottom: 20px;
+            font-size: 1rem;
+            color: var(--accent-teal);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .sidebar .tagline {
+            font-size: 0.86rem;
+            color: #b7cede;
+            margin-bottom: 22px;
         }
 
         .contact-info {
-            margin-top: 20px;
-            text-align: left;
+            margin-top: 18px;
+            text-align: start;
+            border-top: 1px solid rgba(255,255,255,0.12);
+            padding-top: 18px;
         }
 
-        .contact-info p {
-            margin-bottom: 10px;
+        .contact-info p, .contact-info a.sidebar-link {
+            margin-bottom: 11px;
             display: flex;
             align-items: center;
+            gap: 10px;
+            color: #d7e6f2;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .contact-info a.sidebar-link:hover {
+            color: var(--accent-teal);
         }
 
         .contact-info i {
-            margin-right: 10px;
-            color: var(--secondary-color);
+            color: var(--accent-teal);
             width: 20px;
             text-align: center;
+            flex-shrink: 0;
+        }
+
+        .sidebar-socials {
+            margin-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.12);
+            padding-top: 18px;
+            text-align: start;
+        }
+
+        .sidebar-socials h3 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-teal);
+            margin-bottom: 12px;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .social-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 8px 10px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: #e6f2fa;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .social-chip:hover {
+            border-color: var(--accent-teal);
+            color: var(--accent-teal);
+            transform: translateY(-2px);
         }
 
         .email-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 10px 15px;
-            border-radius: 25px;
+            gap: 8px;
+            width: 100%;
+            background: var(--accent-teal);
+            color: #06222c;
+            font-weight: 700;
+            padding: 11px 16px;
+            border-radius: 12px;
             text-decoration: none;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .email-btn i {
-            margin-right: 8px;
-            font-size: 18px;
+            transition: all 0.2s ease;
+            margin-top: 16px;
         }
 
         .email-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
-        }
-
-        body.ar .email-btn i {
-            margin-right: 0;
-            margin-left: 8px;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(101, 224, 204, 0.3);
         }
 
         .main-content {
-            padding: 40px 50px;
+            padding: 42px 48px;
             background-color: white;
         }
 
-        .section {
+        .banner-hero {
             margin-bottom: 30px;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid #d7e3ec;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+        }
+
+        .banner-hero img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .section {
+            margin-bottom: 36px;
         }
 
         .section-title {
             border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
             color: var(--primary-color);
+            font-size: 1.35rem;
         }
 
-        .job-title {
-            font-weight: bold;
-            color: var(--primary-color);
+        .section p {
+            margin-bottom: 12px;
+        }
+
+        .section ul {
+            padding-inline-start: 22px;
+        }
+
+        .section ul li {
+            margin-bottom: 6px;
         }
 
         .job-details {
-            margin-bottom: 15px;
+            margin-bottom: 22px;
+            padding: 18px 20px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border-inline-start: 4px solid var(--secondary-color);
         }
 
-        .job-details h3 {
-            margin-bottom: 5px;
+        .job-title {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.12rem;
         }
 
         .job-details .company {
             color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .job-details .duration {
+            font-size: 0.86rem;
+            color: #64748b;
             margin-bottom: 10px;
         }
 
-        .skills-grid {
+        .projects-cv-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
         }
 
-        .skill-tag {
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
+        .project-cv-card {
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            background: #f8fafc;
+        }
+
+        .project-cv-card h3 {
+            font-size: 1.02rem;
+            color: var(--primary-color);
+            margin-bottom: 6px;
+        }
+
+        .project-cv-card p {
             font-size: 0.9rem;
-            display: inline-block;
-            margin-right: 5px;
-            margin-bottom: 5px;
+            color: #475569;
+            margin-bottom: 10px;
+        }
+
+        .project-cv-card a {
+            font-size: 0.86rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            text-decoration: none;
+            margin-inline-end: 12px;
+        }
+
+        .project-cv-card a:hover {
+            text-decoration: underline;
         }
 
         .certifications ul {
             list-style-type: none;
+            padding-inline-start: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
         }
 
         .certifications li {
-            margin-bottom: 20px;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 14px 16px;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            margin-bottom: 0;
         }
 
         .certifications li strong {
             color: var(--primary-color);
-            font-size: 1.1em;
+            font-size: 1rem;
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
 
         .certifications li p {
-            color: #666;
-            margin: 0;
-            font-size: 0.9em;
-        }
-
-        .publications {
-            margin-bottom: 30px;
+            margin-bottom: 2px;
+            font-size: 0.88rem;
+            color: #526377;
         }
 
         .publication-list {
-            margin-top: 20px;
+            display: grid;
+            gap: 18px;
         }
 
         .publication-item {
-            margin-bottom: 20px;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 18px;
+            padding: 18px;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            align-items: center;
+        }
+
+        .publication-cover {
+            width: 120px;
+            height: 172px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.12);
         }
 
         .publication-item h3 {
-            margin-bottom: 10px;
+            color: var(--primary-color);
+            margin-bottom: 8px;
         }
 
-        .publication-description {
-            margin-bottom: 10px;
-        }
-
-        .publication-links {
-            margin-top: 10px;
-        }
-
-        .btn {
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.9rem;
+        .publication-links a.btn {
             display: inline-block;
-            margin-right: 5px;
-            margin-bottom: 5px;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
             text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-top: 6px;
         }
 
-        @media print {
-            .cv-container {
-                box-shadow: none;
-                grid-template-columns: 1fr 3fr;
-            }
+        .publication-links a.btn:hover {
+            background: var(--secondary-color);
         }
 
-        @media screen and (max-width: 768px) {
-            .cv-container {
-                grid-template-columns: 1fr;
-                margin: 80px auto 20px;
-            }
-            .sidebar {
-                position: static;
-            }
-            .sidebar-content {
-                position: static;
-            }
-            .main-content {
-                padding: 20px;
-            }
-        }
-
-        /* Contact Modal Styles */
         .contact-modal {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.7);
+            background: rgba(8, 18, 33, 0.75);
             display: none;
             justify-content: center;
             align-items: center;
             z-index: 10000;
-            opacity: 0;
-            transition: opacity 0.3s ease;
         }
 
         .contact-modal.show {
             display: flex;
-            opacity: 1;
         }
 
         .contact-modal-content {
             background: white;
-            border-radius: 15px;
+            border-radius: 16px;
             width: 90%;
-            max-width: 500px;
-            padding: 30px;
+            max-width: 480px;
+            padding: 28px;
             text-align: center;
             position: relative;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-            transform: scale(0.7);
-            transition: all 0.3s ease;
-        }
-
-        .contact-modal.show .contact-modal-content {
-            transform: scale(1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
         }
 
         .contact-modal-close {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 24px;
+            top: 12px;
+            inset-inline-end: 16px;
+            font-size: 26px;
             cursor: pointer;
-            color: #888;
-            transition: color 0.3s ease;
-        }
-
-        .contact-modal-close:hover {
-            color: #333;
-        }
-
-        .contact-modal-content h2 {
-            margin-bottom: 20px;
-            color: var(--primary-color);
+            color: #64748b;
         }
 
         .contact-modal-content .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 10px;
+            margin-top: 16px;
+            border-top: none;
+            padding-top: 0;
         }
 
         .contact-modal-content .contact-method {
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #f4f6f7;
-            padding: 15px;
+            gap: 10px;
+            background: #f1f5f9;
+            padding: 12px;
             border-radius: 10px;
-            transition: background 0.3s ease;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
         }
 
         .contact-modal-content .contact-method:hover {
-            background: #e9ecef;
+            background: #e2e8f0;
         }
 
-        .contact-modal-content .contact-method i {
-            margin-right: 15px;
-            font-size: 24px;
-            color: var(--primary-color);
-        }
-
-        body.ar .contact-modal-content .contact-method i {
-            margin-right: 0;
-            margin-left: 15px;
-        }
-
-        /* Mobile Responsive Header Styles */
-        @media screen and (max-width: 768px) {
-            header .header-container {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                position: relative;
-                padding: 10px 20px;
+        @media screen and (max-width: 900px) {
+            .cv-container {
+                grid-template-columns: 1fr;
+                margin: 76px 14px 30px;
             }
-
-            .hamburger-menu {
-                display: block;
+            .sidebar-content {
                 position: static;
-                transform: none;
-                background: none;
-                width: 40px;
-                height: 40px;
-                margin-right: 10px;
+            }
+            .main-content {
+                padding: 26px 20px;
+            }
+            .projects-cv-grid, .certifications ul {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .hamburger-menu {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 36px;
+                height: 36px;
                 z-index: 10001;
             }
-
             .hamburger-menu .bar {
-                width: 25px;
+                width: 24px;
                 height: 3px;
                 background-color: white;
-                margin: 5px 0;
+                margin: 3px 0;
                 transition: all 0.3s ease;
             }
-
-            .hamburger-menu.active .bar:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
-            }
-
-            .hamburger-menu.active .bar:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger-menu.active .bar:nth-child(3) {
-                transform: rotate(-45deg) translate(5px, -5px);
-            }
-
             header nav {
-                display: none;
-            }
-
-            header .logo {
-                display: flex;
-                align-items: center;
-            }
-
-            header .logo img {
-                margin-right: 10px;
-            }
-
-            nav {
-                display: block;
                 position: fixed;
                 top: 0;
                 left: -100%;
                 width: 100%;
-                height: 100%;
-                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+                height: 100vh;
+                background: #081221f5;
                 z-index: 9999;
-                transition: left 0.3s ease-in-out;
-                padding-top: 100px;
+                transition: left 0.3s ease;
+                padding-top: 90px;
                 text-align: center;
             }
-
-            nav.mobile-active {
+            header nav.mobile-active {
                 left: 0;
             }
-
-            nav ul {
+            header nav ul {
                 flex-direction: column;
-                gap: 30px;
-                list-style: none;
-                padding: 0;
+                gap: 20px;
             }
-
-            nav ul li {
-                opacity: 0;
-                transform: translateY(20px);
-                transition: opacity 0.3s ease, transform 0.3s ease;
+            header nav ul li a {
+                font-size: 1.25rem;
             }
-
-            nav.mobile-active ul li {
-                opacity: 1;
-                transform: translateY(0);
+            .publication-item {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
-
-            nav ul li a {
-                font-size: 1.5rem;
-                color: #ffffff;
-                display: block;
-                padding: 15px;
-                text-decoration: none;
-                transition: background-color 0.3s ease, color 0.3s ease;
-            }
-
-            nav ul li a:hover {
-                background-color: rgba(255,255,255,0.1);
-                color: #4ecdc4;
-            }
-
-            nav ul li a::after {
-                display: none;
+            .publication-cover {
+                margin: 0 auto;
             }
         }
     </style>
 </head>
-<body>
-    <div class="language-toggle" onclick="toggleLanguage()">
+<body class="en">
+    <div class="language-toggle" onclick="toggleLanguage()" title="Switch Language / تغيير اللغة">
         <div class="lang-icon">
-            <i class="fas fa-globe-americas"></i>
+            <i class="fas fa-globe"></i>
         </div>
     </div>
 
@@ -596,18 +619,18 @@
                 <div class="bar"></div>
                 <div class="bar"></div>
             </div>
-            <a href="#" class="logo">
-                <img src="images/profile.jpg" alt="Mohamed ElNabarawi">
-                Mohamed ElNabarawi
+            <a href="index.html" class="logo">
+                <img src="assets/mohamed-portrait.jpg" alt="Mohamed Elnabarawi">
+                <span data-en="Mohamed Elnabarawi" data-ar="محمد النبراوي">Mohamed Elnabarawi</span>
             </a>
             <nav>
                 <ul>
-                    <li><a href="#professional-summary" data-en="Professional Summary" data-ar="ملخص المسيرة المهنية">Professional Summary</a></li>
-                    <li><a href="#technical-skills" data-en="Technical Skills" data-ar="المهارات التقنية">Technical Skills</a></li>
-                    <li><a href="#professional-experience" data-en="Experience" data-ar="الخبرة المهنية">Experience</a></li>
+                    <li><a href="index.html" data-en="← Portfolio Home" data-ar="← الصفحة الرئيسية">← Portfolio Home</a></li>
+                    <li><a href="#professional-summary" data-en="Summary" data-ar="نبذة عني">Summary</a></li>
+                    <li><a href="#digital-projects" data-en="Projects" data-ar="المشاريع">Projects</a></li>
+                    <li><a href="#professional-experience" data-en="Experience" data-ar="الخبرات">Experience</a></li>
                     <li><a href="#certifications" data-en="Certifications" data-ar="الشهادات">Certifications</a></li>
-                    <li><a href="#publications" data-en="Publications" data-ar="المنشورات">Publications</a></li>
-                    <li><a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                    <li><a href="#publications" data-en="Books" data-ar="المؤلفات">Books</a></li>
                 </ul>
             </nav>
         </div>
@@ -616,61 +639,107 @@
     <div class="cv-container">
         <div class="sidebar">
             <div class="sidebar-content">
-                <img src="images/profile.jpg" alt="Mohamed ElNabarawi" class="profile-img">
+                <img src="assets/mohamed-portrait.jpg" alt="Mohamed Elnabarawi" class="profile-img">
                 <h1 data-en="MOHAMED ELNABARAWI" data-ar="محمد النبراوي">MOHAMED ELNABARAWI</h1>
-                <h2 data-en="Chief Accountant | Python Developer" data-ar="رئيس حسابات | مطور برمجيات">Chief Accountant | Python Developer</h2>
+                <h2 data-en="Financial Consultant & Tech Entrepreneur" data-ar="مستشار مالي ورائد مشاريع تقنية">Financial Consultant & Tech Entrepreneur</h2>
+                <p class="tagline" data-en="Helping businesses grow with smart digital tools" data-ar="مساعدة الشركات على النمو بالأدوات الرقمية الذكية">Helping businesses grow with smart digital tools</p>
                 
                 <div class="contact-info">
                     <p><i class="fas fa-map-marker-alt"></i> 
                         <span data-en="Riyadh, Saudi Arabia" data-ar="الرياض، المملكة العربية السعودية">Riyadh, Saudi Arabia</span>
                     </p>
-                    <p><i class="fas fa-phone"></i> 
-                        <span data-en="+966 596344647" data-ar="+٩٦٦ ٥٩٦ ٣٤٤ ٦٤٧">+966 596344647</span>
+                    <p><i class="fas fa-graduation-cap"></i> 
+                        <span data-en="B.Com. in Accounting — Mansoura Univ. (2010)" data-ar="بكالوريوس تجارة (محاسبة) — جامعة المنصورة (٢٠١٠)">B.Com. in Accounting — Mansoura Univ. (2010)</span>
                     </p>
-                    <a href="#contact" class="btn email-btn" data-en="Email Me" data-ar="راسلني">
-                        <i class="fas fa-envelope"></i> 
-                        <span data-en="Email Me" data-ar="راسلني">Email Me</span>
+                    <a href="https://mohammednabarawy.github.io/" class="sidebar-link">
+                        <i class="fas fa-globe"></i>
+                        <span>mohammednabarawy.github.io</span>
                     </a>
+                    <a href="mailto:mohammednabarawy@gmail.com" class="sidebar-link">
+                        <i class="fas fa-envelope"></i>
+                        <span>mohammednabarawy@gmail.com</span>
+                    </a>
+                    <a href="#contact" class="email-btn">
+                        <i class="fas fa-paper-plane"></i> 
+                        <span data-en="Connect With Me" data-ar="تواصل معي">Connect With Me</span>
+                    </a>
+                </div>
+
+                <div class="sidebar-socials">
+                    <h3 data-en="Official Channels" data-ar="حساباتي وقنواتي الرسمية">Official Channels</h3>
+                    <div class="social-grid">
+                        <a href="https://www.youtube.com/@MohammedElnabarawi" target="_blank" rel="noopener noreferrer" class="social-chip"><i class="fab fa-youtube"></i> YouTube 1</a>
+                        <a href="https://www.youtube.com/@elnabarawi" target="_blank" rel="noopener noreferrer" class="social-chip"><i class="fab fa-youtube"></i> YouTube 2</a>
+                        <a href="https://www.facebook.com/mfnabarawy" target="_blank" rel="noopener noreferrer" class="social-chip"><i class="fab fa-facebook"></i> Facebook</a>
+                        <a href="https://www.instagram.com/mohammednabarawy/" target="_blank" rel="noopener noreferrer" class="social-chip"><i class="fab fa-instagram"></i> Instagram</a>
+                        <a href="https://x.com/nabarawymohamed" target="_blank" rel="noopener noreferrer" class="social-chip"><i class="fab fa-twitter"></i> X (Twitter)</a>
+                        <a href="https://www.linkedin.com/in/mnabarawi" target="_blank" rel="noopener noreferrer" class="social-chip"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                        <a href="https://github.com/mohammednabarawy" target="_blank" rel="noopener noreferrer" class="social-chip"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="https://arabtechtrends.com/" target="_blank" rel="noopener noreferrer" class="social-chip"><i class="fas fa-newspaper"></i> Arab Tech</a>
+                    </div>
                 </div>
             </div>
         </div>
         
         <div class="main-content">
+            <div class="banner-hero">
+                <img src="assets/mohamed-banner.jpg" alt="Mohamed Elnabarawi — Financial Consultant & Tech Entrepreneur">
+            </div>
+
             <section id="professional-summary" class="section">
-                <h2 class="section-title" data-en="Professional Summary" data-ar="ملخص المسيرة المهنية">Professional Summary</h2>
-                <p data-en="💼 As an experienced Chief Accountant with a proven track record in the accounting industry, I am a master of financial management! 
-                I possess a wide range of financial skills, including accounting, internal controls, financial statements, 
-                financial accounting, ERP systems, Microsoft Word, and Microsoft Excel." 
-                data-ar="💼 كرئيس حسابات ذو خبرة مثبتة في مجال المحاسبة، أتقن إدارة الشؤون المالية بكفاءة عالية! 
-                أمتلك مجموعة متكاملة من المهارات المالية، تشمل المحاسبة، والرقابة الداخلية، وإعداد القوائم المالية، 
-                والمحاسبة المالية، وأنظمة تخطيط موارد المؤسسات (ERP)، وإتقان برامج مايكروسوفت وورد وإكسل.">💼 As an experienced Chief Accountant with a proven track record in the accounting industry, I am a master of financial management! 
-                I possess a wide range of financial skills, including accounting, internal controls, financial statements, 
-                financial accounting, ERP systems, Microsoft Word, and Microsoft Excel.</p>
+                <h2 class="section-title" data-en="Professional Profile" data-ar="الملف المهني والتعريفي">Professional Profile</h2>
+                <p data-en="💼 Financial Consultant, Chief Accountant, and Tech Entrepreneur with over 15 years of experience across accounting leadership, financial auditing, internal controls, financial statements, VAT compliance, and ERP systems in Saudi Arabia and Egypt." 
+                data-ar="💼 مستشار مالي ورئيس حسابات ورائد مشاريع تقنية بخبرة تمتد لأكثر من ١٥ عامًا في قيادة الإدارات المالية، والمراجعة القانونية، والرقابة الداخلية، وإعداد القوائم المالية، والالتزام الضريبي، وأنظمة تخطيط موارد المؤسسات (ERP) في المملكة العربية السعودية ومصر.">💼 Financial Consultant, Chief Accountant, and Tech Entrepreneur with over 15 years of experience across accounting leadership, financial auditing, internal controls, financial statements, VAT compliance, and ERP systems in Saudi Arabia and Egypt.</p>
                 
-                <p data-en="🏆 Throughout my career, I have demonstrated my ability to manage complex financial projects, streamline accounting processes, and improve financial reporting. 
-                I am proficient in using ERP systems and other accounting software, enabling me to quickly adapt to new technology and implement solutions that improve financial performance." 
-                data-ar="🏆 على مدار مسيرتي المهنية، أثبت قدرتي على إدارة المشاريع المالية المعقدة، وتبسيط العمليات المحاسبية، وتحسين جودة التقارير المالية. 
-                أتمتع بكفاءة عالية في استخدام أنظمة تخطيط موارد المؤسسات والبرامج المحاسبية المتقدمة، مما يمكنني من التكيف السريع مع التقنيات الجديدة وتطبيق حلول تعزز الأداء المالي.">🏆 Throughout my career, I have demonstrated my ability to manage complex financial projects, streamline accounting processes, and improve financial reporting. 
-                I am proficient in using ERP systems and other accounting software, enabling me to quickly adapt to new technology and implement solutions that improve financial performance.</p>
-                
-                <p data-en="🌟 I am a results-driven Chief Accountant who is committed to providing exceptional financial services 
-                that enable organizations to make informed business decisions. I am always looking for new challenges 
-                and opportunities to further develop my skills and expertise in the accounting industry." 
-                data-ar="🌟 أنا محاسب تنفيذي يحركه النتائج، ملتزم بتقديم خدمات مالية استثنائية 
-                تمكن المنظمات من اتخاذ قرارات أعمال مدروسة. أنا دائمًا أبحث عن تحديات جديدة 
-                وفرص لتطوير مهاراتي وخبرتي في مجال المحاسبة.">🌟 I am a results-driven Chief Accountant who is committed to providing exceptional financial services 
-                that enable organizations to make informed business decisions. I am always looking for new challenges 
-                and opportunities to further develop my skills and expertise in the accounting industry.</p>
+                <p data-en="🚀 Alongside my financial career, I build and manage practical digital products, corporate websites, publishing platforms, and AI-assisted business tools—combining deep domain knowledge in finance and operations with modern technology execution." 
+                data-ar="🚀 بالتوازي مع مسيرتي المالية، أعمل على بناء وإدارة منتجات رقمية ومواقع مؤسسية ومنصات نشر وأدوات أعمال ذكية مدعومة بالذكاء الاصطناعي؛ للجمع بين الفهم العميق لاحتياجات الأعمال والمحاسبة وبين التنفيذ التقني العملي.">🚀 Alongside my financial career, I build and manage practical digital products, corporate websites, publishing platforms, and AI-assisted business tools—combining deep domain knowledge in finance and operations with modern technology execution.</p>
+            </section>
+
+            <section id="digital-projects" class="section">
+                <h2 class="section-title" data-en="Digital Products, Websites & Platforms" data-ar="المشاريع والمنتجات الرقمية والمواقع">Digital Products, Websites & Platforms</h2>
+                <div class="projects-cv-grid">
+                    <div class="project-cv-card">
+                        <h3 data-en="Invoices Reader" data-ar="قارئ الفواتير — Invoices Reader">Invoices Reader</h3>
+                        <p data-en="AI & QR-powered invoice data extraction software converting invoices into structured Excel workflows." data-ar="منتج لاستخراج بيانات الفواتير عبر رموز QR والذكاء الاصطناعي وتنظيمها في جداول Excel جاهزة.">AI & QR-powered invoice data extraction software converting invoices into structured Excel workflows.</p>
+                        <a href="https://invoicesreader.com/" target="_blank" rel="noopener">invoicesreader.com ↗</a>
+                        <a href="invoices-reader.html">Overview ↗</a>
+                    </div>
+                    <div class="project-cv-card">
+                        <h3 data-en="Rakha Center" data-ar="مركز رخاء للأعمال — Rakha Center">Rakha Center</h3>
+                        <p data-en="Corporate website and tenant meeting-room reservation platform for an office center in Riyadh." data-ar="موقع إلكتروني ونظام حجز قاعات اجتماعات للمستأجرين لمركز أعمال في الرياض.">Corporate website and tenant meeting-room reservation platform for an office center in Riyadh.</p>
+                        <a href="https://rakha.net/" target="_blank" rel="noopener">rakha.net ↗</a>
+                    </div>
+                    <div class="project-cv-card">
+                        <h3 data-en="Aghna Real Estate" data-ar="شركة أغنى العقارية — Aghna Real Estate">Aghna Real Estate</h3>
+                        <p data-en="Official corporate web platform presenting real-estate projects and services in Saudi Arabia." data-ar="الموقع الرسمي لشركة أغنى العقارية لعرض المشاريع والخدمات العقارية في السعودية.">Official corporate web platform presenting real-estate projects and services in Saudi Arabia.</p>
+                        <a href="https://aghna.com.sa/" target="_blank" rel="noopener">aghna.com.sa ↗</a>
+                    </div>
+                    <div class="project-cv-card">
+                        <h3 data-en="Arab Tech Trends" data-ar="عرب تك — Arab Tech Trends">Arab Tech Trends</h3>
+                        <p data-en="Arabic technology publishing platform built on Astro with content migration, search, and SEO optimization." data-ar="منصة عربية للأخبار والمحتوى التقني مبنية بإطار Astro مع تحسينات SEO والبحث الفوري.">Arabic technology publishing platform built on Astro with content migration, search, and SEO optimization.</p>
+                        <a href="https://arabtechtrends.com/" target="_blank" rel="noopener">arabtechtrends.com ↗</a>
+                    </div>
+                    <div class="project-cv-card">
+                        <h3 data-en="Excel AI Add-in & eAudit" data-ar="إضافة Excel AI وبرنامج eAudit">Excel AI Add-in & eAudit</h3>
+                        <p data-en="Open-source AI spreadsheet assistant for Microsoft Excel and a Python/SQLite desktop auditing tool." data-ar="إضافة ذكاء اصطناعي مفتوحة المصدر لبرنامج Excel وتطبيق مكتبي للمراجعة المالية بلغة Python.">Open-source AI spreadsheet assistant for Microsoft Excel and a Python/SQLite desktop auditing tool.</p>
+                        <a href="https://github.com/mohammednabarawy/excel-ai-addin" target="_blank" rel="noopener">GitHub ↗</a>
+                    </div>
+                    <div class="project-cv-card">
+                        <h3 data-en="RUSHVANE | راشفين" data-ar="لعبة راشفين | RUSHVANE">RUSHVANE | راشفين</h3>
+                        <p data-en="Interactive browser driving game inspired by Riyadh's ring roads and streets." data-ar="لعبة متصفح تفاعلية مستوحاة من القيادة في شوارع وطرق الرياض.">Interactive browser driving game inspired by Riyadh's ring roads and streets.</p>
+                        <a href="https://riyadh-ring-game.pages.dev/" target="_blank" rel="noopener">Play ↗</a>
+                    </div>
+                </div>
             </section>
 
             <section id="technical-skills" class="section">
-                <h2 class="section-title" data-en="Technical Skills" data-ar="المهارات التقنية">Technical Skills</h2>
+                <h2 class="section-title" data-en="Core Competencies & Domains" data-ar="المهارات والخبرات الأساسية">Core Competencies & Domains</h2>
                 <ul>
-                    <li data-en="ERP Systems (SAP, Oracle)" data-ar="أنظمة تخطيط موارد المؤسسات (SAP، أوراكل)">ERP Systems (SAP, Oracle)</li>
-                    <li data-en="Accounting Software" data-ar="البرامج المحاسبية">Accounting Software</li>
-                    <li data-en="Microsoft Office Suite (Excel, Word, PowerPoint)" data-ar="حزمة مايكروسوفت أوفيس (إكسل، وورد، باوربوينت)">Microsoft Office Suite (Excel, Word, PowerPoint)</li>
-                    <li data-en="Financial Reporting Tools" data-ar="أدوات إعداد التقارير المالية">Financial Reporting Tools</li>
-                    <li data-en="Basic Python Programming" data-ar="البرمجة بلغة بايثون الأساسية">Basic Python Programming</li>
+                    <li data-en="Financial Leadership, Financial Statements, Internal Controls, Budgeting & Cash-Flow Management" data-ar="الإدارة المالية، إعداد القوائم المالية، الرقابة الداخلية، الموازنات وإدارة التدفقات النقدية">Financial Leadership, Financial Statements, Internal Controls, Budgeting & Cash-Flow Management</li>
+                    <li data-en="External & Internal Auditing, Analytical Review, Fixed Assets & Bank Reconciliations" data-ar="المراجعة المالية الداخلية والخارجية، المراجعة التحليلية، الأصول الثابتة والتسويات البنكية">External & Internal Auditing, Analytical Review, Fixed Assets & Bank Reconciliations</li>
+                    <li data-en="ERP Systems (SAP, Oracle, Peachtree) & Accounting Software Workflows" data-ar="أنظمة تخطيط موارد المؤسسات (SAP، Oracle، Peachtree) ومسارات عمل البرامج المحاسبية">ERP Systems (SAP, Oracle, Peachtree) & Accounting Software Workflows</li>
+                    <li data-en="Website Management, Digital Publishing, Technical SEO, Domains & Cloud Deployment" data-ar="إدارة وتشغيل المواقع الإلكترونية، النشر الرقمي، تحسين محركات البحث (SEO)، وإدارة النطاقات">Website Management, Digital Publishing, Technical SEO, Domains & Cloud Deployment</li>
+                    <li data-en="AI-Assisted Product Development, Python Automation, SQLite & Advanced Microsoft Excel" data-ar="تطوير المنتجات بمساعدة الذكاء الاصطناعي، أتمتة المهام بلغة Python، قواعد بيانات SQLite، وExcel المتقدم">AI-Assisted Product Development, Python Automation, SQLite & Advanced Microsoft Excel</li>
                 </ul>
             </section>
 
@@ -679,113 +748,114 @@
                 
                 <div class="job-details">
                     <h3 class="job-title" data-en="Chief Accountant" data-ar="رئيس حسابات">Chief Accountant</h3>
-                    <p class="company" data-en="Aghna Real Estate co, Saudi Arabia" data-ar="شركة أغنى العقارية، المملكة العربية السعودية">Aghna Real Estate co, Saudi Arabia</p>
-                    <p class="duration" data-en="August 2021 - Present (3 yrs 5 mos)" data-ar="أغسطس ٢٠٢١ - الآن">August 2021 - Present (3 yrs 5 mos)</p>
+                    <p class="company" data-en="Aghna Real Estate Co., Riyadh, Saudi Arabia" data-ar="شركة أغنى العقارية، الرياض، المملكة العربية السعودية">Aghna Real Estate Co., Riyadh, Saudi Arabia</p>
+                    <p class="duration" data-en="August 2021 – Present" data-ar="أغسطس ٢٠٢١ – حتى الآن">August 2021 – Present</p>
                     <ul>
-                        <li data-en="Supervise and coordinate accounting staff activities" data-ar="الإشراف والتنسيق على أنشطة فريق المحاسبة">Supervise and coordinate accounting staff activities</li>
-                        <li data-en="Develop and implement financial strategies" data-ar="وضع وتنفيذ الاستراتيجيات المالية الفعالة">Develop and implement financial strategies</li>
-                        <li data-en="Ensure compliance with financial regulations" data-ar="ضمان الالتزام بالأنظمة والتشريعات المالية">Ensure compliance with financial regulations</li>
-                        <li data-en="Optimized financial reporting processes, reducing monthly closing time by 40%" data-ar="تحسين عمليات إعداد التقارير المالية، مما أدى إلى تقليل وقت الإقفال الشهري بنسبة ٤٠٪">Optimized financial reporting processes, reducing monthly closing time by 40%</li>
-                        <li data-en="Implemented cost-saving measures that improved overall financial efficiency" data-ar="تطبيق إجراءات توفير التكاليف التي حسنت الكفاءة المالية الإجمالية">Implemented cost-saving measures that improved overall financial efficiency</li>
+                        <li data-en="Supervise and coordinate accounting department operations and financial reporting" data-ar="الإشراف والتنسيق الكامل على أنشطة قسم المحاسبة وإعداد التقارير المالية">Supervise and coordinate accounting department operations and financial reporting</li>
+                        <li data-en="Develop and implement financial strategies and internal control procedures" data-ar="وضع وتنفيذ الاستراتيجيات المالية وإجراءات الرقابة الداخلية">Develop and implement financial strategies and internal control procedures</li>
+                        <li data-en="Ensure full compliance with financial and tax regulations in Saudi Arabia" data-ar="ضمان الالتزام الكامل بالأنظمة والتشريعات المالية والضريبية في المملكة">Ensure full compliance with financial and tax regulations in Saudi Arabia</li>
+                        <li data-en="Optimized financial reporting processes, reducing monthly closing time by 40%" data-ar="تحسين وأتمتة عمليات إعداد التقارير المالية، مما قلل وقت الإقفال الشهري بنسبة ٤٠٪">Optimized financial reporting processes, reducing monthly closing time by 40%</li>
+                        <li data-en="Contributed to the company's digital presence and website operations (aghna.com.sa)" data-ar="المساهمة في تطوير الحضور الرقمي للشركة وإدارة موقعها الإلكتروني (aghna.com.sa)">Contributed to the company's digital presence and website operations (aghna.com.sa)</li>
                     </ul>
                 </div>
 
                 <div class="job-details">
                     <h3 class="job-title" data-en="Chief Accountant" data-ar="رئيس حسابات">Chief Accountant</h3>
                     <p class="company" data-en="First Andareen Trading and Contracting, Saudi Arabia" data-ar="شركة أندرين الأولى للتجارة والمقاولات، المملكة العربية السعودية">First Andareen Trading and Contracting, Saudi Arabia</p>
-                    <p class="duration" data-en="April 2016 - October 2021 (5 yrs 7 mos)" data-ar="أبريل ٢٠١٦ - أكتوبر ٢٠٢١ (٥ سنوات و٧ أشهر)">April 2016 - October 2021 (5 yrs 7 mos)</p>
+                    <p class="duration" data-en="April 2016 – October 2021 (5 yrs 7 mos)" data-ar="أبريل ٢٠١٦ – أكتوبر ٢٠٢١ (٥ سنوات و٧ أشهر)">April 2016 – October 2021 (5 yrs 7 mos)</p>
                     <ul>
-                        <li data-en="Collected and analyzed various financial reports regularly" data-ar="جمع وتحليل التقارير المالية بشكل دوري ومنهجي">Collected and analyzed various financial reports regularly</li>
-                        <li data-en="Developed new financial reports to meet management expectations" data-ar="تطوير تقارير مالية مبتكرة تلبي توقعات الإدارة العليا">Developed new financial reports to meet management expectations</li>
-                        <li data-en="Supervised and organized Accounts department activities" data-ar="الإشراف والتنظيم الدقيق لأنشطة إدارة الحسابات">Supervised and organized Accounts department activities</li>
-                        <li data-en="Ensured proper application of international accounting standards" data-ar="ضمان التطبيق الأمثل للمعايير المحاسبية الدولية">Ensured proper application of international accounting standards</li>
-                        <li data-en="Coordinated with internal and external auditors" data-ar="التنسيق الفعال مع المراجعين الداخليين والخارجيين">Coordinated with internal and external auditors</li>
-                        <li data-en="Supervised Accounts Receivable and collection functions" data-ar="الإشراف على إدارة الذمم المدينة وعمليات التحصيل">Supervised Accounts Receivable and collection functions</li>
-                        <li data-en="Submitted regular cash flow reports" data-ar="إعداد وتقديم تقارير التدفق النقدي بانتظام">Submitted regular cash flow reports</li>
-                        <li data-en="Streamlined accounting processes, reducing operational costs by approximately 25%" data-ar="تبسيط العمليات المحاسبية، مما أدى إلى خفض التكاليف التشغيلية بنسبة ٢٥٪ تقريبًا">Streamlined accounting processes, reducing operational costs by approximately 25%</li>
+                        <li data-en="Collected and analyzed periodic financial reports and developed executive dashboards" data-ar="جمع وتحليل التقارير المالية الدورية وتطوير تقارير تحليلية للإدارة العليا">Collected and analyzed periodic financial reports and developed executive dashboards</li>
+                        <li data-en="Supervised Accounts department, Accounts Receivable, collections, and cash-flow reporting" data-ar="الإشراف على قسم الحسابات وإدارة الذمم المدينة والتحصيل وتقارير التدفقات النقدية">Supervised Accounts department, Accounts Receivable, collections, and cash-flow reporting</li>
+                        <li data-en="Ensured proper application of international accounting standards and coordinated with external auditors" data-ar="ضمان التطبيق السليم للمعايير المحاسبية الدولية والتنسيق الفعال مع المراجعين الخارجيين">Ensured proper application of international accounting standards and coordinated with external auditors</li>
+                        <li data-en="Streamlined accounting processes, reducing operational costs by approximately 25%" data-ar="تبسيط العمليات المحاسبية وخفض التكاليف التشغيلية بنسبة ٢٥٪ تقريبًا">Streamlined accounting processes, reducing operational costs by approximately 25%</li>
                         <li data-en="Implemented digital transformation initiatives in financial reporting" data-ar="تنفيذ مبادرات التحول الرقمي في إعداد التقارير المالية">Implemented digital transformation initiatives in financial reporting</li>
                     </ul>
                 </div>
 
                 <div class="job-details">
                     <h3 class="job-title" data-en="Senior Auditor" data-ar="مراجع مالي أول">Senior Auditor</h3>
-                    <p class="company" data-en="Abdullah Ibrahim Alhamza C.P.A., Riyadh" data-ar="مكتب عبدالله إبراهيم الحمزة للمحاسبة والمراجعة، الرياض">Abdullah Ibrahim Alhamza C.P.A., Riyadh</p>
-                    <p class="duration" data-en="May 2012 - March 2016 (3 yrs 11 mos)" data-ar="مايو ٢٠١٢ - مارس ٢٠١٦ (٣ سنوات و١١ شهرًا)">May 2012 - March 2016 (3 yrs 11 mos)</p>
+                    <p class="company" data-en="Abdullah Ibrahim Alhamza C.P.A., Riyadh, Saudi Arabia" data-ar="مكتب عبدالله إبراهيم الحمزة للمحاسبة والمراجعة (CPA)، الرياض">Abdullah Ibrahim Alhamza C.P.A., Riyadh, Saudi Arabia</p>
+                    <p class="duration" data-en="May 2012 – March 2016 (3 yrs 11 mos)" data-ar="مايو ٢٠١٢ – مارس ٢٠١٦ (٣ سنوات و١١ شهرًا)">May 2012 – March 2016 (3 yrs 11 mos)</p>
                     <ul>
-                        <li data-en="Worked as a senior auditor for 20 companies across various industries" data-ar="عمل كمراجع مالي أول لـ ٢٠ شركة في قطاعات صناعية متنوعة">Worked as a senior auditor for 20 companies across various industries</li>
-                        <li data-en="Audited and prepared financial statements and quarterly reports" data-ar="مراجعة وإعداد البيانات المالية والتقارير ربع السنوية بدقة عالية">Audited and prepared financial statements and quarterly reports</li>
-                        <li data-en="Provided additional services including fixed assets record keeping and bank reconciliations" data-ar="تقديم خدمات إضافية تشمل إدارة سجلات الأصول الثابتة وإجراء التسويات البنكية">Provided additional services including fixed assets record keeping and bank reconciliations</li>
+                        <li data-en="Served as Senior Auditor for 20+ companies across diverse commercial and industrial sectors" data-ar="العمل كمراجع مالي أول لأكثر من ٢٠ شركة في قطاعات تجارية وصناعية وخدمية متنوعة">Served as Senior Auditor for 20+ companies across diverse commercial and industrial sectors</li>
+                        <li data-en="Audited and prepared financial statements and quarterly audit reports" data-ar="مراجعة وإعداد القوائم المالية والتقارير ربع السنوية بدقة عالية">Audited and prepared financial statements and quarterly audit reports</li>
+                        <li data-en="Performed fixed-assets record keeping and comprehensive bank reconciliations" data-ar="تقديم خدمات إدارة سجلات الأصول الثابتة وإجراء التسويات البنكية الشاملة">Performed fixed-assets record keeping and comprehensive bank reconciliations</li>
                     </ul>
                 </div>
 
                 <div class="job-details">
                     <h3 class="job-title" data-en="Accountant" data-ar="محاسب مالي">Accountant</h3>
-                    <p class="company" data-en="Dakahlia Poultry, Egypt" data-ar="شركة دقهلية للدواجن، مصر">Dakahlia Poultry, Egypt</p>
-                    <p class="duration" data-en="January 2011 - January 2012 (1 yr 1 mo)" data-ar="يناير ٢٠١١ - يناير ٢٠١٢ (سنة وشهر واحد)">January 2011 - January 2012 (1 yr 1 mo)</p>
+                    <p class="company" data-en="Dakahlia Poultry, Egypt" data-ar="شركة الدقهلية للدواجن، مصر">Dakahlia Poultry, Egypt</p>
+                    <p class="duration" data-en="January 2011 – January 2012 (1 yr 1 mo)" data-ar="يناير ٢٠١١ – يناير ٢٠١٢ (سنة وشهر)">January 2011 – January 2012 (1 yr 1 mo)</p>
                     <ul>
-                        <li data-en="Collated and analyzed account data to prepare asset, liability, and capital account entries" data-ar="تجميع وتحليل بيانات الحسابات لإعداد مدخلات حسابات الأصول والالتزامات وحقوق الملكية">Collated and analyzed account data to prepare asset, liability, and capital account entries</li>
-                        <li data-en="Tracked financial transactions by adding relevant documents and data" data-ar="متابعة وتوثيق المعاملات المالية من خلال إضافة المستندات والبيانات ذات الصلة">Tracked financial transactions by adding relevant documents and data</li>
+                        <li data-en="Collated and analyzed account data to prepare asset, liability, and capital account entries" data-ar="تجميع وتحليل بيانات الحسابات لإعداد قيود الأصول والالتزامات وحقوق الملكية">Collated and analyzed account data to prepare asset, liability, and capital account entries</li>
+                        <li data-en="Tracked and documented financial transactions with supporting records" data-ar="متابعة وتوثيق المعاملات المالية والمستندات المؤيدة لها">Tracked and documented financial transactions with supporting records</li>
                     </ul>
                 </div>
             </section>
 
             <section id="certifications" class="section certifications">
-                <h2 class="section-title" data-en="Licenses & Certifications" data-ar="الرخص والشهادات">Licenses & Certifications</h2>
+                <h2 class="section-title" data-en="Education, Licenses & Certifications" data-ar="المؤهلات العلمية والشهادات المهنية">Education, Licenses & Certifications</h2>
                 <ul>
+                    <li>
+                        <strong data-en="Bachelor of Commerce (Accounting)" data-ar="بكالوريوس التجارة (شعبة المحاسبة)">Bachelor of Commerce (Accounting)</strong>
+                        <p data-en="Mansoura University, Egypt" data-ar="جامعة المنصورة، مصر">Mansoura University, Egypt</p>
+                        <p data-en="Graduated 2010" data-ar="دفعة ٢٠١٠">Graduated 2010</p>
+                    </li>
                     <li>
                         <strong data-en="Certified Finance Manager (CFM)" data-ar="مدير مالي معتمد (CFM)">Certified Finance Manager (CFM)</strong>
                         <p data-en="Global Association for Quality Management (GAQM)" data-ar="الجمعية العالمية لإدارة الجودة (GAQM)">Global Association for Quality Management (GAQM)</p>
-                        <p data-en="Issued Jan 2021" data-ar="صدر يناير 2021">Issued Jan 2021</p>
+                        <p data-en="Issued Jan 2021" data-ar="صدر في يناير ٢٠٢١">Issued Jan 2021</p>
                     </li>
                     <li>
-                        <strong data-en="Budgeting in Real Life" data-ar="التنبؤ المالي في الحياة الواقعية">Budgeting in Real Life</strong>
+                        <strong data-en="Data Analysis Track" data-ar="مسار تحليل البيانات (Data Analysis)">Data Analysis Track</strong>
+                        <p data-en="Udacity · One Million Arab Coders Initiative" data-ar="Udacity · مبادرة المليون مبرمج عربي">Udacity · One Million Arab Coders Initiative</p>
+                        <p data-en="Issued Feb 2020" data-ar="صدر في فبراير ٢٠٢٠">Issued Feb 2020</p>
+                    </li>
+                    <li>
+                        <strong data-en="Full Stack Developer Track" data-ar="مسار مطور تطبيقات الويب (Full Stack)">Full Stack Developer Track</strong>
+                        <p data-en="Udacity · One Million Arab Coders Initiative" data-ar="Udacity · مبادرة المليون مبرمج عربي">Udacity · One Million Arab Coders Initiative</p>
+                        <p data-en="Issued Sep 2018" data-ar="صدر في سبتمبر ٢٠١٨">Issued Sep 2018</p>
+                    </li>
+                    <li>
+                        <strong data-en="Budgeting in Real Life" data-ar="إعداد الموازنات والتخطيط المالي">Budgeting in Real Life</strong>
                         <p data-en="LinkedIn Learning" data-ar="LinkedIn Learning">LinkedIn Learning</p>
-                        <p data-en="Issued Dec 2020" data-ar="صدر ديسمبر 2020">Issued Dec 2020</p>
+                        <p data-en="Issued Dec 2020" data-ar="صدر في ديسمبر ٢٠٢٠">Issued Dec 2020</p>
                     </li>
                     <li>
-                        <strong data-en="Data Analysis" data-ar="تحليل البيانات">Data Analysis</strong>
-                        <p data-en="Udacity" data-ar="Udacity">Udacity</p>
-                        <p data-en="Issued Feb 2020" data-ar="صدر فبراير 2020">Issued Feb 2020</p>
+                        <strong data-en="International Computer Driving License (ICDL)" data-ar="الرخصة الدولية لقيادة الحاسب (ICDL)">International Computer Driving License (ICDL)</strong>
+                        <p data-en="ICDL Arabia · Credential ID: egy000414273" data-ar="ICDL Arabia · رقم الاعتماد: egy000414273">ICDL Arabia · Credential ID: egy000414273</p>
+                        <p data-en="Issued Apr 2010" data-ar="صدر في أبريل ٢٠١٠">Issued Apr 2010</p>
                     </li>
                     <li>
-                        <strong data-en="Full Stack Developer" data-ar="مطور تطبيقات كامل">Full Stack Developer</strong>
-                        <p data-en="Udacity" data-ar="Udacity">Udacity</p>
-                        <p data-en="Issued Sep 2018" data-ar="صدر سبتمبر 2018">Issued Sep 2018</p>
-                    </li>
-                    <li>
-                        <strong data-en="International Computer Driving License" data-ar="رخصة القيادة الدولية للحاسوب">International Computer Driving License</strong>
-                        <p data-en="ICDL Arabia" data-ar="ICDL Arabia">ICDL Arabia</p>
-                        <p data-en="Issued Apr 2010" data-ar="صدر أبريل 2010">Issued Apr 2010</p>
-                        <p data-en="Credential ID: egy000414273" data-ar="رقم الاعتماد: egy000414273">Credential ID: egy000414273</p>
-                    </li>
-                    <li>
-                        <strong data-en="Accountant Preparation" data-ar="إعداد المحاسب">Accountant Preparation</strong>
+                        <strong data-en="Accountant Preparation & Peachtree Accounting" data-ar="إعداد المحاسب ومحاسبة Peachtree">Accountant Preparation & Peachtree Accounting</strong>
                         <p data-en="Mansoura University" data-ar="جامعة المنصورة">Mansoura University</p>
-                        <p data-en="Issued Mar 2010" data-ar="صدر مارس 2010">Issued Mar 2010</p>
-                    </li>
-                    <li>
-                        <strong data-en="PEACH TREE Accounting" data-ar="محاسبة PEACH TREE">PEACH TREE Accounting</strong>
-                        <p data-en="Mansoura University" data-ar="جامعة المنصورة">Mansoura University</p>
-                        <p data-en="Issued Mar 2010" data-ar="صدر مارس 2010">Issued Mar 2010</p>
+                        <p data-en="Issued Mar 2010" data-ar="صدر في مارس ٢٠١٠">Issued Mar 2010</p>
                     </li>
                 </ul>
             </section>
 
             <section id="publications" class="section publications">
-                <h2 class="section-title" data-en="Published Works" data-ar="الأعمال المنشورة">Published Works</h2>
+                <h2 class="section-title" data-en="Published Books" data-ar="المؤلفات والكتب المنشورة">Published Books</h2>
                 <div class="publication-list">
                     <div class="publication-item">
-                        <h3 data-en="انتهى الظلام (The Darkness Ended)" data-ar="انتهى الظلام (The Darkness Ended)">انتهى الظلام (The Darkness Ended)</h3>
-                        <p class="publication-description" data-en="الحمد لله الذي مكنني من نشر ديواني الأول والذي يحتوي على بعض خواطري سواء كانت نثرا أو شعرا أو مقالات قصيرة باللغة العربية الفصحى والعامية المصرية تعبر عن بعض ما مررت به من نفحات إيمانية أو خواطر فكرية ورومانسية." data-ar="الحمد لله الذي مكنني من نشر ديواني الأول والذي يحتوي على بعض خواطري سواء كانت نثرا أو شعرا أو مقالات قصيرة باللغة العربية الفصحى والعامية المصرية تعبر عن بعض ما مررت به من نفحات إيمانية أو خواطر فكرية ورومانسية.">الحمد لله الذي مكنني من نشر ديواني الأول والذي يحتوي على بعض خواطري سواء كانت نثرا أو شعرا أو مقالات قصيرة باللغة العربية الفصحى والعامية المصرية تعبر عن بعض ما مررت به من نفحات إيمانية أو خواطر فكرية ورومانسية.</p>
-                        <div class="publication-links">
-                            <a href="https://www.amazon.com/dp/1722055804" target="_blank" class="btn" data-en="View on Amazon" data-ar="عرض على أمازون">View on Amazon</a>
+                        <img src="images/انتهى الظلام.jpg" alt="انتهى الظلام" class="publication-cover">
+                        <div>
+                            <h3 data-en="انتهى الظلام (The Darkness Ended)" data-ar="ديوان «انتهى الظلام» (The Darkness Ended)">انتهى الظلام (The Darkness Ended)</h3>
+                            <p class="publication-description" data-en="الحمد لله الذي مكنني من نشر ديواني الأول والذي يحتوي على بعض خواطري سواء كانت نثرا أو شعرا أو مقالات قصيرة باللغة العربية الفصحى والعامية المصرية تعبر عن بعض ما مررت به من نفحات إيمانية أو خواطر فكرية ورومانسية." data-ar="الحمد لله الذي مكنني من نشر ديواني الأول والذي يحتوي على بعض خواطري سواء كانت نثرا أو شعرا أو مقالات قصيرة باللغة العربية الفصحى والعامية المصرية تعبر عن بعض ما مررت به من نفحات إيمانية أو خواطر فكرية ورومانسية.">الحمد لله الذي مكنني من نشر ديواني الأول والذي يحتوي على بعض خواطري سواء كانت نثرا أو شعرا أو مقالات قصيرة باللغة العربية الفصحى والعامية المصرية تعبر عن بعض ما مررت به من نفحات إيمانية أو خواطر فكرية ورومانسية.</p>
+                            <div class="publication-links">
+                                <a href="https://www.amazon.com/dp/1722055804" target="_blank" rel="noopener noreferrer" class="btn" data-en="View on Amazon ↗" data-ar="عرض على أمازون ↗">View on Amazon ↗</a>
+                            </div>
                         </div>
                     </div>
                     <div class="publication-item">
-                        <h3 data-en="صيف ممطر (Rainy Summer)" data-ar="صيف ممطر (Rainy Summer)">صيف ممطر (Rainy Summer)</h3>
-                        <p class="publication-description" data-en="هذا الديوان يشمل أنماط مختلفة من الكتابات الأدبية النثرية والشعرية باللغة العربية الفصحى والعامية المصرية ونجدُ في بعض هذه القصائد الالتزام بالقافيةِ وبالشكل والبناءِ الخارجي للقصيدة العربية ولكنها غير مقيدة بوزن معين." data-ar="هذا الديوان يشمل أنماط مختلفة من الكتابات الأدبية النثرية والشعرية باللغة العربية الفصحى والعامية المصرية ونجدُ في بعض هذه القصائد الالتزام بالقافيةِ وبالشكل والبناءِ الخارجي للقصيدة العربية ولكنها غير مقيدة بوزن معين.">هذا الديوان يشمل أنماط مختلفة من الكتابات الأدبية النثرية والشعرية باللغة العربية الفصحى والعامية المصرية ونجدُ في بعض هذه القصائد الالتزام بالقافيةِ وبالشكل والبناءِ الخارجي للقصيدة العربية ولكنها غير مقيدة بوزن معين.</p>
-                        <div class="publication-links">
-                            <a href="https://www.amazon.com/dp/1715710428" target="_blank" class="btn" data-en="View on Amazon" data-ar="عرض على أمازون">View on Amazon</a>
+                        <img src="images/صيف ممطر.jpg" alt="صيف ممطر" class="publication-cover">
+                        <div>
+                            <h3 data-en="صيف ممطر (Rainy Summer)" data-ar="ديوان «صيف ممطر» (Rainy Summer)">صيف ممطر (Rainy Summer)</h3>
+                            <p class="publication-description" data-en="هذا الديوان يشمل أنماط مختلفة من الكتابات الأدبية النثرية والشعرية باللغة العربية الفصحى والعامية المصرية ونجدُ في بعض هذه القصائد الالتزام بالقافيةِ وبالشكل والبناءِ الخارجي للقصيدة العربية ولكنها غير مقيدة بوزن معين." data-ar="هذا الديوان يشمل أنماط مختلفة من الكتابات الأدبية النثرية والشعرية باللغة العربية الفصحى والعامية المصرية ونجدُ في بعض هذه القصائد الالتزام بالقافيةِ وبالشكل والبناءِ الخارجي للقصيدة العربية ولكنها غير مقيدة بوزن معين.">هذا الديوان يشمل أنماط مختلفة من الكتابات الأدبية النثرية والشعرية باللغة العربية الفصحى والعامية المصرية ونجدُ في بعض هذه القصائد الالتزام بالقافيةِ وبالشكل والبناءِ الخارجي للقصيدة العربية ولكنها غير مقيدة بوزن معين.</p>
+                            <div class="publication-links">
+                                <a href="https://www.amazon.com/dp/1715710428" target="_blank" rel="noopener noreferrer" class="btn" data-en="View on Amazon ↗" data-ar="عرض على أمازون ↗">View on Amazon ↗</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -797,150 +867,116 @@
     <div class="contact-modal" id="contactModal">
         <div class="contact-modal-content">
             <span class="contact-modal-close" onclick="closeContactModal()">&times;</span>
-            <h2 data-en="Contact Mohamed" data-ar="تواصل مع محمد">Contact Mohamed</h2>
+            <h2 data-en="Connect with Mohamed" data-ar="تواصل مع محمد النبراوي">Connect with Mohamed</h2>
             <div class="contact-info">
                 <a href="mailto:mohammednabarawy@gmail.com" class="contact-method">
                     <i class="fas fa-envelope"></i>
-                    <span data-en="Email: mohammednabarawy@gmail.com" data-ar="البريد الإلكتروني: mohammednabarawy@gmail.com">Email: mohammednabarawy@gmail.com</span>
+                    <span>mohammednabarawy@gmail.com</span>
                 </a>
-                <a href="https://linkedin.com/in/mnabarawi/" target="_blank" class="contact-method">
+                <a href="https://www.linkedin.com/in/mnabarawi/" target="_blank" rel="noopener noreferrer" class="contact-method">
                     <i class="fab fa-linkedin"></i>
-                    <span data-en="LinkedIn Profile" data-ar="صفحة LinkedIn">LinkedIn Profile</span>
+                    <span data-en="LinkedIn — mnabarawi" data-ar="لينكدإن — mnabarawi">LinkedIn — mnabarawi</span>
                 </a>
-                <a href="https://github.com/mohammednabarawy" target="_blank" class="contact-method">
+                <a href="https://www.youtube.com/@MohammedElnabarawi" target="_blank" rel="noopener noreferrer" class="contact-method">
+                    <i class="fab fa-youtube"></i>
+                    <span>YouTube — @MohammedElnabarawi</span>
+                </a>
+                <a href="https://www.youtube.com/@elnabarawi" target="_blank" rel="noopener noreferrer" class="contact-method">
+                    <i class="fab fa-youtube"></i>
+                    <span>YouTube — @elnabarawi</span>
+                </a>
+                <a href="https://www.facebook.com/mfnabarawy" target="_blank" rel="noopener noreferrer" class="contact-method">
+                    <i class="fab fa-facebook"></i>
+                    <span>Facebook — mfnabarawy</span>
+                </a>
+                <a href="https://www.instagram.com/mohammednabarawy/" target="_blank" rel="noopener noreferrer" class="contact-method">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram — @mohammednabarawy</span>
+                </a>
+                <a href="https://x.com/nabarawymohamed" target="_blank" rel="noopener noreferrer" class="contact-method">
+                    <i class="fab fa-twitter"></i>
+                    <span>X — @nabarawymohamed</span>
+                </a>
+                <a href="https://github.com/mohammednabarawy" target="_blank" rel="noopener noreferrer" class="contact-method">
                     <i class="fab fa-github"></i>
-                    <span data-en="GitHub Profile" data-ar="صفحة GitHub">GitHub Profile</span>
+                    <span>GitHub — mohammednabarawy</span>
                 </a>
-                <div class="contact-method">
-                    <i class="fas fa-phone"></i>
-                    <span data-en="Phone: +966 596344647" data-ar="الهاتف: +٩٦٦ ٥٩٦ ٣٤٤ ٦٤٧">Phone: +966 596344647</span>
-                </div>
             </div>
         </div>
     </div>
 
     <script>
-        function toggleLanguage() {
+        function applyLanguage(lang) {
             const body = document.body;
-            const currentLang = body.classList.contains('ar') ? 'ar' : 'en';
-            const newLang = currentLang === 'en' ? 'ar' : 'en';
-
-            // Toggle body class
-            body.classList.toggle('ar');
-            body.classList.toggle('en');
-
-            // Update all elements with translation attributes
+            const isAr = lang === 'ar';
+            body.classList.toggle('ar', isAr);
+            body.classList.toggle('en', !isAr);
+            document.documentElement.lang = lang;
+            document.documentElement.dir = isAr ? 'rtl' : 'ltr';
             document.querySelectorAll('[data-en][data-ar]').forEach(el => {
-                el.textContent = el.getAttribute(`data-${newLang}`);
+                el.textContent = el.getAttribute(`data-${lang}`);
             });
-
-            // Update page direction
-            document.documentElement.lang = newLang;
-            document.documentElement.dir = newLang === 'ar' ? 'rtl' : 'ltr';
-
-            // Vibration feedback (for supported devices)
-            if ('vibrate' in navigator) {
-                navigator.vibrate(50);
-            }
-
-            // Sound effect (optional)
-            try {
-                const audio = new Audio('data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA');
-                audio.play();
-            } catch(e) {}
+            try { localStorage.setItem('portfolio_lang', lang); } catch(e) {}
         }
 
-        // Contact Modal Functions
+        function toggleLanguage() {
+            const currentLang = document.body.classList.contains('ar') ? 'ar' : 'en';
+            const newLang = currentLang === 'en' ? 'ar' : 'en';
+            applyLanguage(newLang);
+        }
+
         function openContactModal() {
-            const modal = document.getElementById('contactModal');
-            modal.classList.add('show');
+            document.getElementById('contactModal').classList.add('show');
         }
 
         function closeContactModal() {
-            const modal = document.getElementById('contactModal');
-            modal.classList.remove('show');
+            document.getElementById('contactModal').classList.remove('show');
         }
 
-        // Add event listeners after DOM is loaded
+        function toggleMobileMenu() {
+            const nav = document.querySelector('header nav');
+            const hamburger = document.querySelector('.hamburger-menu');
+            nav.classList.toggle('mobile-active');
+            hamburger.classList.toggle('active');
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
-            const emailButtons = document.querySelectorAll('.email-btn, [href="#contact"]');
-            emailButtons.forEach(btn => {
+            var stored = 'en';
+            try { stored = localStorage.getItem('portfolio_lang') || 'en'; } catch(e) {}
+            applyLanguage(stored === 'ar' ? 'ar' : 'en');
+
+            document.querySelectorAll('.email-btn, [href="#contact"]').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     e.preventDefault();
                     openContactModal();
                 });
             });
 
-            // Close modal when clicking outside
             const modal = document.getElementById('contactModal');
             modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    closeContactModal();
-                }
+                if (e.target === modal) closeContactModal();
             });
 
-            // Close modal on Escape key
             document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && modal.classList.contains('show')) {
-                    closeContactModal();
-                }
+                if (e.key === 'Escape' && modal.classList.contains('show')) closeContactModal();
             });
-        });
 
-        // Initialize with English as default
-        document.body.classList.add('en');
-    </script>
-
-    <script>
-        function toggleMobileMenu() {
-            const nav = document.querySelector('header nav');
-            const hamburger = document.querySelector('.hamburger-menu');
-            nav.classList.toggle('mobile-active');
-            hamburger.classList.toggle('active');
-            
-            // Prevent body scrolling when menu is open
-            document.body.classList.toggle('menu-open');
-        }
-
-        // Close mobile menu when a nav link is clicked
-        document.querySelectorAll('header nav ul li a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                const nav = document.querySelector('header nav');
-                const hamburger = document.querySelector('.hamburger-menu');
-                
-                // If it's a section link, prevent default and scroll smoothly
-                if (link.getAttribute('href').startsWith('#')) {
-                    e.preventDefault();
-                    const targetId = link.getAttribute('href').substring(1);
-                    const targetElement = document.getElementById(targetId);
-                    
-                    if (targetElement) {
-                        targetElement.scrollIntoView({ 
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
+            document.querySelectorAll('header nav ul li a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const nav = document.querySelector('header nav');
+                    const hamburger = document.querySelector('.hamburger-menu');
+                    if (link.getAttribute('href').startsWith('#')) {
+                        e.preventDefault();
+                        const targetId = link.getAttribute('href').substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        if (targetElement) {
+                            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
                     }
-                }
-
-                // Close menu
-                nav.classList.remove('mobile-active');
-                hamburger.classList.remove('active');
-                document.body.classList.remove('menu-open');
+                    nav.classList.remove('mobile-active');
+                    hamburger.classList.remove('active');
+                });
             });
-        });
-
-        // Optional: Close mobile menu when clicking outside
-        document.addEventListener('click', (event) => {
-            const nav = document.querySelector('header nav');
-            const hamburger = document.querySelector('.hamburger-menu');
-            const isClickInsideNav = nav.contains(event.target);
-            const isClickOnHamburger = hamburger.contains(event.target);
-            
-            if (!isClickInsideNav && !isClickOnHamburger) {
-                nav.classList.remove('mobile-active');
-                hamburger.classList.remove('active');
-                document.body.classList.remove('menu-open');
-            }
         });
     </script>
 </body>
