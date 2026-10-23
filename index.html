@@ -85,26 +85,50 @@
     .tile h3{font-size:18px;margin:18px 0 8px}
     .tile p{color:var(--muted);font-size:14px;margin:0}
     .subtle{border-top:1px solid var(--line)}
-    .filters{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0}
-    .filter{border:1px solid var(--line);background:transparent;color:#bdcbd9;padding:9px 15px;border-radius:999px;cursor:pointer;font-size:12px;font-weight:700}
-    .filter[aria-pressed="true"]{background:#224c53;color:#c4fff2;border-color:#6dc8b9}
-    .project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-    .project{display:flex;flex-direction:column;min-width:0;background:#0c1c2e;border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:transform .2s,border-color .2s}
-    .project:hover{transform:translateY(-3px);border-color:#6ca2a4}
-    .project[hidden]{display:none}
-    .project-top{min-height:92px;background:linear-gradient(120deg,#1b384c,#102335);padding:20px 24px;display:flex;justify-content:space-between;align-items:center;gap:15px;border-bottom:1px solid #ffffff16}
-    .project-top .project-icon{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;font-size:21px;font-weight:800;color:#def9fa;border:1px solid #ffffff23;background:#ffffff0b}
-    .project-top .domain{color:#8cbdc8;font-size:11.5px;overflow-wrap:anywhere;text-align:end;font-weight:600}
-    .project-shot{display:block;width:100%;height:215px;object-fit:cover;object-position:center;background:#163249;border-bottom:1px solid #ffffff19}
-    .project-shot.logo-shot{object-fit:contain;padding:25px;background:#eaf1f5}
-    .project-private{font-size:12px;color:#9eb9c7}
-    .project-body{padding:24px;flex:1;display:flex;flex-direction:column}
-    .project-body h3{font-size:19px;line-height:1.35;margin-bottom:7px}
-    .project-body p{font-size:14px;color:#b4c4d3;margin-bottom:20px;line-height:1.8}
-    .tag{display:inline-block;color:#8bdbcb;text-transform:uppercase;font-size:10px;font-weight:800;letter-spacing:.1em;margin-bottom:12px}
-    .links{display:flex;gap:18px;flex-wrap:wrap;margin-top:auto}
-    .links a{font-size:13px;font-weight:800;color:#ecf8ff;text-decoration:underline;text-decoration-color:#467f87;text-underline-offset:5px}
-    .links a:hover{color:var(--teal)}
+    .filters{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0}
+    .filter{border:1px solid var(--line);background:#0c1c2e;color:#bdcbd9;padding:10px 18px;border-radius:999px;cursor:pointer;font-size:12.5px;font-weight:700;transition:.2s}
+    .filter:hover{border-color:#4b7d8c;color:#fff}
+    .filter[aria-pressed="true"]{background:linear-gradient(135deg,#1c4e57,#143546);color:#c4fff2;border-color:var(--teal);box-shadow:0 6px 20px #65e0cc18}
+    .project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+    .project{display:flex;flex-direction:column;min-width:0;background:linear-gradient(180deg,#0f2236 0%,#0a1828 100%);border:1px solid #2b445c;border-radius:22px;overflow:hidden;box-shadow:0 18px 45px #00000045;transition:transform .28s cubic-bezier(.2,.8,.2,1),border-color .28s,box-shadow .28s}
+    .project:hover{transform:translateY(-6px);border-color:var(--teal);box-shadow:0 26px 60px #00000066,0 0 0 1px #65e0cc33}
+    .project[hidden]{display:none!important}
+    .project.featured{grid-column:1 / -1;display:grid;grid-template-columns:1.18fr .82fr;align-items:stretch}
+    .browser-frame{display:flex;flex-direction:column;background:#07111e;border-bottom:1px solid #ffffff14;overflow:hidden}
+    .project.featured .browser-frame{border-bottom:none;border-inline-end:1px solid #ffffff14}
+    .browser-bar{height:42px;background:linear-gradient(180deg,#152b40,#0f2133);padding:0 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid #ffffff12;direction:ltr}
+    .browser-dots{display:flex;align-items:center;gap:6px;flex-shrink:0}
+    .browser-dots i{width:10px;height:10px;border-radius:50%;display:inline-block}
+    .browser-dots i:nth-child(1){background:#ff5f56}
+    .browser-dots i:nth-child(2){background:#ffbd2e}
+    .browser-dots i:nth-child(3){background:#27c93f}
+    .browser-url{display:inline-flex;align-items:center;gap:7px;background:#081423;border:1px solid #2b465e;padding:4px 12px;border-radius:999px;color:#b8d4e8;font:600 11.5px/1 Inter,monospace;max-width:70%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .browser-url .live-dot{width:7px;height:7px;border-radius:50%;background:#27c93f;box-shadow:0 0 8px #27c93f;flex-shrink:0}
+    .browser-open{color:#8cbdc8;font-size:12px;font-weight:700;flex-shrink:0}
+    .project-viewport{position:relative;display:block;width:100%;aspect-ratio:16 / 10;overflow:hidden;background:#081221}
+    .project.featured .project-viewport{height:100%;min-height:320px}
+    .project-shot{display:block;width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+    .project:hover .project-shot{transform:scale(1.035)}
+    .viewport-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,#06101cd9 100%);opacity:0;transition:opacity .25s ease;display:flex;align-items:flex-end;justify-content:flex-end;padding:16px}
+    .project:hover .viewport-overlay{opacity:1}
+    .overlay-pill{background:var(--teal);color:#04222b;font-weight:800;font-size:12px;padding:7px 14px;border-radius:999px;box-shadow:0 8px 20px #0008}
+    .project-body{padding:26px 28px;flex:1;display:flex;flex-direction:column}
+    .project.featured .project-body{padding:32px 34px;justify-content:center}
+    .project-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+    .brand-pill{display:inline-flex;align-items:center;gap:6px;background:#ffffff;color:#0e1d2e;padding:3px 9px 3px 5px;border-radius:999px;font-size:10.5px;font-weight:800;box-shadow:0 4px 12px #0004}
+    .brand-pill img{width:18px;height:18px;object-fit:contain;border-radius:4px}
+    .project-body h3{font-size:21px;line-height:1.35;margin-bottom:10px;color:#f5f9ff}
+    .project.featured .project-body h3{font-size:26px}
+    .project-body p{font-size:14.5px;color:#b8c8d8;margin-bottom:18px;line-height:1.82}
+    .tag{display:inline-block;color:var(--teal);background:#65e0cc14;border:1px solid #65e0cc38;padding:4px 10px;border-radius:999px;text-transform:uppercase;font-size:10.5px;font-weight:800;letter-spacing:.08em}
+    .featured-badge{color:var(--gold);background:#efc47817;border:1px solid #efc47844;padding:4px 10px;border-radius:999px;font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+    .highlights{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+    .highlights span{font-size:11.5px;font-weight:600;color:#cfe2f0;background:#132a40;border:1px solid #294660;padding:5px 11px;border-radius:8px}
+    .links{display:flex;gap:12px;flex-wrap:wrap;margin-top:auto}
+    .links a{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:800;color:#ecf8ff;background:#153149;border:1px solid #315875;padding:9px 15px;border-radius:10px;transition:.2s}
+    .links a.primary-link{background:var(--teal);color:#04222b;border-color:var(--teal)}
+    .links a:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px)}
+    .links a.primary-link:hover{background:#7cead8;color:#04222b}
     .proof{display:grid;grid-template-columns:1.12fr .88fr;gap:23px}
     .proofbox{border:1px solid var(--line);border-radius:21px;padding:28px;background:#0f2436}
     .proofbox p{color:var(--muted);font-size:14px;line-height:1.85}
@@ -134,8 +158,9 @@
     .footercta p{color:#c6dfe3;margin:0;max-width:630px}
     footer{margin-top:63px;padding:24px 0 35px;border-top:1px solid var(--line);color:#93a7bb;font-size:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px}
     .tiny-link{color:#bcd8e3}
+    @media(max-width:920px){.project.featured{grid-template-columns:1fr}.project.featured .browser-frame{border-inline-end:none;border-bottom:1px solid #ffffff14}.project.featured .project-viewport{min-height:auto}}
     @media(max-width:850px){.hero{grid-template-columns:1fr;gap:24px;padding-block:54px}.hero-aside{min-height:auto}.graphic{max-width:560px}.specialties,.proof,.books-grid{grid-template-columns:1fr}.sectionhead{display:block}.intro{margin-top:12px}.navigation{gap:12px}.navigation .nav-hide{display:none}}
-    @media(max-width:600px){.wrap{width:min(var(--max),calc(100% - 30px))}.brand .longname{font-size:13px}.brand small{font-size:9px}h1{font-size:36px}.lede{font-size:15px}.project-grid{grid-template-columns:1fr}.book-card{grid-template-columns:1fr;text-align:center}.book-cover{margin-inline:auto}.flowbox{padding:12px 2px}.flowbox strong{font-size:16px}.flowbox span{font-size:10px}.graphic{padding:18px}.bar{min-height:65px}.navigation{gap:8px}.navigation a{font-size:12px}.lang{padding:7px 10px}.footercta{display:block;padding:27px}.footercta .actions{margin-top:20px}section{padding-block:53px}}
+    @media(max-width:650px){.wrap{width:min(var(--max),calc(100% - 30px))}.brand .longname{font-size:13px}.brand small{font-size:9px}h1{font-size:36px}.lede{font-size:15px}.project-grid{grid-template-columns:1fr}.book-card{grid-template-columns:1fr;text-align:center}.book-cover{margin-inline:auto}.flowbox{padding:12px 2px}.flowbox strong{font-size:16px}.flowbox span{font-size:10px}.graphic{padding:18px}.bar{min-height:65px}.navigation{gap:8px}.navigation a{font-size:12px}.lang{padding:7px 10px}.footercta{display:block;padding:27px}.footercta .actions{margin-top:20px}section{padding-block:53px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.project,.book-card{transition:none}}
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Mohamed Elnabarawi","url":"https://mohammednabarawy.github.io/","image":"https://mohammednabarawy.github.io/assets/mohamed-portrait.jpg","sameAs":["https://github.com/mohammednabarawy","https://www.linkedin.com/in/mnabarawi","https://www.youtube.com/@MohammedElnabarawi","https://www.youtube.com/@elnabarawi","https://www.facebook.com/mfnabarawy","https://www.instagram.com/mohammednabarawy/","https://x.com/nabarawymohamed","https://arabtechtrends.com/"],"jobTitle":"Financial Consultant & Tech Entrepreneur","homeLocation":{"@type":"Place","name":"Riyadh, Saudi Arabia"}}</script>
@@ -207,11 +232,155 @@
         <button type="button" class="filter" data-filter="creative" aria-pressed="false" data-en="Experiments" data-ar="تجارب تفاعلية">Experiments</button>
       </div>
       <div class="project-grid">
-        <article class="project" data-cat="finance"><div class="project-top"><span class="project-icon">IR</span><span class="domain">invoicesreader.com</span></div><img class="project-shot" src="images/invoices%20reader%20screenshots/main.png" alt="Actual Invoices Reader application screenshot" loading="lazy"><div class="project-body"><span class="tag">FINTECH · AI DOCUMENT EXTRACTION</span><h3 data-en="Invoices Reader" data-ar="قارئ الفواتير — Invoices Reader">Invoices Reader</h3><p data-en="A specialized financial-document product for extracting invoice data (QR codes & AI OCR) and organizing it into structured Excel spreadsheets. Designed from real accounting workflow needs." data-ar="منتج متخصص لمعالجة الفواتير واستخراج بياناتها تلقائيًا عبر رموز QR والذكاء الاصطناعي وتنظيمها في جداول Excel جاهزة للاستخدام المحاسبي.">A specialized financial-document product for extracting invoice data (QR codes & AI OCR) and organizing it into structured Excel spreadsheets. Designed from real accounting workflow needs.</p><div class="links"><a href="https://invoicesreader.com/" target="_blank" rel="noopener noreferrer" data-en="Live Website ↗" data-ar="الموقع الرسمي ↗">Live Website ↗</a><a href="invoices-reader.html" data-en="Product Tour ↗" data-ar="استعراض المنتج ↗">Product Tour ↗</a><a href="https://github.com/mohammednabarawy/invoices-reader-plugins" target="_blank" rel="noopener noreferrer" data-en="Plugins Repo ↗" data-ar="مستودع الإضافات ↗">Plugins Repo ↗</a></div></div></article>
-        <article class="project" data-cat="web"><div class="project-top"><span class="project-icon">R</span><span class="domain">rakha.net</span></div><img class="project-shot" src="assets/project-rakha.webp" alt="Real photograph from the Rakha Center project" loading="lazy"><div class="project-body"><span class="tag">BUSINESS WEBSITE · BOOKING SYSTEM</span><h3 data-en="Rakha Center" data-ar="مركز رخاء للأعمال">Rakha Center</h3><p data-en="Corporate platform for an executive office center in Riyadh, featuring an integrated tenant meeting-room reservation workflow that digitizes daily property operations." data-ar="منصة إلكترونية لمركز أعمال في الرياض تتضمن نظامًا لحجز قاعات الاجتماعات للمستأجرين، لتحويل التشغيل اليومي إلى خدمة رقمية سلسة.">Corporate platform for an executive office center in Riyadh, featuring an integrated tenant meeting-room reservation workflow that digitizes daily property operations.</p><div class="links"><a href="https://rakha.net/" target="_blank" rel="noopener noreferrer" data-en="Visit website ↗" data-ar="زيارة الموقع ↗">Visit website ↗</a></div></div></article>
-        <article class="project" data-cat="web"><div class="project-top"><span class="project-icon">A</span><span class="domain">aghna.com.sa</span></div><img class="project-shot" src="assets/project-aghna.webp" alt="Real photograph from Aghna Real Estate website project" loading="lazy"><div class="project-body"><span class="tag">CORPORATE WEBSITE · REAL ESTATE</span><h3 data-en="Aghna Real Estate" data-ar="شركة أغنى العقارية">Aghna Real Estate</h3><p data-en="Official corporate web presence for Aghna Real Estate Co. in Saudi Arabia—presenting real-estate projects, services, and company identity through a modern responsive interface." data-ar="الموقع الرسمي لشركة أغنى العقارية في المملكة العربية السعودية؛ يعرض مشاريع الشركة وخدماتها وهويتها المؤسسية بواجهة عصرية متجاوبة.">Official corporate web presence for Aghna Real Estate Co. in Saudi Arabia—presenting real-estate projects, services, and company identity through a modern responsive interface.</p><div class="links"><a href="https://aghna.com.sa/" target="_blank" rel="noopener noreferrer" data-en="Visit website ↗" data-ar="زيارة الموقع ↗">Visit website ↗</a></div></div></article>
-        <article class="project" data-cat="web"><div class="project-top"><span class="project-icon">AT</span><span class="domain">arabtechtrends.com</span></div><img class="project-shot logo-shot" src="assets/arabtech-logo.png" alt="Arab Tech Trends site logo" loading="lazy"><div class="project-body"><span class="tag">PUBLISHING · ASTRO · SEO</span><h3 data-en="Arab Tech Trends" data-ar="عرب تك — Arab Tech Trends">Arab Tech Trends</h3><p data-en="Arabic technology news and insights portal rebuilt on Astro with structured content migration, URL redirect mapping, client-side search, and technical SEO optimization." data-ar="بوابة عربية للأخبار والمقالات التقنية مبنية بإطار Astro، مع هيكلة نقل المحتوى، وإعادة توجيه الروابط، والبحث الفوري، وتحسين محركات البحث.">Arabic technology news and insights portal rebuilt on Astro with structured content migration, URL redirect mapping, client-side search, and technical SEO optimization.</p><div class="links"><a href="https://www.arabtechtrends.com/" target="_blank" rel="noopener noreferrer" data-en="Visit website ↗" data-ar="زيارة الموقع ↗">Visit website ↗</a></div></div></article>
-        <article class="project" data-cat="creative"><div class="project-top"><span class="project-icon">RV</span><span class="domain">riyadh-ring-game.pages.dev</span></div><img class="project-shot" src="assets/project-rushvane.webp" alt="RUSHVANE game promotional artwork from the actual project" loading="lazy"><div class="project-body"><span class="tag">BROWSER GAME · INTERACTIVE WEB</span><h3 data-en="RUSHVANE | راشفين" data-ar="لعبة راشفين | RUSHVANE">RUSHVANE | راشفين</h3><p data-en="An interactive 3D-styled browser driving game inspired by navigating Riyadh's ring roads—exploring creative web graphics, physics, and Cloudflare Pages deployment." data-ar="لعبة متصفح تفاعلية مستوحاة من القيادة في طرق الرياض الدائرية؛ تجربة إبداعية في تصميم التفاعل والرسوميات ونشر الألعاب على الويب.">An interactive 3D-styled browser driving game inspired by navigating Riyadh's ring roads—exploring creative web graphics, physics, and Cloudflare Pages deployment.</p><div class="links"><a href="https://riyadh-ring-game.pages.dev/" target="_blank" rel="noopener noreferrer" data-en="Play in browser ↗" data-ar="العب الآن في المتصفح ↗">Play in browser ↗</a></div></div></article>
+        <article class="project featured" data-cat="finance">
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <div class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+              <div class="browser-url"><span class="live-dot"></span><span>invoicesreader.com</span></div>
+              <a href="https://invoicesreader.com/" target="_blank" rel="noopener noreferrer" class="browser-open" aria-label="Open invoicesreader.com">↗</a>
+            </div>
+            <a href="https://invoicesreader.com/" target="_blank" rel="noopener noreferrer" class="project-viewport">
+              <img class="project-shot" src="assets/live-invoicesreader.webp" alt="Live screenshot of Invoices Reader cloud web platform (invoicesreader.com)" width="1440" height="900">
+              <div class="viewport-overlay"><span class="overlay-pill" data-en="Open Live Platform ↗" data-ar="افتح المنصة الحية ↗">Open Live Platform ↗</span></div>
+            </a>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="tag" data-en="FINTECH · AI DOCUMENT EXTRACTION" data-ar="تقنية مالية · أتمتة الفواتير بالذكاء الاصطناعي">FINTECH · AI DOCUMENT EXTRACTION</span>
+              <span class="featured-badge" data-en="★ Flagship Product" data-ar="★ المنتج الرئيسي">★ Flagship Product</span>
+            </div>
+            <h3 data-en="Invoices Reader — Automated Invoice Intelligence" data-ar="قارئ الفواتير — Invoices Reader">Invoices Reader — Automated Invoice Intelligence</h3>
+            <p data-en="Cloud and desktop financial-document platform that automates supplier and expense invoice extraction using AI OCR and Saudi ZATCA e-invoice QR decoding—exporting verified line items and VAT data directly into structured Excel workflows." data-ar="منصة سحابية وتطبيق مكتبي لأتمتة استخراج بيانات فواتير الموردين والمصروفات والضريبة تلقائيًا عبر الذكاء الاصطناعي ورموز QR للفوترة الإلكترونية السعودية (ZATCA)، مع تصدير فوري إلى جداول Excel جاهزة للأنظمة المحاسبية.">Cloud and desktop financial-document platform that automates supplier and expense invoice extraction using AI OCR and Saudi ZATCA e-invoice QR decoding—exporting verified line items and VAT data directly into structured Excel workflows.</p>
+            <div class="highlights">
+              <span data-en="ZATCA QR & e-Invoice" data-ar="الفاتورة الإلكترونية ورمز QR">ZATCA QR & e-Invoice</span>
+              <span data-en="AI Line-Item OCR" data-ar="استخراج ذكي للبنود والضريبة">AI Line-Item OCR</span>
+              <span data-en="Instant Excel Export (.xlsx)" data-ar="تصدير فوري لملفات Excel">Instant Excel Export (.xlsx)</span>
+              <span data-en="Free Accountant Calculators" data-ar="حاسبات مجانية للمحاسبين">Free Accountant Calculators</span>
+            </div>
+            <div class="links">
+              <a class="primary-link" href="https://invoicesreader.com/" target="_blank" rel="noopener noreferrer" data-en="Launch Web App ↗" data-ar="تصفح المنصة الحية ↗">Launch Web App ↗</a>
+              <a href="invoices-reader.html" data-en="Desktop App Tour ↗" data-ar="استعراض نسخة سطح المكتب ↗">Desktop App Tour ↗</a>
+              <a href="https://github.com/mohammednabarawy/invoices-reader-plugins" target="_blank" rel="noopener noreferrer" data-en="Community Plugins ↗" data-ar="مستودع الإضافات ↗">Community Plugins ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project" data-cat="web">
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <div class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+              <div class="browser-url"><span class="live-dot"></span><span>rakha.net</span></div>
+              <a href="https://rakha.net/" target="_blank" rel="noopener noreferrer" class="browser-open" aria-label="Open rakha.net">↗</a>
+            </div>
+            <a href="https://rakha.net/" target="_blank" rel="noopener noreferrer" class="project-viewport">
+              <img class="project-shot" src="assets/live-rakha.webp" alt="Live screenshot of Rakha Business Center website (rakha.net)" width="1440" height="900" loading="lazy">
+              <div class="viewport-overlay"><span class="overlay-pill" data-en="Visit rakha.net ↗" data-ar="زيارة موقع رخاء ↗">Visit rakha.net ↗</span></div>
+            </a>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="tag" data-en="PROPTECH · TENANT PORTAL & BOOKING" data-ar="منصة أعمال · بوابة المستأجرين وحجز القاعات">PROPTECH · TENANT PORTAL & BOOKING</span>
+            </div>
+            <h3 data-en="Rakha Business Center" data-ar="مركز رخاء للأعمال — Rakha">Rakha Business Center</h3>
+            <p data-en="Bilingual corporate web platform for a premier executive office destination in Riyadh—featuring a tenant portal, interactive workspace showcase, and online meeting-room reservation system." data-ar="منصة إلكترونية ثنائية اللغة لوجهة مكتبية راقية في الرياض؛ تتضمن بوابة دخول للمستأجرين، واستعراض المساحات المكتبية، ونظام حجز إلكتروني لقاعات الاجتماعات.">Bilingual corporate web platform for a premier executive office destination in Riyadh—featuring a tenant portal, interactive workspace showcase, and online meeting-room reservation system.</p>
+            <div class="highlights">
+              <span data-en="Meeting Room Booking" data-ar="نظام حجز قاعات الاجتماعات">Meeting Room Booking</span>
+              <span data-en="Tenant Portal" data-ar="بوابة دخول المستأجرين">Tenant Portal</span>
+              <span data-en="Bilingual AR / EN" data-ar="ثنائي اللغة (عربي / EN)">Bilingual AR / EN</span>
+            </div>
+            <div class="links">
+              <a class="primary-link" href="https://rakha.net/" target="_blank" rel="noopener noreferrer" data-en="Visit Live Website ↗" data-ar="زيارة الموقع الحي ↗">Visit Live Website ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project" data-cat="web">
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <div class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+              <div class="browser-url"><span class="live-dot"></span><span>aghna.com.sa</span></div>
+              <a href="https://aghna.com.sa/" target="_blank" rel="noopener noreferrer" class="browser-open" aria-label="Open aghna.com.sa">↗</a>
+            </div>
+            <a href="https://aghna.com.sa/" target="_blank" rel="noopener noreferrer" class="project-viewport">
+              <img class="project-shot" src="assets/live-aghna.webp" alt="Live screenshot of Aghna Real Estate website (aghna.com.sa)" width="1440" height="900" loading="lazy">
+              <div class="viewport-overlay"><span class="overlay-pill" data-en="Visit aghna.com.sa ↗" data-ar="زيارة موقع أغنى ↗">Visit aghna.com.sa ↗</span></div>
+            </a>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="tag" data-en="CORPORATE PLATFORM · REAL ESTATE" data-ar="موقع مؤسسي · التطوير العقاري">CORPORATE PLATFORM · REAL ESTATE</span>
+            </div>
+            <h3 data-en="Aghna Real Estate Co." data-ar="شركة أغنى العقارية — Aghna">Aghna Real Estate Co.</h3>
+            <p data-en="Official corporate digital presence for Aghna Real Estate in Saudi Arabia—showcasing architectural developments, company milestones, real-estate portfolio, and investor communication." data-ar="الحضور الرقمي الرسمي لشركة أغنى العقارية في المملكة العربية السعودية؛ يعرض المحفظة العقارية، ومجالات التطوير، وإنجازات الشركة بالأرقام بهوية بصرية فاخرة.">Official corporate digital presence for Aghna Real Estate in Saudi Arabia—showcasing architectural developments, company milestones, real-estate portfolio, and investor communication.</p>
+            <div class="highlights">
+              <span data-en="Real Estate Portfolio" data-ar="استعراض المحفظة العقارية">Real Estate Portfolio</span>
+              <span data-en="Corporate Identity" data-ar="هوية مؤسسية فاخرة">Corporate Identity</span>
+              <span data-en="Bilingual AR / EN" data-ar="واجهة عربية وإنجليزية">Bilingual AR / EN</span>
+            </div>
+            <div class="links">
+              <a class="primary-link" href="https://aghna.com.sa/" target="_blank" rel="noopener noreferrer" data-en="Visit Live Website ↗" data-ar="زيارة الموقع الحي ↗">Visit Live Website ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project" data-cat="web">
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <div class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+              <div class="browser-url"><span class="live-dot"></span><span>arabtechtrends.com</span></div>
+              <a href="https://www.arabtechtrends.com/" target="_blank" rel="noopener noreferrer" class="browser-open" aria-label="Open arabtechtrends.com">↗</a>
+            </div>
+            <a href="https://www.arabtechtrends.com/" target="_blank" rel="noopener noreferrer" class="project-viewport">
+              <img class="project-shot" src="assets/live-arabtechtrends.webp" alt="Live screenshot of Arab Tech Trends portal (arabtechtrends.com)" width="1440" height="900" loading="lazy">
+              <div class="viewport-overlay"><span class="overlay-pill" data-en="Visit arabtechtrends.com ↗" data-ar="زيارة موقع عرب تك ↗">Visit arabtechtrends.com ↗</span></div>
+            </a>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="tag" data-en="DIGITAL PUBLISHING · ASTRO & SEO" data-ar="نشر رقمي · منصة تقنية وSEO">DIGITAL PUBLISHING · ASTRO & SEO</span>
+              <span class="brand-pill"><img src="assets/arabtech-logo.png" alt="Arab Tech Trends AT Logo" width="18" height="18"><span>Arab Tech</span></span>
+            </div>
+            <h3 data-en="Arab Tech Trends | عرب تك" data-ar="منصة عرب تك — Arab Tech Trends">Arab Tech Trends | عرب تك</h3>
+            <p data-en="Comprehensive Arabic technology portal delivering practical guides across AI tools, accounting software, Windows optimization, and creator workflows—built on Astro with instant search and SEO architecture." data-ar="بوابة تقنية عربية شاملة تقدم أدلة عملية وشروحات في الذكاء الاصطناعي، وبرامج المحاسبة، وأنظمة التشغيل، وصناعة المحتوى—مبنية بإطار Astro مع بحث فوري وتهيئة متقدمة لمحركات البحث.">Comprehensive Arabic technology portal delivering practical guides across AI tools, accounting software, Windows optimization, and creator workflows—built on Astro with instant search and SEO architecture.</p>
+            <div class="highlights">
+              <span data-en="Astro Static Engine" data-ar="مبني بإطار Astro السريع">Astro Static Engine</span>
+              <span data-en="Instant Search & Guides" data-ar="بحث فوري وأدلة شاملة">Instant Search & Guides</span>
+              <span data-en="Technical SEO" data-ar="تحسين محركات البحث SEO">Technical SEO</span>
+            </div>
+            <div class="links">
+              <a class="primary-link" href="https://www.arabtechtrends.com/" target="_blank" rel="noopener noreferrer" data-en="Explore Portal ↗" data-ar="تصفح البوابة التقنية ↗">Explore Portal ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project" data-cat="creative">
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <div class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+              <div class="browser-url"><span class="live-dot"></span><span>riyadh-ring-game.pages.dev</span></div>
+              <a href="https://riyadh-ring-game.pages.dev/" target="_blank" rel="noopener noreferrer" class="browser-open" aria-label="Open RUSHVANE game">↗</a>
+            </div>
+            <a href="https://riyadh-ring-game.pages.dev/" target="_blank" rel="noopener noreferrer" class="project-viewport">
+              <img class="project-shot" src="assets/live-rushvane.webp" alt="Live screenshot of RUSHVANE Riyadh streets browser game" width="1440" height="900" loading="lazy">
+              <div class="viewport-overlay"><span class="overlay-pill" data-en="Play RUSHVANE Live ↗" data-ar="العب راشفين الآن ↗">Play RUSHVANE Live ↗</span></div>
+            </a>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="tag" data-en="INTERACTIVE WEB · 3D BROWSER GAME" data-ar="تجربة ويب تفاعلية · لعبة متصفح">INTERACTIVE WEB · 3D BROWSER GAME</span>
+            </div>
+            <h3 data-en="RUSHVANE | راشفين — شوارع الرياض" data-ar="لعبة راشفين | RUSHVANE — شوارع الرياض">RUSHVANE | راشفين — شوارع الرياض</h3>
+            <p data-en="Playable 3D-styled browser driving experience set on Riyadh's iconic ring roads—featuring vehicle customization ('Car Studio'), daily challenges, leaderboards, and instant web play without installation." data-ar="لعبة قيادة تفاعلية في المتصفح مستوحاة من شوارع وطرق الرياض الدائرية؛ تتضمن استوديو لتجهيز السيارات، وتحديات يومية، ولوحة صدارة، وتعمل مباشرة على الويب دون تثبيت.">Playable 3D-styled browser driving experience set on Riyadh's iconic ring roads—featuring vehicle customization ('Car Studio'), daily challenges, leaderboards, and instant web play without installation.</p>
+            <div class="highlights">
+              <span data-en="Car Studio & Modes" data-ar="استوديو المواتر وأنماط قيادة">Car Studio & Modes</span>
+              <span data-en="Daily Challenges" data-ar="تحديات يومية ولوحة صدارة">Daily Challenges</span>
+              <span data-en="Zero-Install WebGL" data-ar="لعب فوري عبر المتصفح">Zero-Install WebGL</span>
+            </div>
+            <div class="links">
+              <a class="primary-link" href="https://riyadh-ring-game.pages.dev/" target="_blank" rel="noopener noreferrer" data-en="Play in Browser ↗" data-ar="العب الآن في المتصفح ↗">Play in Browser ↗</a>
+            </div>
+          </div>
+        </article>
       </div>
     </div></section>
 

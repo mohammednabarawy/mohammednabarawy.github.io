@@ -370,18 +370,51 @@
         .projects-cv-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
+            gap: 16px;
         }
 
         .project-cv-card {
-            padding: 16px;
             border-radius: 12px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #d8e2ec;
             background: #f8fafc;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .project-cv-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(8, 18, 33, 0.08);
+        }
+
+        .project-cv-card.featured-cv {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+        }
+
+        .project-cv-thumb {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            object-position: top center;
+            border-bottom: 1px solid #e2e8f0;
+            display: block;
+        }
+
+        .project-cv-card.featured-cv .project-cv-thumb {
+            border-bottom: none;
+            height: 100%;
+        }
+
+        .project-cv-info {
+            padding: 16px 18px;
         }
 
         .project-cv-card h3 {
-            font-size: 1.02rem;
+            font-size: 1.04rem;
             color: var(--primary-color);
             margin-bottom: 6px;
         }
@@ -552,7 +585,7 @@
             .main-content {
                 padding: 26px 20px;
             }
-            .projects-cv-grid, .certifications ul {
+            .projects-cv-grid, .certifications ul, .project-cv-card.featured-cv {
                 grid-template-columns: 1fr;
             }
         }
@@ -698,31 +731,46 @@
             <section id="digital-projects" class="section">
                 <h2 class="section-title" data-en="Digital Products, Websites & Platforms" data-ar="المشاريع والمنتجات الرقمية والمواقع">Digital Products, Websites & Platforms</h2>
                 <div class="projects-cv-grid">
-                    <div class="project-cv-card">
-                        <h3 data-en="Invoices Reader" data-ar="قارئ الفواتير — Invoices Reader">Invoices Reader</h3>
-                        <p data-en="AI & QR-powered invoice data extraction software converting invoices into structured Excel workflows." data-ar="منتج لاستخراج بيانات الفواتير عبر رموز QR والذكاء الاصطناعي وتنظيمها في جداول Excel جاهزة.">AI & QR-powered invoice data extraction software converting invoices into structured Excel workflows.</p>
-                        <a href="https://invoicesreader.com/" target="_blank" rel="noopener">invoicesreader.com ↗</a>
-                        <a href="invoices-reader.html">Overview ↗</a>
+                    <div class="project-cv-card featured-cv">
+                        <img src="assets/live-invoicesreader.webp" alt="Invoices Reader live platform" class="project-cv-thumb" loading="lazy">
+                        <div class="project-cv-info">
+                            <h3 data-en="Invoices Reader" data-ar="قارئ الفواتير — Invoices Reader">Invoices Reader</h3>
+                            <p data-en="Cloud & desktop financial-document platform automating supplier invoice data extraction (ZATCA QR & AI OCR) into structured Excel workflows." data-ar="منصة سحابية وتطبيق مكتبي لأتمتة استخراج بيانات الفواتير والضريبة عبر رموز QR والذكاء الاصطناعي وتصديرها إلى جداول Excel جاهزة.">Cloud & desktop financial-document platform automating supplier invoice data extraction (ZATCA QR & AI OCR) into structured Excel workflows.</p>
+                            <a href="https://invoicesreader.com/" target="_blank" rel="noopener">invoicesreader.com ↗</a>
+                            <a href="invoices-reader.html">Overview ↗</a>
+                        </div>
                     </div>
                     <div class="project-cv-card">
-                        <h3 data-en="Rakha Center" data-ar="مركز رخاء للأعمال — Rakha Center">Rakha Center</h3>
-                        <p data-en="Corporate website and tenant meeting-room reservation platform for an office center in Riyadh." data-ar="موقع إلكتروني ونظام حجز قاعات اجتماعات للمستأجرين لمركز أعمال في الرياض.">Corporate website and tenant meeting-room reservation platform for an office center in Riyadh.</p>
-                        <a href="https://rakha.net/" target="_blank" rel="noopener">rakha.net ↗</a>
+                        <img src="assets/live-rakha.webp" alt="Rakha Business Center website" class="project-cv-thumb" loading="lazy">
+                        <div class="project-cv-info">
+                            <h3 data-en="Rakha Center" data-ar="مركز رخاء للأعمال — Rakha Center">Rakha Center</h3>
+                            <p data-en="Corporate website, tenant portal, and meeting-room reservation platform for an office center in Riyadh." data-ar="موقع إلكتروني وبوابة مستأجرين ونظام حجز قاعات اجتماعات لمركز أعمال في الرياض.">Corporate website, tenant portal, and meeting-room reservation platform for an office center in Riyadh.</p>
+                            <a href="https://rakha.net/" target="_blank" rel="noopener">rakha.net ↗</a>
+                        </div>
                     </div>
                     <div class="project-cv-card">
-                        <h3 data-en="Aghna Real Estate" data-ar="شركة أغنى العقارية — Aghna Real Estate">Aghna Real Estate</h3>
-                        <p data-en="Official corporate web platform presenting real-estate projects and services in Saudi Arabia." data-ar="الموقع الرسمي لشركة أغنى العقارية لعرض المشاريع والخدمات العقارية في السعودية.">Official corporate web platform presenting real-estate projects and services in Saudi Arabia.</p>
-                        <a href="https://aghna.com.sa/" target="_blank" rel="noopener">aghna.com.sa ↗</a>
+                        <img src="assets/live-aghna.webp" alt="Aghna Real Estate website" class="project-cv-thumb" loading="lazy">
+                        <div class="project-cv-info">
+                            <h3 data-en="Aghna Real Estate" data-ar="شركة أغنى العقارية — Aghna Real Estate">Aghna Real Estate</h3>
+                            <p data-en="Official corporate web platform presenting real-estate developments and portfolio in Saudi Arabia." data-ar="الموقع الرسمي لشركة أغنى العقارية لعرض المشاريع والمحفظة العقارية في السعودية.">Official corporate web platform presenting real-estate developments and portfolio in Saudi Arabia.</p>
+                            <a href="https://aghna.com.sa/" target="_blank" rel="noopener">aghna.com.sa ↗</a>
+                        </div>
                     </div>
                     <div class="project-cv-card">
-                        <h3 data-en="Arab Tech Trends" data-ar="عرب تك — Arab Tech Trends">Arab Tech Trends</h3>
-                        <p data-en="Arabic technology publishing platform built on Astro with content migration, search, and SEO optimization." data-ar="منصة عربية للأخبار والمحتوى التقني مبنية بإطار Astro مع تحسينات SEO والبحث الفوري.">Arabic technology publishing platform built on Astro with content migration, search, and SEO optimization.</p>
-                        <a href="https://arabtechtrends.com/" target="_blank" rel="noopener">arabtechtrends.com ↗</a>
+                        <img src="assets/live-arabtechtrends.webp" alt="Arab Tech Trends website" class="project-cv-thumb" loading="lazy">
+                        <div class="project-cv-info">
+                            <h3 data-en="Arab Tech Trends" data-ar="عرب تك — Arab Tech Trends">Arab Tech Trends</h3>
+                            <p data-en="Arabic technology publishing portal built on Astro with instant search, comprehensive guides, and SEO optimization." data-ar="بوابة عربية للأخبار والأدلة التقنية مبنية بإطار Astro مع بحث فوري وتهيئة محركات البحث SEO.">Arabic technology publishing portal built on Astro with instant search, comprehensive guides, and SEO optimization.</p>
+                            <a href="https://arabtechtrends.com/" target="_blank" rel="noopener">arabtechtrends.com ↗</a>
+                        </div>
                     </div>
                     <div class="project-cv-card">
-                        <h3 data-en="RUSHVANE | راشفين" data-ar="لعبة راشفين | RUSHVANE">RUSHVANE | راشفين</h3>
-                        <p data-en="Interactive browser driving game inspired by Riyadh's ring roads and streets." data-ar="لعبة متصفح تفاعلية مستوحاة من القيادة في شوارع وطرق الرياض.">Interactive browser driving game inspired by Riyadh's ring roads and streets.</p>
-                        <a href="https://riyadh-ring-game.pages.dev/" target="_blank" rel="noopener">Play ↗</a>
+                        <img src="assets/live-rushvane.webp" alt="RUSHVANE browser game" class="project-cv-thumb" loading="lazy">
+                        <div class="project-cv-info">
+                            <h3 data-en="RUSHVANE | راشفين" data-ar="لعبة راشفين | RUSHVANE">RUSHVANE | راشفين</h3>
+                            <p data-en="Interactive 3D browser driving game inspired by Riyadh's ring roads and streets." data-ar="لعبة قيادة تفاعلية في المتصفح مستوحاة من شوارع وطرق الرياض الدائرية.">Interactive 3D browser driving game inspired by Riyadh's ring roads and streets.</p>
+                            <a href="https://riyadh-ring-game.pages.dev/" target="_blank" rel="noopener">Play Online ↗</a>
+                        </div>
                     </div>
                 </div>
             </section>
