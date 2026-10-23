@@ -4,10 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#07101c">
-  <meta name="author" content="Mohamed Elnabarawi — محمد النبراوي">
+  <meta name="author" content="محمد النبراوي — Mohamed Elnabarawi">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="keywords" content="محمد النبراوي, Mohamed Elnabarawi, Mohammed Nabarawy, مستشار مالي, رائد مشاريع تقنية, رئيس حسابات, مراجع مالي, Financial Consultant Riyadh, Tech Entrepreneur, CFM, Invoices Reader, قارئ الفواتير, عرب تك, Arab Tech Trends, شركة أغنى العقارية, مركز رخاء للأعمال, انتهى الظلام, صيف ممطر">
-  <meta name="description" content="محمد النبراوي (Mohamed Elnabarawi) — مستشار مالي ورائد مشاريع تقنية ومؤلف مقيم في الرياض. أكثر من 15 عامًا من الخبرة في رئاسة الحسابات والمراجعة القانونية (CPA) وإدارة أنظمة ERP وبناء منتجات التقنية المالية (Invoices Reader) والمنصات الرقمية (عرب تك).">
+  <meta name="geo.region" content="SA-01">
+  <meta name="geo.placename" content="Riyadh, Saudi Arabia">
+  <meta name="geo.position" content="24.7136;46.6753">
+  <meta name="ICBM" content="24.7136, 46.6753">
+  <meta name="keywords" content="محمد النبراوي, من هو محمد النبراوي, Mohamed Elnabarawi, Mohammed Nabarawy, محمد النبراوي الرياض, محمد النبراوي مستشار مالي, رائد مشاريع تقنية, رئيس حسابات, مراجع مالي, Financial Consultant Riyadh, Tech Entrepreneur, CFM, Invoices Reader, قارئ الفواتير, عرب تك, Arab Tech Trends, شركة أغنى العقارية, مركز رخاء للأعمال, انتهى الظلام, صيف ممطر">
+  <meta name="description" content="الموقع الرسمي لمحمد النبراوي (Mohamed Elnabarawi) — مستشار مالي ورائد مشاريع تقنية ومؤلف مقيم في الرياض. أكثر من 15 عامًا من الخبرة في رئاسة الحسابات والمراجعة القانونية (CPA) وبناء منتجات التقنية المالية (قارئ الفواتير Invoices Reader) ومنصة عرب تك.">
   <meta property="og:type" content="profile">
   <meta property="og:site_name" content="محمد النبراوي | Mohamed Elnabarawi">
   <meta property="og:locale" content="ar_SA">
@@ -74,13 +78,13 @@
     html[lang="ar"] .hero-kicker{letter-spacing:.03em;font-size:12.5px}
     .kicker-dot{width:6px;height:6px;background:var(--gold);display:inline-block}
     h1,h2,h3,p{margin-top:0}
-    .hero-name{display:block;font-size:clamp(46px,6.2vw,74px);font-weight:900;line-height:1.18;color:#ffffff;letter-spacing:-.03em;margin-bottom:10px}
+    .hero-name{display:block;font-size:clamp(46px,6.2vw,74px);font-weight:900;line-height:1.18;color:#ffffff;letter-spacing:-.03em;margin:0 0 10px}
     html[lang="ar"] .hero-name{letter-spacing:0;line-height:1.22}
     .hero-name-sub{display:block;font-family:Inter,sans-serif;font-size:clamp(17px,1.85vw,22px);font-weight:700;color:#8fa4bc;letter-spacing:-.01em;margin-bottom:22px}
     .role-editorial{border-inline-start:3px solid var(--gold);padding-inline-start:18px;margin-bottom:22px}
-    h1.hero-role{margin:0 0 6px;font-size:clamp(24px,3vw,36px);line-height:1.25;font-weight:800;color:#f4f7fb;letter-spacing:-.02em}
-    html[lang="ar"] h1.hero-role{letter-spacing:0;line-height:1.3}
-    h1.hero-role em{font-style:normal;color:var(--teal)}
+    .hero-role{margin:0 0 6px;font-size:clamp(24px,3vw,36px);line-height:1.25;font-weight:800;color:#f4f7fb;letter-spacing:-.02em}
+    html[lang="ar"] .hero-role{letter-spacing:0;line-height:1.3}
+    .hero-role em{font-style:normal;color:var(--teal)}
     .role-tagline{font-size:15.5px;font-weight:700;color:var(--gold);margin:0}
     .lede{font-size:16px;color:#c3d2e2;line-height:1.88;max-width:650px;margin-bottom:28px}
     .hero-ledger{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);padding-block:18px;margin-bottom:28px;gap:0}
@@ -193,6 +197,13 @@
     .social-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
     .social-links a{display:inline-flex;align-items:center;background:#133046;border:1px solid #3b6271;color:#e4eff7;padding:10px 14px;border-radius:11px;font-size:12.5px;font-weight:700;transition:.2s}
     .social-links a:hover{color:var(--teal);border-color:var(--teal);transform:translateY(-2px);box-shadow:0 8px 20px #65e0cc1f}
+    /* Editorial Entity Dossier & FAQ */
+    .entity-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .entity-card{position:relative;overflow:hidden;background:linear-gradient(180deg,#0f2236d9,#0a1726e6);backdrop-filter:blur(10px);border:1px solid var(--line);border-top:2px solid rgba(217,181,116,.55);border-radius:18px;padding:26px 28px;transition:border-color .28s,transform .28s}
+    .entity-card:hover{border-color:var(--gold);transform:translateY(-3px)}
+    .entity-card .q-num{display:block;font-family:Inter,monospace;font-size:11px;font-weight:800;color:var(--gold);letter-spacing:.12em;margin-bottom:8px}
+    .entity-card h3{font-size:18.5px;color:#ffffff;margin:0 0 10px;line-height:1.4}
+    .entity-card p{font-size:14.2px;color:#b8c8d8;line-height:1.85;margin:0}
     .footercta{position:relative;overflow:hidden;border-radius:24px;padding:38px;background:linear-gradient(120deg,#143d45e6,#112238e6);backdrop-filter:blur(10px);border:1px solid #437f85;display:flex;align-items:center;justify-content:space-between;gap:28px}
     .footercta h2{margin-bottom:14px}
     .footercta p{color:#c6dfe3;margin:0;max-width:630px}
@@ -205,18 +216,18 @@
     footer{margin-top:63px;padding:24px 0 35px;border-top:1px solid var(--line);color:#93a7bb;font-size:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px}
     .tiny-link{color:#bcd8e3}
     @media(max-width:920px){.project.featured{grid-template-columns:1fr}.project.featured .browser-frame{border-inline-end:none;border-bottom:1px solid #ffffff14}.project.featured .project-viewport{min-height:auto}.hero-ledger{grid-template-columns:repeat(2,1fr);gap:16px 0}.ledger-col:nth-child(3){padding-inline-start:0;border-inline-start:none}}
-    @media(max-width:850px){.hero{grid-template-columns:1fr;gap:26px;padding-block:30px 48px}.hero-aside{order:-1;justify-content:center}.portrait-card{max-width:250px}.specialties,.proof,.books-grid{grid-template-columns:1fr}.sectionhead{display:block}.intro{margin-top:12px}.bar{flex-wrap:wrap;padding-block:12px;gap:10px}.lang{order:2}.navigation{order:3;margin-inline-start:0;width:100%;justify-content:flex-start;gap:14px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;border-top:1px solid #ffffff12;padding-top:10px}.navigation::-webkit-scrollbar{display:none}.navigation a{white-space:nowrap;font-size:13px}}
+    @media(max-width:850px){.hero{grid-template-columns:1fr;gap:26px;padding-block:30px 48px}.hero-aside{order:-1;justify-content:center}.portrait-card{max-width:250px}.specialties,.proof,.books-grid,.entity-grid{grid-template-columns:1fr}.sectionhead{display:block}.intro{margin-top:12px}.bar{flex-wrap:wrap;padding-block:12px;gap:10px}.lang{order:2}.navigation{order:3;margin-inline-start:0;width:100%;justify-content:flex-start;gap:14px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;border-top:1px solid #ffffff12;padding-top:10px}.navigation::-webkit-scrollbar{display:none}.navigation a{white-space:nowrap;font-size:13px}}
     @media(max-width:650px){.wrap{width:min(var(--max),calc(100% - 28px))}.brand{gap:10px}.mark{width:40px;height:40px;font-size:14px}.brand .longname{font-size:20px}.brand small{font-size:10.5px}.portrait-card{max-width:220px;padding:10px}.portrait-dossier{padding:10px 4px 2px;margin-top:9px}.dossier-loc{font-size:11px}.dossier-code{font-size:10px}.hero-name{font-size:clamp(38px,10.5vw,50px)}.hero-name-sub{font-size:16px;margin-bottom:14px}.hero-role{font-size:clamp(21px,6vw,27px)}.lede{font-size:15px;margin-bottom:20px}.hero-ledger{grid-template-columns:repeat(2,1fr);gap:14px 12px;padding-block:14px}.ledger-col{padding-inline:10px}.ledger-col strong{font-size:17px}.project-grid{grid-template-columns:1fr}.project-body,.project.featured .project-body{padding:22px 20px}.project.featured .project-body h3{font-size:21px}.book-card{grid-template-columns:1fr;text-align:center}.book-cover{margin-inline:auto}.lang{padding:7px 13px;font-size:12px}.footercta{display:block;padding:26px}.footercta .actions{margin-top:20px}.actions .btn{flex:1 1 auto;text-align:center}section{padding-block:50px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.project,.book-card,.reveal{transition:none;opacity:1;transform:none}}
   </style>
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://mohammednabarawy.github.io/#person","name":"Mohamed Elnabarawi","alternateName":["محمد النبراوي","Mohammed Nabarawy"],"url":"https://mohammednabarawy.github.io/","image":{"@type":"ImageObject","url":"https://mohammednabarawy.github.io/assets/mohamed-portrait.jpg","width":768,"height":761},"jobTitle":["Financial Consultant","Tech Entrepreneur","مستشار مالي ورائد مشاريع تقنية"],"description":"Helping businesses grow with smart digital tools. Financial Consultant, Chief Accountant, Senior CPA Auditor, FinTech AI Entrepreneur, and Published Author based in Riyadh, Saudi Arabia.","homeLocation":{"@type":"Place","name":"Riyadh, Saudi Arabia"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Mansoura University"},"hasCredential":[{"@type":"EducationalOccupationalCredential","name":"Certified Finance Manager (CFM)","recognizedBy":{"@type":"Organization","name":"Global Association for Quality Management (GAQM)"}},{"@type":"EducationalOccupationalCredential","name":"ICDL — International Computer Driving Licence"}],"knowsAbout":["Financial Consulting","Chief Accounting","External Auditing (CPA)","ERP Systems","ZATCA E-Invoicing","FinTech Software Development","AI Document Extraction","Digital Publishing","Technical SEO"],"sameAs":["https://github.com/mohammednabarawy","https://www.linkedin.com/in/mnabarawi","https://www.youtube.com/@MohammedElnabarawi","https://www.youtube.com/@elnabarawi","https://www.facebook.com/mfnabarawy","https://www.instagram.com/mohammednabarawy/","https://x.com/nabarawymohamed","https://www.arabtechtrends.com/","https://invoicesreader.com/"]},{"@type":"ProfilePage","@id":"https://mohammednabarawy.github.io/#profilepage","url":"https://mohammednabarawy.github.io/","name":"محمد النبراوي | مستشار مالي ورائد مشاريع تقنية — Mohamed Elnabarawi","inLanguage":["ar","en"],"mainEntity":{"@id":"https://mohammednabarawy.github.io/#person"},"primaryImageOfPage":{"@type":"ImageObject","url":"https://mohammednabarawy.github.io/assets/og-card.jpg","width":1200,"height":630}},{"@type":"WebSite","@id":"https://mohammednabarawy.github.io/#website","url":"https://mohammednabarawy.github.io/","name":"محمد النبراوي | Mohamed Elnabarawi","publisher":{"@id":"https://mohammednabarawy.github.io/#person"},"inLanguage":["ar","en"]},{"@type":"SoftwareApplication","name":"Invoices Reader — قارئ الفواتير","url":"https://invoicesreader.com/","applicationCategory":"BusinessApplication","operatingSystem":"Web, Windows","author":{"@id":"https://mohammednabarawy.github.io/#person"},"description":"AI-powered financial document and ZATCA e-invoice QR extraction platform exporting directly to structured Excel workflows."},{"@type":"Book","name":"انتهى الظلام — The Darkness Ended","isbn":"9781722055804","url":"https://www.amazon.com/dp/1722055804","author":{"@id":"https://mohammednabarawy.github.io/#person"},"inLanguage":"ar"},{"@type":"Book","name":"صيف ممطر — Rainy Summer","isbn":"9781715710428","url":"https://www.amazon.com/dp/1715710428","author":{"@id":"https://mohammednabarawy.github.io/#person"},"inLanguage":"ar"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://mohammednabarawy.github.io/#person","name":"محمد النبراوي","givenName":"محمد","familyName":"النبراوي","alternateName":["Mohamed Elnabarawi","Mohammed Nabarawy","محمد النبراوي مستشار مالي"],"url":"https://mohammednabarawy.github.io/","image":{"@type":"ImageObject","url":"https://mohammednabarawy.github.io/assets/mohamed-portrait.jpg","width":768,"height":761,"caption":"محمد النبراوي (Mohamed Elnabarawi) — مستشار مالي ورائد مشاريع تقنية"},"jobTitle":["مستشار مالي ورائد مشاريع تقنية","Financial Consultant & Tech Entrepreneur","رئيس حسابات","Chief Accountant"],"description":"محمد النبراوي (Mohamed Elnabarawi) — مستشار مالي، رئيس حسابات، مراجع مالي أول سابق (CPA)، ورائد مشاريع تقنية ومؤلف مقيم في الرياض بالمملكة العربية السعودية.","homeLocation":{"@type":"Place","name":"Riyadh, Saudi Arabia","address":{"@type":"PostalAddress","addressLocality":"Riyadh","addressCountry":"SA"}},"worksFor":{"@type":"Organization","name":"شركة أغنى العقارية — Aghna Real Estate Co.","url":"https://aghna.com.sa/"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Mansoura University"},"hasCredential":[{"@type":"EducationalOccupationalCredential","name":"Certified Finance Manager (CFM)","recognizedBy":{"@type":"Organization","name":"Global Association for Quality Management (GAQM)"}},{"@type":"EducationalOccupationalCredential","name":"ICDL — International Computer Driving Licence"}],"knowsAbout":["الاستشارات المالية","رئاسة الحسابات","المراجعة القانونية CPA","أنظمة ERP","الفوترة الإلكترونية ZATCA","التقنية المالية FinTech","Financial Consulting","Chief Accounting","AI Document Extraction","Digital Publishing","Technical SEO"],"sameAs":["https://github.com/mohammednabarawy","https://www.linkedin.com/in/mnabarawi","https://www.youtube.com/@MohammedElnabarawi","https://www.youtube.com/@elnabarawi","https://www.facebook.com/mfnabarawy","https://www.instagram.com/mohammednabarawy/","https://x.com/nabarawymohamed","https://www.arabtechtrends.com/","https://invoicesreader.com/"]},{"@type":"ProfilePage","@id":"https://mohammednabarawy.github.io/#profilepage","url":"https://mohammednabarawy.github.io/","name":"محمد النبراوي | مستشار مالي ورائد مشاريع تقنية — Mohamed Elnabarawi","inLanguage":["ar","en"],"mainEntity":{"@id":"https://mohammednabarawy.github.io/#person"},"primaryImageOfPage":{"@type":"ImageObject","url":"https://mohammednabarawy.github.io/assets/og-card.jpg","width":1200,"height":630}},{"@type":"FAQPage","@id":"https://mohammednabarawy.github.io/#faq","mainEntity":[{"@type":"Question","name":"من هو محمد النبراوي (Mohamed Elnabarawi)؟","acceptedAnswer":{"@type":"Answer","text":"محمد النبراوي (Mohamed Elnabarawi) هو مستشار مالي، ورئيس حسابات، ومراجع مالي أول سابق (CPA)، ورائد مشاريع تقنية ومؤلف مقيم في الرياض بالمملكة العربية السعودية. يمتلك أكثر من 15 عامًا من الخبرة في القيادة المالية والمراجعة القانونية وأنظمة ERP، وهو مؤسس منصة قارئ الفواتير (Invoices Reader) وبوابة عرب تك (Arab Tech Trends)."}},{"@type":"Question","name":"ما هي أبرز المشاريع والمنصات الرقمية لمحمد النبراوي؟","acceptedAnswer":{"@type":"Answer","text":"تشمل أبرز أعمال ومنصات محمد النبراوي: منصة قارئ الفواتير (Invoices Reader) لأتمتة استخراج بيانات الفواتير والضريبة بالذكاء الاصطناعي ورموز ZATCA QR، وبوابة عرب تك (Arab Tech Trends) التقنية، والمنصة الرقمية لمركز رخاء للأعمال (rakha.net)، والموقع الرسمي لشركة أغنى العقارية (aghna.com.sa)، ولعبة المتصفح التفاعلية راشفين (RUSHVANE)."}},{"@type":"Question","name":"ما هي المؤلفات والكتب المنشورة لمحمد النبراوي؟","acceptedAnswer":{"@type":"Answer","text":"صدر للمؤلف محمد النبراوي كتابان أدبيان منشوران عالميًا عبر منصة أمازون: ديوان «انتهى الظلام» (The Darkness Ended - ISBN 9781722055804) وديوان «صيف ممطر» (Rainy Summer - ISBN 9781715710428)."}},{"@type":"Question","name":"ما هي المؤهلات والشهادات المهنية لمحمد النبراوي؟","acceptedAnswer":{"@type":"Answer","text":"يحمل محمد النبراوي درجة بكالوريوس التجارة (شعبة المحاسبة) من جامعة المنصورة، وشهادة مدير مالي معتمد (CFM) من الجمعية العالمية لإدارة الجودة (GAQM)، وشهادات تخصصية في تطوير الويب وتحليل البيانات من مبادرة المليون مبرمج عربي (Udacity)، وخبرة مراجعة قانونية لأكثر من 20 شركة في المملكة العربية السعودية."}}]},{"@type":"WebSite","@id":"https://mohammednabarawy.github.io/#website","url":"https://mohammednabarawy.github.io/","name":"محمد النبراوي | Mohamed Elnabarawi","publisher":{"@id":"https://mohammednabarawy.github.io/#person"},"inLanguage":["ar","en"]},{"@type":"SoftwareApplication","name":"Invoices Reader — قارئ الفواتير","url":"https://invoicesreader.com/","applicationCategory":"BusinessApplication","operatingSystem":"Web, Windows","author":{"@id":"https://mohammednabarawy.github.io/#person"},"description":"AI-powered financial document and ZATCA e-invoice QR extraction platform exporting directly to structured Excel workflows."},{"@type":"Book","name":"انتهى الظلام — The Darkness Ended","isbn":"9781722055804","url":"https://www.amazon.com/dp/1722055804","author":{"@id":"https://mohammednabarawy.github.io/#person"},"inLanguage":"ar"},{"@type":"Book","name":"صيف ممطر — Rainy Summer","isbn":"9781715710428","url":"https://www.amazon.com/dp/1715710428","author":{"@id":"https://mohammednabarawy.github.io/#person"},"inLanguage":"ar"}]}</script>
 </head>
 <body>
   <canvas id="bg-canvas" aria-hidden="true"></canvas>
   <a class="skip" href="#main">تخطي إلى المحتوى</a>
   <header class="topbar">
     <div class="bar wrap">
-      <a class="brand" href="#top" aria-label="Mohamed Elnabarawi — محمد النبراوي">
+      <a class="brand" href="#top" aria-label="محمد النبراوي — Mohamed Elnabarawi">
         <span class="mark" data-en="ME" data-ar="م ن">م ن</span>
         <span>
           <span class="longname" data-en="Mohamed Elnabarawi" data-ar="محمد النبراوي">محمد النبراوي</span>
@@ -229,6 +240,7 @@
         <a href="#experience" data-en="Finance & Tech" data-ar="المال والتقنية">المال والتقنية</a>
         <a href="#credentials" data-en="Journey" data-ar="مسيرتي">مسيرتي</a>
         <a href="#publications" data-en="Books" data-ar="مؤلفاتي">مؤلفاتي</a>
+        <a href="#about" data-en="About" data-ar="من هو؟">من هو؟</a>
         <a href="cv.html" data-en="Full CV" data-ar="سيرتي الذاتية">سيرتي الذاتية</a>
         <a href="#contact" data-en="Connect" data-ar="تواصل">تواصل</a>
       </nav>
@@ -238,13 +250,13 @@
     <div id="top" class="wrap hero">
       <div>
         <div class="hero-kicker"><span class="kicker-dot"></span><span data-en="FINANCE × TECHNOLOGY · RIYADH, SAUDI ARABIA" data-ar="القيادة المالية والتقنية · الرياض، المملكة العربية السعودية">القيادة المالية والتقنية · الرياض، المملكة العربية السعودية</span></div>
-        <div class="hero-name" data-en="Mohamed Elnabarawi" data-ar="محمد النبراوي">محمد النبراوي</div>
+        <h1 class="hero-name" data-en="Mohamed Elnabarawi" data-ar="محمد النبراوي">محمد النبراوي</h1>
         <div class="hero-name-sub" data-en="محمد النبراوي · CFM® · CPA Audit · FinTech Founder" data-ar="Mohamed Elnabarawi · CFM® · FinTech Founder">Mohamed Elnabarawi · CFM® · FinTech Founder</div>
         <div class="role-editorial">
-          <h1 class="hero-role" data-en="Financial Consultant <em>&amp; Tech Entrepreneur.</em>" data-ar="مستشار مالي <em>ورائد مشاريع تقنية.</em>">مستشار مالي <em>ورائد مشاريع تقنية.</em></h1>
+          <h2 class="hero-role" data-en="Financial Consultant <em>&amp; Tech Entrepreneur.</em>" data-ar="مستشار مالي <em>ورائد مشاريع تقنية.</em>">مستشار مالي <em>ورائد مشاريع تقنية.</em></h2>
           <p class="role-tagline" data-en="Helping businesses grow with smart digital tools." data-ar="أساعد الشركات والأفراد على النمو باستخدام الأدوات الرقمية الذكية.">أساعد الشركات والأفراد على النمو باستخدام الأدوات الرقمية الذكية.</p>
         </div>
-        <p class="lede" data-en="I bridge over 15 years of executive accounting, CPA auditing, and financial strategy with hands-on software engineering—building AI-powered FinTech platforms, corporate web systems, and Arabic digital publications." data-ar="أجمع بين أكثر من ١٥ عامًا من الخبرة القيادية كرئيس حسابات ومراجع مالي أول (CPA) عبر أكثر من ٢٠ شركة، وبين هندسة البرمجيات وبناء منتجات التقنية المالية (FinTech) المدعومة بالذكاء الاصطناعي والمنصات الرقمية.">أجمع بين أكثر من ١٥ عامًا من الخبرة القيادية كرئيس حسابات ومراجع مالي أول (CPA) عبر أكثر من ٢٠ شركة، وبين هندسة البرمجيات وبناء منتجات التقنية المالية (FinTech) المدعومة بالذكاء الاصطناعي والمنصات الرقمية.</p>
+        <p class="lede" data-en="I am Mohamed Elnabarawi—bridging over 15 years of executive accounting, CPA auditing, and financial strategy with hands-on software engineering to build AI-powered FinTech platforms, corporate web systems, and Arabic digital publications." data-ar="أنا محمد النبراوي — أجمع بين أكثر من ١٥ عامًا من الخبرة القيادية كرئيس حسابات ومراجع مالي أول (CPA) عبر أكثر من ٢٠ شركة في السعودية ومصر، وبين هندسة البرمجيات وبناء منتجات التقنية المالية (FinTech) المدعومة بالذكاء الاصطناعي والمنصات الرقمية.">أنا محمد النبراوي — أجمع بين أكثر من ١٥ عامًا من الخبرة القيادية كرئيس حسابات ومراجع مالي أول (CPA) عبر أكثر من ٢٠ شركة في السعودية ومصر، وبين هندسة البرمجيات وبناء منتجات التقنية المالية (FinTech) المدعومة بالذكاء الاصطناعي والمنصات الرقمية.</p>
         <div class="hero-ledger" aria-label="Executive highlights">
           <div class="ledger-col">
             <strong dir="ltr"><span>+</span>15 Yrs</strong>
@@ -269,10 +281,10 @@
           <a class="btn secondary" href="#publications" data-en="Published Books ↗" data-ar="المؤلفات المنشورة ↗">المؤلفات المنشورة ↗</a>
         </div>
       </div>
-      <aside class="hero-aside" aria-label="Portrait of Mohamed Elnabarawi">
+      <aside class="hero-aside" aria-label="صورة محمد النبراوي — Portrait of Mohamed Elnabarawi">
         <div class="portrait-card glow-card">
           <div class="portrait-photo-wrap">
-            <img class="portrait-img" src="assets/mohamed-portrait.jpg" alt="محمد النبراوي — Mohamed Elnabarawi" width="768" height="761" fetchpriority="high">
+            <img class="portrait-img" src="assets/mohamed-portrait.jpg" alt="محمد النبراوي — Mohamed Elnabarawi — مستشار مالي ورائد مشاريع تقنية" title="محمد النبراوي | Mohamed Elnabarawi" width="768" height="761" fetchpriority="high">
           </div>
           <div class="portrait-dossier">
             <span class="dossier-loc"><i></i><span data-en="Riyadh, Saudi Arabia" data-ar="الرياض، السعودية">الرياض، السعودية</span></span>
@@ -283,21 +295,21 @@
     </div>
 
     <section id="experience" class="subtle"><div class="wrap">
-      <div class="sectionhead"><div><div class="eyebrow" data-en="Core Pillars" data-ar="ركائز الخبرة">Core Pillars</div><h2 data-en="Finance, systems & creative problem-solving" data-ar="المال والأنظمة والحلول الإبداعية">Finance, systems & creative problem-solving</h2></div><p class="intro" data-en="My work sits at the intersection of accounting leadership, practical technology, and clear digital experiences." data-ar="تجمع أعمالي بين القيادة المحاسبية والمالية، والتقنية العملية، وصناعة المحتوى والمنتجات الرقمية.">My work sits at the intersection of accounting leadership, practical technology, and clear digital experiences.</p></div>
+      <div class="sectionhead"><div><div class="eyebrow" data-en="Core Pillars" data-ar="ركائز الخبرة">ركائز الخبرة</div><h2 data-en="Finance, systems & creative problem-solving" data-ar="المال والأنظمة والحلول الإبداعية">المال والأنظمة والحلول الإبداعية</h2></div><p class="intro" data-en="My work sits at the intersection of accounting leadership, practical technology, and clear digital experiences." data-ar="تجمع أعمالي بين القيادة المحاسبية والمالية، والتقنية العملية، وصناعة المحتوى والمنتجات الرقمية.">تجمع أعمالي بين القيادة المحاسبية والمالية، والتقنية العملية، وصناعة المحتوى والمنتجات الرقمية.</p></div>
       <div class="specialties">
-        <article class="tile"><span class="num">01 / FINANCE & AUDIT</span><h3 data-en="Financial leadership & ERP workflows" data-ar="القيادة المالية وأنظمة ERP">Financial leadership & ERP workflows</h3><p data-en="Deep hands-on background as Chief Accountant and Senior Auditor across real estate, contracting, and multi-sector enterprises—covering financial reporting, VAT, internal controls, and ERP systems." data-ar="خبرة عملية طويلة كرئيس حسابات ومراجع مالي أول في قطاعات العقارات والمقاولات والشركات المتنوعة، تشمل القوائم المالية وضريبة القيمة المضافة والرقابة الداخلية وأنظمة ERP.">Deep hands-on background as Chief Accountant and Senior Auditor across real estate, contracting, and multi-sector enterprises—covering financial reporting, VAT, internal controls, and ERP systems.</p></article>
-        <article class="tile"><span class="num">02 / WEB PLATFORMS</span><h3 data-en="Websites & digital publishing" data-ar="المواقع والمنصات الرقمية">Websites & digital publishing</h3><p data-en="Building and operating corporate websites, booking systems, and Arabic tech publishing platforms—spanning architecture, content migration, SEO, domains, and cloud deployment." data-ar="بناء وتشغيل المواقع المؤسسية وأنظمة الحجز ومنصات النشر التقني العربية، بما يشمل الهيكلة ونقل المحتوى وتحسين محركات البحث (SEO) وإدارة النطاقات والنشر السحابي.">Building and operating corporate websites, booking systems, and Arabic tech publishing platforms—spanning architecture, content migration, SEO, domains, and cloud deployment.</p></article>
-        <article class="tile"><span class="num">03 / AI & PRODUCTS</span><h3 data-en="AI-assisted software & tools" data-ar="تطوير الأدوات والمنتجات بالذكاء الاصطناعي">AI-assisted software & tools</h3><p data-en="Turning real accounting and operational challenges into working software—such as automated invoice extraction, digital business workflows, and interactive web applications." data-ar="تحويل التحديات المحاسبية والتشغيلية الواقعية إلى برمجيات وأدوات عملية، مثل استخراج بيانات الفواتير، وأتمتة مسارات العمل، والتطبيقات التفاعلية على الويب.">Turning real accounting and operational challenges into working software—such as automated invoice extraction, digital business workflows, and interactive web applications.</p></article>
+        <article class="tile"><span class="num">01 / FINANCE & AUDIT</span><h3 data-en="Financial leadership & ERP workflows" data-ar="القيادة المالية وأنظمة ERP">القيادة المالية وأنظمة ERP</h3><p data-en="Deep hands-on background as Chief Accountant and Senior Auditor across real estate, contracting, and multi-sector enterprises—covering financial reporting, VAT, internal controls, and ERP systems." data-ar="خبرة عملية طويلة كرئيس حسابات ومراجع مالي أول في قطاعات العقارات والمقاولات والشركات المتنوعة، تشمل القوائم المالية وضريبة القيمة المضافة والرقابة الداخلية وأنظمة ERP.">خبرة عملية طويلة كرئيس حسابات ومراجع مالي أول في قطاعات العقارات والمقاولات والشركات المتنوعة، تشمل القوائم المالية وضريبة القيمة المضافة والرقابة الداخلية وأنظمة ERP.</p></article>
+        <article class="tile"><span class="num">02 / WEB PLATFORMS</span><h3 data-en="Websites & digital publishing" data-ar="المواقع والمنصات الرقمية">المواقع والمنصات الرقمية</h3><p data-en="Building and operating corporate websites, booking systems, and Arabic tech publishing platforms—spanning architecture, content migration, SEO, domains, and cloud deployment." data-ar="بناء وتشغيل المواقع المؤسسية وأنظمة الحجز ومنصات النشر التقني العربية، بما يشمل الهيكلة ونقل المحتوى وتحسين محركات البحث (SEO) وإدارة النطاقات والنشر السحابي.">بناء وتشغيل المواقع المؤسسية وأنظمة الحجز ومنصات النشر التقني العربية، بما يشمل الهيكلة ونقل المحتوى وتحسين محركات البحث (SEO) وإدارة النطاقات والنشر السحابي.</p></article>
+        <article class="tile"><span class="num">03 / AI & PRODUCTS</span><h3 data-en="AI-assisted software & tools" data-ar="تطوير الأدوات والمنتجات بالذكاء الاصطناعي">تطوير الأدوات والمنتجات بالذكاء الاصطناعي</h3><p data-en="Turning real accounting and operational challenges into working software—such as automated invoice extraction, digital business workflows, and interactive web applications." data-ar="تحويل التحديات المحاسبية والتشغيلية الواقعية إلى برمجيات وأدوات عملية، مثل استخراج بيانات الفواتير، وأتمتة مسارات العمل، والتطبيقات التفاعلية على الويب.">تحويل التحديات المحاسبية والتشغيلية الواقعية إلى برمجيات وأدوات عملية، مثل استخراج بيانات الفواتير، وأتمتة مسارات العمل، والتطبيقات التفاعلية على الويب.</p></article>
       </div>
     </div></section>
 
     <section id="work" class="subtle"><div class="wrap">
-      <div class="sectionhead"><div><div class="eyebrow" data-en="Selected work" data-ar="أعمال ومشاريع مختارة">Selected work</div><h2 data-en="Digital products, platforms & websites" data-ar="منتجات رقمية ومنصات ومواقع إلكترونية">Digital products, platforms & websites</h2></div><p class="intro" data-en="Explore live websites, financial software tools, publishing platforms, and interactive experiences." data-ar="استعرض مجموعة من مواقعي ومنتجاتي الرقمية وأدواتي المالية والتجارب التقنية الحية.">Explore live websites, financial software tools, publishing platforms, and interactive experiences.</p></div>
+      <div class="sectionhead"><div><div class="eyebrow" data-en="Selected work" data-ar="أعمال ومشاريع مختارة">أعمال ومشاريع مختارة</div><h2 data-en="Digital products, platforms & websites" data-ar="منتجات رقمية ومنصات ومواقع إلكترونية">منتجات رقمية ومنصات ومواقع إلكترونية</h2></div><p class="intro" data-en="Explore live websites, financial software tools, publishing platforms, and interactive experiences." data-ar="استعرض مجموعة من مواقعي ومنتجاتي الرقمية وأدواتي المالية والتجارب التقنية الحية.">استعرض مجموعة من مواقعي ومنتجاتي الرقمية وأدواتي المالية والتجارب التقنية الحية.</p></div>
       <div class="filters" role="group" aria-label="Filter projects">
-        <button type="button" class="filter" data-filter="all" aria-pressed="true" data-en="All projects" data-ar="جميع المشاريع">All projects</button>
-        <button type="button" class="filter" data-filter="finance" aria-pressed="false" data-en="Finance & tools" data-ar="المالية والأدوات">Finance & tools</button>
-        <button type="button" class="filter" data-filter="web" aria-pressed="false" data-en="Websites & platforms" data-ar="المواقع والمنصات">Websites & platforms</button>
-        <button type="button" class="filter" data-filter="creative" aria-pressed="false" data-en="Experiments" data-ar="تجارب تفاعلية">Experiments</button>
+        <button type="button" class="filter" data-filter="all" aria-pressed="true" data-en="All projects" data-ar="جميع المشاريع">جميع المشاريع</button>
+        <button type="button" class="filter" data-filter="finance" aria-pressed="false" data-en="Finance & tools" data-ar="المالية والأدوات">المالية والأدوات</button>
+        <button type="button" class="filter" data-filter="web" aria-pressed="false" data-en="Websites & platforms" data-ar="المواقع والمنصات">المواقع والمنصات</button>
+        <button type="button" class="filter" data-filter="creative" aria-pressed="false" data-en="Experiments" data-ar="تجارب تفاعلية">تجارب تفاعلية</button>
       </div>
       <div class="project-grid">
         <article class="project featured" data-cat="finance">
@@ -308,27 +320,27 @@
               <a href="https://invoicesreader.com/" target="_blank" rel="noopener noreferrer" class="browser-open" aria-label="Open invoicesreader.com">↗</a>
             </div>
             <a href="https://invoicesreader.com/" target="_blank" rel="noopener noreferrer" class="project-viewport">
-              <img class="project-shot" src="assets/live-invoicesreader.webp" alt="Live screenshot of Invoices Reader cloud web platform (invoicesreader.com)" width="1440" height="900">
-              <div class="viewport-overlay"><span class="overlay-pill" data-en="Open Live Platform ↗" data-ar="افتح المنصة الحية ↗">Open Live Platform ↗</span></div>
+              <img class="project-shot" src="assets/live-invoicesreader.webp" alt="منصة قارئ الفواتير Invoices Reader — محمد النبراوي" width="1440" height="900">
+              <div class="viewport-overlay"><span class="overlay-pill" data-en="Open Live Platform ↗" data-ar="افتح المنصة الحية ↗">افتح المنصة الحية ↗</span></div>
             </a>
           </div>
           <div class="project-body">
             <div class="project-meta">
-              <span class="tag" data-en="FINTECH · AI DOCUMENT EXTRACTION" data-ar="تقنية مالية · أتمتة الفواتير بالذكاء الاصطناعي">FINTECH · AI DOCUMENT EXTRACTION</span>
-              <span class="featured-badge" data-en="★ Flagship Product" data-ar="★ المنتج الرئيسي">★ Flagship Product</span>
+              <span class="tag" data-en="FINTECH · AI DOCUMENT EXTRACTION" data-ar="تقنية مالية · أتمتة الفواتير بالذكاء الاصطناعي">تقنية مالية · أتمتة الفواتير بالذكاء الاصطناعي</span>
+              <span class="featured-badge" data-en="★ Flagship Product" data-ar="★ المنتج الرئيسي">★ المنتج الرئيسي</span>
             </div>
-            <h3 data-en="Invoices Reader — Automated Invoice Intelligence" data-ar="قارئ الفواتير — Invoices Reader">Invoices Reader — Automated Invoice Intelligence</h3>
-            <p data-en="Cloud and desktop financial-document platform that automates supplier and expense invoice extraction using AI OCR and Saudi ZATCA e-invoice QR decoding—exporting verified line items and VAT data directly into structured Excel workflows." data-ar="منصة سحابية وتطبيق مكتبي لأتمتة استخراج بيانات فواتير الموردين والمصروفات والضريبة تلقائيًا عبر الذكاء الاصطناعي ورموز QR للفوترة الإلكترونية السعودية (ZATCA)، مع تصدير فوري إلى جداول Excel جاهزة للأنظمة المحاسبية.">Cloud and desktop financial-document platform that automates supplier and expense invoice extraction using AI OCR and Saudi ZATCA e-invoice QR decoding—exporting verified line items and VAT data directly into structured Excel workflows.</p>
+            <h3 data-en="Invoices Reader — Automated Invoice Intelligence" data-ar="قارئ الفواتير — Invoices Reader">قارئ الفواتير — Invoices Reader</h3>
+            <p data-en="Cloud and desktop financial-document platform that automates supplier and expense invoice extraction using AI OCR and Saudi ZATCA e-invoice QR decoding—exporting verified line items and VAT data directly into structured Excel workflows." data-ar="منصة سحابية وتطبيق مكتبي لأتمتة استخراج بيانات فواتير الموردين والمصروفات والضريبة تلقائيًا عبر الذكاء الاصطناعي ورموز QR للفوترة الإلكترونية السعودية (ZATCA)، مع تصدير فوري إلى جداول Excel جاهزة للأنظمة المحاسبية.">منصة سحابية وتطبيق مكتبي لأتمتة استخراج بيانات فواتير الموردين والمصروفات والضريبة تلقائيًا عبر الذكاء الاصطناعي ورموز QR للفوترة الإلكترونية السعودية (ZATCA)، مع تصدير فوري إلى جداول Excel جاهزة للأنظمة المحاسبية.</p>
             <div class="highlights">
-              <span data-en="ZATCA QR & e-Invoice" data-ar="الفاتورة الإلكترونية ورمز QR">ZATCA QR & e-Invoice</span>
-              <span data-en="AI Line-Item OCR" data-ar="استخراج ذكي للبنود والضريبة">AI Line-Item OCR</span>
-              <span data-en="Instant Excel Export (.xlsx)" data-ar="تصدير فوري لملفات Excel">Instant Excel Export (.xlsx)</span>
-              <span data-en="Free Accountant Calculators" data-ar="حاسبات مجانية للمحاسبين">Free Accountant Calculators</span>
+              <span data-en="ZATCA QR & e-Invoice" data-ar="الفاتورة الإلكترونية ورمز QR">الفاتورة الإلكترونية ورمز QR</span>
+              <span data-en="AI Line-Item OCR" data-ar="استخراج ذكي للبنود والضريبة">استخراج ذكي للبنود والضريبة</span>
+              <span data-en="Instant Excel Export (.xlsx)" data-ar="تصدير فوري لملفات Excel">تصدير فوري لملفات Excel</span>
+              <span data-en="Free Accountant Calculators" data-ar="حاسبات مجانية للمحاسبين">حاسبات مجانية للمحاسبين</span>
             </div>
             <div class="links">
-              <a class="primary-link" href="https://invoicesreader.com/" target="_blank" rel="noopener noreferrer" data-en="Launch Web App ↗" data-ar="تصفح المنصة الحية ↗">Launch Web App ↗</a>
-              <a href="invoices-reader.html" data-en="Desktop App Tour ↗" data-ar="استعراض نسخة سطح المكتب ↗">Desktop App Tour ↗</a>
-              <a href="https://github.com/mohammednabarawy/invoices-reader-plugins" target="_blank" rel="noopener noreferrer" data-en="Community Plugins ↗" data-ar="مستودع الإضافات ↗">Community Plugins ↗</a>
+              <a class="primary-link" href="https://invoicesreader.com/" target="_blank" rel="noopener noreferrer" data-en="Launch Web App ↗" data-ar="تصفح المنصة الحية ↗">تصفح المنصة الحية ↗</a>
+              <a href="invoices-reader.html" data-en="Desktop App Tour ↗" data-ar="استعراض نسخة سطح المكتب ↗">استعراض نسخة سطح المكتب ↗</a>
+              <a href="https://github.com/mohammednabarawy/invoices-reader-plugins" target="_blank" rel="noopener noreferrer" data-en="Community Plugins ↗" data-ar="مستودع الإضافات ↗">مستودع الإضافات ↗</a>
             </div>
           </div>
         </article>
@@ -341,23 +353,23 @@
               <a href="https://rakha.net/" target="_blank" rel="noopener noreferrer" class="browser-open" aria-label="Open rakha.net">↗</a>
             </div>
             <a href="https://rakha.net/" target="_blank" rel="noopener noreferrer" class="project-viewport">
-              <img class="project-shot" src="assets/live-rakha.webp" alt="Live screenshot of Rakha Business Center website (rakha.net)" width="1440" height="900" loading="lazy">
-              <div class="viewport-overlay"><span class="overlay-pill" data-en="Visit rakha.net ↗" data-ar="زيارة موقع رخاء ↗">Visit rakha.net ↗</span></div>
+              <img class="project-shot" src="assets/live-rakha.webp" alt="موقع مركز رخاء للأعمال rakha.net — محمد النبراوي" width="1440" height="900" loading="lazy">
+              <div class="viewport-overlay"><span class="overlay-pill" data-en="Visit rakha.net ↗" data-ar="زيارة موقع رخاء ↗">زيارة موقع رخاء ↗</span></div>
             </a>
           </div>
           <div class="project-body">
             <div class="project-meta">
-              <span class="tag" data-en="PROPTECH · TENANT PORTAL & BOOKING" data-ar="منصة أعمال · بوابة المستأجرين وحجز القاعات">PROPTECH · TENANT PORTAL & BOOKING</span>
+              <span class="tag" data-en="PROPTECH · TENANT PORTAL & BOOKING" data-ar="منصة أعمال · بوابة المستأجرين وحجز القاعات">منصة أعمال · بوابة المستأجرين وحجز القاعات</span>
             </div>
-            <h3 data-en="Rakha Business Center" data-ar="مركز رخاء للأعمال — Rakha">Rakha Business Center</h3>
-            <p data-en="Bilingual corporate web platform for a premier executive office destination in Riyadh—featuring a tenant portal, interactive workspace showcase, and online meeting-room reservation system." data-ar="منصة إلكترونية ثنائية اللغة لوجهة مكتبية راقية في الرياض؛ تتضمن بوابة دخول للمستأجرين، واستعراض المساحات المكتبية، ونظام حجز إلكتروني لقاعات الاجتماعات.">Bilingual corporate web platform for a premier executive office destination in Riyadh—featuring a tenant portal, interactive workspace showcase, and online meeting-room reservation system.</p>
+            <h3 data-en="Rakha Business Center" data-ar="مركز رخاء للأعمال — Rakha">مركز رخاء للأعمال — Rakha</h3>
+            <p data-en="Bilingual corporate web platform for a premier executive office destination in Riyadh—featuring a tenant portal, interactive workspace showcase, and online meeting-room reservation system." data-ar="منصة إلكترونية ثنائية اللغة لوجهة مكتبية راقية في الرياض؛ تتضمن بوابة دخول للمستأجرين، واستعراض المساحات المكتبية، ونظام حجز إلكتروني لقاعات الاجتماعات.">منصة إلكترونية ثنائية اللغة لوجهة مكتبية راقية في الرياض؛ تتضمن بوابة دخول للمستأجرين، واستعراض المساحات المكتبية، ونظام حجز إلكتروني لقاعات الاجتماعات.</p>
             <div class="highlights">
-              <span data-en="Meeting Room Booking" data-ar="نظام حجز قاعات الاجتماعات">Meeting Room Booking</span>
-              <span data-en="Tenant Portal" data-ar="بوابة دخول المستأجرين">Tenant Portal</span>
-              <span data-en="Bilingual AR / EN" data-ar="ثنائي اللغة (عربي / EN)">Bilingual AR / EN</span>
+              <span data-en="Meeting Room Booking" data-ar="نظام حجز قاعات الاجتماعات">نظام حجز قاعات الاجتماعات</span>
+              <span data-en="Tenant Portal" data-ar="بوابة دخول المستأجرين">بوابة دخول المستأجرين</span>
+              <span data-en="Bilingual AR / EN" data-ar="ثنائي اللغة (عربي / EN)">ثنائي اللغة (عربي / EN)</span>
             </div>
             <div class="links">
-              <a class="primary-link" href="https://rakha.net/" target="_blank" rel="noopener noreferrer" data-en="Visit Live Website ↗" data-ar="زيارة الموقع الحي ↗">Visit Live Website ↗</a>
+              <a class="primary-link" href="https://rakha.net/" target="_blank" rel="noopener noreferrer" data-en="Visit Live Website ↗" data-ar="زيارة الموقع الحي ↗">زيارة الموقع الحي ↗</a>
             </div>
           </div>
         </article>
@@ -370,23 +382,23 @@
               <a href="https://aghna.com.sa/" target="_blank" rel="noopener noreferrer" class="browser-open" aria-label="Open aghna.com.sa">↗</a>
             </div>
             <a href="https://aghna.com.sa/" target="_blank" rel="noopener noreferrer" class="project-viewport">
-              <img class="project-shot" src="assets/live-aghna.webp" alt="Live screenshot of Aghna Real Estate website (aghna.com.sa)" width="1440" height="900" loading="lazy">
-              <div class="viewport-overlay"><span class="overlay-pill" data-en="Visit aghna.com.sa ↗" data-ar="زيارة موقع أغنى ↗">Visit aghna.com.sa ↗</span></div>
+              <img class="project-shot" src="assets/live-aghna.webp" alt="موقع شركة أغنى العقارية aghna.com.sa — محمد النبراوي" width="1440" height="900" loading="lazy">
+              <div class="viewport-overlay"><span class="overlay-pill" data-en="Visit aghna.com.sa ↗" data-ar="زيارة موقع أغنى ↗">زيارة موقع أغنى ↗</span></div>
             </a>
           </div>
           <div class="project-body">
             <div class="project-meta">
-              <span class="tag" data-en="CORPORATE PLATFORM · REAL ESTATE" data-ar="موقع مؤسسي · التطوير العقاري">CORPORATE PLATFORM · REAL ESTATE</span>
+              <span class="tag" data-en="CORPORATE PLATFORM · REAL ESTATE" data-ar="موقع مؤسسي · التطوير العقاري">موقع مؤسسي · التطوير العقاري</span>
             </div>
-            <h3 data-en="Aghna Real Estate Co." data-ar="شركة أغنى العقارية — Aghna">Aghna Real Estate Co.</h3>
-            <p data-en="Official corporate digital presence for Aghna Real Estate in Saudi Arabia—showcasing architectural developments, company milestones, real-estate portfolio, and investor communication." data-ar="الحضور الرقمي الرسمي لشركة أغنى العقارية في المملكة العربية السعودية؛ يعرض المحفظة العقارية، ومجالات التطوير، وإنجازات الشركة بالأرقام بهوية بصرية فاخرة.">Official corporate digital presence for Aghna Real Estate in Saudi Arabia—showcasing architectural developments, company milestones, real-estate portfolio, and investor communication.</p>
+            <h3 data-en="Aghna Real Estate Co." data-ar="شركة أغنى العقارية — Aghna">شركة أغنى العقارية — Aghna</h3>
+            <p data-en="Official corporate digital presence for Aghna Real Estate in Saudi Arabia—showcasing architectural developments, company milestones, real-estate portfolio, and investor communication." data-ar="الحضور الرقمي الرسمي لشركة أغنى العقارية في المملكة العربية السعودية؛ يعرض المحفظة العقارية، ومجالات التطوير، وإنجازات الشركة بالأرقام بهوية بصرية فاخرة.">الحضور الرقمي الرسمي لشركة أغنى العقارية في المملكة العربية السعودية؛ يعرض المحفظة العقارية، ومجالات التطوير، وإنجازات الشركة بالأرقام بهوية بصرية فاخرة.</p>
             <div class="highlights">
-              <span data-en="Real Estate Portfolio" data-ar="استعراض المحفظة العقارية">Real Estate Portfolio</span>
-              <span data-en="Corporate Identity" data-ar="هوية مؤسسية فاخرة">Corporate Identity</span>
-              <span data-en="Bilingual AR / EN" data-ar="واجهة عربية وإنجليزية">Bilingual AR / EN</span>
+              <span data-en="Real Estate Portfolio" data-ar="استعراض المحفظة العقارية">استعراض المحفظة العقارية</span>
+              <span data-en="Corporate Identity" data-ar="هوية مؤسسية فاخرة">هوية مؤسسية فاخرة</span>
+              <span data-en="Bilingual AR / EN" data-ar="واجهة عربية وإنجليزية">واجهة عربية وإنجليزية</span>
             </div>
             <div class="links">
-              <a class="primary-link" href="https://aghna.com.sa/" target="_blank" rel="noopener noreferrer" data-en="Visit Live Website ↗" data-ar="زيارة الموقع الحي ↗">Visit Live Website ↗</a>
+              <a class="primary-link" href="https://aghna.com.sa/" target="_blank" rel="noopener noreferrer" data-en="Visit Live Website ↗" data-ar="زيارة الموقع الحي ↗">زيارة الموقع الحي ↗</a>
             </div>
           </div>
         </article>
@@ -399,24 +411,24 @@
               <a href="https://www.arabtechtrends.com/" target="_blank" rel="noopener noreferrer" class="browser-open" aria-label="Open arabtechtrends.com">↗</a>
             </div>
             <a href="https://www.arabtechtrends.com/" target="_blank" rel="noopener noreferrer" class="project-viewport">
-              <img class="project-shot" src="assets/live-arabtechtrends.webp" alt="Live screenshot of Arab Tech Trends portal (arabtechtrends.com)" width="1440" height="900" loading="lazy">
-              <div class="viewport-overlay"><span class="overlay-pill" data-en="Visit arabtechtrends.com ↗" data-ar="زيارة موقع عرب تك ↗">Visit arabtechtrends.com ↗</span></div>
+              <img class="project-shot" src="assets/live-arabtechtrends.webp" alt="منصة عرب تك Arab Tech Trends — محمد النبراوي" width="1440" height="900" loading="lazy">
+              <div class="viewport-overlay"><span class="overlay-pill" data-en="Visit arabtechtrends.com ↗" data-ar="زيارة موقع عرب تك ↗">زيارة موقع عرب تك ↗</span></div>
             </a>
           </div>
           <div class="project-body">
             <div class="project-meta">
-              <span class="tag" data-en="DIGITAL PUBLISHING · ASTRO & SEO" data-ar="نشر رقمي · منصة تقنية وSEO">DIGITAL PUBLISHING · ASTRO & SEO</span>
+              <span class="tag" data-en="DIGITAL PUBLISHING · ASTRO & SEO" data-ar="نشر رقمي · منصة تقنية وSEO">نشر رقمي · منصة تقنية وSEO</span>
               <span class="brand-pill"><img src="assets/arabtech-logo.png" alt="Arab Tech Trends AT Logo" width="18" height="18"><span>Arab Tech</span></span>
             </div>
-            <h3 data-en="Arab Tech Trends | عرب تك" data-ar="منصة عرب تك — Arab Tech Trends">Arab Tech Trends | عرب تك</h3>
-            <p data-en="Comprehensive Arabic technology portal delivering practical guides across AI tools, accounting software, Windows optimization, and creator workflows—built on Astro with instant search and SEO architecture." data-ar="بوابة تقنية عربية شاملة تقدم أدلة عملية وشروحات في الذكاء الاصطناعي، وبرامج المحاسبة، وأنظمة التشغيل، وصناعة المحتوى—مبنية بإطار Astro مع بحث فوري وتهيئة متقدمة لمحركات البحث.">Comprehensive Arabic technology portal delivering practical guides across AI tools, accounting software, Windows optimization, and creator workflows—built on Astro with instant search and SEO architecture.</p>
+            <h3 data-en="Arab Tech Trends | عرب تك" data-ar="منصة عرب تك — Arab Tech Trends">منصة عرب تك — Arab Tech Trends</h3>
+            <p data-en="Comprehensive Arabic technology portal delivering practical guides across AI tools, accounting software, Windows optimization, and creator workflows—built on Astro with instant search and SEO architecture." data-ar="بوابة تقنية عربية شاملة تقدم أدلة عملية وشروحات في الذكاء الاصطناعي، وبرامج المحاسبة، وأنظمة التشغيل، وصناعة المحتوى—مبنية بإطار Astro مع بحث فوري وتهيئة متقدمة لمحركات البحث.">بوابة تقنية عربية شاملة تقدم أدلة عملية وشروحات في الذكاء الاصطناعي، وبرامج المحاسبة، وأنظمة التشغيل، وصناعة المحتوى—مبنية بإطار Astro مع بحث فوري وتهيئة متقدمة لمحركات البحث.</p>
             <div class="highlights">
-              <span data-en="Astro Static Engine" data-ar="مبني بإطار Astro السريع">Astro Static Engine</span>
-              <span data-en="Instant Search & Guides" data-ar="بحث فوري وأدلة شاملة">Instant Search & Guides</span>
-              <span data-en="Technical SEO" data-ar="تحسين محركات البحث SEO">Technical SEO</span>
+              <span data-en="Astro Static Engine" data-ar="مبني بإطار Astro السريع">مبني بإطار Astro السريع</span>
+              <span data-en="Instant Search & Guides" data-ar="بحث فوري وأدلة شاملة">بحث فوري وأدلة شاملة</span>
+              <span data-en="Technical SEO" data-ar="تحسين محركات البحث SEO">تحسين محركات البحث SEO</span>
             </div>
             <div class="links">
-              <a class="primary-link" href="https://www.arabtechtrends.com/" target="_blank" rel="noopener noreferrer" data-en="Explore Portal ↗" data-ar="تصفح البوابة التقنية ↗">Explore Portal ↗</a>
+              <a class="primary-link" href="https://www.arabtechtrends.com/" target="_blank" rel="noopener noreferrer" data-en="Explore Portal ↗" data-ar="تصفح البوابة التقنية ↗">تصفح البوابة التقنية ↗</a>
             </div>
           </div>
         </article>
@@ -429,23 +441,23 @@
               <a href="https://riyadh-ring-game.pages.dev/" target="_blank" rel="noopener noreferrer" class="browser-open" aria-label="Open RUSHVANE game">↗</a>
             </div>
             <a href="https://riyadh-ring-game.pages.dev/" target="_blank" rel="noopener noreferrer" class="project-viewport">
-              <img class="project-shot" src="assets/live-rushvane.webp" alt="Live screenshot of RUSHVANE Riyadh streets browser game" width="1440" height="900" loading="lazy">
-              <div class="viewport-overlay"><span class="overlay-pill" data-en="Play RUSHVANE Live ↗" data-ar="العب راشفين الآن ↗">Play RUSHVANE Live ↗</span></div>
+              <img class="project-shot" src="assets/live-rushvane.webp" alt="لعبة راشفين RUSHVANE شوارع الرياض — محمد النبراوي" width="1440" height="900" loading="lazy">
+              <div class="viewport-overlay"><span class="overlay-pill" data-en="Play RUSHVANE Live ↗" data-ar="العب راشفين الآن ↗">العب راشفين الآن ↗</span></div>
             </a>
           </div>
           <div class="project-body">
             <div class="project-meta">
-              <span class="tag" data-en="INTERACTIVE WEB · 3D BROWSER GAME" data-ar="تجربة ويب تفاعلية · لعبة متصفح">INTERACTIVE WEB · 3D BROWSER GAME</span>
+              <span class="tag" data-en="INTERACTIVE WEB · 3D BROWSER GAME" data-ar="تجربة ويب تفاعلية · لعبة متصفح">تجربة ويب تفاعلية · لعبة متصفح</span>
             </div>
-            <h3 data-en="RUSHVANE | راشفين — شوارع الرياض" data-ar="لعبة راشفين | RUSHVANE — شوارع الرياض">RUSHVANE | راشفين — شوارع الرياض</h3>
-            <p data-en="Playable 3D-styled browser driving experience set on Riyadh's iconic ring roads—featuring vehicle customization ('Car Studio'), daily challenges, leaderboards, and instant web play without installation." data-ar="لعبة قيادة تفاعلية في المتصفح مستوحاة من شوارع وطرق الرياض الدائرية؛ تتضمن استوديو لتجهيز السيارات، وتحديات يومية، ولوحة صدارة، وتعمل مباشرة على الويب دون تثبيت.">Playable 3D-styled browser driving experience set on Riyadh's iconic ring roads—featuring vehicle customization ('Car Studio'), daily challenges, leaderboards, and instant web play without installation.</p>
+            <h3 data-en="RUSHVANE | راشفين — شوارع الرياض" data-ar="لعبة راشفين | RUSHVANE — شوارع الرياض">لعبة راشفين | RUSHVANE — شوارع الرياض</h3>
+            <p data-en="Playable 3D-styled browser driving experience set on Riyadh's iconic ring roads—featuring vehicle customization ('Car Studio'), daily challenges, leaderboards, and instant web play without installation." data-ar="لعبة قيادة تفاعلية في المتصفح مستوحاة من شوارع وطرق الرياض الدائرية؛ تتضمن استوديو لتجهيز السيارات، وتحديات يومية، ولوحة صدارة، وتعمل مباشرة على الويب دون تثبيت.">لعبة قيادة تفاعلية في المتصفح مستوحاة من شوارع وطرق الرياض الدائرية؛ تتضمن استوديو لتجهيز السيارات، وتحديات يومية، ولوحة صدارة، وتعمل مباشرة على الويب دون تثبيت.</p>
             <div class="highlights">
-              <span data-en="Car Studio & Modes" data-ar="استوديو المواتر وأنماط قيادة">Car Studio & Modes</span>
-              <span data-en="Daily Challenges" data-ar="تحديات يومية ولوحة صدارة">Daily Challenges</span>
-              <span data-en="Zero-Install WebGL" data-ar="لعب فوري عبر المتصفح">Zero-Install WebGL</span>
+              <span data-en="Car Studio & Modes" data-ar="استوديو المواتر وأنماط قيادة">استوديو المواتر وأنماط قيادة</span>
+              <span data-en="Daily Challenges" data-ar="تحديات يومية ولوحة صدارة">تحديات يومية ولوحة صدارة</span>
+              <span data-en="Zero-Install WebGL" data-ar="لعب فوري عبر المتصفح">لعب فوري عبر المتصفح</span>
             </div>
             <div class="links">
-              <a class="primary-link" href="https://riyadh-ring-game.pages.dev/" target="_blank" rel="noopener noreferrer" data-en="Play in Browser ↗" data-ar="العب الآن في المتصفح ↗">Play in Browser ↗</a>
+              <a class="primary-link" href="https://riyadh-ring-game.pages.dev/" target="_blank" rel="noopener noreferrer" data-en="Play in Browser ↗" data-ar="العب الآن في المتصفح ↗">العب الآن في المتصفح ↗</a>
             </div>
           </div>
         </article>
@@ -453,94 +465,120 @@
     </div></section>
 
     <section id="credentials" class="subtle"><div class="wrap">
-      <div class="sectionhead"><div><div class="eyebrow" data-en="Career & Credentials" data-ar="المسيرة المهنية والمؤهلات">Career & Credentials</div><h2 data-en="15+ years of financial leadership & continuous learning" data-ar="أكثر من ١٥ عامًا في القيادة المالية والتعلم المستمر">15+ years of financial leadership & continuous learning</h2></div><p class="intro" data-en="A career rooted in professional auditing and chief-accountant leadership across Saudi Arabia and Egypt." data-ar="مسيرة مهنية راسخة في المراجعة القانونية ورئاسة الحسابات في المملكة العربية السعودية ومصر.">A career rooted in professional auditing and chief-accountant leadership across Saudi Arabia and Egypt.</p></div>
+      <div class="sectionhead"><div><div class="eyebrow" data-en="Career & Credentials" data-ar="المسيرة المهنية والمؤهلات">المسيرة المهنية والمؤهلات</div><h2 data-en="15+ years of financial leadership & continuous learning" data-ar="أكثر من ١٥ عامًا في القيادة المالية والتعلم المستمر">أكثر من ١٥ عامًا في القيادة المالية والتعلم المستمر</h2></div><p class="intro" data-en="A career rooted in professional auditing and chief-accountant leadership across Saudi Arabia and Egypt." data-ar="مسيرة مهنية راسخة في المراجعة القانونية ورئاسة الحسابات في المملكة العربية السعودية ومصر.">مسيرة مهنية راسخة في المراجعة القانونية ورئاسة الحسابات في المملكة العربية السعودية ومصر.</p></div>
       <div class="proof">
         <div class="proofbox">
-          <h3 data-en="Professional career milestones" data-ar="المحطات المهنية الرئيسية">Professional career milestones</h3>
+          <h3 data-en="Professional career milestones" data-ar="المحطات المهنية الرئيسية">المحطات المهنية الرئيسية</h3>
           <div class="timeline">
             <div class="t-item">
-              <div class="t-head"><strong data-en="Chief Accountant" data-ar="رئيس حسابات">Chief Accountant</strong><span data-en="Aug 2021 – Present" data-ar="أغسطس ٢٠٢١ – حتى الآن">Aug 2021 – Present</span></div>
-              <div class="t-org" data-en="Aghna Real Estate Co. · Riyadh, Saudi Arabia" data-ar="شركة أغنى العقارية · الرياض، السعودية">Aghna Real Estate Co. · Riyadh, Saudi Arabia</div>
-              <div class="t-desc" data-en="Leading financial strategy, regulatory compliance, and process automation—reducing monthly closing time by 40%." data-ar="قيادة الاستراتيجية المالية والالتزام النظامي وأتمتة العمليات، وتقليص وقت الإقفال الشهري بنسبة ٤٠٪.">Leading financial strategy, regulatory compliance, and process automation—reducing monthly closing time by 40%.</div>
+              <div class="t-head"><strong data-en="Chief Accountant" data-ar="رئيس حسابات">رئيس حسابات</strong><span data-en="Aug 2021 – Present" data-ar="أغسطس ٢٠٢١ – حتى الآن">أغسطس ٢٠٢١ – حتى الآن</span></div>
+              <div class="t-org" data-en="Aghna Real Estate Co. · Riyadh, Saudi Arabia" data-ar="شركة أغنى العقارية · الرياض، السعودية">شركة أغنى العقارية · الرياض، السعودية</div>
+              <div class="t-desc" data-en="Leading financial strategy, regulatory compliance, and process automation—reducing monthly closing time by 40%." data-ar="قيادة الاستراتيجية المالية والالتزام النظامي وأتمتة العمليات، وتقليص وقت الإقفال الشهري بنسبة ٤٠٪.">قيادة الاستراتيجية المالية والالتزام النظامي وأتمتة العمليات، وتقليص وقت الإقفال الشهري بنسبة ٤٠٪.</div>
             </div>
             <div class="t-item">
-              <div class="t-head"><strong data-en="Chief Accountant" data-ar="رئيس حسابات">Chief Accountant</strong><span data-en="Apr 2016 – Oct 2021" data-ar="أبريل ٢٠١٦ – أكتوبر ٢٠٢١">Apr 2016 – Oct 2021</span></div>
-              <div class="t-org" data-en="First Andareen Trading & Contracting · Saudi Arabia" data-ar="شركة أندرين الأولى للتجارة والمقاولات · السعودية">First Andareen Trading & Contracting · Saudi Arabia</div>
-              <div class="t-desc" data-en="Directed accounting operations, cash-flow reporting, receivables, and digital transformation initiatives across 5+ years." data-ar="إدارة قسم الحسابات وتقارير التدفقات النقدية والتحصيل ومبادرات التحول الرقمي المالي على مدار أكثر من ٥ سنوات.">Directed accounting operations, cash-flow reporting, receivables, and digital transformation initiatives across 5+ years.</div>
+              <div class="t-head"><strong data-en="Chief Accountant" data-ar="رئيس حسابات">رئيس حسابات</strong><span data-en="Apr 2016 – Oct 2021" data-ar="أبريل ٢٠١٦ – أكتوبر ٢٠٢١">أبريل ٢٠١٦ – أكتوبر ٢٠٢١</span></div>
+              <div class="t-org" data-en="First Andareen Trading & Contracting · Saudi Arabia" data-ar="شركة أندرين الأولى للتجارة والمقاولات · السعودية">شركة أندرين الأولى للتجارة والمقاولات · السعودية</div>
+              <div class="t-desc" data-en="Directed accounting operations, cash-flow reporting, receivables, and digital transformation initiatives across 5+ years." data-ar="إدارة قسم الحسابات وتقارير التدفقات النقدية والتحصيل ومبادرات التحول الرقمي المالي على مدار أكثر من ٥ سنوات.">إدارة قسم الحسابات وتقارير التدفقات النقدية والتحصيل ومبادرات التحول الرقمي المالي على مدار أكثر من ٥ سنوات.</div>
             </div>
             <div class="t-item">
-              <div class="t-head"><strong data-en="Senior Auditor" data-ar="مراجع مالي أول">Senior Auditor</strong><span data-en="May 2012 – Mar 2016" data-ar="مايو ٢٠١٢ – مارس ٢٠١٦">May 2012 – Mar 2016</span></div>
-              <div class="t-org" data-en="Abdullah Ibrahim Alhamza C.P.A. · Riyadh, Saudi Arabia" data-ar="مكتب عبدالله إبراهيم الحمزة للمحاسبة والمراجعة (CPA) · الرياض">Abdullah Ibrahim Alhamza C.P.A. · Riyadh, Saudi Arabia</div>
-              <div class="t-desc" data-en="Led financial statement audits, quarterly reviews, fixed-asset tracking, and bank reconciliations for 20+ companies across industries." data-ar="مراجعة وإعداد القوائم المالية والتقارير الدورية وسجلات الأصول الثابتة والتسويات البنكية لأكثر من ٢٠ شركة في قطاعات متنوعة.">Led financial statement audits, quarterly reviews, fixed-asset tracking, and bank reconciliations for 20+ companies across industries.</div>
+              <div class="t-head"><strong data-en="Senior Auditor" data-ar="مراجع مالي أول">مراجع مالي أول</strong><span data-en="May 2012 – Mar 2016" data-ar="مايو ٢٠١٢ – مارس ٢٠١٦">مايو ٢٠١٢ – مارس ٢٠١٦</span></div>
+              <div class="t-org" data-en="Abdullah Ibrahim Alhamza C.P.A. · Riyadh, Saudi Arabia" data-ar="مكتب عبدالله إبراهيم الحمزة للمحاسبة والمراجعة (CPA) · الرياض">مكتب عبدالله إبراهيم الحمزة للمحاسبة والمراجعة (CPA) · الرياض</div>
+              <div class="t-desc" data-en="Led financial statement audits, quarterly reviews, fixed-asset tracking, and bank reconciliations for 20+ companies across industries." data-ar="مراجعة وإعداد القوائم المالية والتقارير الدورية وسجلات الأصول الثابتة والتسويات البنكية لأكثر من ٢٠ شركة في قطاعات متنوعة.">مراجعة وإعداد القوائم المالية والتقارير الدورية وسجلات الأصول الثابتة والتسويات البنكية لأكثر من ٢٠ شركة في قطاعات متنوعة.</div>
             </div>
             <div class="t-item">
-              <div class="t-head"><strong data-en="Accountant" data-ar="محاسب مالي">Accountant</strong><span data-en="Jan 2011 – Jan 2012" data-ar="يناير ٢٠١١ – يناير ٢٠١٢">Jan 2011 – Jan 2012</span></div>
-              <div class="t-org" data-en="Dakahlia Poultry · Egypt" data-ar="شركة الدقهلية للدواجن · مصر">Dakahlia Poultry · Egypt</div>
-              <div class="t-desc" data-en="Prepared general ledger entries, asset and liability schedules, and transaction documentation." data-ar="إعداد قيود اليومية وحسابات الأصول والالتزامات وتوثيق المعاملات المالية.">Prepared general ledger entries, asset and liability schedules, and transaction documentation.</div>
+              <div class="t-head"><strong data-en="Accountant" data-ar="محاسب مالي">محاسب مالي</strong><span data-en="Jan 2011 – Jan 2012" data-ar="يناير ٢٠١١ – يناير ٢٠١٢">يناير ٢٠١١ – يناير ٢٠١٢</span></div>
+              <div class="t-org" data-en="Dakahlia Poultry · Egypt" data-ar="شركة الدقهلية للدواجن · مصر">شركة الدقهلية للدواجن · مصر</div>
+              <div class="t-desc" data-en="Prepared general ledger entries, asset and liability schedules, and transaction documentation." data-ar="إعداد قيود اليومية وحسابات الأصول والالتزامات وتوثيق المعاملات المالية.">إعداد قيود اليومية وحسابات الأصول والالتزامات وتوثيق المعاملات المالية.</div>
             </div>
           </div>
         </div>
         <div class="proofbox">
-          <h3 data-en="Education, licenses & technical tracks" data-ar="المؤهلات الأكاديمية والشهادات المهنية والتقنية">Education, licenses & technical tracks</h3>
+          <h3 data-en="Education, licenses & technical tracks" data-ar="المؤهلات الأكاديمية والشهادات المهنية والتقنية">المؤهلات الأكاديمية والشهادات المهنية والتقنية</h3>
           <ul>
-            <li data-en="Certified Finance Manager (CFM) — Global Association for Quality Management (GAQM, 2021)" data-ar="شهادة مدير مالي معتمد (CFM) — الجمعية العالمية لإدارة الجودة (GAQM، ٢٠٢١)">Certified Finance Manager (CFM) — Global Association for Quality Management (GAQM, 2021)</li>
-            <li data-en="Data Analysis Track — Udacity / One Million Arab Coders Initiative (2020)" data-ar="مسار تحليل البيانات — Udacity / مبادرة المليون مبرمج عربي (٢٠٢٠)">Data Analysis Track — Udacity / One Million Arab Coders Initiative (2020)</li>
-            <li data-en="Budgeting in Real Life — LinkedIn Learning (2020)" data-ar="شهادة التخطيط المالي والموازنات — LinkedIn Learning (٢٠٢٠)">Budgeting in Real Life — LinkedIn Learning (2020)</li>
-            <li data-en="Full Stack Developer Track — Udacity / One Million Arab Coders Initiative (2018)" data-ar="مسار مطور Full Stack — Udacity / مبادرة المليون مبرمج عربي (٢٠١٨)">Full Stack Developer Track — Udacity / One Million Arab Coders Initiative (2018)</li>
-            <li data-en="Bachelor of Commerce in Accounting — Mansoura University (2010)" data-ar="بكالوريوس التجارة (شعبة المحاسبة) — جامعة المنصورة (٢٠١٠)">Bachelor of Commerce in Accounting — Mansoura University (2010)</li>
-            <li data-en="ICDL — International Computer Driving Licence (Credential ID: egy000414273, 2010)" data-ar="الرخصة الدولية لقيادة الحاسب الآلي ICDL (رقم الاعتماد: egy000414273، ٢٠١٠)">ICDL — International Computer Driving Licence (Credential ID: egy000414273, 2010)</li>
-            <li data-en="Accountant Preparation & Peachtree Accounting — Mansoura University (2010)" data-ar="دبلومة إعداد المحاسب ومحاسبة Peachtree — جامعة المنصورة (٢٠١٠)">Accountant Preparation & Peachtree Accounting — Mansoura University (2010)</li>
+            <li data-en="Certified Finance Manager (CFM) — Global Association for Quality Management (GAQM, 2021)" data-ar="شهادة مدير مالي معتمد (CFM) — الجمعية العالمية لإدارة الجودة (GAQM، ٢٠٢١)">شهادة مدير مالي معتمد (CFM) — الجمعية العالمية لإدارة الجودة (GAQM، ٢٠٢١)</li>
+            <li data-en="Data Analysis Track — Udacity / One Million Arab Coders Initiative (2020)" data-ar="مسار تحليل البيانات — Udacity / مبادرة المليون مبرمج عربي (٢٠٢٠)">مسار تحليل البيانات — Udacity / مبادرة المليون مبرمج عربي (٢٠٢٠)</li>
+            <li data-en="Budgeting in Real Life — LinkedIn Learning (2020)" data-ar="شهادة التخطيط المالي والموازنات — LinkedIn Learning (٢٠٢٠)">شهادة التخطيط المالي والموازنات — LinkedIn Learning (٢٠٢٠)</li>
+            <li data-en="Full Stack Developer Track — Udacity / One Million Arab Coders Initiative (2018)" data-ar="مسار مطور Full Stack — Udacity / مبادرة المليون مبرمج عربي (٢٠١٨)">مسار مطور Full Stack — Udacity / مبادرة المليون مبرمج عربي (٢٠١٨)</li>
+            <li data-en="Bachelor of Commerce in Accounting — Mansoura University (2010)" data-ar="بكالوريوس التجارة (شعبة المحاسبة) — جامعة المنصورة (٢٠١٠)">بكالوريوس التجارة (شعبة المحاسبة) — جامعة المنصورة (٢٠١٠)</li>
+            <li data-en="ICDL — International Computer Driving Licence (Credential ID: egy000414273, 2010)" data-ar="الرخصة الدولية لقيادة الحاسب الآلي ICDL (رقم الاعتماد: egy000414273، ٢٠١٠)">الرخصة الدولية لقيادة الحاسب الآلي ICDL (رقم الاعتماد: egy000414273، ٢٠١٠)</li>
+            <li data-en="Accountant Preparation & Peachtree Accounting — Mansoura University (2010)" data-ar="دبلومة إعداد المحاسب ومحاسبة Peachtree — جامعة المنصورة (٢٠١٠)">دبلومة إعداد المحاسب ومحاسبة Peachtree — جامعة المنصورة (٢٠١٠)</li>
           </ul>
-          <div class="note" data-en="My software projects combine domain analysis, hands-on testing, and modern AI-assisted development tools to turn real business ideas into working solutions." data-ar="تجمع مشاريعي البرمجية بين تحليل الأعمال والاختبار العملي وأدوات التطوير الحديثة المدعومة بالذكاء الاصطناعي لتحويل الأفكار الواقعية إلى حلول عملية.">My software projects combine domain analysis, hands-on testing, and modern AI-assisted development tools to turn real business ideas into working solutions.</div>
-          <div class="note"><a class="tiny-link" href="cv.html" data-en="Open full interactive CV & printable biography ↗" data-ar="افتح صفحة السيرة الذاتية التفصيلية الكاملة ↗">Open full interactive CV & printable biography ↗</a></div>
+          <div class="note" data-en="My software projects combine domain analysis, hands-on testing, and modern AI-assisted development tools to turn real business ideas into working solutions." data-ar="تجمع مشاريعي البرمجية بين تحليل الأعمال والاختبار العملي وأدوات التطوير الحديثة المدعومة بالذكاء الاصطناعي لتحويل الأفكار الواقعية إلى حلول عملية.">تجمع مشاريعي البرمجية بين تحليل الأعمال والاختبار العملي وأدوات التطوير الحديثة المدعومة بالذكاء الاصطناعي لتحويل الأفكار الواقعية إلى حلول عملية.</div>
+          <div class="note"><a class="tiny-link" href="cv.html" data-en="Open full interactive CV & printable biography ↗" data-ar="افتح صفحة السيرة الذاتية التفصيلية الكاملة ↗">افتح صفحة السيرة الذاتية التفصيلية الكاملة ↗</a></div>
         </div>
       </div>
     </div></section>
 
     <section id="publications" class="subtle"><div class="wrap">
-      <div class="sectionhead"><div><div class="eyebrow" data-en="Published Works & Books" data-ar="المؤلفات والأعمال الأدبية المنشورة">Published Works & Books</div><h2 data-en="Author of published Arabic literary collections" data-ar="إصدارات أدبية منشورة على أمازون">Author of published Arabic literary collections</h2></div><p class="intro" data-en="Alongside finance and technology, I write poetry, prose, and reflective essays—with two published books available on Amazon." data-ar="إلى جانب عملي في المالية والتقنية، أكتب الشعر والنثر والمقالات الفكرية، ولي كتابان منشوران على منصة أمازون.">Alongside finance and technology, I write poetry, prose, and reflective essays—with two published books available on Amazon.</p></div>
+      <div class="sectionhead"><div><div class="eyebrow" data-en="Published Works & Books" data-ar="المؤلفات والأعمال الأدبية المنشورة">المؤلفات والأعمال الأدبية المنشورة</div><h2 data-en="Author of published Arabic literary collections" data-ar="إصدارات أدبية منشورة على أمازون">إصدارات أدبية منشورة على أمازون</h2></div><p class="intro" data-en="Alongside finance and technology, I write poetry, prose, and reflective essays—with two published books available on Amazon." data-ar="إلى جانب عملي في المالية والتقنية، أكتب الشعر والنثر والمقالات الفكرية، ولي كتابان منشوران على منصة أمازون.">إلى جانب عملي في المالية والتقنية، أكتب الشعر والنثر والمقالات الفكرية، ولي كتابان منشوران على منصة أمازون.</p></div>
       <div class="books-grid">
         <article class="book-card">
-          <img class="book-cover" src="images/انتهى الظلام.jpg" alt="غلاف كتاب انتهى الظلام — The Darkness Ended" loading="lazy">
+          <img class="book-cover" src="images/انتهى الظلام.jpg" alt="غلاف كتاب انتهى الظلام للمؤلف محمد النبراوي — The Darkness Ended" loading="lazy">
           <div class="book-info">
-            <span class="tag" data-en="PUBLISHED BOOK · AMAZON" data-ar="كتاب منشور · أمازون">PUBLISHED BOOK · AMAZON</span>
-            <h3 data-en="انتهى الظلام — The Darkness Ended" data-ar="ديوان «انتهى الظلام»">انتهى الظلام — The Darkness Ended</h3>
-            <p data-en="My first published collection featuring reflective prose, poetry, and short essays in both Classical and Egyptian Arabic—capturing spiritual reflections, intellectual thoughts, and human experiences." data-ar="ديواني الأول المنشور ويضم مجموعة من الخواطر النثرية والشعرية والمقالات القصيرة باللغة العربية الفصحى والعامية المصرية، تعبّر عن نفحات إيمانية وخواطر فكرية وإنسانية.">My first published collection featuring reflective prose, poetry, and short essays in both Classical and Egyptian Arabic—capturing spiritual reflections, intellectual thoughts, and human experiences.</p>
+            <span class="tag" data-en="PUBLISHED BOOK · AMAZON" data-ar="كتاب منشور · أمازون">كتاب منشور · أمازون</span>
+            <h3 data-en="انتهى الظلام — The Darkness Ended" data-ar="ديوان «انتهى الظلام»">ديوان «انتهى الظلام»</h3>
+            <p data-en="My first published collection featuring reflective prose, poetry, and short essays in both Classical and Egyptian Arabic—capturing spiritual reflections, intellectual thoughts, and human experiences." data-ar="ديواني الأول المنشور ويضم مجموعة من الخواطر النثرية والشعرية والمقالات القصيرة باللغة العربية الفصحى والعامية المصرية، تعبّر عن نفحات إيمانية وخواطر فكرية وإنسانية.">ديواني الأول المنشور ويضم مجموعة من الخواطر النثرية والشعرية والمقالات القصيرة باللغة العربية الفصحى والعامية المصرية، تعبّر عن نفحات إيمانية وخواطر فكرية وإنسانية.</p>
             <div class="links">
-              <a href="https://www.amazon.com/dp/1722055804" target="_blank" rel="noopener noreferrer" data-en="View on Amazon ↗" data-ar="عرض الكتاب على أمازون ↗">View on Amazon ↗</a>
-              <a href="cv.html#publications" data-en="Details in CV ↗" data-ar="التفاصيل في السيرة ↗">Details in CV ↗</a>
+              <a href="https://www.amazon.com/dp/1722055804" target="_blank" rel="noopener noreferrer" data-en="View on Amazon ↗" data-ar="عرض الكتاب على أمازون ↗">عرض الكتاب على أمازون ↗</a>
+              <a href="cv.html#publications" data-en="Details in CV ↗" data-ar="التفاصيل في السيرة ↗">التفاصيل في السيرة ↗</a>
             </div>
           </div>
         </article>
         <article class="book-card">
-          <img class="book-cover" src="images/صيف ممطر.jpg" alt="غلاف كتاب صيف ممطر — Rainy Summer" loading="lazy">
+          <img class="book-cover" src="images/صيف ممطر.jpg" alt="غلاف كتاب صيف ممطر للمؤلف محمد النبراوي — Rainy Summer" loading="lazy">
           <div class="book-info">
-            <span class="tag" data-en="PUBLISHED BOOK · AMAZON" data-ar="كتاب منشور · أمازون">PUBLISHED BOOK · AMAZON</span>
-            <h3 data-en="صيف ممطر — Rainy Summer" data-ar="ديوان «صيف ممطر»">صيف ممطر — Rainy Summer</h3>
-            <p data-en="A diverse literary collection of Arabic poetry and prose blending traditional rhyme and structure with modern free-verse expression across Classical and Egyptian vernacular styles." data-ar="ديوان يجمع أنماطًا متنوعة من الكتابات الأدبية النثرية والشعرية بالفصحى والعامية المصرية، يلتزم في بعض قصائده بالقافية والبناء الخارجي للقصيدة العربية مع حرية التعبير.">A diverse literary collection of Arabic poetry and prose blending traditional rhyme and structure with modern free-verse expression across Classical and Egyptian vernacular styles.</p>
+            <span class="tag" data-en="PUBLISHED BOOK · AMAZON" data-ar="كتاب منشور · أمازون">كتاب منشور · أمازون</span>
+            <h3 data-en="صيف ممطر — Rainy Summer" data-ar="ديوان «صيف ممطر»">ديوان «صيف ممطر»</h3>
+            <p data-en="A diverse literary collection of Arabic poetry and prose blending traditional rhyme and structure with modern free-verse expression across Classical and Egyptian vernacular styles." data-ar="ديوان يجمع أنماطًا متنوعة من الكتابات الأدبية النثرية والشعرية بالفصحى والعامية المصرية، يلتزم في بعض قصائده بالقافية والبناء الخارجي للقصيدة العربية مع حرية التعبير.">ديوان يجمع أنماطًا متنوعة من الكتابات الأدبية النثرية والشعرية بالفصحى والعامية المصرية، يلتزم في بعض قصائده بالقافية والبناء الخارجي للقصيدة العربية مع حرية التعبير.</p>
             <div class="links">
-              <a href="https://www.amazon.com/dp/1715710428" target="_blank" rel="noopener noreferrer" data-en="View on Amazon ↗" data-ar="عرض الكتاب على أمازون ↗">View on Amazon ↗</a>
-              <a href="cv.html#publications" data-en="Details in CV ↗" data-ar="التفاصيل في السيرة ↗">Details in CV ↗</a>
+              <a href="https://www.amazon.com/dp/1715710428" target="_blank" rel="noopener noreferrer" data-en="View on Amazon ↗" data-ar="عرض الكتاب على أمازون ↗">عرض الكتاب على أمازون ↗</a>
+              <a href="cv.html#publications" data-en="Details in CV ↗" data-ar="التفاصيل في السيرة ↗">التفاصيل في السيرة ↗</a>
             </div>
           </div>
         </article>
       </div>
     </div></section>
 
+    <section id="about" class="subtle"><div class="wrap">
+      <div class="sectionhead"><div><div class="eyebrow" data-en="Executive Dossier & FAQ" data-ar="بطاقة تعريفية وسيرة مهنية">بطاقة تعريفية وسيرة مهنية</div><h2 data-en="Who is Mohamed Elnabarawi?" data-ar="من هو محمد النبراوي؟ — المعلومات الكاملة">من هو محمد النبراوي؟ — المعلومات الكاملة</h2></div><p class="intro" data-en="Verified biographical overview, executive leadership roles, digital platforms, and published works of Mohamed Elnabarawi." data-ar="ملخص تعريفي موثّق للمسيرة المهنية والمشاريع التقنية والمؤلفات الأدبية لمحمد النبراوي (Mohamed Elnabarawi).">ملخص تعريفي موثّق للمسيرة المهنية والمشاريع التقنية والمؤلفات الأدبية لمحمد النبراوي (Mohamed Elnabarawi).</p></div>
+      <div class="entity-grid">
+        <article class="entity-card glow-card">
+          <span class="q-num">01 / BIOGRAPHY</span>
+          <h3 data-en="Who is Mohamed Elnabarawi?" data-ar="من هو محمد النبراوي (Mohamed Elnabarawi)؟">من هو محمد النبراوي (Mohamed Elnabarawi)؟</h3>
+          <p data-en="Mohamed Elnabarawi is a Financial Consultant, Chief Accountant, former Senior CPA Auditor, Tech Entrepreneur, and Published Author based in Riyadh, Saudi Arabia. He brings over 15 years of executive financial leadership and software innovation." data-ar="محمد النبراوي (Mohamed Elnabarawi) هو مستشار مالي، ورئيس حسابات، ومراجع مالي أول سابق (CPA)، ورائد مشاريع تقنية ومؤلف مقيم في الرياض بالمملكة العربية السعودية، بخبرة تتجاوز ١٥ عامًا في القيادة المالية وأنظمة ERP وبناء البرمجيات.">محمد النبراوي (Mohamed Elnabarawi) هو مستشار مالي، ورئيس حسابات، ومراجع مالي أول سابق (CPA)، ورائد مشاريع تقنية ومؤلف مقيم في الرياض بالمملكة العربية السعودية، بخبرة تتجاوز ١٥ عامًا في القيادة المالية وأنظمة ERP وبناء البرمجيات.</p>
+        </article>
+        <article class="entity-card glow-card">
+          <span class="q-num">02 / PLATFORMS & FINTECH</span>
+          <h3 data-en="What platforms & products has he built?" data-ar="ما هي أبرز المشاريع والمنصات الرقمية لمحمد النبراوي؟">ما هي أبرز المشاريع والمنصات الرقمية لمحمد النبراوي؟</h3>
+          <p data-en="He founded Invoices Reader (an AI OCR and Saudi ZATCA e-invoice extraction platform) and Arab Tech Trends (arabtechtrends.com), alongside developing corporate platforms for Aghna Real Estate (aghna.com.sa), Rakha Business Center (rakha.net), and RUSHVANE." data-ar="أسّس محمد النبراوي منصة قارئ الفواتير (Invoices Reader) لأتمتة استخراج الفواتير والضريبة بالذكاء الاصطناعي ورموز ZATCA QR، وبوابة عرب تك التقنية (Arab Tech Trends)، كما طوّر المنصات الرقمية لمركز رخاء للأعمال وشركة أغنى العقارية ولعبة راشفين.">أسّس محمد النبراوي منصة قارئ الفواتير (Invoices Reader) لأتمتة استخراج الفواتير والضريبة بالذكاء الاصطناعي ورموز ZATCA QR، وبوابة عرب تك التقنية (Arab Tech Trends)، كما طوّر المنصات الرقمية لمركز رخاء للأعمال وشركة أغنى العقارية ولعبة راشفين.</p>
+        </article>
+        <article class="entity-card glow-card">
+          <span class="q-num">03 / FINANCIAL LEADERSHIP</span>
+          <h3 data-en="What are his financial & academic credentials?" data-ar="ما هي المؤهلات والخبرات المالية لمحمد النبراوي؟">ما هي المؤهلات والخبرات المالية لمحمد النبراوي؟</h3>
+          <p data-en="He holds a B.Com. in Accounting from Mansoura University and the Certified Finance Manager (CFM®) credential from GAQM, having served as Senior Auditor for 20+ Saudi enterprises and Chief Accountant in the real estate and contracting sectors." data-ar="يحمل محمد النبراوي بكالوريوس التجارة (شعبة المحاسبة) من جامعة المنصورة، وشهادة مدير مالي معتمد (CFM®) من الجمعية العالمية لإدارة الجودة (GAQM)، وعمل مراجعًا ماليًا أول لأكثر من ٢٠ شركة ورئيسًا للحسابات في قطاعي العقارات والمقاولات بالرياض.">يحمل محمد النبراوي بكالوريوس التجارة (شعبة المحاسبة) من جامعة المنصورة، وشهادة مدير مالي معتمد (CFM®) من الجمعية العالمية لإدارة الجودة (GAQM)، وعمل مراجعًا ماليًا أول لأكثر من ٢٠ شركة ورئيسًا للحسابات في قطاعي العقارات والمقاولات بالرياض.</p>
+        </article>
+        <article class="entity-card glow-card">
+          <span class="q-num">04 / PUBLISHED BOOKS</span>
+          <h3 data-en="What books has Mohamed Elnabarawi published?" data-ar="ما هي المؤلفات والكتب المنشورة لمحمد النبراوي؟">ما هي المؤلفات والكتب المنشورة لمحمد النبراوي؟</h3>
+          <p data-en="Mohamed Elnabarawi is the author of two Arabic literary books published internationally on Amazon: 'The Darkness Ended' (انتهى الظلام — ISBN 9781722055804) and 'Rainy Summer' (صيف ممطر — ISBN 9781715710428)." data-ar="صدر للمؤلف محمد النبراوي كتابان أدبيان منشوران عالميًا عبر منصة أمازون: ديوان «انتهى الظلام» (The Darkness Ended) وديوان «صيف ممطر» (Rainy Summer)، ويضمان أعمالًا شعرية ونثرية ومقالات فكرية باللغة العربية.">صدر للمؤلف محمد النبراوي كتابان أدبيان منشوران عالميًا عبر منصة أمازون: ديوان «انتهى الظلام» (The Darkness Ended) وديوان «صيف ممطر» (Rainy Summer)، ويضمان أعمالًا شعرية ونثرية ومقالات فكرية باللغة العربية.</p>
+        </article>
+      </div>
+    </div></section>
+
     <section id="contact" class="wrap subtle">
-      <div class="footercta"><div><div class="eyebrow" data-en="Connect & follow" data-ar="تواصل وتابعني">Get in touch</div><h2 data-en="Let’s stay connected." data-ar="يسعدني تواصلك ومتابعتك.">Let’s stay connected.</h2><p data-en="Explore my websites, digital products, videos, and articles—or reach out directly to exchange ideas and collaborate." data-ar="تعرّف على مواقعي ومنتجاتي الرقمية وفيديوهاتي ومقالاتي، أو تواصل معي مباشرة لتبادل الأفكار والتعاون.">Explore my websites, digital products, videos, and articles—or reach out directly to exchange ideas and collaborate.</p></div>
-      <div class="actions"><a class="btn primary" href="mailto:mohammednabarawy@gmail.com" data-en="Send an email ↗" data-ar="راسلني بالبريد ↗">Send an email ↗</a><a class="btn secondary" href="https://www.linkedin.com/in/mnabarawi" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a class="btn secondary" href="https://github.com/mohammednabarawy" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div>
-      <div class="social-hub" aria-label="Official websites and social accounts"><div class="eyebrow" data-en="Official channels & platforms" data-ar="قنواتي وحساباتي الرسمية">Official channels & platforms</div><div class="social-links">
-<a href="https://www.youtube.com/@MohammedElnabarawi" target="_blank" rel="noopener noreferrer">▶ YouTube · @MohammedElnabarawi</a>
-<a href="https://www.youtube.com/@elnabarawi" target="_blank" rel="noopener noreferrer">▶ YouTube · @elnabarawi</a>
-<a href="https://www.facebook.com/mfnabarawy" target="_blank" rel="noopener noreferrer">f Facebook · mfnabarawy</a>
-<a href="https://www.instagram.com/mohammednabarawy/" target="_blank" rel="noopener noreferrer">◎ Instagram · @mohammednabarawy</a>
-<a href="https://x.com/nabarawymohamed" target="_blank" rel="noopener noreferrer">𝕏 X · @nabarawymohamed</a>
-<a href="https://www.linkedin.com/in/mnabarawi" target="_blank" rel="noopener noreferrer">in LinkedIn · mnabarawi</a>
-<a href="https://github.com/mohammednabarawy" target="_blank" rel="noopener noreferrer">⌘ GitHub · mohammednabarawy</a>
-<a href="https://arabtechtrends.com/" target="_blank" rel="noopener noreferrer">↗ Arab Tech Trends</a>
-<a href="https://invoicesreader.com/" target="_blank" rel="noopener noreferrer">↗ Invoices Reader</a>
-</div></div><footer><span>© 2026 Mohamed Elnabarawi</span><span><a class="tiny-link" href="https://www.linkedin.com/in/mnabarawi" target="_blank" rel="noopener noreferrer">LinkedIn</a> · <a class="tiny-link" href="https://github.com/mohammednabarawy" target="_blank" rel="noopener noreferrer">GitHub</a> · <a class="tiny-link" href="cv.html" data-en="Full CV & Publications" data-ar="السيرة الذاتية والمؤلفات">Full CV & Publications</a></span></footer>
+      <div class="footercta"><div><div class="eyebrow" data-en="Connect & follow" data-ar="تواصل وتابعني">تواصل وتابعني</div><h2 data-en="Let’s stay connected." data-ar="يسعدني تواصلك ومتابعتك.">يسعدني تواصلك ومتابعتك.</h2><p data-en="Explore my websites, digital products, videos, and articles—or reach out directly to exchange ideas and collaborate." data-ar="تعرّف على مواقعي ومنتجاتي الرقمية وفيديوهاتي ومقالاتي، أو تواصل معي مباشرة لتبادل الأفكار والتعاون.">تعرّف على مواقعي ومنتجاتي الرقمية وفيديوهاتي ومقالاتي، أو تواصل معي مباشرة لتبادل الأفكار والتعاون.</p></div>
+      <div class="actions"><a class="btn primary" href="mailto:mohammednabarawy@gmail.com" data-en="Send an email ↗" data-ar="راسلني بالبريد ↗">راسلني بالبريد ↗</a><a class="btn secondary" href="https://www.linkedin.com/in/mnabarawi" target="_blank" rel="me noopener noreferrer">LinkedIn ↗</a><a class="btn secondary" href="https://github.com/mohammednabarawy" target="_blank" rel="me noopener noreferrer">GitHub ↗</a></div></div>
+      <div class="social-hub" aria-label="Official websites and social accounts"><div class="eyebrow" data-en="Official channels & platforms" data-ar="قنواتي وحساباتي الرسمية">قنواتي وحساباتي الرسمية</div><div class="social-links">
+<a href="https://www.youtube.com/@MohammedElnabarawi" target="_blank" rel="me noopener noreferrer">▶ YouTube · @MohammedElnabarawi</a>
+<a href="https://www.youtube.com/@elnabarawi" target="_blank" rel="me noopener noreferrer">▶ YouTube · @elnabarawi</a>
+<a href="https://www.facebook.com/mfnabarawy" target="_blank" rel="me noopener noreferrer">f Facebook · mfnabarawy</a>
+<a href="https://www.instagram.com/mohammednabarawy/" target="_blank" rel="me noopener noreferrer">◎ Instagram · @mohammednabarawy</a>
+<a href="https://x.com/nabarawymohamed" target="_blank" rel="me noopener noreferrer">𝕏 X · @nabarawymohamed</a>
+<a href="https://www.linkedin.com/in/mnabarawi" target="_blank" rel="me noopener noreferrer">in LinkedIn · mnabarawi</a>
+<a href="https://github.com/mohammednabarawy" target="_blank" rel="me noopener noreferrer">⌘ GitHub · mohammednabarawy</a>
+<a href="https://arabtechtrends.com/" target="_blank" rel="me noopener noreferrer">↗ Arab Tech Trends</a>
+<a href="https://invoicesreader.com/" target="_blank" rel="me noopener noreferrer">↗ Invoices Reader</a>
+</div></div><footer><span>© 2026 محمد النبراوي · Mohamed Elnabarawi</span><span><a class="tiny-link" href="https://www.linkedin.com/in/mnabarawi" target="_blank" rel="me noopener noreferrer">LinkedIn</a> · <a class="tiny-link" href="https://github.com/mohammednabarawy" target="_blank" rel="me noopener noreferrer">GitHub</a> · <a class="tiny-link" href="cv.html" data-en="Full CV & Publications" data-ar="السيرة الذاتية والمؤلفات">السيرة الذاتية والمؤلفات</a></span></footer>
     </section>
   </main>
   <script>
@@ -551,10 +589,10 @@
         var ar = lang === 'ar';
         document.documentElement.lang = lang;
         document.documentElement.dir = ar ? 'rtl' : 'ltr';
-        document.title = ar ? 'محمد النبراوي | مستشار مالي ورائد مشاريع تقنية' : 'Mohamed Elnabarawi | Financial Consultant & Tech Entrepreneur';
+        document.title = ar ? 'محمد النبراوي | مستشار مالي ورائد مشاريع تقنية — Mohamed Elnabarawi' : 'Mohamed Elnabarawi | Financial Consultant & Tech Entrepreneur — محمد النبراوي';
         document.querySelectorAll('[data-en][data-ar]').forEach(function (element) {
           var value = element.getAttribute(ar ? 'data-ar' : 'data-en');
-          if (element.tagName === 'H1') element.innerHTML = value;
+          if (element.classList.contains('hero-role')) element.innerHTML = value;
           else element.textContent = value;
         });
         toggle.textContent = ar ? 'English' : 'العربية';
